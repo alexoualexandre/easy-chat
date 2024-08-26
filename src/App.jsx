@@ -22,7 +22,7 @@ function App() {
           count is {count}
         </button>
         <p>
-          youpi easy chat
+          chat chat chat
         </p>
       </div>
       <p className="read-the-docs">
