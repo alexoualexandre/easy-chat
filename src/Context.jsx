@@ -1,7 +1,17 @@
-import {createContext} from 'react';
+import { createContext, useContext, useState } from "react";
+import PropTypes from "prop-types";
 
-const testing = "wesh";
+const Context = createContext();
 
-const Mycontext = createContext({testing});
+export function Provider({ children }) {
+  const [texte, setTexte] = useState("bonjour");
 
+  return (
+    <Context.Provider value={{ texte, setTexte }}>{children}</Context.Provider>
+  );
+}
 
+Provider.propTypes = {
+  children: PropTypes.object,
+};
+export const MyContext = () => useContext(Context);
