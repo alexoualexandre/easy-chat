@@ -1,7 +1,8 @@
+/* eslint-disable no-undef */
 
-const express = require('express');
+const express = require("express");
 
-const cors = require('cors');
+const cors = require("cors");
 
 const app = express();
 
@@ -11,5 +12,4 @@ app.use(cors());
 
 app.listen(3311);
 
-const salope ="enculer de salope";
-module.exports = {app,salope};
+module.exports = { app, salope };

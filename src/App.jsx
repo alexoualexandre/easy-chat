@@ -7,17 +7,18 @@ function App() {
   const { texte, setTexte } = MyContext();
   return (
     <>
-        <button
-          onClick={() => {
-            setCount((count) => count + 1);
-            setTexte("aurevoir");
-          }}
-        >
-          count is {count}
-        </button>
-        <Link to="/teste">
-          <p>dev {texte}</p>
-        </Link>
+      <button
+        onClick={() => {
+          setCount((count) => count + 1);
+          setTexte("aurevoir");
+        }}
+        className="button-teste"
+      >
+        count is {count}
+      </button>
+      <Link to="/teste">
+        <p>dev {texte}</p>
+      </Link>
     </>
   );
 }
