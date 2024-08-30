@@ -1,16 +1,12 @@
-const {connection} = require('./index.js');
+// eslint-disable-next-line no-undef
+const { connection } = require("./index.js");
 
-class User{
-async select  
-(){
-
-const [r] = await connection.query('SELECT * FROM user'
-);
-return r
-}
+class User {
+  async select() {
+    const [r] = await connection.query("SELECT * FROM user");
+    return r;
+  }
 }
 
-module.exports = {User};
-
-
-
+// eslint-disable-next-line no-undef
+module.exports = { User };

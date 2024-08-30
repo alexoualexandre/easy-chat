@@ -12,4 +12,4 @@ app.use(cors());
 
 app.listen(3311);
 
-module.exports = { app, salope };
+module.exports = { app };

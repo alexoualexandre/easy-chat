@@ -1,11 +1,13 @@
-const mysql = require('mysql2/promise');
+// eslint-disable-next-line no-undef
+const mysql = require("mysql2/promise");
+// eslint-disable-next-line no-undef
 
-// Create the connection to database
 const connection = mysql.createPool({
-  host: 'localhost',
-  user: 'alexandre',
-  password: 'Rkyl32623!',
-  database: 'easy',
+  host: "localhost",
+  user: "alexandre",
+  password: process.env.PASSWORD,
+  database: "easy",
 });
 
-module.exports = {connection};
+// eslint-disable-next-line no-undef
+module.exports = { connection };

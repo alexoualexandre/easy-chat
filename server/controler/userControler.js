@@ -1,8 +1,9 @@
-const {User} = require('../bdd/userRepository.js');
+// eslint-disable-next-line no-undef
+const { User } = require("../bdd/userRepository.js");
 
-async function resultat(){
-	const teste =await new User().select();
-	
-	console.log(teste)
+async function resultat() {
+  const teste = await new User().select();
+
+  console.log(teste);
 }
-resultat()
+resultat();
