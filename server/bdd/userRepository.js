@@ -1,19 +1,16 @@
 const {connection} = require('./index.js');
 
 class User{
-co1  
-(arg){
-connection.query('SELECT * FROM user_data WHERE id = ?',[arg],
-function(err,results,field){
-console.log(results);
-console.log(field);
-	}
-    )
-  }
+async select  
+(){
+
+const [r] = await connection.query('SELECT * FROM user'
+);
+return r
+}
 }
 
-const t = new User()
-t.co1(22);
+module.exports = {User};
 
 
 
