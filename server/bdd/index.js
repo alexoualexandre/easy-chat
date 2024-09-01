@@ -1,6 +1,6 @@
 // eslint-disable-next-line no-undef
-require('dotenv').config();
-
+require("dotenv").config();
+const { PASSWORD } = process.env;
 // eslint-disable-next-line no-undef
 const mysql = require("mysql2/promise");
 // eslint-disable-next-line no-undef
@@ -8,7 +8,7 @@ const mysql = require("mysql2/promise");
 const connection = mysql.createPool({
   host: "localhost",
   user: "alexandre",
-  password: process.env.PASSWORD,
+  password: PASSWORD,
   database: "easy",
 });
 
