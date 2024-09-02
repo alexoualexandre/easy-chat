@@ -1,24 +1,14 @@
-import { useState } from "react";
-import { Link } from "react-router-dom";
-import { MyContext } from "./Context";
+ import {useState} from 'react';
 
 function App() {
-  const [count, setCount] = useState(0);
-  const { texte, setTexte } = MyContext();
+  
+ const [data,setData] = useState();
+fetch('http://77.37.51.45:3311/user').then(
+response=>response).then((resp)=>resp.json()).then(
+(rep)=>{console.info(rep);setData(rep.data)})
   return (
     <>
-      <button
-        onClick={() => {
-          setCount((count) => count + 1);
-          setTexte("aurevoir");
-        }}
-        className="button-teste"
-      >
-        count is {count}
-      </button>
-      <Link to="/teste">
-        <p>dev {texte}</p>
-      </Link>
+{data && data}	
     </>
   );
 }
