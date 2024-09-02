@@ -1,15 +1,18 @@
 // eslint-disable-next-line no-undef
-require("dotenv").config();
-const { PASSWORD } = process.env;
+require('dotenv').config({ path: '/var/www/html/code/easy-chat/server/bdd/.env' });
+
+const {HOST,NAME,PASSWORD,DATA} = process.env;
+
 // eslint-disable-next-line no-undef
+
 const mysql = require("mysql2/promise");
 // eslint-disable-next-line no-undef
 
 const connection = mysql.createPool({
-  host: "localhost",
-  user: "alexandre",
+  host: HOST,
+  user: NAME,
   password: PASSWORD,
-  database: "easy",
+  database: DATA,
 });
 
 // eslint-disable-next-line no-undef
