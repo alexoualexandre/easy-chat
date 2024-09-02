@@ -6,7 +6,7 @@ try{
 //  const user = await new User().select();
   res.json({data: "hello"});
 }catch(err){
-next({"faute: ",err});
+next({faute: `erreur:${err}`});
 }
 }
 
