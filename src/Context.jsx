@@ -4,10 +4,10 @@ import PropTypes from "prop-types";
 const Context = createContext();
 
 export function Provider({ children }) {
-  const [texte, setTexte] = useState("bonjour");
 
+  const [burgerHome,setBurgerHome] = useState(false);
   return (
-    <Context.Provider value={{ texte, setTexte }}>{children}</Context.Provider>
+    <Context.Provider value={{burgerHome, setBurgerHome }}>{children}</Context.Provider>
   );
 }
 
