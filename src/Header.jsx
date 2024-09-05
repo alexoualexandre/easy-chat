@@ -2,23 +2,37 @@ import { MyContext } from "./Context.jsx";
 
 function Header() {
   const { setBurgerHome } = MyContext();
+  const sizeScreen = window.innerWidth;
   return (
     <header className="header">
-      <img src="logo.png" className="logo" />
-      <div className="menu">
-        <div className="burger"></div>
-        <div className="burger"></div>
-        <div className="burger"></div>
-        <button
-          className="click-burger"
-          onClick={() => {
-            setBurgerHome(true);
-          }}
-        >
-          .
-        </button>
-      </div>
+      {sizeScreen < 1024 && (
+        <>
+          <img src="logo.png" className="logo" />
+
+          <div className="menu">
+            <div className="burger"></div>
+            <div className="burger"></div>
+            <div className="burger"></div>
+
+            <button
+              className="click-burger"
+              onClick={() => {
+                setBurgerHome(true);
+              }}
+            >
+              .
+            </button>
+          </div>
+        </>
+      )}
+
       <button className="button-inscription">S&apos;inscrire</button>
+      {sizeScreen >= 1024 && (
+        <>
+          <h1 className="easy-chat">Easy-chat</h1>
+          <button className="button-connexion">Se connecter</button>
+        </>
+      )}
     </header>
   );
 }

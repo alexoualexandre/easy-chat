@@ -1,4 +1,5 @@
-@import url('https://fonts.googleapis.com/css2?family=Baskervville+SC&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Baskervville+SC&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Love+Light&display=swap");
 
 * {
   margin: 0;
@@ -10,11 +11,23 @@
   font-style: normal;
 }
 
+.love-light-regular {
+  font-family: "Love Light", cursive;
+  font-weight: 400;
+  font-style: normal;
+}
 
 :root {
   --body-home-page: #501720;
   --background-button-inscription: red;
   --background-burger: white;
+  --int-easy-chat: pink;
+}
+
+button {
+  outline: none;
+  box-shadow: none;
+  -webkit-tap-highlight-color: transparent;
 }
 
 @media screen and (min-width: 320px) {
@@ -74,7 +87,6 @@
     width: 100%;
     height: 100%;
     border: none;
-    background-color: blue;
     position: absolute;
     color: transparent;
     background-color: transparent;
@@ -103,7 +115,7 @@
     position: absolute;
   }
 
-.ins-co {
+  .ins-co {
     width: 80%;
     height: 30em;
     position: absolute;
@@ -111,7 +123,7 @@
     top: 5em;
   }
 
-.ins {
+  .ins {
     position: relative;
     width: 80%;
     height: 2em;
@@ -126,15 +138,15 @@
     font-weight: bold;
     color: white;
     margin-top: 1em;
-}
+  }
 
-#se-connecter {
+  #se-connecter {
     background-color: var(--body-home-page);
     color: white;
     border: 1px solid white;
-}
+  }
 
-.liste-burger-home {
+  .liste-burger-home {
     position: relative;
     top: 1em;
     list-style-type: none;
@@ -144,14 +156,14 @@
     color: white;
     text-align: center;
     font-size: 1.5em;
-    width: 100%
-}
+    width: 100%;
+  }
 
-.li-burger-home {
+  .li-burger-home {
     margin-top: 1em;
-}
+  }
 
-.return-accueil {
+  .return-accueil {
     width: 100%;
     height: 100%;
     background-color: var(--background-home-page);
@@ -159,7 +171,7 @@
     font-size: 1em;
     color: white;
     font-family: "Baskervville SC", serif;
-}
+  }
 }
 
 @media screen and (min-width: 768px) {
@@ -171,5 +183,35 @@
 @media screen and (min-width: 1024px) {
   .logo {
     width: 5%;
+  }
+
+  .button-inscription {
+    padding-left: 3em;
+    padding-right: 3em;
+    right: 1em;
+  }
+
+  .button-connexion {
+    position: absolute;
+    right: 12em;
+    top: 0.5em;
+    background-color: white;
+    font-size: 1em;
+    color: red;
+    border: none;
+    padding: 0.5em;
+    border-radius: 1.5em;
+    font-family: arial;
+    padding-left: 3em;
+    padding-right: 3em;
+    font-weight: bold;
+    cursor: pointer;
+  }
+
+  .easy-chat {
+    font-family: "Love Light", cursive;
+    font-size: 3em;
+    margin-left: 0.5em;
+    color: var(--int-easy-chat);
   }
 }
