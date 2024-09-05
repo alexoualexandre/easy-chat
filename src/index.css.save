@@ -1,15 +1,6 @@
-@import url('https://fonts.googleapis.com/css2?family=Baskervville+SC&display=swap');
-
 * {
   margin: 0;
 }
-
-.baskervville-sc-regular {
-  font-family: "Baskervville SC", serif;
-  font-weight: 400;
-  font-style: normal;
-}
-
 
 :root {
   --body-home-page: #501720;
@@ -106,59 +97,16 @@
 .ins-co {
     width: 80%;
     height: 30em;
+    background-color: grey;
     position: absolute;
     left: 10%;
     top: 5em;
   }
 
 .ins {
-    position: relative;
-    width: 80%;
+    width: 70%;
     height: 2em;
-    left: 10%;
-    background-color: var(--background-button-inscription);
-    border-radius: 2em;
-    border: none;
-    padding: 0.5em;
-    border-radius: 1.5em;
-    font-family: Georgia, serif;
-    font-size: 1em;
-    font-weight: bold;
-    color: white;
-    margin-top: 1em;
-}
-
-#se-connecter {
-    background-color: var(--body-home-page);
-    color: white;
-    border: 1px solid white;
-}
-
-.liste-burger-home {
-    position: relative;
-    top: 1em;
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-    font-family: "Baskervville SC", serif;
-    color: white;
-    text-align: center;
-    font-size: 1.5em;
-    width: 100%
-}
-
-.li-burger-home {
-    margin-top: 1em;
-}
-
-.return-accueil {
-    width: 100%;
-    height: 100%;
-    background-color: var(--background-home-page);
-    border: none;
-    font-size: 1em;
-    color: white;
-    font-family: "Baskervville SC", serif;
+    
 }
 }
 
