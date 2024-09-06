@@ -240,7 +240,7 @@ button {
     left: -1em;
     width: 9em;
     height: 9em;
-    opacity: 0;
+    opacity: 1;
   }
 
   #selectedHomme {
