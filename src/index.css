@@ -237,9 +237,9 @@ button {
   .radio-sex {
     position: relative;
     top: -4em;
-    width: 7em;
-    height: 7em;
-    opacity: 0;
+    width: 8em;
+    height: 8em;
+    opacity: 1;
   }
 
   #selectedHomme {
