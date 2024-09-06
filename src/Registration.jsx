@@ -1,40 +1,143 @@
-// import { MyContext } from './Context.jsx';
-import { Link } from 'react-router-dom';
+import { useState, useRef } from "react";
+import { Link } from "react-router-dom";
 
-function Registration(){
+function Registration() {
+  const [form, setForm] = useState({
+    sex: "",
+    search: "",
+  });
+  const formData = (e) => {
+    const { name, value } = e.target;
 
-return(
-<section className="body-home-page">
-<button className="x">
-<Link to="/" style={{textDecoration: "none",color: "white"}}>
-×
-</Link>
-</button>
-<form method="post">
-<div className="carrousel-registration">
-<ul className="ul-carrousel-registration">
-<li className="li-carrousel-registration">
+    setForm((prevstate) => ({
+      ...prevstate,
+      [name]: value,
+    }));
+  };
+  const [selected, setSelected] = useState("");
+  const [selectedSearch, setSelectedSearch] = useState("");
 
-<strong className="i-am">
-Je suis
-</strong>
+  const handleSubmit = (e) => {
+    e.preventDefault();
+  };
 
-<div className="li-sex">
-<input type="radio" name="sex" value="homme"/>
-<input type="radio" name="sex" value="femme"/>
-</div>
+  const ul = useRef();
 
-</li>
-<li className="li-carrousel-registration">
+  const nextCarrousel = () => {
+    if (form.sex.length > 0 && form.search.length > 0) {
+      ul.current.style.transform = "translateX(-33.33%)";
+      ul.current.style.transition = "transform 0.7s";
+    }
+  };
 
-</li>
-<li className="li-carrousel-registration">
+  console.info(form);
+  return (
+    <section className="body-home-page">
+      <button className="x">
+        <Link to="/" style={{ textDecoration: "none", color: "white" }}>
+          ×
+        </Link>
+      </button>
+      <form method="post" onSubmit={handleSubmit}>
+        <div className="carrousel-registration">
+          <ul className="ul-carrousel-registration" ref={ul}>
+            <li className="li-carrousel-registration">
+              <h3 className="i-am">Je suis</h3>
 
-</li>
-</ul>
-</div>
-</form>
-</section>)
+              <div className="li-sex">
+                <button
+                  className="button-sex"
+                  onClick={() => {
+                    setSelected("selectedHomme");
+                  }}
+                  id={selected === "selectedHomme" && selected}
+                >
+                  un homme
+                  <input
+                    type="radio"
+                    name="sex"
+                    value="homme"
+                    className="radio-sex"
+                    onChange={formData}
+                  />
+                </button>
+                <button
+                  className="button-sex"
+                  onClick={() => {
+                    setSelected("selectedFemme");
+                  }}
+                  id={selected === "selectedFemme" && selected}
+                >
+                  une femme
+                  <input
+                    type="radio"
+                    name="sex"
+                    value="femme"
+                    className="radio-sex"
+                    onChange={formData}
+                  />
+                </button>
+              </div>
+
+              <h3 className="i-search">Je recherche</h3>
+
+              <div className="li-search">
+                <button
+                  className="button-sex"
+                  onClick={() => {
+                    setSelectedSearch("selectedSearchHomme");
+                  }}
+                  id={
+                    selectedSearch === "selectedSearchHomme" && selectedSearch
+                  }
+                >
+                  un homme
+                  <input
+                    type="radio"
+                    name="search"
+                    value="homme"
+                    className="radio-sex"
+                    onChange={formData}
+                  />
+                </button>
+                <button
+                  className="button-sex"
+                  onClick={() => {
+                    setSelectedSearch("selectedSearchFemme");
+                  }}
+                  id={
+                    selectedSearch === "selectedSearchFemme" && selectedSearch
+                  }
+                >
+                  une femme
+                  <input
+                    type="radio"
+                    name="search"
+                    value="femme"
+                    className="radio-sex"
+                    onChange={formData}
+                  />
+                </button>
+              </div>
+              <button
+                type="button"
+                className={
+                  form.sex.length > 0 && form.search.length
+                    ? "next-inscription-on"
+                    : "next-inscription-off"
+                }
+                onClick={nextCarrousel}
+              >
+                suivant
+              </button>
+            </li>
+            <li className="li-carrousel-registration"></li>
+            <li className="li-carrousel-registration"></li>
+          </ul>
+        </div>
+      </form>
+    </section>
+  );
 }
 
 export default Registration;
