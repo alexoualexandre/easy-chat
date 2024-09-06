@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import { MyContext } from "./Context.jsx";
 
 function Header() {
@@ -7,7 +8,9 @@ function Header() {
     <header className="header">
       {sizeScreen < 1024 && (
         <>
-          <img src="logo.png" className="logo" />
+        <h1 className="easy-chat">
+	Easy-chat
+	</h1>
 
           <div className="menu">
             <div className="burger"></div>
@@ -26,8 +29,13 @@ function Header() {
         </>
       )}
 
-      <button className="button-inscription">S&apos;inscrire</button>
-      {sizeScreen >= 1024 && (
+      <button className="button-inscription">
+	<Link to="/registration" style={{textDecoration: "none",color: "white"}}>
+	S&apos;inscrire
+	</Link>
+	</button>
+        
+	 {sizeScreen >= 1024 && (
         <>
           <h1 className="easy-chat">Easy-chat</h1>
           <button className="button-connexion">Se connecter</button>

@@ -1,4 +1,5 @@
 import { MyContext } from "./Context.jsx";
+import { Link } from 'react-router-dom';
 
 function BurgerHome() {
   const { setBurgerHome } = MyContext();
@@ -16,11 +17,15 @@ function BurgerHome() {
       </section>
       <section className="ins-co">
         <button type="button" className="ins">
+<Link to="/registration" style={{textDecoration: "none",color: "white"}}>
           S&apos;inscrire
-        </button>
+</Link>        
+</button>
         <button type="button" className="ins" id="se-connecter">
-          Se connecter
-        </button>
+        <Link to="/connexion" style={{textDecoration: "none",color: "white"}}>  
+	Se connecter
+        </Link>
+	</button>
         <ul className="liste-burger-home">
           <li className="li-burger-home">
             <button
