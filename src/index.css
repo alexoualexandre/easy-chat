@@ -237,9 +237,9 @@ button {
   .radio-sex {
     position: relative;
     top: -5em;
-    left: -0.5em;
-    width: 8em;
-    height: 8em;
+    left: -1em;
+    width: 9em;
+    height: 9em;
     opacity: 0;
   }
 
@@ -307,9 +307,9 @@ button {
   .radio-sex {
     position: relative;
     top: -5em;
-    left: -0.5em;
-    width: 9.5em;
-    height: 9.5em;
+    left: -1em;
+    width: 11em;
+    height: 11em;
   }
 }
 
@@ -317,9 +317,9 @@ button {
   .radio-sex {
     position: relative;
     top: -5em;
-    left: -0.5em;
-    width: 11em;
-    height: 11em;
+    left: -1.5em;
+    width: 13em;
+    height: 13em;
   }
 }
 
