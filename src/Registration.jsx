@@ -1,10 +1,11 @@
-import { useState, useRef } from "react";
+import { useState, useRef,useEffect } from "react";
 import { Link } from "react-router-dom";
 
 function Registration() {
   const [form, setForm] = useState({
     sex: "",
     search: "",
+    age: "",
   });
   const formData = (e) => {
     const { name, value } = e.target;
@@ -21,17 +22,28 @@ function Registration() {
     e.preventDefault();
   };
 
-  const ul = useRef();
+  const ul = useRef(null);
+  const select = useRef(null);
+useEffect(()=>{console.log(select.current)},[]);
 
   const nextCarrousel = () => {
     if (form.sex.length > 0 && form.search.length > 0) {
-      ul.current.style.transform = "translateX(-33.33%)";
+      ul.current.style.transform = "translateX(-33.333333333333333333333%)";
       ul.current.style.transition = "transform 0.7s";
     }
   };
 
-  console.info(form);
-  return (
+const createOption = ()=>{
+for(let i=18;i<100;i++){
+let option=document.createElement('option');
+option.value=i;
+ }
+}
+ //  console.info(form);
+ 
+createOption();
+
+ return (
     <section className="body-home-page">
       <button className="x">
         <Link to="/" style={{ textDecoration: "none", color: "white" }}>
@@ -79,16 +91,16 @@ function Registration() {
                 </button>
               </div>
 
-              <h3 className="i-search">Je recherche</h3>
+  <h3 className="i-search">Je recherche</h3>
 
               <div className="li-search">
                 <button
                   className="button-sex"
                   onClick={() => {
-                    setSelectedSearch("selectedSearchHomme");
+   setSelectedSearch("selectedSearchHomme");
                   }}
                   id={
-                    selectedSearch === "selectedSearchHomme" && selectedSearch
+ selectedSearch === "selectedSearchHomme" && selectedSearch
                   }
                 >
                   un homme
@@ -131,7 +143,19 @@ function Registration() {
                 suivant
               </button>
             </li>
-            <li className="li-carrousel-registration"></li>
+            <li className="li-carrousel-registration">
+<h3 className="age">Âge</h3>
+<select name="age"
+onChange={formData}
+ref={select}>
+<option>18</option>
+<option>19</option>
+</select>
+
+</li>
+
+
+
             <li className="li-carrousel-registration"></li>
           </ul>
         </div>
