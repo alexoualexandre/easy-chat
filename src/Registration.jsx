@@ -6,6 +6,7 @@ function Registration() {
     sex: "",
     search: "",
     age: "18",
+    pseudo: "",
   });
   const formData = (e) => {
     const { name, value } = e.target;
@@ -17,6 +18,7 @@ function Registration() {
   };
   const [selected, setSelected] = useState("");
   const [selectedSearch, setSelectedSearch] = useState("");
+  const [next, setNext] = useState(true);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -25,9 +27,19 @@ function Registration() {
   const ul = useRef(null);
   const select = useRef(null);
 
-  const nextCarrousel = () => {
-    if (form.sex.length > 0 && form.search.length > 0) {
-      ul.current.style.transform = "translateX(-33.333333333333333333333%)";
+  const nextCarrousel = (number) => {
+    if (form.sex.length > 0 && form.search.length > 0 && next) {
+      ul.current.style.transform = `translateX(-${number}%)`;
+      ul.current.style.transition = "transform 0.7s";
+      setNext(false);
+    }
+    if (
+      form.age.length > 0 &&
+      form.pseudo.length > 0 &&
+      form.age.length > 0 &&
+      form.pseudo.length >= 4
+    ) {
+      ul.current.style.transform = `translateX(-${number}%)`;
       ul.current.style.transition = "transform 0.7s";
     }
   };
@@ -36,7 +48,7 @@ function Registration() {
       for (let i = 18; i < 100; i++) {
         let option = document.createElement("option");
         option.value = i;
-        option.innerHTML = i;
+        option.innerHTML = `${i} ans`;
         select.current.appendChild(option);
       }
     };
@@ -139,14 +151,46 @@ function Registration() {
                     ? "next-inscription-on"
                     : "next-inscription-off"
                 }
-                onClick={nextCarrousel}
+                onClick={() => {
+                  nextCarrousel("33.333333333333333333333");
+                }}
               >
                 suivant
               </button>
             </li>
             <li className="li-carrousel-registration">
               <h3 className="age">Âge</h3>
-              <select name="age" onChange={formData} ref={select}></select>
+              <select
+                name="age"
+                onChange={formData}
+                ref={select}
+                className="select-option"
+              >
+                <option>choisir</option>
+              </select>
+              <h3 className="pseudo">Pseudo</h3>
+              <input
+                type="text"
+                name="pseudo"
+                className="input-pseudo"
+                onChange={formData}
+              />
+              <button
+                type="button"
+                className={
+                  form.sex.length > 0 &&
+                  form.search.length > 0 &&
+                  form.age.length > 0 &&
+                  form.pseudo.length >= 4
+                    ? "next-inscription-on"
+                    : "next-inscription-off"
+                }
+                onClick={() => {
+                  nextCarrousel("66.666666666666666666666");
+                }}
+              >
+                suivant
+              </button>
             </li>
 
             <li className="li-carrousel-registration"></li>

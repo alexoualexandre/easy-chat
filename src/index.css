@@ -200,7 +200,7 @@ button {
   .li-carrousel-registration {
     width: 100%;
     height: 100%;
-   /* border: 1px solid yellow;*/ 
+    /* border: 1px solid yellow;*/
     position: relative;
   }
 
@@ -302,13 +302,42 @@ button {
     width: 100%;
   }
 
-.age {
+  .age {
     position: relative;
     top: 5em;
     font-family: Georgia, "Times New Roman", Times, serif;
     color: white;
-    margin-left: 1em; 
-}
+    margin-left: 1em;
+  }
+
+  .select-option {
+    position: relative;
+    top: 5.5em;
+    width: 100%;
+    /* height: 3em; */
+    border-radius: 20px;
+    padding-top: 0.5em;
+    padding-bottom: 0.5em;
+    font-size: 1.2em;
+  }
+
+  .pseudo {
+    position: relative;
+    top: 7em;
+    font-family: Georgia, "Times New Roman", Times, serif;
+    color: white;
+    left: 1em;
+  }
+
+  .input-pseudo {
+    position: relative;
+    width: 96%;
+    font-size: 1.2em;
+    border-radius: 20px;
+    padding-top: 0.5em;
+    padding-bottom: 0.5em;
+    top: 7.5em;
+  }
 }
 
 @media screen and (min-width: 375px) {
