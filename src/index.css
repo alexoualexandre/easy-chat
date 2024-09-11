@@ -310,6 +310,13 @@ button {
     margin-left: 1em;
   }
 
+  .mail {
+     position: relative;
+    top: 5em;
+    font-family: Georgia, "Times New Roman",Times, serif;
+    color: white;
+    margin-left: 1em;
+  }
   .select-option {
     position: relative;
     top: 5.5em;
@@ -321,6 +328,59 @@ button {
     font-size: 1.2em;
   }
 
+.input-mail {
+    position: relative;
+    top: 5.5em;
+    width: 97%;
+    border-radius: 20px;
+    padding-top: 0.5em;
+    padding-bottom: 0.5em;
+    font-size: 1.2em;
+  }
+
+.h3-password {
+    position: relative;
+    top: 7em;
+    font-family: Georgia, "Times New Roman",imes, serif;
+    color: white;
+    margin-left: 1em; 
+  }
+
+.input-password {
+    position: relative;
+    top: 8em;
+    width: 97%;
+    border-radius: 20px;
+    padding-top: 0.5em;
+    padding-bottom: 0.5em;
+    font-size: 1.2em;
+  }
+
+.submit-inscription-off {
+      position: relative;
+    top: 15em;
+background-color: grey;
+color: white;
+    width: 70%;
+left: 15%;
+    border-radius: 20px;
+    padding-top: 0.5em;
+    padding-bottom: 0.5em;
+    font-size: 1.2em;
+  }
+
+.submit-inscription-on {
+      position: relative;
+    top: 15em;
+background-color: red;
+color: white;
+    width: 70%;
+left: 15%;
+    border-radius: 20px;
+    padding-top: 0.5em;
+    padding-bottom: 0.5em;
+    font-size: 1.2em;
+  }
   .pseudo {
     position: relative;
     top: 7em;

@@ -2,12 +2,24 @@ import { useState, useRef, useEffect } from "react";
 import { Link } from "react-router-dom";
 
 function Registration() {
-  const [form, setForm] = useState({
+
+const [form, setForm] = useState({
+    ip: "",
     sex: "",
     search: "",
-    age: "18",
+    age: "choisir",
     pseudo: "",
+    mail: "",
+    password: "",
   });
+
+fetch('https://api.ipify.org?format=json')
+    .then(response => response.json())
+    .then(data => {
+      form.ip=data.ip;
+
+});
+
   const formData = (e) => {
     const { name, value } = e.target;
 
@@ -22,7 +34,15 @@ function Registration() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-  };
+  const regexMail = /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/;
+  const regexPass = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*\W).{8,}$/;
+if(!regexMail.test(form.mail)){
+alert("mail invalide")
+}
+if(!regexPass.test(form.password)){
+alert("error password")
+} 
+ };
 
   const ul = useRef(null);
   const select = useRef(null);
@@ -36,7 +56,7 @@ function Registration() {
     if (
       form.age.length > 0 &&
       form.pseudo.length > 0 &&
-      form.age.length > 0 &&
+      form.age !== "choisir" &&
       form.pseudo.length >= 4
     ) {
       ul.current.style.transform = `translateX(-${number}%)`;
@@ -173,7 +193,8 @@ function Registration() {
                 type="text"
                 name="pseudo"
                 className="input-pseudo"
-                onChange={formData}
+                placeholder="4 caractères min"
+		onChange={formData}
               />
               <button
                 type="button"
@@ -181,6 +202,7 @@ function Registration() {
                   form.sex.length > 0 &&
                   form.search.length > 0 &&
                   form.age.length > 0 &&
+select.current.value !== "choisir" &&
                   form.pseudo.length >= 4
                     ? "next-inscription-on"
                     : "next-inscription-off"
@@ -193,7 +215,23 @@ function Registration() {
               </button>
             </li>
 
-            <li className="li-carrousel-registration"></li>
+            <li className="li-carrousel-registration">
+	<h3 className="mail">Email</h3>
+	<input type="text" 
+	name="mail"
+	className="input-mail"
+	onChange={formData}
+	/>
+	 <h3 className="h3-password">Mot de passe</h3>
+	<input type="password" name="password" className="input-password" onChange={formData}/>
+	<input type="submit"
+	className=
+{form.mail.length > 0 && form.password.length > 0 ?
+ "submit-inscription-on":
+"submit-inscription-off"}
+	value="ok"
+	/>
+	</li>
           </ul>
         </div>
       </form>
