@@ -1,9 +1,10 @@
+/* eslint-disable no-useless-escape */
 import { useState, useRef, useEffect } from "react";
 import { Link } from "react-router-dom";
 
 function Registration() {
-
-const [form, setForm] = useState({
+  // console.info(import.meta.env.VITE_API_URL)
+  const [form, setForm] = useState({
     ip: "",
     sex: "",
     search: "",
@@ -13,12 +14,11 @@ const [form, setForm] = useState({
     password: "",
   });
 
-fetch('https://api.ipify.org?format=json')
-    .then(response => response.json())
-    .then(data => {
-      form.ip=data.ip;
-
-});
+  fetch("https://api.ipify.org?format=json")
+    .then((response) => response.json())
+    .then((data) => {
+      form.ip = data.ip;
+    });
 
   const formData = (e) => {
     const { name, value } = e.target;
@@ -32,17 +32,17 @@ fetch('https://api.ipify.org?format=json')
   const [selectedSearch, setSelectedSearch] = useState("");
   const [next, setNext] = useState(true);
 
+  const regexMail = /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/;
+  const regexPass = /[!@#$%^&*(),.?:{}|<>]/;
+
   const handleSubmit = (e) => {
     e.preventDefault();
-  const regexMail = /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/;
-  const regexPass = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*\W).{8,}$/;
-if(!regexMail.test(form.mail)){
-alert("mail invalide")
-}
-if(!regexPass.test(form.password)){
-alert("error password")
-} 
- };
+    if (form.mail.length > 0 && form.password.length > 0) {
+      if (regexMail.test(form.mail) && regexPass.test(form.password)) {
+        alert("enregistré");
+      }
+    }
+  };
 
   const ul = useRef(null);
   const select = useRef(null);
@@ -194,7 +194,7 @@ alert("error password")
                 name="pseudo"
                 className="input-pseudo"
                 placeholder="4 caractères min"
-		onChange={formData}
+                onChange={formData}
               />
               <button
                 type="button"
@@ -202,7 +202,7 @@ alert("error password")
                   form.sex.length > 0 &&
                   form.search.length > 0 &&
                   form.age.length > 0 &&
-select.current.value !== "choisir" &&
+                  select.current.value !== "choisir" &&
                   form.pseudo.length >= 4
                     ? "next-inscription-on"
                     : "next-inscription-off"
@@ -216,22 +216,93 @@ select.current.value !== "choisir" &&
             </li>
 
             <li className="li-carrousel-registration">
-	<h3 className="mail">Email</h3>
-	<input type="text" 
-	name="mail"
-	className="input-mail"
-	onChange={formData}
-	/>
-	 <h3 className="h3-password">Mot de passe</h3>
-	<input type="password" name="password" className="input-password" onChange={formData}/>
-	<input type="submit"
-	className=
-{form.mail.length > 0 && form.password.length > 0 ?
- "submit-inscription-on":
-"submit-inscription-off"}
-	value="ok"
-	/>
-	</li>
+              <h3 className="mail">
+                Email{" "}
+                {!regexMail.test(form.mail) && form.mail.length > 0 ? (
+                  <span style={{ color: "red" }}>
+                    {" "}
+                    &nbsp; &nbsp; email invalide
+                  </span>
+                ) : (
+                  ""
+                )}{" "}
+              </h3>
+              <input
+                type="text"
+                name="mail"
+                className="input-mail"
+                onChange={formData}
+              />
+              <h3 className="h3-password">Mot de passe</h3>
+              <input
+                type="password"
+                name="password"
+                className="input-password"
+                onChange={formData}
+              />
+              <div className="validate-password">
+                <p>
+                  8 caractères{" "}
+                  {form.password.length >= 8 ? (
+                    <span style={{ color: "green", fontWeight: "bold" }}>
+                      &#10003;
+                    </span>
+                  ) : (
+                    <span style={{ color: "red", fontWeight: "bold" }}>
+                      &#215;
+                    </span>
+                  )}
+                </p>
+                <p>
+                  1 majuscule{" "}
+                  {/[A-Z]/.test(form.password) ? (
+                    <span style={{ color: "green", fontWeight: "bold" }}>
+                      &#10003;
+                    </span>
+                  ) : (
+                    <span style={{ color: "red", fontWeight: "bold" }}>
+                      &#215;
+                    </span>
+                  )}
+                </p>
+                <p>
+                  1 chiffre{" "}
+                  {/\d/.test(form.password) ? (
+                    <span style={{ color: "green", fontWeight: "bold" }}>
+                      &#10003;
+                    </span>
+                  ) : (
+                    <span style={{ color: "red", fontWeight: "bold" }}>
+                      &#215;
+                    </span>
+                  )}
+                </p>
+                <p>
+                  1 caractère spécial{" "}
+                  {/[!@#$%^&*(),.?:{}|<>]/.test(form.password) ? (
+                    <span style={{ color: "green", fontWeight: "bold" }}>
+                      &#10003;
+                    </span>
+                  ) : (
+                    <span style={{ color: "red", fontWeight: "bold" }}>
+                      &#215;
+                    </span>
+                  )}
+                </p>
+              </div>
+              <input
+                type="submit"
+                className={
+                  form.mail.length > 0 &&
+                  regexMail.test(form.mail) &&
+                  form.password.length > 0 &&
+                  regexPass.test(form.password)
+                    ? "submit-inscription-on"
+                    : "submit-inscription-off"
+                }
+                value="ok"
+              />
+            </li>
           </ul>
         </div>
       </form>
