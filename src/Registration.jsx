@@ -3,7 +3,7 @@ import { useState, useRef, useEffect } from "react";
 import { Link } from "react-router-dom";
 
 function Registration() {
-  // console.info(import.meta.env.VITE_API_URL)
+  
   const [form, setForm] = useState({
     ip: "",
     sex: "",
@@ -34,13 +34,22 @@ function Registration() {
 
   const regexMail = /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/;
   const regexPass = /[!@#$%^&*(),.?:{}|<>]/;
-
+const env = import.meta.env.VITE_API_URL;
   const handleSubmit = (e) => {
     e.preventDefault();
     if (form.mail.length > 0 && form.password.length > 0) {
       if (regexMail.test(form.mail) && regexPass.test(form.password)) {
         alert("enregistré");
-      }
+	fetch(`http://${env}:3311/insert-user`,
+{
+method: 'POST',
+headers:{
+'Content-Type':'application/json', 
+},
+body: JSON.stringify(form)
+}).then((response)=>response).then((resp)=>resp.json()).then((r)=>{console.info(r)});
+     
+}
     }
   };
 
@@ -75,7 +84,7 @@ function Registration() {
 
     createOption();
   }, []);
-  console.info(form);
+  
   return (
     <section className="body-home-page">
       <button className="x">
@@ -300,7 +309,7 @@ function Registration() {
                     ? "submit-inscription-on"
                     : "submit-inscription-off"
                 }
-                value="ok"
+                value="valider"
               />
             </li>
           </ul>

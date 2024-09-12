@@ -6,6 +6,23 @@ class User {
     const [r] = await connection.query("SELECT * FROM user");
     return r;
   }
+
+async addUser(data) {
+    const [add] = await connection.query(
+"INSERT INTO user (ip,sex,search,age,pseudo,mail,password) value (?,?,?,?,?,?,?)",
+[
+data.ip,
+data.sex,
+data.search,
+data.age,
+data.pseudo,
+data.mail,
+data.password
+]
+);
+
+return add;
+}
 }
 
 // eslint-disable-next-line no-undef

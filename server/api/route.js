@@ -1,8 +1,8 @@
 /* eslint-disable no-undef */
-// pm2 start 5(vps) , pm2 start 0(local)
+// pm2 start 6(vps) , pm2 start 0(local)
 const { app } = require("../index.js");
 
-const { getUser } = require("../controler/userControler.js");
+const { getUser,insertUser } = require("../controler/userControler.js");
 
 // pm2 resurrect
 
@@ -13,3 +13,5 @@ const { getUser } = require("../controler/userControler.js");
 // });
 
 app.get("/user", getUser);
+
+app.post("/insert-user", insertUser);
