@@ -7,22 +7,22 @@ class User {
     return r;
   }
 
-async addUser(data) {
+  async addUser(data) {
     const [add] = await connection.query(
-"INSERT INTO user (ip,sex,search,age,pseudo,mail,password) value (?,?,?,?,?,?,?)",
-[
-data.ip,
-data.sex,
-data.search,
-data.age,
-data.pseudo,
-data.mail,
-data.password
-]
-);
+      "INSERT INTO user (ip,sex,search,age,pseudo,mail,password) value (?,?,?,?,?,?,?)",
+      [
+        data.ip,
+        data.sex,
+        data.search,
+        parseInt(data.age, 10),
+        data.pseudo,
+        data.mail,
+        data.password,
+      ]
+    );
 
-return add;
-}
+    return add.insertId;
+  }
 }
 
 // eslint-disable-next-line no-undef

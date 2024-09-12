@@ -2,7 +2,7 @@
 // pm2 start 6(vps) , pm2 start 0(local)
 const { app } = require("../index.js");
 
-const { getUser,insertUser } = require("../controler/userControler.js");
+const { getUser, insertUser } = require("../controler/userControler.js");
 
 // pm2 resurrect
 
