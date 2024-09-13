@@ -3,6 +3,7 @@ import { useState, useRef, useEffect } from "react";
 import { Link } from "react-router-dom";
 
 function Registration() {
+const env = import.meta.env;
   const [form, setForm] = useState({
     ip: "",
     sex: "",
@@ -12,7 +13,7 @@ function Registration() {
     mail: "",
     password: "",
   });
-
+const [pseudoExist,setPseudoExist] = useState();
   fetch("https://api.ipify.org?format=json")
     .then((response) => response.json())
     .then((data) => {
@@ -21,11 +22,14 @@ function Registration() {
 
   const formData = (e) => {
     const { name, value } = e.target;
-
     setForm((prevstate) => ({
       ...prevstate,
       [name]: value,
     }));
+if(name === "pseudo"){
+ fetch(`http://${env.VITE_API_URL}:${env.VITE_API_SERVER_PORT}/get-user/${value}`).then(response=>response).then((resp)=>resp.json()).then((r)=>{console.info(r);setPseudoExist(r)});
+// console.info(value);
+}
   };
   const [selected, setSelected] = useState("");
   const [selectedSearch, setSelectedSearch] = useState("");
@@ -33,13 +37,13 @@ function Registration() {
 
   const regexMail = /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/;
   const regexPass = /[!@#$%^&*(),.?:{}|<>]/;
-  const env = import.meta.env.VITE_API_URL;
+//  const env = import.meta.env.VITE_API_URL;
   const handleSubmit = (e) => {
     e.preventDefault();
     if (form.mail.length > 0 && form.password.length > 0) {
       if (regexMail.test(form.mail) && regexPass.test(form.password)) {
         alert("enregistré");
-        fetch(`http://${env}:3311/insert-user`, {
+        fetch(`http://${env.VITE_API_URL}:${env.VITE_API_SERVER_PORT}/insert-user`, {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
@@ -199,7 +203,7 @@ function Registration() {
               >
                 <option>choisir</option>
               </select>
-              <h3 className="pseudo">Pseudo</h3>
+              <h3 className="pseudo">Pseudo{pseudoExist && pseudoExist[0] && <span style={{color: "red"}}>&nbsp; &nbsp; pseudo déja utilisé</span>}</h3>
               <input
                 type="text"
                 name="pseudo"

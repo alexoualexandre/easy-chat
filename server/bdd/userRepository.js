@@ -2,8 +2,8 @@
 const { connection } = require("./index.js");
 
 class User {
-  async select() {
-    const [r] = await connection.query("SELECT * FROM user");
+  async selectUser(pseudo) {
+    const [r] = await connection.query("SELECT pseudo FROM user WHERE pseudo = ?",[pseudo]);
     return r;
   }
 
