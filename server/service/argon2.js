@@ -1,14 +1,11 @@
-
-const argon2 = require('argon2');
-const argon = async (req,res,next)=>{
+// eslint-disable-next-line no-undef
+const argon2 = require("argon2");
+const argon = async (req, res, next) => {
   const hash = await argon2.hash(req.body.password);
-
-
-
-delete req.body.password;
-req.body.password=hash;
+  delete req.body.password;
+  req.body.password = hash;
   next();
-}
+};
 
-
-module.exports = {argon};
+// eslint-disable-next-line no-undef
+module.exports = { argon };

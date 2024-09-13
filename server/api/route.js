@@ -4,14 +4,7 @@ const { app } = require("../index.js");
 
 const { getUser, insertUser } = require("../controler/userControler.js");
 
-const {argon} = require("../service/argon2.js");
-// pm2 resurrect
-
-// app.get("/", (req, res) => {
-//   res.send({
-//     cc: "hello",
-//   });
-// });
+const { argon } = require("../service/argon2.js");
 
 app.get("/get-user/:pseudo", getUser);
 

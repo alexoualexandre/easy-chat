@@ -2,14 +2,10 @@
 const { User } = require("../bdd/userRepository.js");
 
 const getUser = async (req, res, next) => {
-  const {pseudo} = req.params;
+  const { pseudo } = req.params;
   try {
     const user = await new User().selectUser(pseudo);
-//if(!user){    
-res.json(user);
-//}else{
-//res.json({bool: true})
-//}
+    res.json(user);
   } catch (err) {
     next({ error: `erreur:${err}` });
   }

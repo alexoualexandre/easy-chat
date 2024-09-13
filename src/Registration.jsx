@@ -3,7 +3,7 @@ import { useState, useRef, useEffect } from "react";
 import { Link } from "react-router-dom";
 
 function Registration() {
-const env = import.meta.env;
+  const env = import.meta.env;
   const [form, setForm] = useState({
     ip: "",
     sex: "",
@@ -13,7 +13,7 @@ const env = import.meta.env;
     mail: "",
     password: "",
   });
-const [pseudoExist,setPseudoExist] = useState();
+  const [pseudoExist, setPseudoExist] = useState();
   fetch("https://api.ipify.org?format=json")
     .then((response) => response.json())
     .then((data) => {
@@ -26,10 +26,17 @@ const [pseudoExist,setPseudoExist] = useState();
       ...prevstate,
       [name]: value,
     }));
-if(name === "pseudo"){
- fetch(`http://${env.VITE_API_URL}:${env.VITE_API_SERVER_PORT}/get-user/${value}`).then(response=>response).then((resp)=>resp.json()).then((r)=>{console.info(r);setPseudoExist(r)});
-// console.info(value);
-}
+    if (name === "pseudo") {
+      fetch(
+        `http://${env.VITE_API_URL}:${env.VITE_API_SERVER_PORT}/get-user/${value}`
+      )
+        .then((response) => response)
+        .then((resp) => resp.json())
+        .then((r) => {
+          console.info(r);
+          setPseudoExist(r);
+        });
+    }
   };
   const [selected, setSelected] = useState("");
   const [selectedSearch, setSelectedSearch] = useState("");
@@ -37,19 +44,21 @@ if(name === "pseudo"){
 
   const regexMail = /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/;
   const regexPass = /[!@#$%^&*(),.?:{}|<>]/;
-//  const env = import.meta.env.VITE_API_URL;
   const handleSubmit = (e) => {
     e.preventDefault();
     if (form.mail.length > 0 && form.password.length > 0) {
       if (regexMail.test(form.mail) && regexPass.test(form.password)) {
         alert("enregistré");
-        fetch(`http://${env.VITE_API_URL}:${env.VITE_API_SERVER_PORT}/insert-user`, {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify(form),
-        })
+        fetch(
+          `http://${env.VITE_API_URL}:${env.VITE_API_SERVER_PORT}/insert-user`,
+          {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify(form),
+          }
+        )
           .then((response) => response)
           .then((resp) => resp.json())
           .then((r) => {
@@ -72,7 +81,9 @@ if(name === "pseudo"){
       form.age.length > 0 &&
       form.pseudo.length > 0 &&
       form.age !== "choisir" &&
-      form.pseudo.length >= 4
+      form.pseudo.length >= 4 &&
+      pseudoExist &&
+      !pseudoExist[0]
     ) {
       ul.current.style.transform = `translateX(-${number}%)`;
       ul.current.style.transition = "transform 0.7s";
@@ -203,7 +214,14 @@ if(name === "pseudo"){
               >
                 <option>choisir</option>
               </select>
-              <h3 className="pseudo">Pseudo{pseudoExist && pseudoExist[0] && <span style={{color: "red"}}>&nbsp; &nbsp; pseudo déja utilisé</span>}</h3>
+              <h3 className="pseudo">
+                Pseudo
+                {pseudoExist && pseudoExist[0] && (
+                  <span style={{ color: "red" }}>
+                    &nbsp; &nbsp; pseudo déja utilisé
+                  </span>
+                )}
+              </h3>
               <input
                 type="text"
                 name="pseudo"
@@ -218,7 +236,9 @@ if(name === "pseudo"){
                   form.search.length > 0 &&
                   form.age.length > 0 &&
                   select.current.value !== "choisir" &&
-                  form.pseudo.length >= 4
+                  form.pseudo.length >= 4 &&
+                  pseudoExist &&
+                  !pseudoExist[0]
                     ? "next-inscription-on"
                     : "next-inscription-off"
                 }
