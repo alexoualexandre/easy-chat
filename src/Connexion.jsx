@@ -1,5 +1,5 @@
-function Connexion() {
-  return <>Connexion</>;
+function Connexion(){
+    return (<>connexion</>)
 }
 
 export default Connexion;
