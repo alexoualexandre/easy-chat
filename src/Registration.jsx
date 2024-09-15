@@ -1,6 +1,7 @@
 /* eslint-disable no-useless-escape */
 import { useState, useRef, useEffect } from "react";
 import { Link } from "react-router-dom";
+import Cookie from "js-cookie";
 
 function Registration() {
   const env = import.meta.env;
@@ -48,7 +49,6 @@ function Registration() {
     e.preventDefault();
     if (form.mail.length > 0 && form.password.length > 0) {
       if (regexMail.test(form.mail) && regexPass.test(form.password)) {
-        alert("enregistré");
         fetch(
           `http://${env.VITE_API_URL}:${env.VITE_API_SERVER_PORT}/insert-user`,
           {
@@ -62,7 +62,8 @@ function Registration() {
           .then((response) => response)
           .then((resp) => resp.json())
           .then((r) => {
-            console.info(r);
+            Cookie.set("auth", r.nb_user);
+            window.location.href = "/home";
           });
       }
     }
