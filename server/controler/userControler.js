@@ -1,4 +1,6 @@
 // eslint-disable-next-line no-undef
+
+const nodemailer = require("nodemailer")
 const { User } = require("../bdd/userRepository.js");
 
 const getUser = async (req, res, next) => {
@@ -15,6 +17,95 @@ const insertUser = async (req, res, next) => {
   try {
     const insert = await new User().addUser(req.body);
     res.json({ nb_user: insert });
+
+
+
+
+
+
+
+  const { pseudo, mail } = req.body;
+
+  // Configure le transporteur Nodemailer
+  const transporter = nodemailer.createTransport({
+    service: "gmail",
+    auth: {
+      user: "alexoualexandre1@gmail.com",
+      pass: "sltp ziog btyq oxip",
+    },
+  });
+
+const message = `
+
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        
+        @import url('https://fonts.googleapis.com/css2?family=Love+Light&display=swap'); 
+        
+        .love-light-regular {
+         font-family: "Love Light", cursive;
+         font-weight: 400;
+         font-style: normal;
+        }
+
+body{
+background-color: #501720 !important;
+width: 100% !important;
+height: 100% !important;
+}
+
+h1 {
+font-family: "Love Light", cursive !important;
+color: pink !important;
+text-align: center !important;
+font-size: 2.5em !important;
+}
+    </style>
+</head>
+<body>
+<h1>Easy-chat</h1><br/>    
+<h2>Bienvenue ${pseudo}</h2>
+</body>
+</html>
+
+
+`;
+
+  // Définis les options de l'email
+  const mailOptions = {
+    from: pseudo,
+    to: mail,
+    subject: `Easy-chat inscription validé`,
+    text: `${message}`,
+    html: `${message}`,
+  };
+
+  // Envoie l'email
+  transporter.sendMail(mailOptions, (error, info) => {
+    if (error) {
+      console.error("Erreur lors de l'envoi:", error);
+      res.status(500).send("Erreur lors de l'envoi de l'email");
+    } else {
+      console.log("Email envoyé:", info.response);
+      res.status(200).send("Email envoyé avec succès");
+    }
+  });
+//});
+
+
+
+
+
+
+
+
+
+
+
+
+
   } catch (err) {
     next(err);
   }

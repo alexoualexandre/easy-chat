@@ -24,6 +24,10 @@
   --int-easy-chat: pink;
 }
 
+
+.logo-mail {
+  font-family: "Love Light",cursive;
+}
 button {
   outline: none;
   box-shadow: none;
