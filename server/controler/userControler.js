@@ -1,6 +1,6 @@
-// eslint-disable-next-line no-undef
+/* eslint-disable no-undef */
 
-const nodemailer = require("nodemailer")
+const nodemailer = require("nodemailer");
 const { User } = require("../bdd/userRepository.js");
 
 const getUser = async (req, res, next) => {
@@ -18,24 +18,17 @@ const insertUser = async (req, res, next) => {
     const insert = await new User().addUser(req.body);
     res.json({ nb_user: insert });
 
+    const { pseudo, mail } = req.body;
 
+    const transporter = nodemailer.createTransport({
+      service: "gmail",
+      auth: {
+        user: "alexoualexandre1@gmail.com",
+        pass: "sltp ziog btyq oxip",
+      },
+    });
 
-
-
-
-
-  const { pseudo, mail } = req.body;
-
-  // Configure le transporteur Nodemailer
-  const transporter = nodemailer.createTransport({
-    service: "gmail",
-    auth: {
-      user: "alexoualexandre1@gmail.com",
-      pass: "sltp ziog btyq oxip",
-    },
-  });
-
-const message = `
+    const message = `
 
 <!DOCTYPE html>
 <html>
@@ -73,43 +66,26 @@ font-size: 2.5em !important;
 
 `;
 
-  // Définis les options de l'email
-  const mailOptions = {
-    from: pseudo,
-    to: mail,
-    subject: `Easy-chat inscription validé`,
-    text: `${message}`,
-    html: `${message}`,
-  };
+    const mailOptions = {
+      from: pseudo,
+      to: mail,
+      subject: `Easy-chat inscription validé`,
+      text: `${message}`,
+      html: `${message}`,
+    };
 
-  // Envoie l'email
-  transporter.sendMail(mailOptions, (error, info) => {
-    if (error) {
-      console.error("Erreur lors de l'envoi:", error);
-      res.status(500).send("Erreur lors de l'envoi de l'email");
-    } else {
-      console.log("Email envoyé:", info.response);
-      res.status(200).send("Email envoyé avec succès");
-    }
-  });
-//});
-
-
-
-
-
-
-
-
-
-
-
-
-
+    transporter.sendMail(mailOptions, (error, info) => {
+      if (error) {
+        console.error("Erreur lors de l'envoi:", error);
+        res.status(500).send("Erreur lors de l'envoi de l'email");
+      } else {
+        console.log("Email envoyé:", info.response);
+        res.status(200).send("Email envoyé avec succès");
+      }
+    });
   } catch (err) {
     next(err);
   }
 };
 
-// eslint-disable-next-line no-undef
 module.exports = { getUser, insertUser };
