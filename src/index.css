@@ -49,6 +49,11 @@ button {
     height: 3em;
   }
 
+.header-member {
+width: 100%;
+height: 3em;
+background-color: var(--body-home-page);
+}
   .menu {
     position: absolute;
     right: 0;
