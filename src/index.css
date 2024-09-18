@@ -269,7 +269,7 @@ button {
 
   .next-inscription-off {
     position: absolute;
-    bottom: 10em;
+    bottom: 5em;
     width: 80%;
     left: 10%;
     padding: 1em;
@@ -282,7 +282,7 @@ button {
 
   .next-inscription-on {
     position: absolute;
-    bottom: 10em;
+    bottom: 5em;
     width: 80%;
     left: 10%;
     padding: 1em;
@@ -456,6 +456,28 @@ button {
 
   .li-menu-member {
     margin-top: 1em;
+  }
+
+.select-dep {
+    position: relative;
+    top: 3em;
+    left: 0%;
+    width: 100%;
+    border-radius: 20px;
+    padding-top: 0.5em;
+    padding-bottom: 0.5em;
+    font-size: 1.2em;
+    cursor: pointer;
+  }
+
+.dep {
+     
+    position: relative;
+    top: 2em;
+    font-family: Georgia, "Times New Roman", Times, serif;
+    color: white;
+    margin-left: 1em;
+  
   }
 }
 
