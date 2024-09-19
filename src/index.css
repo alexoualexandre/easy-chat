@@ -458,7 +458,7 @@ button {
     margin-top: 1em;
   }
 
-.select-dep {
+  .select-dep {
     position: relative;
     top: 3em;
     left: 0%;
@@ -470,14 +470,12 @@ button {
     cursor: pointer;
   }
 
-.dep {
-     
+  .dep {
     position: relative;
     top: 2em;
     font-family: Georgia, "Times New Roman", Times, serif;
     color: white;
     margin-left: 1em;
-  
   }
 }
 

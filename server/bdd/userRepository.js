@@ -21,7 +21,7 @@ class User {
         data.pseudo,
         data.mail,
         data.password,
-        parseInt(data.dep.split('-')[0],10)
+        parseInt(data.dep.split("-")[0], 10),
       ]
     );
 
