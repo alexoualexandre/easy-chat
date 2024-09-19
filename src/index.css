@@ -115,6 +115,7 @@ button {
     right: 0;
     font-size: 3.5em;
     color: white;
+    cursor: pointer;
   }
 
   .ins-co {
@@ -478,21 +479,20 @@ button {
     margin-left: 1em;
   }
 
-.div-connexion {
+  .div-connexion {
     width: 100%;
     height: 100%;
     background-color: var(--body-home-page);
     position: absolute;
-}
+  }
 
-.block-connexion {
+  .block-connexion {
     position: relative;
     top: 5em;
     left: 5%;
     width: 90%;
     height: 25em;
-}
-
+  }
 
   .input-pseudo-connexion {
     position: relative;
@@ -504,7 +504,7 @@ button {
     top: 2.5em;
   }
 
-.pseudo-connexion {
+  .pseudo-connexion {
     position: relative;
     top: 1.5em;
     font-family: Georgia, "Times New Roman", Times, serif;
@@ -512,14 +512,13 @@ button {
     margin-left: 1em;
   }
 
-.mdp-connexion {
+  .mdp-connexion {
     position: relative;
     top: 4.5em;
     font-family: Georgia, "Times New Roman", Times, serif;
     color: white;
     margin-left: 1em;
   }
-
 
   .input-password-connexion {
     position: relative;
@@ -531,7 +530,7 @@ button {
     top: 5.5em;
   }
 
-.me-connecter-off {
+  .me-connecter-off {
     position: relative;
     top: 8em;
     width: 50%;
@@ -543,9 +542,9 @@ button {
     border: none;
     background-color: grey;
     color: white;
-}
+  }
 
-.me-connecter-on {
+  .me-connecter-on {
     position: relative;
     top: 8em;
     width: 50%;
@@ -557,7 +556,7 @@ button {
     border: none;
     background-color: red;
     color: white;
-}
+  }
 }
 
 @media screen and (min-width: 375px) {
@@ -673,7 +672,7 @@ button {
 
   .next-inscription-off {
     position: absolute;
-    bottom: 10em;
+    bottom: 1em;
     width: 40%;
     left: 30%;
     padding: 1em;
@@ -686,7 +685,7 @@ button {
 
   .next-inscription-on {
     position: absolute;
-    bottom: 10em;
+    bottom: 1em;
     width: 40%;
     left: 30%;
     padding: 1em;
@@ -810,5 +809,33 @@ button {
 
   .validate-password p {
     margin-left: 6em;
+  }
+
+  .select-dep {
+    position: relative;
+    top: 3em;
+    left: 15%;
+    width: 70%;
+    border-radius: 20px;
+    padding-top: 0.5em;
+    padding-bottom: 0.5em;
+    font-size: 1.2em;
+    cursor: pointer;
+  }
+
+  .dep {
+    position: relative;
+    top: 2em;
+    font-family: Georgia, "Times New Roman", Times, serif;
+    color: white;
+    margin-left: 6em;
+  }
+
+  .block-connexion {
+    position: relative;
+    top: 5em;
+    left: 60%;
+    width: 30%;
+    height: 25em;
   }
 }

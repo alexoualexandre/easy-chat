@@ -18,10 +18,13 @@ function MenuMember() {
         <li className="li-menu-member">Mon compte</li>
         <li className="li-menu-member">Mes photos</li>
         <li className="li-menu-member">
-          <Link to="/deconnexion" style={{textDecoration: "none",color: "white"}}>Deconnexion</Link>
+          <Link
+            to="/deconnexion"
+            style={{ textDecoration: "none", color: "white" }}
+          >
+            Deconnexion
+          </Link>
         </li>
-
-
       </ul>
     </div>
   );

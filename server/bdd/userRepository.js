@@ -27,6 +27,14 @@ class User {
 
     return add.insertId;
   }
+
+  async selectUserConnexion(data) {
+    const [r] = await connection.query(
+      "SELECT pseudo, password FROM user WHERE pseudo = ?",
+      [data.pseudo]
+    );
+    return r;
+  }
 }
 
 // eslint-disable-next-line no-undef

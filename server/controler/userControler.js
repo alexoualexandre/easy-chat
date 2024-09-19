@@ -1,6 +1,8 @@
 /* eslint-disable no-undef */
 
 const nodemailer = require("nodemailer");
+const argon2 = require("argon2");
+
 const { User } = require("../bdd/userRepository.js");
 
 const getUser = async (req, res, next) => {
@@ -88,4 +90,25 @@ font-size: 2.5em !important;
   }
 };
 
-module.exports = { getUser, insertUser };
+const getUserConnexion = async (req, res, next) => {
+  try {
+    const userConnexion = await new User().selectUserConnexion(req.body);
+    if (userConnexion[0]) {
+      const result = argon2.verify(
+        req.body.password,
+        userConnexion[0].password
+      );
+      if (result === true) {
+        res.json({ message: "ok" });
+      } else {
+        res.json({ message: "mauvais mdp" });
+      }
+    } else {
+      res.json({ message: "no utilisateur" });
+    }
+  } catch (err) {
+    next({ error: `erreur:${err}` });
+  }
+};
+
+module.exports = { getUser, insertUser, getUserConnexion };
