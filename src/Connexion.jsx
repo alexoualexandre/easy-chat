@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import { useState } from "react";
-import Cookie from 'js-cookie';
+import Cookie from "js-cookie";
 
 function Connexion() {
   const [change, setChange] = useState({
@@ -8,11 +8,11 @@ function Connexion() {
     password: "",
   });
 
-   const [pseudoAndEmail, setPseudoAndEmail] = useState({
-pseudo: "",
-bool: false,
-id: "",
-});
+  const [pseudoAndEmail, setPseudoAndEmail] = useState({
+    pseudo: "",
+    bool: false,
+    id: "",
+  });
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -38,15 +38,15 @@ id: "",
         .then((response) => response)
         .then((resp) => resp.json())
         .then((r) => {
-           setPseudoAndEmail(r);  
-      });
+          setPseudoAndEmail(r);
+        });
     }
   };
-  
-        if(pseudoAndEmail.bool === true){
-Cookie.set('auth',pseudoAndEmail.id);
-window.location.href="/home";
-}
+
+  if (pseudoAndEmail.bool === true) {
+    Cookie.set("auth", pseudoAndEmail.id);
+    window.location.href = "/home";
+  }
 
   return (
     <div className="div-connexion">
@@ -56,9 +56,12 @@ window.location.href="/home";
 
       <div className="block-connexion">
         <form method="post" onSubmit={handleSubmit}>
-          <h3 className="pseudo-connexion">Pseudo
-{pseudoAndEmail.pseudo === "introuvable" && <span style={{color: "red"}}>&nbsp; &nbsp;introuvable</span>}
-</h3>
+          <h3 className="pseudo-connexion">
+            Pseudo
+            {pseudoAndEmail.pseudo === "introuvable" && (
+              <span style={{ color: "red" }}>&nbsp; &nbsp;introuvable</span>
+            )}
+          </h3>
           <input
             type="text"
             name="pseudo"
@@ -66,7 +69,14 @@ window.location.href="/home";
             onChange={handleChange}
           />
 
-          <h3 className="mdp-connexion">Mot de passe {pseudoAndEmail.bool === false && pseudoAndEmail.pseudo !== "" && pseudoAndEmail.pseudo !== "introuvable" && <span style={{color: "red"}}>&nbsp;invalide</span>}</h3>
+          <h3 className="mdp-connexion">
+            Mot de passe{" "}
+            {pseudoAndEmail.bool === false &&
+              pseudoAndEmail.pseudo !== "" &&
+              pseudoAndEmail.pseudo !== "introuvable" && (
+                <span style={{ color: "red" }}>&nbsp;invalide</span>
+              )}
+          </h3>
           <input
             type="password"
             name="password"
