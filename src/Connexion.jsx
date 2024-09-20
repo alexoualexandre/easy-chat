@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import { useState } from "react";
+import Cookie from 'js-cookie';
 
 function Connexion() {
   const [change, setChange] = useState({
@@ -7,7 +8,11 @@ function Connexion() {
     password: "",
   });
 
-  // const [pseudoAndEmail, setPseudoAndEmail] = useState();
+   const [pseudoAndEmail, setPseudoAndEmail] = useState({
+pseudo: "",
+bool: false,
+id: "",
+});
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -33,12 +38,16 @@ function Connexion() {
         .then((response) => response)
         .then((resp) => resp.json())
         .then((r) => {
-          console.info(r);
-          // setPseudoAndEmail(r);
-        });
+           setPseudoAndEmail(r);  
+      });
     }
   };
-  // console.info(change);
+  
+        if(pseudoAndEmail.bool === true){
+Cookie.set('auth',pseudoAndEmail.id);
+window.location.href="/home";
+}
+
   return (
     <div className="div-connexion">
       <Link to="/">
@@ -47,7 +56,9 @@ function Connexion() {
 
       <div className="block-connexion">
         <form method="post" onSubmit={handleSubmit}>
-          <h3 className="pseudo-connexion">Pseudo</h3>
+          <h3 className="pseudo-connexion">Pseudo
+{pseudoAndEmail.pseudo === "introuvable" && <span style={{color: "red"}}>&nbsp; &nbsp;introuvable</span>}
+</h3>
           <input
             type="text"
             name="pseudo"
@@ -55,7 +66,7 @@ function Connexion() {
             onChange={handleChange}
           />
 
-          <h3 className="mdp-connexion">Mot de passe</h3>
+          <h3 className="mdp-connexion">Mot de passe {pseudoAndEmail.bool === false && pseudoAndEmail.pseudo !== "" && pseudoAndEmail.pseudo !== "introuvable" && <span style={{color: "red"}}>&nbsp;invalide</span>}</h3>
           <input
             type="password"
             name="password"

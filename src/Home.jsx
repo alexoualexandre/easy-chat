@@ -7,6 +7,7 @@ import { MyContext } from "./Context.jsx";
 function Home() {
   const Auth = Cookies.get("auth");
   if (Auth) {
+console.info(Auth);
     const { burgerMember } = MyContext();
     return (
       <>

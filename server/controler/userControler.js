@@ -92,21 +92,18 @@ font-size: 2.5em !important;
 
 const getUserConnexion = async (req, res, next) => {
   try {
-    const userConnexion = await new User().selectUserConnexion(req.body);
-    if (userConnexion[0]) {
-      const result = argon2.verify(
-        req.body.password,
-        userConnexion[0].password
-      );
-      if (result === true) {
-        res.json({ message: "ok" });
-      } else {
-        res.json({ message: "mauvais mdp" });
-      }
-    } else {
-      res.json({ message: "no utilisateur" });
-    }
-  } catch (err) {
+let result = false;
+    const [userConnexion] = await new User().selectUserConnexion(req.body);
+if(userConnexion){
+argon2.verify(userConnexion.password, req.body.password)
+    .then(validate => {
+   result=validate;
+    res.json({pseudo: userConnexion.pseudo,bool: result,id: userConnexion.id});
+    })
+ }else{
+res.json({pseudo: "introuvable", bool: result,id: ""})
+}
+ } catch (err) {
     next({ error: `erreur:${err}` });
   }
 };

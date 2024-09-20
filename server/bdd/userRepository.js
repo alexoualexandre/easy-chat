@@ -30,7 +30,7 @@ class User {
 
   async selectUserConnexion(data) {
     const [r] = await connection.query(
-      "SELECT pseudo, password FROM user WHERE pseudo = ?",
+      "SELECT id, pseudo, password FROM user WHERE pseudo = ?",
       [data.pseudo]
     );
     return r;
