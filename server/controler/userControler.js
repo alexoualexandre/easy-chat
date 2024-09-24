@@ -114,7 +114,6 @@ const getUserConnexion = async (req, res, next) => {
 };
 
 const selectAllUser = async (req, res, next) => {
-  
   try {
     const users = await new User().selectAllUser();
     res.json(users);
@@ -122,7 +121,5 @@ const selectAllUser = async (req, res, next) => {
     next({ error: `erreur:${err}` });
   }
 };
-
-
 
 module.exports = { getUser, insertUser, getUserConnexion, selectAllUser };

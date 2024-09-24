@@ -11,7 +11,7 @@ const {
 
 const { argon } = require("../service/argon2.js");
 
-app.get('/select-all-user',selectAllUser);
+app.get("/select-all-user", selectAllUser);
 
 app.post("/connexion", getUserConnexion);
 
