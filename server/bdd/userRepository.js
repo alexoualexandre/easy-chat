@@ -12,7 +12,7 @@ class User {
 
   async addUser(data) {
     const [add] = await connection.query(
-      "INSERT INTO user (ip,sex,search,age,pseudo,mail,password,dep) value (?,?,?,?,?,?,?,?)",
+      "INSERT INTO user (ip,sex,search,age,pseudo,mail,password,dep,img) value (?,?,?,?,?,?,?,?,?)",
       [
         data.ip,
         data.sex,
@@ -22,6 +22,7 @@ class User {
         data.mail,
         data.password,
         parseInt(data.dep.split("-")[0], 10),
+	"",
       ]
     );
 
@@ -35,7 +36,20 @@ class User {
     );
     return r;
   }
+
+
+
+async selectAllUser() {
+    const [r] = await connection.query(
+      "SELECT * FROM user ORDER BY id DESC"
+    );
+    return r;
+  }
+
+
 }
 
+
+ 
 // eslint-disable-next-line no-undef
 module.exports = { User };

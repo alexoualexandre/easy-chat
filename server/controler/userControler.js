@@ -113,4 +113,16 @@ const getUserConnexion = async (req, res, next) => {
   }
 };
 
-module.exports = { getUser, insertUser, getUserConnexion };
+const selectAllUser = async (req, res, next) => {
+  
+  try {
+    const users = await new User().selectAllUser();
+    res.json(users);
+  } catch (err) {
+    next({ error: `erreur:${err}` });
+  }
+};
+
+
+
+module.exports = { getUser, insertUser, getUserConnexion, selectAllUser };
