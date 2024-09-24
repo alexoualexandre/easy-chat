@@ -27,7 +27,7 @@ voir filtres <span className="chevron"> &#x27A7; </span></button>
 (user)=>
 <li className="li-article">
 <article className="article-user">
-<img src="/image.png" className="img-article-user" alt="no-picture" />
+<img src="/logo.png" className="img-article-user" alt="no-picture" />
 {user.pseudo}
 </article>
 </li>
