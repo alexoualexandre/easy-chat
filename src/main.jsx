@@ -8,7 +8,7 @@ import { Provider } from "./Context.jsx";
 import "./index.css";
 import Deconnexion from "./Deconnexion.jsx";
 import Connexion from "./Connexion.jsx";
-import MyProfil from './MyProfil.jsx'
+import MyProfil from "./MyProfil.jsx";
 
 const router = createBrowserRouter([
   {

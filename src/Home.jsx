@@ -46,6 +46,8 @@ function Home() {
                             ? `${user.pseudo.substring(0, 10)}...`
                             : user.pseudo}{" "}
                           {user.dep < 10 ? `(0${user.dep})` : `(${user.dep})`}
+                          <br />
+                          {`${user.age} ans`}
                         </p>
                       </article>
                     </li>
