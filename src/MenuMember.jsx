@@ -15,8 +15,10 @@ function MenuMember() {
         ×
       </button>
       <ul className="ul-menu-member">
-        <li className="li-menu-member">Mon compte</li>
-        <li className="li-menu-member">Mes photos</li>
+	<Link to="/profil" style={{textDecoration: "none", color: "white"}}>
+        <li className="li-menu-member">Mon profil</li>
+        </Link>
+	<li className="li-menu-member">Mes photos</li>
         <li className="li-menu-member">
           <Link
             to="/deconnexion"

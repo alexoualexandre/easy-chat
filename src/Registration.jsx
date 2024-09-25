@@ -86,6 +86,7 @@ function Registration() {
       form.pseudo.length > 0 &&
       form.age !== "choisir" &&
       form.pseudo.length >= 4 &&
+      form.pseudo.length <= 20 &&
       pseudoExist &&
       !pseudoExist[0] &&
       form.dep !== "choisir"
@@ -335,7 +336,7 @@ function Registration() {
                 type="text"
                 name="pseudo"
                 className="input-pseudo"
-                placeholder="4 caractères min"
+                placeholder="4 min / 20 max"
                 onChange={formData}
               />
               <button
@@ -346,6 +347,7 @@ function Registration() {
                   form.age.length > 0 &&
                   select.current.value !== "choisir" &&
                   form.pseudo.length >= 4 &&
+                  form.pseudo.length <= 20 &&
                   pseudoExist &&
                   !pseudoExist[0] &&
                   selectDep.current.value !== "choisir"

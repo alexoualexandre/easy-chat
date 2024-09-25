@@ -22,7 +22,7 @@ class User {
         data.mail,
         data.password,
         parseInt(data.dep.split("-")[0], 10),
-	"",
+        "",
       ]
     );
 
@@ -37,19 +37,11 @@ class User {
     return r;
   }
 
-
-
-async selectAllUser() {
-    const [r] = await connection.query(
-      "SELECT * FROM user ORDER BY id DESC"
-    );
+  async selectAllUser() {
+    const [r] = await connection.query("SELECT * FROM user ORDER BY id DESC");
     return r;
   }
-
-
 }
 
-
- 
 // eslint-disable-next-line no-undef
 module.exports = { User };
