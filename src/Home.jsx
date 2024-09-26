@@ -37,7 +37,7 @@ function Home() {
                     <li key={index} className="li-article">
                       <article className="article-user">
                         <img
-                          src="/femme.webp"
+                          src="/file-1727348415869-337239199.jpg"
                           className="img-article-user"
                           alt="no-picture"
                         />
