@@ -11,19 +11,16 @@ const {
 
 const { argon } = require("../service/argon2.js");
 
-//const { uploadFile } = require("../service/uploadFile.js");
-
 const path = require("path");
 
 const multer = require("multer");
 
-
 const storage = multer.diskStorage({
   destination: (req, file, cb) => {
-    cb(null, "../../public"); // Dossier où les fichiers seront enregistrés
+    cb(null, "../../public");
   },
   filename: (req, file, cb) => {
-    cb(null, Date.now() + path.extname(file.originalname)); // Renomme le fichier pour éviter les conflits
+    cb(null, Date.now() + path.extname(file.originalname));
   },
 });
 
@@ -32,11 +29,6 @@ const upload = multer({ storage: storage });
 app.post("/upload-file", upload.single("file"), function (req, res) {
   res.json({ nouveauNom: req.file.filename });
 });
-
-
-
-
-
 
 app.get("/select-all-user", selectAllUser);
 
