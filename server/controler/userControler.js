@@ -122,4 +122,30 @@ const selectAllUser = async (req, res, next) => {
   }
 };
 
-module.exports = { getUser, insertUser, getUserConnexion, selectAllUser };
+const modifyImgProfile = async (req, res, next) => {
+  const { nv, id } = req.params;
+  try {
+    await new User().modifyImgProfile(nv, id);
+  } catch (err) {
+    next({ error: `erreur:${err}` });
+  }
+};
+
+const selectUserId = async (req, res, next) => {
+  const { id } = req.params;
+  try {
+    const userId = await new User().selectUserId(id);
+    res.json(userId);
+  } catch (err) {
+    next({ error: `erreur:${err}` });
+  }
+};
+
+module.exports = {
+  getUser,
+  insertUser,
+  getUserConnexion,
+  selectAllUser,
+  modifyImgProfile,
+  selectUserId,
+};

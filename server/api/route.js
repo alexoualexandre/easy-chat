@@ -7,6 +7,8 @@ const {
   insertUser,
   getUserConnexion,
   selectAllUser,
+  modifyImgProfile,
+  selectUserId,
 } = require("../controler/userControler.js");
 
 const { argon } = require("../service/argon2.js");
@@ -27,8 +29,12 @@ const storage = multer.diskStorage({
 const upload = multer({ storage: storage });
 
 app.post("/upload-file", upload.single("file"), function (req, res) {
-  res.json({ nouveauNom: req.file.filename });
+  res.json({ nvName: req.file.filename });
 });
+
+app.get("/change-img-profil/:nv/:id", modifyImgProfile);
+
+app.get("/select-user-id/:id", selectUserId);
 
 app.get("/select-all-user", selectAllUser);
 

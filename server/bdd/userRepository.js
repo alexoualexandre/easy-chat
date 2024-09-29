@@ -41,6 +41,17 @@ class User {
     const [r] = await connection.query("SELECT * FROM user ORDER BY id DESC");
     return r;
   }
+
+  async modifyImgProfile(nv, id) {
+    await connection.query("UPDATE user SET img = ? WHERE id = ?", [nv, id]);
+  }
+
+  async selectUserId(id) {
+    const [userId] = await connection.query("SELECT * FROM user WHERE id = ?", [
+      id,
+    ]);
+    return userId;
+  }
 }
 
 // eslint-disable-next-line no-undef

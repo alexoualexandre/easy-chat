@@ -37,7 +37,7 @@ function Home() {
                     <li key={index} className="li-article">
                       <article className="article-user">
                         <img
-                          src="/file-1727348415869-337239199.jpg"
+                          src={user.img}
                           className="img-article-user"
                           alt="no-picture"
                         />
