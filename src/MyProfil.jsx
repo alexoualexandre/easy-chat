@@ -8,7 +8,7 @@ function MyProfil() {
   const formData = new FormData();
   formData.append("file", f);
   const handleSubmit = (e) => {
-    e.preventDefault();
+//    e.preventDefault();
     const env = import.meta.env;
     fetch(
       `http://${env.VITE_API_URL}:${env.VITE_API_SERVER_PORT}/upload-file`,
@@ -38,7 +38,7 @@ function MyProfil() {
         <section className="section-my-profil-picture">
           <p className="h3-photo-profil">Ma photo de profil</p>
           <img
-            src="/1727375316787.PNG"
+            src="/file-1727348415869-337239199.jpg"
             className="img-profil-mini"
             alt="no-picture"
           />
@@ -52,11 +52,18 @@ function MyProfil() {
             <input
               type="file"
               name="file"
+              accept="image/*"
+              id="file"
               onChange={(e) => {
                 setFile(e.target.files[0]);
               }}
             />
-            <input type="submit" value="valider" />
+	     <label htmlFor="file" id="label-file">
+<img src="/1727599060349.png" alt="no-picture" className="app-photo" />
+</label>
+            <button type="submit" className={f !== null ? "" : "sub-file-none"} id="submit">
+<img src="/1727609609978.png" className="submit-change" alt="soumettre" />
+</button>
           </form>
         </section>
 
