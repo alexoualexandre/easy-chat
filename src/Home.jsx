@@ -37,7 +37,7 @@ function Home() {
                     <li key={index} className="li-article">
                       <article className="article-user">
                         <img
-                          src={user.img}
+                          src={`http://${env.VITE_API_URL}:${env.VITE_API_SERVER_PORT}/upload/${user.img}`}
                           className="img-article-user"
                           alt="no-picture"
                         />

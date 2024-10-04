@@ -9,6 +9,7 @@ import "./index.css";
 import Deconnexion from "./Deconnexion.jsx";
 import Connexion from "./Connexion.jsx";
 import MyProfil from "./MyProfil.jsx";
+import NotFound from './NotFound.jsx';
 
 const router = createBrowserRouter([
   {
@@ -34,6 +35,11 @@ const router = createBrowserRouter([
   {
     path: "/profil",
     element: <MyProfil />,
+  },
+  {
+    path: "*",
+    element: <NotFound />
+    
   },
 ]);
 

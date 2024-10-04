@@ -22,7 +22,7 @@ class User {
         data.mail,
         data.password,
         parseInt(data.dep.split("-")[0], 10),
-        "",
+        "logo.png",
       ]
     );
 

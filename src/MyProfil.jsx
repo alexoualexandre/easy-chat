@@ -4,10 +4,13 @@ import { useEffect, useState } from "react";
 import Cookies from "js-cookie";
 
 function MyProfil() {
+  if(!Cookies.get('auth')){
+	window.location.href='/';
+  }
   const { setBurgerMember } = MyContext();
   const [f, setFile] = useState(null);
   const [newName, setNewName] = useState(null);
-  const [resultName, setResultName] = useState(null);
+  const [resultName, setResultName] = useState("");
   const formData = new FormData();
   formData.append("file", f);
   const handleSubmit = (e) => {
@@ -37,7 +40,7 @@ function MyProfil() {
       .then((resp) => resp.json())
       .then((r) => {
         setResultName(r[0].img);
-      });
+    });
   }, [newName]);
 
   useEffect(() => {
@@ -48,6 +51,8 @@ function MyProfil() {
       );
     }
   }, [newName]);
+
+  const environment = import.meta.env;
 
   return (
     <div className="profil-member">
@@ -66,7 +71,7 @@ function MyProfil() {
         <section className="section-my-profil-picture">
           <p className="h3-photo-profil">Ma photo de profil</p>
           <img
-            src={resultName && resultName}
+            src={resultName !== "" && `http://${environment.VITE_API_URL}:${environment.VITE_API_SERVER_PORT}/upload/${resultName}`}
             className="img-profil-mini"
             alt="no-picture"
           />
