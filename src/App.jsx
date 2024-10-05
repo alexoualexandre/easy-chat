@@ -28,8 +28,21 @@ function App() {
   return (
     <body className="body-home-page">
       <Header />
-      {/* {!burgerHome && <img src="teste.png" style={{width:"40%"}} />}  */}
+
       {burgerHome && <BurgerHome />}
+      {!burgerHome && (
+        <ul className="animate-logo">
+          <li className="li-animate-logo1">
+            <img src="pied.png" alt="no-picture" className="img-pied" />
+          </li>
+          <li className="li-animate-logo2">
+            <img src="homme.png" alt="no-picture" className="img-pied" />
+          </li>
+          <li className="li-animate-logo3">
+            <img src="femme.png" alt="no-picture" className="img-pied" />
+          </li>
+        </ul>
+      )}
     </body>
   );
 }

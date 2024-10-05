@@ -12,7 +12,7 @@ class User {
 
   async addUser(data) {
     const [add] = await connection.query(
-      "INSERT INTO user (ip,sex,search,age,pseudo,mail,password,dep,img) value (?,?,?,?,?,?,?,?,?)",
+      "INSERT INTO user (ip,sex,search,age,pseudo,mail,password,dep,img,description) value (?,?,?,?,?,?,?,?,?,?)",
       [
         data.ip,
         data.sex,
@@ -23,6 +23,7 @@ class User {
         data.password,
         parseInt(data.dep.split("-")[0], 10),
         "logo.png",
+        "",
       ]
     );
 

@@ -42,6 +42,8 @@ function Header() {
           <Link to="/connexion">
             <button className="button-connexion">Se connecter</button>
           </Link>
+          <button className="button-contact">Contact</button>
+          <button className="button-accueil">Accueil</button>
         </>
       )}
     </header>
