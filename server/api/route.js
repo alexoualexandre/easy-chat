@@ -9,6 +9,7 @@ const {
   selectAllUser,
   modifyImgProfile,
   selectUserId,
+  modifyProfil,
 } = require("../controler/userControler.js");
 
 const { argon } = require("../service/argon2.js");
@@ -31,6 +32,8 @@ const upload = multer({ storage: storage });
 app.post("/upload-file", upload.single("file"), function (req, res) {
   res.json({ nvName: req.file.filename });
 });
+
+app.post("/update", argon, modifyProfil);
 
 app.get("/change-img-profil/:nv/:id", modifyImgProfile);
 

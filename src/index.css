@@ -782,6 +782,125 @@ button {
     width: 100%;
     height: 100%;
   }
+
+  .date-inscrition {
+    font-size: 1.5em;
+    font-family:
+      Baskervville SC,
+      serif;
+    padding: 1em;
+    font-weight: bold;
+    text-align: center;
+    color: white;
+  }
+
+  #modify-password {
+    width: 50%;
+    position: relative;
+    left: 25%;
+    cursor: pointer;
+    margin-bottom: 2em;
+  }
+
+  #modify-password-txt {
+    text-align: center;
+    cursor: pointer;
+    color: white;
+    width: 100%;
+  }
+
+  .select-dep-modify {
+    width: 50%;
+    padding-top: 0.5em;
+    padding-bottom: 0.5em;
+    cursor: pointer;
+    position: relative;
+    left: 25%;
+    margin-bottom: 2em;
+  }
+
+  #modify-mail {
+    cursor: pointer;
+    width: 50%;
+    position: relative;
+    margin-bottom: 2em;
+  }
+
+  .select-search-modify {
+    width: 30%;
+    padding-top: 0.5em;
+    padding-bottom: 0.5em;
+    cursor: pointer;
+    margin-bottom: 2em;
+  }
+
+  .area-description {
+    width: 70%;
+    height: 7em;
+    position: relative;
+    left: 15%;
+    border: 1px solid black;
+    cursor: pointer;
+    margin-bottom: 2em;
+  }
+
+  .sub-modification {
+    position: relative;
+    width: 30%;
+    top: 1em;
+    left: 35%;
+    background-color: grey;
+    color: white;
+    padding-top: 0.5em;
+    padding-bottom: 0.5em;
+    padding-left: 1em;
+    padding-right: 1em;
+    cursor: pointer;
+    border-radius: 10px;
+  }
+
+  .sub-modification-on {
+    position: relative;
+    width: 30%;
+    top: 1em;
+    left: 35%;
+    background-color: red;
+    color: white;
+    padding-top: 0.5em;
+    padding-bottom: 0.5em;
+    padding-left: 1em;
+    padding-right: 1em;
+    cursor: pointer;
+    border-radius: 10px;
+  }
+
+  .modify-ok {
+    position: fixed;
+    left: 0%;
+    top: 4em;
+    width: 100%;
+    height: 100%;
+    background-color: var(--body-home-page);
+  }
+
+  .modification-enregistrer {
+    font-family:
+      Baskervville SC,
+      serif;
+    color: white;
+    text-align: center;
+    margin-top: 3em;
+  }
+
+  .return-home {
+    margin-top: 1em;
+    width: 30%;
+    margin-left: 35%;
+    background-color: red;
+    border-radius: 20px;
+    font-size: 1.5em;
+    color: white;
+  }
 }
 
 @media screen and (min-width: 375px) {

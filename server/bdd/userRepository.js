@@ -53,6 +53,20 @@ class User {
     ]);
     return userId;
   }
+
+  async modifyProfil(result) {
+    await connection.query(
+      "UPDATE user SET search = ?, mail = ?, password = ?, dep = ?, description = ? WHERE id = ?",
+      [
+        result.search,
+        result.mail,
+        result.password,
+        parseInt(result.dep, 10),
+        result.description,
+        result.user,
+      ]
+    );
+  }
 }
 
 // eslint-disable-next-line no-undef

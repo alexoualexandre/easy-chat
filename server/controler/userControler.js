@@ -141,6 +141,23 @@ const selectUserId = async (req, res, next) => {
   }
 };
 
+const modifyProfil = async (req, res, next) => {
+  const data = req.body;
+  const result = {
+    password: data.password,
+    dep: parseInt(data.dep, 10) ? data.dep : data.dep.split("-")[0],
+    mail: data.mail,
+    search: data.search,
+    description: data.description,
+    user: data.user,
+  };
+  try {
+    await new User().modifyProfil(result);
+  } catch (err) {
+    next({ error: `erreur:${err}` });
+  }
+};
+
 module.exports = {
   getUser,
   insertUser,
@@ -148,4 +165,5 @@ module.exports = {
   selectAllUser,
   modifyImgProfile,
   selectUserId,
+  modifyProfil,
 };

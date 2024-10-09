@@ -17,7 +17,10 @@ function MyProfil() {
     mail: "",
     search: "",
     description: "",
+    user: "",
   });
+  const [colorSubmit, setColorSubmit] = useState("sub-modification");
+  const [valider, setValider] = useState("");
   const environment = import.meta.env;
 
   const formData = new FormData();
@@ -55,6 +58,7 @@ function MyProfil() {
           mail: r[0].mail,
           search: r[0].search,
           description: r[0].description,
+          user: Cookies.get("auth"),
         });
       });
   }, [newName]);
@@ -74,8 +78,31 @@ function MyProfil() {
       ...prevState,
       [name]: value,
     }));
+    setColorSubmit("sub-modification-on");
   };
-  console.info(updateData);
+
+  const handleSubmitForm = (e) => {
+    const regexMail = /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/;
+    const regexPass = /[!@#$%^&*(),.?:{}|<>]/;
+    const env = import.meta.env;
+    e.preventDefault();
+    if (colorSubmit === "sub-modification-on") {
+      if (
+        (regexMail.test(updateData.mail) &&
+          regexPass.test(updateData.password)) ||
+        updateData.password.charAt(0) === "$"
+      ) {
+        fetch(`http://${env.VITE_API_URL}:${env.VITE_API_SERVER_PORT}/update`, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(updateData),
+        });
+      }
+    }
+  };
+  console.log(updateData);
   const date = resultName && resultName.created_at.split("T")[0].split("-");
   return (
     <div className="profil-member">
@@ -107,6 +134,7 @@ function MyProfil() {
             method="POST"
             encType="multipart/form-data"
             onSubmit={handleSubmit}
+            id="form-modify"
           >
             <input
               type="file"
@@ -142,10 +170,11 @@ function MyProfil() {
           <p className="date-inscrition">
             Membre depuis le {`${date[2]}-${date[1]}-${date[0]}`}{" "}
           </p>
-          <form method="PUT">
+          <form method="POST" action="" onSubmit={handleSubmitForm}>
             <label
               htmlFor="modify-password"
               className="date-inscrition"
+              id="modify-password-txt"
               style={{ cursor: "pointer" }}
             >
               Mot de passe
@@ -280,6 +309,7 @@ function MyProfil() {
                   name="mail"
                   id="modify-mail"
                   onChange={changeInfo}
+                  value={updateData.mail}
                 />
                 <div className="select-option-dep">
                   <label
@@ -296,8 +326,8 @@ function MyProfil() {
                     onChange={changeInfo}
                   >
                     <option>choisir</option>
-                    <option>un homme</option>
-                    <option>une femme</option>
+                    <option>homme</option>
+                    <option>femme</option>
                   </select>
                   <div className="select-option-dep">
                     <label
@@ -313,8 +343,16 @@ function MyProfil() {
                       className="area-description"
                       id="modify-description"
                       onChange={changeInfo}
+                      value={updateData.description}
                     ></textarea>
-                    <button type="submit" className="sub-modification">
+                    <button
+                      type="submit"
+                      className={colorSubmit}
+                      onClick={() => {
+                        if (colorSubmit === "sub-modification-on")
+                          setValider("modify-ok");
+                      }}
+                    >
                       enregistrer
                     </button>
                   </div>
@@ -322,6 +360,24 @@ function MyProfil() {
               </div>
             </div>
           </form>
+          {valider === "modify-ok" && (
+            <div className={valider}>
+              <h2 className="modification-enregistrer">
+                modification enregistré !
+              </h2>
+              <Link to="/home">
+                <button
+                  type="button"
+                  className="return-home"
+                  onClick={() => {
+                    setBurgerMember(false);
+                  }}
+                >
+                  ok
+                </button>
+              </Link>
+            </div>
+          )}
         </section>
       </div>
     </div>
