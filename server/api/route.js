@@ -10,6 +10,8 @@ const {
   modifyImgProfile,
   selectUserId,
   modifyProfil,
+  disconnect,
+  updateInline,
 } = require("../controler/userControler.js");
 
 const { argon } = require("../service/argon2.js");
@@ -32,6 +34,10 @@ const upload = multer({ storage: storage });
 app.post("/upload-file", upload.single("file"), function (req, res) {
   res.json({ nvName: req.file.filename });
 });
+
+app.get("/update-inline/:id", updateInline);
+
+app.get("/deconnexion/:id", disconnect);
 
 app.post("/update", argon, modifyProfil);
 

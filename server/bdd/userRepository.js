@@ -12,7 +12,7 @@ class User {
 
   async addUser(data) {
     const [add] = await connection.query(
-      "INSERT INTO user (ip,sex,search,age,pseudo,mail,password,dep,img,description) value (?,?,?,?,?,?,?,?,?,?)",
+      "INSERT INTO user (ip,sex,search,age,pseudo,mail,password,dep,img,description,inline) value (?,?,?,?,?,?,?,?,?,?,?)",
       [
         data.ip,
         data.sex,
@@ -24,6 +24,7 @@ class User {
         parseInt(data.dep.split("-")[0], 10),
         "logo.png",
         "",
+        1,
       ]
     );
 
@@ -66,6 +67,14 @@ class User {
         result.user,
       ]
     );
+  }
+
+  async disconnect(id) {
+    await connection.query("UPDATE user SET inline = 0 WHERE id = ?", [id]);
+  }
+
+  async updateInline(id) {
+    await connection.query("UPDATE user SET inline = 1 WHERE id = ?", [id]);
   }
 }
 

@@ -158,6 +158,24 @@ const modifyProfil = async (req, res, next) => {
   }
 };
 
+const disconnect = async (req, res, next) => {
+  const { id } = req.params;
+  try {
+    await new User().disconnect(id);
+  } catch (err) {
+    next({ error: `erreur:${err}` });
+  }
+};
+
+const updateInline = async (req, res, next) => {
+  const { id } = req.params;
+  try {
+    await new User().updateInline(id);
+  } catch (err) {
+    next({ error: `erreur:${err}` });
+  }
+};
+
 module.exports = {
   getUser,
   insertUser,
@@ -166,4 +184,6 @@ module.exports = {
   modifyImgProfile,
   selectUserId,
   modifyProfil,
+  disconnect,
+  updateInline,
 };

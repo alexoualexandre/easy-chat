@@ -596,6 +596,7 @@ button {
     padding: 0;
     overflow: scroll;
     border: 2px solid var(--body-home-page);
+    background-color: grey;
   }
 
   .li-article {
@@ -614,7 +615,7 @@ button {
     position: absolute;
   }
 
-  .article-pseudo {
+  .article-pseudo-men {
     position: absolute;
     bottom: 0;
     left: 0;
@@ -624,7 +625,22 @@ button {
     flex-direction: row;
     justify-content: center;
     align-items: center;
-    background-color: var(--body-home-page);
+    background: linear-gradient(to left, black, #4295cc);
+    color: white;
+    text-align: center;
+  }
+
+  .article-pseudo-woman {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 15%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(to left, black, #ff114f);
     color: white;
     text-align: center;
   }
@@ -659,7 +675,7 @@ button {
       Baskervville SC,
       serif;
     color: white;
-    font-size: 1.2em;
+    font-size: 2em;
     text-align: center;
   }
 
@@ -900,6 +916,159 @@ button {
     border-radius: 20px;
     font-size: 1.5em;
     color: white;
+  }
+
+  .filter-search {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: white;
+    z-index: 1;
+    border: 2px solid var(--body-home-page);
+    animation-name: slide-search;
+    animation-duration: 0.5s;
+    font-family:
+      Baskervville SC,
+      serif;
+  }
+
+  @keyframes slide-search {
+    from {
+      height: 0;
+    }
+    to {
+      height: 100%;
+    }
+  }
+
+  .div-input-checkbox {
+    width: 100%;
+    height: 4em;
+    position: relative;
+    top: 2em;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    animation-name: div-input;
+    animation-duration: 1s;
+  }
+
+  @keyframes div-input {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+
+  .result-age {
+    width: 100%;
+    height: 1em;
+    position: absolute;
+    left: 0;
+    top: 0;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+  }
+
+  input[type="range"] {
+    -webkit-appearance: none; /* Removes default styling */
+    width: 40%;
+    height: 10px;
+    background: var(--body-home-page);
+    border-radius: 5px;
+    outline: none;
+    opacity: 0.7;
+    transition: opacity 0.2s;
+  }
+
+  input[type="range"]:hover {
+    opacity: 1;
+  }
+
+  input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 25px;
+    height: 25px;
+    background: pink;
+    cursor: pointer;
+    border-radius: 50%;
+  }
+
+  input[type="range"]::-moz-range-thumb {
+    width: 25px;
+    height: 25px;
+    background: pink;
+    cursor: pointer;
+    border-radius: 50%;
+  }
+
+  input[type="radio"] {
+    -webkit-appearance: none;
+    appearance: none;
+    /* width: 20px;
+    height: 20px; */
+    border: 2px solid pink;
+    border-radius: 50%;
+    outline: none;
+    cursor: pointer;
+    position: relative;
+  }
+
+  input[type="radio"]:checked::before {
+    content: "";
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: pink;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+  .h4-search {
+    font-family:
+      Baskervville SC,
+      serif;
+    font-size: 1.2em;
+  }
+
+  .inline-on {
+    width: 1em;
+    height: 1em;
+    background-color: green;
+    border-radius: 50%;
+    position: absolute;
+    border: 2px dashed white;
+    right: 0.2em;
+    bottom: 0.2em;
+  }
+
+  .inline-off {
+    width: 1em;
+    height: 1em;
+    background-color: red;
+    border-radius: 50%;
+    position: absolute;
+    border: 2px dashed white;
+    right: 0.2em;
+    bottom: 0.2em;
+  }
+
+  #inpt-checkbox-search-men {
+    width: 1.5em;
+    height: 1.5em;
+  }
+
+  #inpt-checkbox-search-woman {
+    width: 1.5em;
+    height: 1.5em;
   }
 }
 
@@ -1190,7 +1359,7 @@ button {
 
   .block-connexion {
     position: relative;
-    top: 5em;
+    top: 8em;
     left: 60%;
     width: 30%;
     height: 25em;
@@ -1352,16 +1521,20 @@ button {
       serif;
     padding: 1em;
     font-weight: bold;
+    color: black;
   }
 
   #modify-password {
     font-size: 1.5em;
     cursor: pointer;
+    margin-left: -7em;
+    margin-bottom: 0;
   }
 
   #modify-mail {
     font-size: 1.5em;
     cursor: pointer;
+    margin-bottom: 0;
   }
 
   .select-dep-modify {
@@ -1370,6 +1543,8 @@ button {
     padding-bottom: 0.5em;
     font-size: 1.2em;
     cursor: pointer;
+    margin-left: -8em;
+    margin-bottom: 0;
   }
 
   .select-search-modify {
@@ -1378,6 +1553,7 @@ button {
     padding-bottom: 0.5em;
     font-size: 1.2em;
     cursor: pointer;
+    margin-bottom: 0;
   }
 
   .select-option-dep {
@@ -1401,8 +1577,8 @@ button {
 
   .sub-modification {
     position: relative;
-    top: 3em;
-    left: 8em;
+    top: -1em;
+    left: 35%;
     background-color: grey;
     color: white;
     padding-top: 0.5em;
@@ -1411,5 +1587,91 @@ button {
     padding-right: 1em;
     font-size: 1em;
     cursor: pointer;
+    width: 30%;
+  }
+
+  .image-container {
+    position: relative;
+    display: inline-block;
+    width: 45em;
+    height: 35em;
+    left: 45%;
+    top: 8em;
+  }
+
+  .image-container::before {
+    content: "ils sont en ligne";
+    font-family:
+      Baskervville SC,
+      serif;
+    font-weight: bold;
+    color: pink;
+    font-size: 2em;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(
+        to top,
+        var(--body-home-page),
+        transparent,
+        transparent
+      ),
+      linear-gradient(
+        to bottom,
+        var(--body-home-page),
+        transparent,
+        transparent
+      ),
+      linear-gradient(to left, var(--body-home-page), transparent, transparent),
+      linear-gradient(to right, var(--body-home-page), transparent, transparent);
+    z-index: 1;
+  }
+
+  .image-container img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+    position: relative;
+    animation-name: flou;
+    animation-duration: 5s;
+    animation-iteration-count: infinite;
+  }
+
+  @keyframes flou {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+
+  #modify-password-txt {
+    text-align: center;
+    cursor: pointer;
+    color: black;
+    width: 100%;
+  }
+
+  .filter-search {
+    position: absolute;
+    left: 28%;
+    width: 72%;
+    height: 100%;
+    background-color: white;
+    z-index: 1;
+    border: 3px solid var(--body-home-page);
+    animation-name: slide-search;
+    animation-duration: 0.5s;
+    font-family:
+      Baskervville SC,
+      serif;
+  }
+
+  .voir-filtres {
+    width: 20%;
   }
 }

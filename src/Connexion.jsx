@@ -45,57 +45,76 @@ function Connexion() {
 
   if (pseudoAndEmail.bool === true) {
     Cookie.set("auth", pseudoAndEmail.id);
+    fetch(
+      `http://${env.VITE_API_URL}:${env.VITE_API_SERVER_PORT}/update-inline/${Cookie.get("auth")}`
+    );
     window.location.href = "/home";
   }
 
   return (
-    <div className="div-connexion">
-      <Link to="/">
-        <button className="x">×</button>
-      </Link>
+    <>
+      {window.innerWidth >= 1024 && (
+        <ul className="animate-logo" style={{ zIndex: 1 }}>
+          <li className="li-animate-logo1">
+            <img src="pied.png" alt="no-picture" className="img-pied" />
+          </li>
+          <li className="li-animate-logo2">
+            <img src="homme.png" alt="no-picture" className="img-pied" />
+          </li>
+          <li className="li-animate-logo3">
+            <img src="femme.png" alt="no-picture" className="img-pied" />
+          </li>
+        </ul>
+      )}
 
-      <div className="block-connexion">
-        <form method="post" onSubmit={handleSubmit}>
-          <h3 className="pseudo-connexion">
-            Pseudo
-            {pseudoAndEmail.pseudo === "introuvable" && (
-              <span style={{ color: "red" }}>&nbsp; &nbsp;introuvable</span>
-            )}
-          </h3>
-          <input
-            type="text"
-            name="pseudo"
-            className="input-pseudo-connexion"
-            onChange={handleChange}
-          />
+      <div className="div-connexion">
+        <Link to="/">
+          <button className="x">×</button>
+        </Link>
 
-          <h3 className="mdp-connexion">
-            Mot de passe{" "}
-            {pseudoAndEmail.bool === false &&
-              pseudoAndEmail.pseudo !== "" &&
-              pseudoAndEmail.pseudo !== "introuvable" && (
-                <span style={{ color: "red" }}>&nbsp;invalide</span>
+        <div className="block-connexion">
+          <form method="post" onSubmit={handleSubmit}>
+            <h3 className="pseudo-connexion">
+              Pseudo
+              {pseudoAndEmail.pseudo === "introuvable" && (
+                <span style={{ color: "red" }}>&nbsp; &nbsp;introuvable</span>
               )}
-          </h3>
-          <input
-            type="password"
-            name="password"
-            className="input-password-connexion"
-            onChange={handleChange}
-          />
+            </h3>
+            <input
+              type="text"
+              name="pseudo"
+              className="input-pseudo-connexion"
+              onChange={handleChange}
+            />
 
-          <input
-            type="submit"
-            value="me connecter"
-            className={
-              change.pseudo !== "" && change.password !== ""
-                ? "me-connecter-on"
-                : "me-connecter-off"
-            }
-          />
-        </form>
+            <h3 className="mdp-connexion">
+              Mot de passe{" "}
+              {pseudoAndEmail.bool === false &&
+                pseudoAndEmail.pseudo !== "" &&
+                pseudoAndEmail.pseudo !== "introuvable" && (
+                  <span style={{ color: "red" }}>&nbsp;invalide</span>
+                )}
+            </h3>
+            <input
+              type="password"
+              name="password"
+              className="input-password-connexion"
+              onChange={handleChange}
+            />
+
+            <input
+              type="submit"
+              value="me connecter"
+              className={
+                change.pseudo !== "" && change.password !== ""
+                  ? "me-connecter-on"
+                  : "me-connecter-off"
+              }
+            />
+          </form>
+        </div>
       </div>
-    </div>
+    </>
   );
 }
 

@@ -1,14 +1,17 @@
 import Cookies from "js-cookie";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 // import { Link } from "react-router-dom";
 import HeaderMember from "./HeaderMember.jsx";
 import MenuMember from "./MenuMember.jsx";
 import { MyContext } from "./Context.jsx";
+import FilterSearch from "./FilterSearch.jsx";
 
 function Home() {
   const Auth = Cookies.get("auth");
-  const [responseUser, setResponseUser] = useState();
   const env = import.meta.env;
+  const { burgerMember, filter, setFilter, responseUser, setResponseUser } =
+    MyContext();
+
   useEffect(() => {
     fetch(
       `http://${env.VITE_API_URL}:${env.VITE_API_SERVER_PORT}/select-all-user`
@@ -20,17 +23,24 @@ function Home() {
       });
   }, []);
   if (Auth) {
-    const { burgerMember } = MyContext();
     return (
       <>
         <HeaderMember />
         {burgerMember && <MenuMember />}
         {!burgerMember && (
           <>
-            <button type="button" className="voir-filtres">
+            <button
+              type="button"
+              className="voir-filtres"
+              onClick={() => {
+                setFilter(!filter);
+              }}
+            >
               voir filtres <span className="chevron"> &#x27A7; </span>
             </button>
             <div className="the-users">
+              {filter && <FilterSearch />}
+
               <ul className="ul-article">
                 {responseUser &&
                   responseUser.map((user, index) => (
@@ -41,13 +51,26 @@ function Home() {
                           className="img-article-user"
                           alt="no-picture"
                         />
-                        <p className="article-pseudo">
+                        <p
+                          className={
+                            user.sex === "homme"
+                              ? "article-pseudo-men"
+                              : "article-pseudo-woman"
+                          }
+                        >
                           {user.pseudo.length >= 10
                             ? `${user.pseudo.substring(0, 10)}...`
                             : user.pseudo}{" "}
                           {user.dep < 10 ? `(0${user.dep})` : `(${user.dep})`}
                           <br />
                           {`${user.age} ans`}
+                          <span
+                            className={
+                              user.inline === 1 ? "inline-on" : "inline-off"
+                            }
+                          >
+                            {""}
+                          </span>
                         </p>
                       </article>
                     </li>
