@@ -12,6 +12,7 @@ const {
   modifyProfil,
   disconnect,
   updateInline,
+  recherche,
 } = require("../controler/userControler.js");
 
 const { argon } = require("../service/argon2.js");
@@ -52,3 +53,5 @@ app.post("/connexion", getUserConnexion);
 app.get("/get-user/:pseudo", getUser);
 
 app.post("/insert-user", argon, insertUser);
+
+app.post("/recherche", recherche);

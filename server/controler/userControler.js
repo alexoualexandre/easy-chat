@@ -176,6 +176,16 @@ const updateInline = async (req, res, next) => {
   }
 };
 
+const recherche = async (req, res, next) => {
+  const data = req.body;
+  try {
+    const user = await new User().recherche(data);
+    res.json(user);
+  } catch (err) {
+    next({ error: `erreur:${err}` });
+  }
+};
+
 module.exports = {
   getUser,
   insertUser,
@@ -186,4 +196,5 @@ module.exports = {
   modifyProfil,
   disconnect,
   updateInline,
+  recherche,
 };

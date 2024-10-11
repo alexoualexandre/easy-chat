@@ -76,6 +76,20 @@ class User {
   async updateInline(id) {
     await connection.query("UPDATE user SET inline = 1 WHERE id = ?", [id]);
   }
+
+  async recherche(data) {
+    const [r] = await connection.query(
+      "SELECT * FROM user WHERE sex = ? AND age >= ? AND age <= ? AND dep = ? AND inline = ?",
+      [
+        data.search,
+        parseInt(data.min, 10),
+        parseInt(data.max, 10),
+        parseInt(data.dep.split("-")[0], 10),
+        parseInt(data.inline, 10),
+      ]
+    );
+    return r;
+  }
 }
 
 // eslint-disable-next-line no-undef

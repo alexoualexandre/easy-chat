@@ -569,6 +569,7 @@ button {
     border: 2px solid var(--body-home-page);
     border-radius: 5px;
     top: 1em;
+    cursor: pointer;
   }
 
   .chevron {
@@ -596,7 +597,7 @@ button {
     padding: 0;
     overflow: scroll;
     border: 2px solid var(--body-home-page);
-    background-color: grey;
+    background-color: var(--body-home-page);
   }
 
   .li-article {
@@ -1070,6 +1071,72 @@ button {
     width: 1.5em;
     height: 1.5em;
   }
+
+  #inpt-inline-yes {
+    width: 1.5em;
+    height: 1.5em;
+  }
+
+  #inpt-inline-no {
+    width: 1.5em;
+    height: 1.5em;
+  }
+
+  .label-search {
+    cursor: pointer;
+  }
+
+  .div-input-checkbox-dep {
+    width: 100%;
+    height: 4em;
+    position: relative;
+    top: 2em;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    animation-name: div-input;
+    animation-duration: 1s;
+  }
+
+  .select-dep-search {
+    width: 20%;
+  }
+
+  .submit-search {
+    position: absolute;
+    width: 30%;
+    left: 35%;
+    bottom: 6em;
+    font-weight: bold;
+    padding: 0.5em;
+    border-radius: 10px;
+    background-color: pink;
+    color: var(--body-home-page);
+    border: 2px solid var(--body-home-page);
+    animation-name: correction;
+    animation-duration: 3s;
+    cursor: pointer;
+  }
+
+  @keyframes correction {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+
+  .number-result {
+    position: relative;
+    top: 1em;
+    text-align: center;
+    font-weight: bold;
+    color: var(--body-home-page);
+    font-size: 1.5em;
+    z-index: 1;
+  }
 }
 
 @media screen and (min-width: 375px) {
@@ -1389,7 +1456,7 @@ button {
     width: 98%;
     height: 31em;
     left: 1%;
-    border: 1px solid black;
+    border: 4px solid var(--body-home-page);
   }
 
   .animate-logo {
@@ -1663,7 +1730,10 @@ button {
     height: 100%;
     background-color: white;
     z-index: 1;
-    border: 3px solid var(--body-home-page);
+    border-top: 0;
+    border-right: 0;
+    border-bottom: 0;
+    border-left: 2px solid var(--body-home-page);
     animation-name: slide-search;
     animation-duration: 0.5s;
     font-family:
@@ -1672,6 +1742,32 @@ button {
   }
 
   .voir-filtres {
+    width: 20%;
+  }
+
+  .div-input-checkbox {
+    width: 50%;
+    height: 4em;
+    left: 25%;
+    position: relative;
+    top: 2em;
+  }
+
+  .div-input-checkbox-dep {
+    width: 45%;
+    left: 27.5%;
+    height: 4em;
+    position: relative;
+    top: 2em;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    animation-name: div-input;
+    animation-duration: 1s;
+  }
+
+  .select-dep-search {
     width: 20%;
   }
 }
