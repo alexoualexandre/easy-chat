@@ -874,6 +874,7 @@ button {
     padding-right: 1em;
     cursor: pointer;
     border-radius: 10px;
+    opacity: 0.5;
   }
 
   .sub-modification-on {
@@ -917,6 +918,7 @@ button {
     border-radius: 20px;
     font-size: 1.5em;
     color: white;
+    cursor: pointer;
   }
 
   .filter-search {
@@ -939,6 +941,29 @@ button {
     }
     to {
       height: 100%;
+    }
+  }
+
+  .filter-search-off {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: white;
+    z-index: 1;
+    border: 2px solid var(--body-home-page);
+    animation-name: slide-search-off;
+    animation-duration: 0.5s;
+    font-family:
+      Baskervville SC,
+      serif;
+  }
+
+  @keyframes slide-search-off {
+    from {
+      opacity: 1;
+    }
+    to {
+      opacity: 0%;
     }
   }
 
@@ -1101,6 +1126,7 @@ button {
 
   .select-dep-search {
     width: 20%;
+    cursor: pointer;
   }
 
   .submit-search {
@@ -1644,7 +1670,8 @@ button {
 
   .sub-modification {
     position: relative;
-    top: -1em;
+    width: 30%;
+    top: 1em;
     left: 35%;
     background-color: grey;
     color: white;
@@ -1652,9 +1679,8 @@ button {
     padding-bottom: 0.5em;
     padding-left: 1em;
     padding-right: 1em;
-    font-size: 1em;
-    cursor: pointer;
-    width: 30%;
+    border-radius: 10px;
+    opacity: 0.5;
   }
 
   .image-container {

@@ -63,14 +63,8 @@ function MyProfil() {
       });
   }, [newName]);
 
-  useEffect(() => {
-    if (newName) {
-      const env = import.meta.env;
-      fetch(
-        `http://${env.VITE_API_URL}:${env.VITE_API_SERVER_PORT}/change-img-profil/${newName.nvName}/${Cookies.get("auth")}`
-      );
-    }
-  }, [newName]);
+  const regexMail = /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/;
+  const regexPass = /[!@#$%^&*(),.?:{}|<>]/;
 
   const changeInfo = (e) => {
     const { name, value } = e.target;
@@ -81,16 +75,24 @@ function MyProfil() {
     setColorSubmit("sub-modification-on");
   };
 
+  console.log(updateData);
+  useEffect(() => {
+    if (newName) {
+      const env = import.meta.env;
+      fetch(
+        `http://${env.VITE_API_URL}:${env.VITE_API_SERVER_PORT}/change-img-profil/${newName.nvName}/${Cookies.get("auth")}`
+      );
+    }
+  }, [newName]);
+
   const handleSubmitForm = (e) => {
-    const regexMail = /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/;
-    const regexPass = /[!@#$%^&*(),.?:{}|<>]/;
     const env = import.meta.env;
     e.preventDefault();
     if (colorSubmit === "sub-modification-on") {
       if (
-        (regexMail.test(updateData.mail) &&
-          regexPass.test(updateData.password)) ||
-        updateData.password.charAt(0) === "$"
+        regexMail.test(updateData.mail) &&
+        (regexPass.test(updateData.password) ||
+          updateData.password.charAt(0) === "$")
       ) {
         fetch(`http://${env.VITE_API_URL}:${env.VITE_API_SERVER_PORT}/update`, {
           method: "POST",
@@ -99,10 +101,14 @@ function MyProfil() {
           },
           body: JSON.stringify(updateData),
         });
+      } else {
+        setValider("");
       }
     }
+    if(regexMail.test(updateData.mail) && regexPass.test(updateData.password))
+    setColorSubmit("sub-modification");
   };
-  console.log(updateData);
+
   const date = resultName && resultName.created_at.split("T")[0].split("-");
   return (
     <div className="profil-member">
@@ -177,7 +183,11 @@ function MyProfil() {
               id="modify-password-txt"
               style={{ cursor: "pointer" }}
             >
-              Mot de passe
+              Mot de passe{" "}
+              {colorSubmit === "sub-modification-on" &&
+                !regexPass.test(updateData.password) && (
+                  <span style={{ color: "red" }}>×</span>
+                )}
             </label>
             <input
               type="password"
@@ -302,7 +312,11 @@ function MyProfil() {
                   className="date-inscrition"
                   style={{ cursor: "pointer" }}
                 >
-                  Email
+                  Email{" "}
+                  {colorSubmit === "sub-modification-on" &&
+                    !regexMail.test(updateData.mail) && (
+                      <span style={{ color: "red" }}>×</span>
+                    )}
                 </label>
                 <input
                   type="text"
@@ -347,7 +361,12 @@ function MyProfil() {
                     ></textarea>
                     <button
                       type="submit"
-                      className={colorSubmit}
+                      className={
+                        regexMail.test(updateData.mail) &&
+                        regexPass.test(updateData.password)
+                          ? colorSubmit
+                          : "sub-modification"
+                      }
                       onClick={() => {
                         if (colorSubmit === "sub-modification-on")
                           setValider("modify-ok");
@@ -360,24 +379,27 @@ function MyProfil() {
               </div>
             </div>
           </form>
-          {valider === "modify-ok" && (
-            <div className={valider}>
-              <h2 className="modification-enregistrer">
-                modification enregistré !
-              </h2>
-              <Link to="/home">
-                <button
-                  type="button"
-                  className="return-home"
-                  onClick={() => {
-                    setBurgerMember(false);
-                  }}
-                >
-                  ok
-                </button>
-              </Link>
-            </div>
-          )}
+          {valider === "modify-ok" &&
+            regexMail.test(updateData.mail) &&
+            (regexPass.test(updateData.password) ||
+              updateData.password.charAt(0) === "$") && (
+              <div className={valider}>
+                <h2 className="modification-enregistrer">
+                  modification enregistré !
+                </h2>
+                <Link to="/home">
+                  <button
+                    type="button"
+                    className="return-home"
+                    onClick={() => {
+                      setBurgerMember(false);
+                    }}
+                  >
+                    ok
+                  </button>
+                </Link>
+              </div>
+            )}
         </section>
       </div>
     </div>

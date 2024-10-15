@@ -5,13 +5,19 @@ import { MyContext } from "./Context";
 function FilterSearch() {
   const [number, setNumber] = useState("");
   const [form, setForm] = useState({
-    search: "homme",
+    search: { homme: "homme", femme: "femme" },
     min: "18",
     max: "100",
-    inline: "0",
-    dep: "01",
+    inline: { on: "0", off: "1" },
+    dep: { local: "01" },
   });
-  const { setResponseUser } = MyContext();
+  const {
+    setResponseUser,
+    classFilterSearch,
+    setClassFilterSearch,
+    filter,
+    setFilter,
+  } = MyContext();
   const Auth = Cookies.get("auth");
   const submitSearch = (e) => {
     const env = import.meta.env;
@@ -41,7 +47,7 @@ function FilterSearch() {
   };
 
   return (
-    <section className="filter-search">
+    <section className={classFilterSearch}>
       <form method="POST" onSubmit={submitSearch}>
         <div className="div-input-checkbox">
           <h4 className="h4-search">Je recherche</h4>
@@ -221,7 +227,24 @@ function FilterSearch() {
         <p className="number-result">
           {number !== "" && `${number} résultats`}
         </p>
-        <button type="submit" value="rechercher" className="submit-search">
+        <button
+          type="submit"
+          value="rechercher"
+          className="submit-search"
+          onClick={() => {
+            if (window.innerWidth < 1024) {
+              setTimeout(() => {
+                setClassFilterSearch("filter-search-off");
+              }, 1000);
+
+              setTimeout(() => {
+                setFilter(!filter);
+
+                setClassFilterSearch("filter-search");
+              }, 1200);
+            }
+          }}
+        >
           rechercher
         </button>
       </form>

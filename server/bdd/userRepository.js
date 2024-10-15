@@ -40,7 +40,9 @@ class User {
   }
 
   async selectAllUser() {
-    const [r] = await connection.query("SELECT * FROM user ORDER BY id DESC");
+    const [r] = await connection.query(
+      "SELECT id,sex,search,age,pseudo,created_at,dep,img,description,inline FROM user ORDER BY id DESC"
+    );
     return r;
   }
 
@@ -78,8 +80,103 @@ class User {
   }
 
   async recherche(data) {
+    if (
+      typeof data.search !== "object" &&
+      typeof data.inline === "object" &&
+      typeof data.dep === "object"
+    ) {
+      const [r] = await connection.query(
+        "SELECT id,sex,search,age,pseudo,created_at,dep,img,description,inline FROM user WHERE sex = ? AND age >= ? AND age <= ?",
+        [data.search, parseInt(data.min, 10), parseInt(data.max, 10)]
+      );
+      return r;
+    }
+
+    if (
+      typeof data.search === "object" &&
+      typeof data.inline !== "object" &&
+      typeof data.dep === "object"
+    ) {
+      const [r] = await connection.query(
+        "SELECT id,sex,search,age,pseudo,created_at,dep,img,description,inline FROM user WHERE age >= ? AND age <= ? AND inline = ?",
+        [
+          parseInt(data.min, 10),
+          parseInt(data.max, 10),
+          parseInt(data.inline, 10),
+        ]
+      );
+      return r;
+    }
+
+    if (
+      typeof data.search === "object" &&
+      typeof data.inline === "object" &&
+      typeof data.dep !== "object"
+    ) {
+      const [r] = await connection.query(
+        "SELECT id,sex,search,age,pseudo,created_at,dep,img,description,inline FROM user WHERE age >= ? AND age <= ? AND dep = ?",
+        [
+          parseInt(data.min, 10),
+          parseInt(data.max, 10),
+          parseInt(data.dep.split("-")[0], 10),
+        ]
+      );
+      return r;
+    }
+
+    if (
+      typeof data.search !== "object" &&
+      typeof data.inline !== "object" &&
+      typeof data.dep === "object"
+    ) {
+      const [r] = await connection.query(
+        "SELECT id,sex,search,age,pseudo,created_at,dep,img,description,inline FROM user WHERE sex = ? AND age >= ? AND age <= ? AND inline = ?",
+        [
+          data.search,
+          parseInt(data.min, 10),
+          parseInt(data.max, 10),
+          parseInt(data.inline, 10),
+        ]
+      );
+      return r;
+    }
+
+    if (
+      typeof data.search !== "object" &&
+      typeof data.inline === "object" &&
+      typeof data.dep !== "object"
+    ) {
+      const [r] = await connection.query(
+        "SELECT id,sex,search,age,pseudo,created_at,dep,img,description,inline FROM user WHERE sex = ? AND age >= ? AND age <= ? AND dep = ?",
+        [
+          data.search,
+          parseInt(data.min, 10),
+          parseInt(data.max, 10),
+          parseInt(data.dep.split("-")[0], 10),
+        ]
+      );
+      return r;
+    }
+
+    if (
+      typeof data.search === "object" &&
+      typeof data.inline !== "object" &&
+      typeof data.dep !== "object"
+    ) {
+      const [r] = await connection.query(
+        "SELECT id,sex,search,age,pseudo,created_at,dep,img,description,inline FROM user WHERE age >= ? AND age <= ? AND dep = ? AND inline = ?",
+        [
+          parseInt(data.min, 10),
+          parseInt(data.max, 10),
+          parseInt(data.dep.split("-")[0], 10),
+          parseInt(data.inline, 10),
+        ]
+      );
+      return r;
+    }
+
     const [r] = await connection.query(
-      "SELECT * FROM user WHERE sex = ? AND age >= ? AND age <= ? AND dep = ? AND inline = ?",
+      "SELECT id,sex,search,age,pseudo,created_at,dep,img,description,inline FROM user WHERE sex = ? AND age >= ? AND age <= ? AND dep = ? AND inline = ?",
       [
         data.search,
         parseInt(data.min, 10),

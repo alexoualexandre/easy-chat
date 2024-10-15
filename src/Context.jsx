@@ -8,6 +8,7 @@ export function Provider({ children }) {
   const [burgerMember, setBurgerMember] = useState(false);
   const [filter, setFilter] = useState(false);
   const [responseUser, setResponseUser] = useState();
+  const [classFilterSearch, setClassFilterSearch] = useState("filter-search");
 
   return (
     <Context.Provider
@@ -20,6 +21,8 @@ export function Provider({ children }) {
         setFilter,
         responseUser,
         setResponseUser,
+        classFilterSearch,
+        setClassFilterSearch,
       }}
     >
       {children}
