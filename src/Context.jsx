@@ -9,6 +9,8 @@ export function Provider({ children }) {
   const [filter, setFilter] = useState(false);
   const [responseUser, setResponseUser] = useState();
   const [classFilterSearch, setClassFilterSearch] = useState("filter-search");
+  const [ul, setUl] = useState(true);
+  const [divMessage, setDivMessage] = useState(true);
 
   return (
     <Context.Provider
@@ -23,6 +25,10 @@ export function Provider({ children }) {
         setResponseUser,
         classFilterSearch,
         setClassFilterSearch,
+        ul,
+        setUl,
+        divMessage,
+        setDivMessage,
       }}
     >
       {children}
