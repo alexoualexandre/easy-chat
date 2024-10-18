@@ -17,11 +17,16 @@ function FilterSearch() {
     setClassFilterSearch,
     filter,
     setFilter,
+    setDivMessage,
+    setUl,
   } = MyContext();
+
   const Auth = Cookies.get("auth");
+
   const submitSearch = (e) => {
     const env = import.meta.env;
     e.preventDefault();
+
     fetch(`http://${env.VITE_API_URL}:${env.VITE_API_SERVER_PORT}/recherche`, {
       method: "POST",
       headers: {
@@ -235,6 +240,8 @@ function FilterSearch() {
             if (window.innerWidth < 1024) {
               setTimeout(() => {
                 setClassFilterSearch("filter-search-off");
+                setDivMessage(false);
+                setUl(true);
               }, 1000);
 
               setTimeout(() => {

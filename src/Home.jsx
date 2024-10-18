@@ -8,8 +8,13 @@ import Message from "./Message.jsx";
 import { Link } from "react-router-dom";
 
 function Home() {
-  const Auth = Cookies.get("auth");
+  // const location = useLocation();
+  // const getSearchParams = () => {
+  //   return new URLSearchParams(location.search);
+  // };
+  // const params = getSearchParams();
   const env = import.meta.env;
+  const Auth = Cookies.get("auth");
   const {
     burgerMember,
     filter,
@@ -19,6 +24,10 @@ function Home() {
     ul,
     setUl,
     setDivMessage,
+    divMessage,
+    setUserMessage,
+    setAnimationUserSelected,
+    setAnimationTxtUserSelected,
   } = MyContext();
 
   useEffect(() => {
@@ -31,6 +40,7 @@ function Home() {
         setResponseUser(r.filter((elem) => elem.id != Auth));
       });
   }, []);
+
   if (Auth) {
     return (
       <>
@@ -47,6 +57,9 @@ function Home() {
             >
               voir filtres <span className="chevron"> &#x27A7; </span>
             </button>
+            <div className="refresh">
+              <img src="icons8-rafraîchir-32.png" alt="button refresh" />
+            </div>
             <div className="the-users">
               {filter && <FilterSearch />}
               <ul className={ul ? "ul-article" : "ul-article-none"}>
@@ -57,10 +70,22 @@ function Home() {
                         <button
                           type="button"
                           className="button-li-user"
+                          onContextMenu={(e) => {
+                            e.preventDefault();
+                          }}
                           onClick={() => {
                             if (window.innerWidth < 1024) {
                               setUl(false);
                               setDivMessage(true);
+                              setUserMessage(user.id);
+                              setAnimationUserSelected(true);
+                              setAnimationTxtUserSelected(true);
+                            } else {
+                              setFilter(false);
+                              setDivMessage(true);
+                              setUserMessage(user.id);
+                              setAnimationUserSelected(true);
+                              setAnimationTxtUserSelected(true);
                             }
                           }}
                         ></button>
@@ -96,7 +121,11 @@ function Home() {
                     </Link>
                   ))}
               </ul>
-              {window.innerWidth < 1024 && !ul && <Message />}
+              {window.innerWidth < 1024 && !ul ? (
+                <Message />
+              ) : (
+                divMessage && <Message />
+              )}
             </div>
           </>
         )}

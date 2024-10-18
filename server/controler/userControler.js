@@ -186,6 +186,16 @@ const recherche = async (req, res, next) => {
   }
 };
 
+const userSelected = async (req, res, next) => {
+  const { id } = req.params;
+  try {
+    const userId = await new User().userSelected(id);
+    res.json(userId);
+  } catch (err) {
+    next({ error: `erreur:${err}` });
+  }
+};
+
 module.exports = {
   getUser,
   insertUser,
@@ -197,4 +207,5 @@ module.exports = {
   disconnect,
   updateInline,
   recherche,
+  userSelected,
 };

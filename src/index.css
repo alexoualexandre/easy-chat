@@ -561,7 +561,7 @@ button {
   .voir-filtres {
     background-color: white;
     position: relative;
-    width: 90%;
+    width: 70%;
     left: 5%;
     font-size: 1.2em;
     text-align: left;
@@ -569,6 +569,13 @@ button {
     border: 2px solid var(--body-home-page);
     border-radius: 5px;
     top: 1em;
+    cursor: pointer;
+  }
+
+  .refresh {
+    position: absolute;
+    right: 0.5em;
+    top: 4em;
     cursor: pointer;
   }
 
@@ -611,7 +618,6 @@ button {
     width: 100%;
     height: 100%;
     border: 2px solid var(--body-home-page);
-    background-color: red;
     z-index: 4;
   }
 
@@ -621,7 +627,7 @@ button {
 
   .button-div-message {
     position: absolute;
-    left: 20%;
+    left: 40%;
     z-index: 5;
   }
 
@@ -1198,9 +1204,28 @@ button {
     top: 0;
     z-index: 1;
     opacity: 0;
+    cursor: pointer;
   }
 
   .div-message {
+    animation-name: divMessage;
+    animation-duration: 1s;
+  }
+
+  @keyframes divMessage {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+
+  .img-user-selected {
+    width: 6em;
+    height: 6em;
+    margin-top: 0.1em;
+    margin-left: 0.2em;
   }
 }
 
@@ -1808,6 +1833,7 @@ button {
 
   .voir-filtres {
     width: 20%;
+    left: 2%;
   }
 
   .div-input-checkbox {
@@ -1834,5 +1860,128 @@ button {
 
   .select-dep-search {
     width: 20%;
+  }
+
+  .div-message {
+    position: absolute;
+    left: 28%;
+    top: 0;
+    width: 72%;
+    height: 100%;
+    border: 2px solid var(--body-home-page);
+    z-index: 0;
+  }
+
+  .resum-user {
+    position: absolute;
+    width: 100%;
+    height: 3em;
+  }
+
+  .img-user-selected {
+    position: relative;
+    display: inline-block;
+    width: 13em;
+    height: 13em;
+    margin-top: 0.1em;
+    margin-left: 0.2em;
+  }
+
+  .img-user-selected-animation {
+    position: relative;
+    display: inline-block;
+    width: 13em;
+    height: 13em;
+    margin-top: 0.1em;
+    margin-left: 0.2em;
+    animation-name: slide-img-user-selected;
+    animation-duration: 0.5s;
+  }
+
+  @keyframes slide-img-user-selected {
+    from {
+      opacity: 0;
+      width: 0;
+    }
+    to {
+      opacity: 1;
+      width: 13em;
+    }
+  }
+
+  .info-user-selected {
+    display: inline;
+    position: absolute;
+    top: 0;
+    margin-left: 0.5em;
+    margin-top: 0.5em;
+    font-family:
+      Baskervville SC,
+      serif;
+    font-size: 1.2em;
+    font-weight: bold;
+  }
+
+  .info-user-selected-animation {
+    display: inline;
+    position: absolute;
+    top: 0;
+    margin-left: 0.5em;
+    margin-top: 0.5em;
+    font-family:
+      Baskervville SC,
+      serif;
+    font-size: 1.2em;
+    font-weight: bold;
+    animation-name: txt-info;
+    animation-duration: 1s;
+  }
+
+  @keyframes txt-info {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+
+  .h2-description {
+    font-family:
+      Baskervville SC,
+      serif;
+    margin-left: 0.1em;
+  }
+
+  .lorem-description {
+    margin-left: 0.3em;
+    width: 23em;
+    height: 12.7em;
+    text-align: left;
+    overflow-y: scroll;
+  }
+
+  .lorem-description::-webkit-scrollbar {
+    width: 0.3em;
+  }
+
+  .lorem-description::-webkit-scrollbar-thumb {
+    background: var(--body-home-page);
+    border-radius: 10px;
+  }
+
+  .container-message {
+    position: absolute;
+    width: 48%;
+    height: 100%;
+    left: 52%;
+    border-left: 1px solid black;
+  }
+
+  .refresh {
+    position: absolute;
+    left: 25%;
+    top: 6em;
+    cursor: pointer;
   }
 }

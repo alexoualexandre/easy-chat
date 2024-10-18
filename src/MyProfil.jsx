@@ -95,7 +95,7 @@ function MyProfil() {
           updateData.password.charAt(0) === "$")
       ) {
         fetch(`http://${env.VITE_API_URL}:${env.VITE_API_SERVER_PORT}/update`, {
-          method: "POST",
+          method: "PUT",
           headers: {
             "Content-Type": "application/json",
           },
@@ -105,8 +105,8 @@ function MyProfil() {
         setValider("");
       }
     }
-    if(regexMail.test(updateData.mail) && regexPass.test(updateData.password))
-    setColorSubmit("sub-modification");
+    if (regexMail.test(updateData.mail) && regexPass.test(updateData.password))
+      setColorSubmit("sub-modification");
   };
 
   const date = resultName && resultName.created_at.split("T")[0].split("-");
@@ -137,7 +137,7 @@ function MyProfil() {
 
           <form
             action=""
-            method="POST"
+            method="PUT"
             encType="multipart/form-data"
             onSubmit={handleSubmit}
             id="form-modify"

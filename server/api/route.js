@@ -13,6 +13,7 @@ const {
   disconnect,
   updateInline,
   recherche,
+  userSelected,
 } = require("../controler/userControler.js");
 
 const { argon } = require("../service/argon2.js");
@@ -40,7 +41,7 @@ app.get("/update-inline/:id", updateInline);
 
 app.get("/deconnexion/:id", disconnect);
 
-app.post("/update", argon, modifyProfil);
+app.put("/update", argon, modifyProfil);
 
 app.get("/change-img-profil/:nv/:id", modifyImgProfile);
 
@@ -55,3 +56,5 @@ app.get("/get-user/:pseudo", getUser);
 app.post("/insert-user", argon, insertUser);
 
 app.post("/recherche", recherche);
+
+app.get("/user-selected/:id", userSelected);

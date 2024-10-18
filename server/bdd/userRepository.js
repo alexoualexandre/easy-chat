@@ -187,6 +187,14 @@ class User {
     );
     return r;
   }
+
+  async userSelected(id) {
+    const [userId] = await connection.query(
+      "SELECT id,sex,search,age,pseudo,created_at,dep,img,description,inline FROM user WHERE id = ?",
+      [id]
+    );
+    return userId;
+  }
 }
 
 // eslint-disable-next-line no-undef
