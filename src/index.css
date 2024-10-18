@@ -1221,12 +1221,84 @@ button {
     }
   }
 
+
+
+  .resum-user {
+    position: absolute;
+    width: 100%;
+    height: 3em;
+  }
+
   .img-user-selected {
-    width: 6em;
-    height: 6em;
+    position: relative;
+    display: inline-block;
+    width: 13em;
+    height: 13em;
     margin-top: 0.1em;
     margin-left: 0.2em;
   }
+
+  .img-user-selected-animation {
+    position: relative;
+    display: inline-block;
+    width: 13em;
+    height: 13em;
+    margin-top: 0.1em;
+    margin-left: 0.2em;
+    animation-name: slide-img-user-selected;
+    animation-duration: 0.5s;
+  }
+
+  @keyframes slide-img-user-selected {
+    from {
+      opacity: 0;
+      width: 0;
+    }
+    to {
+      opacity: 1;
+      width: 13em;
+    }
+  }
+
+  .info-user-selected {
+    display: inline;
+    position: absolute;
+    top: 0;
+    margin-left: 0.5em;
+    margin-top: 0.5em;
+    font-family:
+      Baskervville SC,
+      serif;
+    font-size: 1.2em;
+    font-weight: bold;
+  }
+
+  .info-user-selected-animation {
+    display: inline;
+    position: absolute;
+    top: 0;
+    margin-left: 0.5em;
+    margin-top: 0.5em;
+    font-family:
+      Baskervville SC,
+      serif;
+    font-size: 1.2em;
+    font-weight: bold;
+    animation-name: txt-info;
+    animation-duration: 1s;
+  }
+
+  @keyframes txt-info {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+
+
+
 }
 
 @media screen and (min-width: 375px) {
