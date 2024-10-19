@@ -627,7 +627,12 @@ button {
 
   .button-div-message {
     position: absolute;
-    left: 40%;
+    right: 0%;
+    top: 0;
+    font-size: 2em;
+    color: red;
+    background-color: transparent;
+    border: none;
     z-index: 5;
   }
 
@@ -1221,8 +1226,6 @@ button {
     }
   }
 
-
-
   .resum-user {
     position: absolute;
     width: 100%;
@@ -1232,8 +1235,8 @@ button {
   .img-user-selected {
     position: relative;
     display: inline-block;
-    width: 13em;
-    height: 13em;
+    width: 5em;
+    height: 5em;
     margin-top: 0.1em;
     margin-left: 0.2em;
   }
@@ -1241,8 +1244,8 @@ button {
   .img-user-selected-animation {
     position: relative;
     display: inline-block;
-    width: 13em;
-    height: 13em;
+    width: 5em;
+    height: 5em;
     margin-top: 0.1em;
     margin-left: 0.2em;
     animation-name: slide-img-user-selected;
@@ -1256,7 +1259,7 @@ button {
     }
     to {
       opacity: 1;
-      width: 13em;
+      width: 5em;
     }
   }
 
@@ -1269,7 +1272,7 @@ button {
     font-family:
       Baskervville SC,
       serif;
-    font-size: 1.2em;
+    font-size: 0.7em;
     font-weight: bold;
   }
 
@@ -1282,7 +1285,7 @@ button {
     font-family:
       Baskervville SC,
       serif;
-    font-size: 1.2em;
+    font-size: 0.7em;
     font-weight: bold;
     animation-name: txt-info;
     animation-duration: 1s;
@@ -1297,8 +1300,40 @@ button {
     }
   }
 
+  .h2-description {
+    font-family:
+      Baskervville SC,
+      serif;
+    margin-left: 0.1em;
+    font-size: 1em;
+  }
 
+  .lorem-description {
+    margin-left: 0.3em;
+    width: 95%;
+    height: 4.7em;
+    text-align: left;
+    overflow-y: scroll;
+    font-size: 0.8em;
+  }
 
+  .lorem-description::-webkit-scrollbar {
+    width: 0.3em;
+  }
+
+  .lorem-description::-webkit-scrollbar-thumb {
+    background: var(--body-home-page);
+    border-radius: 10px;
+  }
+
+  .container-message {
+    position: absolute;
+    width: 100%;
+    top: 40%;
+    height: 30%;
+    left: 0;
+    background-color: var(--body-home-page);
+  }
 }
 
 @media screen and (min-width: 375px) {

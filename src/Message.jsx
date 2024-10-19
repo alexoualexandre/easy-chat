@@ -85,7 +85,7 @@ function Message() {
               type="button"
               onClick={fctStyle}
             >
-              click
+              ×
             </button>
           )}
         </div>
