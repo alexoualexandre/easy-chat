@@ -10,6 +10,7 @@ import Deconnexion from "./Deconnexion.jsx";
 import Connexion from "./Connexion.jsx";
 import MyProfil from "./MyProfil.jsx";
 import NotFound from "./NotFound.jsx";
+import Ajax from "./Ajax.jsx";
 
 const router = createBrowserRouter([
   {
@@ -39,6 +40,10 @@ const router = createBrowserRouter([
   {
     path: "*",
     element: <NotFound />,
+  },
+  {
+    path: "/ajax",
+    element: <Ajax />,
   },
 ]);
 

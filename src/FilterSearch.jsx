@@ -4,13 +4,6 @@ import { MyContext } from "./Context";
 
 function FilterSearch() {
   const [number, setNumber] = useState("");
-  const [form, setForm] = useState({
-    search: { homme: "homme", femme: "femme" },
-    min: "18",
-    max: "100",
-    inline: { on: "0", off: "1" },
-    dep: { local: "01" },
-  });
   const {
     setResponseUser,
     classFilterSearch,
@@ -19,6 +12,9 @@ function FilterSearch() {
     setFilter,
     setDivMessage,
     setUl,
+    form,
+    setForm,
+    setMemorySearch,
   } = MyContext();
 
   const Auth = Cookies.get("auth");
@@ -39,6 +35,17 @@ function FilterSearch() {
         setNumber(data.filter((elem) => elem.id != Auth).length);
         if (data.filter((elem) => elem.id != Auth).length > 0) {
           setResponseUser(data.filter((elem) => elem.id != Auth));
+          setMemorySearch(form);
+          setForm({
+            search: { homme: "homme", femme: "femme" },
+            min: "18",
+            max: "100",
+            inline: { on: "0", off: "1" },
+            dep: { local: "01" },
+          });
+          setTimeout(() => {
+            setFilter(!filter);
+          }, 1200);
         }
       });
   };

@@ -1327,12 +1327,89 @@ button {
   }
 
   .container-message {
-    position: absolute;
+    position: relative;
     width: 100%;
     top: 40%;
     height: 30%;
     left: 0;
-    background-color: var(--body-home-page);
+  }
+
+  .button-refresh {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+  }
+
+  .form-message {
+    width: 100%;
+    height: 9em;
+    position: absolute;
+    left: 0%;
+    top: 100%;
+  }
+
+  .area-message {
+    width: 90%;
+    height: 5em;
+    position: absolute;
+    left: 5%;
+    top: 20%;
+    border-radius: 0.5em;
+    resize: none;
+  }
+
+  .container-message-animation {
+    position: relative;
+    width: 100%;
+    top: 40%;
+    height: 30%;
+    left: 0;
+    animation-name: container-animate-message;
+    animation-duration: 1s;
+  }
+
+  @keyframes container-animate-message {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+
+  .img-send {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    left: 0;
+    top: 0;
+    cursor: pointer;
+  }
+
+  .submit-txt-message {
+    width: 3em;
+    height: 3em;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    background-color: transparent;
+    border: none;
+  }
+
+  .ajax {
+    width: 98%;
+    height: 10em;
+    margin-left: 1%;
+    border: 1px solid red;
+  }
+
+  .block-ajax {
+    font-family: Arial, Helvetica, sans-serif;
   }
 }
 
@@ -2066,6 +2143,7 @@ button {
     height: 12.7em;
     text-align: left;
     overflow-y: scroll;
+    font-size: 1em;
   }
 
   .lorem-description::-webkit-scrollbar {
@@ -2080,9 +2158,10 @@ button {
   .container-message {
     position: absolute;
     width: 48%;
-    height: 100%;
+    height: 99%;
     left: 52%;
-    border-left: 1px solid black;
+    top: 0;
+    background-color: white;
   }
 
   .refresh {
@@ -2090,5 +2169,63 @@ button {
     left: 25%;
     top: 6em;
     cursor: pointer;
+    width: 3em;
+    height: 3em;
+  }
+
+  .button-refresh {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+  }
+
+  .form-message {
+    width: 100%;
+    height: 30%;
+    position: absolute;
+    right: 0%;
+    top: 70%;
+  }
+
+  .area-message {
+    width: 90%;
+    height: 5em;
+    position: absolute;
+    left: 5%;
+    top: 20%;
+    border-radius: 0.5em;
+    border: 2px solid black;
+  }
+
+  .container-message-animation {
+    position: absolute;
+    width: 48%;
+    height: 99%;
+    left: 52%;
+    top: 0;
+    animation-name: container-animate-message;
+    animation-duration: 1s;
+  }
+
+  .submit-txt-message {
+    width: 3em;
+    height: 3em;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+  }
+
+  .ajax {
+    position: absolute;
+    top: 5%;
+    width: 98%;
+    height: 18.5em;
+    margin-left: 1%;
+    border: 1px solid red;
   }
 }

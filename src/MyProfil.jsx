@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { MyContext } from "./Context";
 import { useEffect, useState } from "react";
 import Cookies from "js-cookie";
@@ -22,6 +22,12 @@ function MyProfil() {
   const [colorSubmit, setColorSubmit] = useState("sub-modification");
   const [valider, setValider] = useState("");
   const environment = import.meta.env;
+
+  const location = useLocation();
+  const getSearchParams = () => {
+    return new URLSearchParams(location.search);
+  };
+  const params = getSearchParams();
 
   const formData = new FormData();
   formData.append("file", f);
@@ -75,7 +81,6 @@ function MyProfil() {
     setColorSubmit("sub-modification-on");
   };
 
-  console.log(updateData);
   useEffect(() => {
     if (newName) {
       const env = import.meta.env;
@@ -112,7 +117,7 @@ function MyProfil() {
   const date = resultName && resultName.created_at.split("T")[0].split("-");
   return (
     <div className="profil-member">
-      <Link to="/home">
+      <Link to={`/home?dest=${params.get("id")}`}>
         <button
           type="button"
           className="x"

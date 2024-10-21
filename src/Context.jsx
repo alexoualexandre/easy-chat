@@ -15,6 +15,20 @@ export function Provider({ children }) {
   const [animationUserSelected, setAnimationUserSelected] = useState(false);
   const [animationTxtUserSelected, setAnimationTxtUserSelected] =
     useState(false);
+  const [form, setForm] = useState({
+    search: { homme: "homme", femme: "femme" },
+    min: "18",
+    max: "100",
+    inline: { on: "0", off: "1" },
+    dep: { local: "01" },
+  });
+  const [memorySearch, setMemorySearch] = useState({
+    search: { homme: "homme", femme: "femme" },
+    min: "18",
+    max: "100",
+    inline: { on: "0", off: "1" },
+    dep: { local: "01" },
+  });
 
   return (
     <Context.Provider
@@ -39,6 +53,10 @@ export function Provider({ children }) {
         setAnimationUserSelected,
         animationTxtUserSelected,
         setAnimationTxtUserSelected,
+        form,
+        setForm,
+        memorySearch,
+        setMemorySearch,
       }}
     >
       {children}

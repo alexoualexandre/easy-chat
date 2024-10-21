@@ -1,15 +1,9 @@
-// import { useLocation } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 import { MyContext } from "./Context";
 import { useEffect, useState } from "react";
+import Cookies from "js-cookie";
 
 function Message() {
-  // const location = useLocation();
-  // const getSearchParams = () => {
-  //   return new URLSearchParams(location.search);
-  // };
-  const env = import.meta.env;
-  // const params = getSearchParams();
-  const [responseServer, setResponseServer] = useState();
   const {
     divMessage,
     setDivMessage,
@@ -20,6 +14,39 @@ function Message() {
     animationTxtUserSelected,
     setAnimationTxtUserSelected,
   } = MyContext();
+  const location = useLocation();
+  const getSearchParams = () => {
+    return new URLSearchParams(location.search);
+  };
+  const params = getSearchParams();
+  const env = import.meta.env;
+  const Auth = Cookies.get("auth");
+
+  const [responseServer, setResponseServer] = useState();
+  const [changeTxt, setChangeTxt] = useState({
+    exp: Auth,
+    dest: params.get("dest"),
+    message: "",
+    addition: parseInt(Auth, 10) + parseInt(params.get("dest")),
+  });
+
+  useEffect(() => {
+    setChangeTxt({
+      exp: Auth,
+      dest: params.get("dest"),
+      message: "",
+      addition: parseInt(Auth, 10) + parseInt(params.get("dest")),
+    });
+  }, [userMessage]);
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setChangeTxt((prevState) => ({
+      ...prevState,
+      [name]: value,
+    }));
+  };
+
   const fctStyle = () => {
     setDivMessage(!divMessage);
     setUl(true);
@@ -38,7 +65,32 @@ function Message() {
     setAnimationTxtUserSelected(false);
   }, 1000);
 
-  responseServer && console.log(responseServer);
+  const subMessage = (e) => {
+    e.preventDefault();
+    if (changeTxt.message.length > 0 && changeTxt.message !== " ") {
+      fetch(
+        `http://${env.VITE_API_URL}:${env.VITE_API_SERVER_PORT}/add-message`,
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(changeTxt),
+        }
+      )
+        .then((response) => response.json())
+        .then((data) => {
+          console.log(data);
+        });
+      setChangeTxt({
+        exp: Auth,
+        dest: params.get("dest"),
+        message: "",
+        addition: parseInt(Auth, 10) + parseInt(params.get("dest")),
+      });
+    }
+  };
+
   return (
     <>
       <div className={divMessage ? "div-message" : "div-message-none"}>
@@ -89,7 +141,30 @@ function Message() {
             </button>
           )}
         </div>
-        <section className="container-message"></section>
+        <section
+          className={
+            animationTxtUserSelected
+              ? "container-message-animation"
+              : "container-message"
+          }
+        >
+          <iframe
+            className="ajax"
+            src={`/ajax?id=${params.get("dest")}`}
+          ></iframe>
+          <form method="post" className="form-message" onSubmit={subMessage}>
+            <textarea
+              name="message"
+              className="area-message"
+              onChange={handleChange}
+              value={changeTxt.message}
+              placeholder="écrivez votre message ..."
+            />
+            <button type="submit" className="submit-txt-message">
+              <img src="send.png" alt="envoyé" className="img-send" />
+            </button>
+          </form>
+        </section>
       </div>
     </>
   );

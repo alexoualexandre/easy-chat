@@ -28,6 +28,7 @@ function Home() {
     setUserMessage,
     setAnimationUserSelected,
     setAnimationTxtUserSelected,
+    memorySearch,
   } = MyContext();
 
   useEffect(() => {
@@ -40,6 +41,46 @@ function Home() {
         setResponseUser(r.filter((elem) => elem.id != Auth));
       });
   }, []);
+  const refresh = () => {
+    const search = typeof memorySearch.search;
+    const inline = typeof memorySearch.inline;
+    const dep = typeof memorySearch.dep;
+    const min = memorySearch.min;
+    const max = memorySearch.max;
+    if (
+      search !== "object" ||
+      inline !== "object" ||
+      dep !== "object" ||
+      min !== "18" ||
+      max !== "100"
+    ) {
+      fetch(
+        `http://${env.VITE_API_URL}:${env.VITE_API_SERVER_PORT}/recherche`,
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(memorySearch),
+        }
+      )
+        .then((response) => response.json())
+        .then((data) => {
+          if (data.filter((elem) => elem.id != Auth).length > 0) {
+            setResponseUser(data.filter((elem) => elem.id != Auth));
+          }
+        });
+    } else {
+      fetch(
+        `http://${env.VITE_API_URL}:${env.VITE_API_SERVER_PORT}/select-all-user`
+      )
+        .then((response) => response)
+        .then((resp) => resp.json())
+        .then((r) => {
+          setResponseUser(r.filter((elem) => elem.id != Auth));
+        });
+    }
+  };
 
   if (Auth) {
     return (
@@ -58,6 +99,13 @@ function Home() {
               voir filtres <span className="chevron"> &#x27A7; </span>
             </button>
             <div className="refresh">
+              <button
+                type="button"
+                className="button-refresh"
+                onClick={refresh}
+              >
+                {""}
+              </button>
               <img src="icons8-rafraîchir-32.png" alt="button refresh" />
             </div>
             <div className="the-users">

@@ -16,6 +16,8 @@ const {
   userSelected,
 } = require("../controler/userControler.js");
 
+const { addMessage, getMessage } = require("../controler/messageControler.js");
+
 const { argon } = require("../service/argon2.js");
 
 const path = require("path");
@@ -58,3 +60,7 @@ app.post("/insert-user", argon, insertUser);
 app.post("/recherche", recherche);
 
 app.get("/user-selected/:id", userSelected);
+
+app.post("/add-message", addMessage);
+
+app.get("/get-message/:id/:auth", getMessage);

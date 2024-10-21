@@ -86,7 +86,7 @@ class User {
       typeof data.dep === "object"
     ) {
       const [r] = await connection.query(
-        "SELECT id,sex,search,age,pseudo,created_at,dep,img,description,inline FROM user WHERE sex = ? AND age >= ? AND age <= ?",
+        "SELECT id,sex,search,age,pseudo,created_at,dep,img,description,inline FROM user WHERE sex = ? AND age >= ? AND age <= ? order by id desc",
         [data.search, parseInt(data.min, 10), parseInt(data.max, 10)]
       );
       return r;
@@ -98,7 +98,7 @@ class User {
       typeof data.dep === "object"
     ) {
       const [r] = await connection.query(
-        "SELECT id,sex,search,age,pseudo,created_at,dep,img,description,inline FROM user WHERE age >= ? AND age <= ? AND inline = ?",
+        "SELECT id,sex,search,age,pseudo,created_at,dep,img,description,inline FROM user WHERE age >= ? AND age <= ? AND inline = ? order by id desc",
         [
           parseInt(data.min, 10),
           parseInt(data.max, 10),
@@ -114,7 +114,7 @@ class User {
       typeof data.dep !== "object"
     ) {
       const [r] = await connection.query(
-        "SELECT id,sex,search,age,pseudo,created_at,dep,img,description,inline FROM user WHERE age >= ? AND age <= ? AND dep = ?",
+        "SELECT id,sex,search,age,pseudo,created_at,dep,img,description,inline FROM user WHERE age >= ? AND age <= ? AND dep = ? order by id desc",
         [
           parseInt(data.min, 10),
           parseInt(data.max, 10),
@@ -130,7 +130,7 @@ class User {
       typeof data.dep === "object"
     ) {
       const [r] = await connection.query(
-        "SELECT id,sex,search,age,pseudo,created_at,dep,img,description,inline FROM user WHERE sex = ? AND age >= ? AND age <= ? AND inline = ?",
+        "SELECT id,sex,search,age,pseudo,created_at,dep,img,description,inline FROM user WHERE sex = ? AND age >= ? AND age <= ? AND inline = ? order by id desc",
         [
           data.search,
           parseInt(data.min, 10),
@@ -147,7 +147,7 @@ class User {
       typeof data.dep !== "object"
     ) {
       const [r] = await connection.query(
-        "SELECT id,sex,search,age,pseudo,created_at,dep,img,description,inline FROM user WHERE sex = ? AND age >= ? AND age <= ? AND dep = ?",
+        "SELECT id,sex,search,age,pseudo,created_at,dep,img,description,inline FROM user WHERE sex = ? AND age >= ? AND age <= ? AND dep = ? order by id desc",
         [
           data.search,
           parseInt(data.min, 10),
@@ -164,7 +164,7 @@ class User {
       typeof data.dep !== "object"
     ) {
       const [r] = await connection.query(
-        "SELECT id,sex,search,age,pseudo,created_at,dep,img,description,inline FROM user WHERE age >= ? AND age <= ? AND dep = ? AND inline = ?",
+        "SELECT id,sex,search,age,pseudo,created_at,dep,img,description,inline FROM user WHERE age >= ? AND age <= ? AND dep = ? AND inline = ? order by id desc",
         [
           parseInt(data.min, 10),
           parseInt(data.max, 10),
@@ -175,8 +175,20 @@ class User {
       return r;
     }
 
+    if (
+      typeof data.search === "object" &&
+      typeof data.inline === "object" &&
+      typeof data.dep === "object"
+    ) {
+      const [r] = await connection.query(
+        "SELECT id,sex,search,age,pseudo,created_at,dep,img,description,inline FROM user WHERE age >= ? AND age <= ? order by id desc",
+        [parseInt(data.min, 10), parseInt(data.max, 10)]
+      );
+      return r;
+    }
+
     const [r] = await connection.query(
-      "SELECT id,sex,search,age,pseudo,created_at,dep,img,description,inline FROM user WHERE sex = ? AND age >= ? AND age <= ? AND dep = ? AND inline = ?",
+      "SELECT id,sex,search,age,pseudo,created_at,dep,img,description,inline FROM user WHERE sex = ? AND age >= ? AND age <= ? AND dep = ? AND inline = ? order by id desc",
       [
         data.search,
         parseInt(data.min, 10),
