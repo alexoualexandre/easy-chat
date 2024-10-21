@@ -17,7 +17,7 @@ class Message {
 
   async getMessage(data) {
     const [result] = await connection.query(
-      "SELECT * FROM message WHERE addition = ?",
+      "SELECT dest,exp,message,sex FROM message JOIN user ON message.exp = user.id WHERE addition = ?",
       [parseInt(data.id, 10) + parseInt(data.auth, 10)]
     );
     return result;

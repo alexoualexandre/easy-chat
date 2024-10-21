@@ -20,12 +20,12 @@ function Ajax() {
         .then((response) => response.json())
         .then((response) => {
           setData(response);
+          console.log(response);
         });
     }, 300);
     return () => clearInterval(interval);
   }, []);
   const bottomRef = useRef(null);
-
   const block = useRef();
   useEffect(() => {
     const enf = block.current.lastElementChild;
@@ -44,7 +44,35 @@ function Ajax() {
   return (
     <>
       <div className="block-ajax" ref={block}>
-        {data && data.map((elem) => <p key={elem.id}>{elem.message}</p>)}
+        {data &&
+          data.map((elem) => (
+            <p
+              key={elem.id}
+              style={
+                elem.sex === "homme"
+                  ? {
+                      width: "80%",
+                      border: "2px solid #4295cc",
+                      padding: "0.5em",
+                      position: "relative",
+                      left: "13%",
+                      marginTop: "0.5em",
+                      borderRadius: "0.5em",
+                    }
+                  : {
+                      width: "80%",
+                      border: "2px solid #ff114f",
+                      padding: "0.5em",
+                      position: "relative",
+                      left: "0%",
+                      marginTop: "0.5em",
+                      borderRadius: "0.5em",
+                    }
+              }
+            >
+              {elem.message}
+            </p>
+          ))}
       </div>
     </>
   );

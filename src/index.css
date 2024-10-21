@@ -1272,7 +1272,7 @@ button {
     font-family:
       Baskervville SC,
       serif;
-    font-size: 0.7em;
+    font-size: 0.9em;
     font-weight: bold;
   }
 
@@ -1314,7 +1314,7 @@ button {
     height: 4.7em;
     text-align: left;
     overflow-y: scroll;
-    font-size: 0.8em;
+    font-size: 0.9em;
   }
 
   .lorem-description::-webkit-scrollbar {
@@ -1405,7 +1405,8 @@ button {
     width: 98%;
     height: 10em;
     margin-left: 1%;
-    border: 1px solid red;
+    margin-top: -1em;
+    border: none;
   }
 
   .block-ajax {
@@ -2226,6 +2227,5 @@ button {
     width: 98%;
     height: 18.5em;
     margin-left: 1%;
-    border: 1px solid red;
   }
 }
