@@ -6,6 +6,7 @@ import { MyContext } from "./Context.jsx";
 import FilterSearch from "./FilterSearch.jsx";
 import Message from "./Message.jsx";
 import { Link } from "react-router-dom";
+import NewMessage from "./NewMessage.jsx";
 
 function Home() {
   // const location = useLocation();
@@ -29,6 +30,8 @@ function Home() {
     setAnimationUserSelected,
     setAnimationTxtUserSelected,
     memorySearch,
+    blockNewMessage,
+    setBlockNewMessage,
   } = MyContext();
 
   useEffect(() => {
@@ -94,6 +97,7 @@ function Home() {
               className="voir-filtres"
               onClick={() => {
                 setFilter(!filter);
+                setBlockNewMessage(false);
               }}
             >
               voir filtres <span className="chevron"> &#x27A7; </span>
@@ -110,6 +114,7 @@ function Home() {
             </div>
             <div className="the-users">
               {filter && <FilterSearch />}
+              {blockNewMessage && <NewMessage />}
               <ul className={ul ? "ul-article" : "ul-article-none"}>
                 {responseUser &&
                   responseUser.map((user, index) => (

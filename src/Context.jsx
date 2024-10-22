@@ -29,6 +29,7 @@ export function Provider({ children }) {
     inline: { on: "0", off: "1" },
     dep: { local: "01" },
   });
+  const [blockNewMessage, setBlockNewMessage] = useState(false);
 
   return (
     <Context.Provider
@@ -57,6 +58,8 @@ export function Provider({ children }) {
         setForm,
         memorySearch,
         setMemorySearch,
+        blockNewMessage,
+        setBlockNewMessage,
       }}
     >
       {children}

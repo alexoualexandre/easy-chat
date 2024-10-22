@@ -21,5 +21,24 @@ const getMessage = async (req, res, next) => {
   }
 };
 
+const countMessage = async (req, res, next) => {
+  const { auth } = req.params;
+  try {
+    const data = await new Message().countMessage(auth);
+    res.json(data);
+  } catch (err) {
+    next({ error: `erreur:${err}` });
+  }
+};
+
+const getNewMessage = async (req, res, next) => {
+  const { auth } = req.params;
+  try {
+    const data = await new Message().getNewMessage(auth);
+    res.json(data);
+  } catch (err) {
+    next({ error: `erreur:${err}` });
+  }
+};
 // eslint-disable-next-line no-undef
-module.exports = { addMessage, getMessage };
+module.exports = { addMessage, getMessage, countMessage, getNewMessage };

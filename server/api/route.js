@@ -16,7 +16,12 @@ const {
   userSelected,
 } = require("../controler/userControler.js");
 
-const { addMessage, getMessage } = require("../controler/messageControler.js");
+const {
+  addMessage,
+  getMessage,
+  countMessage,
+  getNewMessage,
+} = require("../controler/messageControler.js");
 
 const { argon } = require("../service/argon2.js");
 
@@ -64,3 +69,7 @@ app.get("/user-selected/:id", userSelected);
 app.post("/add-message", addMessage);
 
 app.get("/get-message/:id/:auth", getMessage);
+
+app.get("/count-message/:auth", countMessage);
+
+app.get("/get-new-message/:auth", getNewMessage);

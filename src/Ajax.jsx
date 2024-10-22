@@ -20,7 +20,6 @@ function Ajax() {
         .then((response) => response.json())
         .then((response) => {
           setData(response);
-          console.log(response);
         });
     }, 300);
     return () => clearInterval(interval);

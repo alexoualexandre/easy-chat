@@ -48,6 +48,7 @@ class User {
 
   async modifyImgProfile(nv, id) {
     await connection.query("UPDATE user SET img = ? WHERE id = ?", [nv, id]);
+    await connection.query("INSERT INTO album (id_user,nom) VALUE (?,?)", [id, nv]);
   }
 
   async selectUserId(id) {
