@@ -133,12 +133,14 @@ function Home() {
                               setUserMessage(user.id);
                               setAnimationUserSelected(true);
                               setAnimationTxtUserSelected(true);
+                              setBlockNewMessage(false);
                             } else {
                               setFilter(false);
                               setDivMessage(true);
                               setUserMessage(user.id);
                               setAnimationUserSelected(true);
                               setAnimationTxtUserSelected(true);
+                              setBlockNewMessage(false);
                             }
                           }}
                         ></button>

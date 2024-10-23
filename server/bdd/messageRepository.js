@@ -34,10 +34,17 @@ class Message {
 
   async getNewMessage(auth) {
     const [result] = await connection.query(
-      "SELECT addition,created_at_message,dep,age,exp,img,inline,message,pseudo,search,sex FROM message JOIN user ON message.exp = user.id WHERE dest = ?",
+      "SELECT addition,created_at_message,dep,age,exp,img,inline,message,pseudo,search,sex FROM message JOIN user ON message.exp = user.id WHERE dest = ? AND new = 1",
       [auth]
     );
     return result;
+  }
+
+  async updateCountMessage(exp) {
+    await connection.query("UPDATE message SET new = 0 WHERE exp = ?", [
+      parseInt(exp, 10),
+    ]);
+    // return result;
   }
 }
 

@@ -21,6 +21,7 @@ const {
   getMessage,
   countMessage,
   getNewMessage,
+  updateCountMessage,
 } = require("../controler/messageControler.js");
 
 const { argon } = require("../service/argon2.js");
@@ -73,3 +74,5 @@ app.get("/get-message/:id/:auth", getMessage);
 app.get("/count-message/:auth", countMessage);
 
 app.get("/get-new-message/:auth", getNewMessage);
+
+app.get("/update-count-message/:exp", updateCountMessage);

@@ -1,10 +1,19 @@
 import { useEffect, useState } from "react";
 import { MyContext } from "./Context";
 import Cookies from "js-cookie";
+import { Link } from "react-router-dom";
 
 function NewMessage() {
   const Auth = Cookies.get("auth");
-  const { setBlockNewMessage } = MyContext();
+  const {
+    setBlockNewMessage,
+    setUl,
+    setDivMessage,
+    setUserMessage,
+    setAnimationUserSelected,
+    setAnimationTxtUserSelected,
+    setFilter,
+  } = MyContext();
   const env = import.meta.env;
   const [dataNewMessage, setDataNewMessage] = useState();
 
@@ -23,9 +32,15 @@ function NewMessage() {
           }, []);
           setDataNewMessage(tableauUnique);
         });
-    }, 400);
+    }, 1000);
     return () => clearInterval(interval);
-  }, []);
+  }, [dataNewMessage, Auth, env.VITE_API_URL, env.VITE_API_SERVER_PORT]);
+
+  const request = (exp) => {
+    fetch(
+      `http://${env.VITE_API_URL}:${env.VITE_API_SERVER_PORT}/update-count-message/${exp}`
+    );
+  };
 
   return (
     <section className="new-message">
@@ -43,6 +58,32 @@ function NewMessage() {
           dataNewMessage.map((elem, index) => (
             <li key={index} className="li-new-message">
               <article className="article-new-message">
+                <Link to={`/home?dest=${elem.exp}`}>
+                  <button
+                    type="button"
+                    className="button-new-message-user-selected"
+                    onClick={() => {
+                      setBlockNewMessage(false);
+                      if (window.innerWidth < 1024) {
+                        setUl(false);
+                        setDivMessage(true);
+                        setUserMessage(elem.exp);
+                        setAnimationUserSelected(true);
+                        setAnimationTxtUserSelected(true);
+                        setBlockNewMessage(false);
+                        request(elem.exp);
+                      } else {
+                        setFilter(false);
+                        setDivMessage(true);
+                        setUserMessage(elem.exp);
+                        setAnimationUserSelected(true);
+                        setAnimationTxtUserSelected(true);
+                        setBlockNewMessage(false);
+                        request;
+                      }
+                    }}
+                  ></button>
+                </Link>
                 <img
                   src={
                     elem.img === "logo.png"
