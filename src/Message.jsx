@@ -22,12 +22,28 @@ function Message() {
   const env = import.meta.env;
   const Auth = Cookies.get("auth");
 
+  const [nvx, setNvx] = useState();
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      fetch(
+        `http://${env.VITE_API_URL}:${env.VITE_API_SERVER_PORT}/get-message/${params.get("dest")}/${Cookies.get("auth")}`
+      )
+        .then((response) => response.json())
+        .then((response) => {
+          setNvx(response[0].new);
+        });
+    }, 500);
+    return () => clearInterval(interval);
+  }, [env.VITE_API_URL, env.VITE_API_SERVER_PORT, params]);
+
   const [responseServer, setResponseServer] = useState();
   const [changeTxt, setChangeTxt] = useState({
     exp: Auth,
     dest: params.get("dest"),
     message: "",
     addition: parseInt(Auth, 10) + parseInt(params.get("dest")),
+    new: nvx && nvx == 0 ? 0 : 1,
   });
 
   useEffect(() => {
@@ -36,6 +52,7 @@ function Message() {
       dest: params.get("dest"),
       message: "",
       addition: parseInt(Auth, 10) + parseInt(params.get("dest")),
+      new: nvx && nvx == 0 ? 0 : 1,
     });
   }, [userMessage]);
 
@@ -60,6 +77,7 @@ function Message() {
         setResponseServer(response);
       });
   }, [userMessage]);
+
   setTimeout(() => {
     setAnimationUserSelected(false);
     setAnimationTxtUserSelected(false);
@@ -87,6 +105,7 @@ function Message() {
         dest: params.get("dest"),
         message: "",
         addition: parseInt(Auth, 10) + parseInt(params.get("dest")),
+        new: 0,
       });
     }
   };

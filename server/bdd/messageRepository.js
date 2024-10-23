@@ -10,7 +10,7 @@ class Message {
         parseInt(data.dest, 10),
         data.message,
         data.addition,
-        1,
+        data.new,
       ]
     );
     // return userId;
@@ -18,7 +18,7 @@ class Message {
 
   async getMessage(data) {
     const [result] = await connection.query(
-      "SELECT dest,exp,message,sex FROM message JOIN user ON message.exp = user.id WHERE addition = ?",
+      "SELECT dest,exp,message,sex,new FROM message JOIN user ON message.exp = user.id WHERE addition = ?",
       [parseInt(data.id, 10) + parseInt(data.auth, 10)]
     );
     return result;

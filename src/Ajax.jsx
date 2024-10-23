@@ -24,6 +24,7 @@ function Ajax() {
     }, 300);
     return () => clearInterval(interval);
   }, []);
+
   const bottomRef = useRef(null);
   const block = useRef();
   useEffect(() => {
