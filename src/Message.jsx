@@ -43,7 +43,7 @@ function Message() {
     dest: params.get("dest"),
     message: "",
     addition: parseInt(Auth, 10) + parseInt(params.get("dest")),
-    new: nvx && nvx == 0 ? 0 : 1,
+    new: nvx && nvx == 0 && divMessage ? 0 : 1,
   });
 
   useEffect(() => {
@@ -52,7 +52,7 @@ function Message() {
       dest: params.get("dest"),
       message: "",
       addition: parseInt(Auth, 10) + parseInt(params.get("dest")),
-      new: nvx && nvx == 0 ? 0 : 1,
+      new: nvx && nvx == 0 && divMessage ? 0 : 1,
     });
   }, [userMessage]);
 
