@@ -42,6 +42,12 @@ function NewMessage() {
     );
   };
 
+  const update = (u)=>{
+    fetch(
+      `http://${env.VITE_API_URL}:${env.VITE_API_SERVER_PORT}/update-present/${u}/${Auth}`
+    );
+  }
+
   return (
     <section className="new-message">
       <button
@@ -72,6 +78,7 @@ function NewMessage() {
                         setAnimationTxtUserSelected(true);
                         setBlockNewMessage(false);
                         request(elem.exp);
+                        update(elem.exp);
                       } else {
                         setFilter(false);
                         setDivMessage(true);
@@ -80,6 +87,7 @@ function NewMessage() {
                         setAnimationTxtUserSelected(true);
                         setBlockNewMessage(false);
                         request;
+                        update(elem.exp);
                       }
                     }}
                   ></button>

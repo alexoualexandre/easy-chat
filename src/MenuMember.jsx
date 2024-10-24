@@ -1,13 +1,8 @@
-import { Link, useLocation } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { MyContext } from "./Context";
 
 function MenuMember() {
   const { setBurgerMember } = MyContext();
-  const location = useLocation();
-  const getSearchParams = () => {
-    return new URLSearchParams(location.search);
-  };
-  const params = getSearchParams();
   return (
     <div className="menu-member">
       <button
@@ -20,10 +15,7 @@ function MenuMember() {
         ×
       </button>
       <ul className="ul-menu-member">
-        <Link
-          to={`/profil?id=${params.get("dest")}`}
-          style={{ textDecoration: "none", color: "white" }}
-        >
+        <Link to={`/profil`} style={{ textDecoration: "none", color: "white" }}>
           <li className="li-menu-member">Mon profil</li>
         </Link>
         <li className="li-menu-member">Mes photos</li>

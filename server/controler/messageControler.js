@@ -2,9 +2,9 @@
 const { Message } = require("../bdd/messageRepository.js");
 
 const addMessage = async (req, res, next) => {
-  const data = req.body;
+  const { changeTxt, verify } = req.body;
   try {
-    await new Message().addMessage(data);
+    await new Message().addMessage(changeTxt, verify);
     res.json({ add: "ok" });
   } catch (err) {
     next({ error: `erreur:${err}` });
@@ -45,11 +45,11 @@ const updateCountMessage = async (req, res, next) => {
   const { exp } = req.params;
   try {
     await new Message().updateCountMessage(exp);
-    // res.json(data);
   } catch (err) {
     next({ error: `erreur:${err}` });
   }
 };
+
 // eslint-disable-next-line no-undef
 module.exports = {
   addMessage,

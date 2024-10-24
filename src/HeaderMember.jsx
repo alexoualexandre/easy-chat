@@ -7,6 +7,7 @@ function HeaderMember() {
   const env = import.meta.env;
   const { setBurgerMember, setBlockNewMessage } = MyContext();
   const [count, setCount] = useState();
+
   useEffect(() => {
     const interval = setInterval(() => {
       fetch(
@@ -15,15 +16,17 @@ function HeaderMember() {
         .then((response) => response.json())
         .then((response) => {
           const countValue = response[0]["COUNT(*)"];
+
           setCount(countValue);
         });
     }, 400);
     return () => clearInterval(interval);
-  }, []);
+  }, [Auth, env.VITE_API_URL, env.VITE_API_SERVER_PORT]);
 
   const nvMessage = () => {
     setBlockNewMessage(true);
   };
+
   return (
     <div className="header-member">
       <h1 className="easy-chat">Easy-chat</h1>

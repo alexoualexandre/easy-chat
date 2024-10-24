@@ -2,15 +2,15 @@
 const { connection } = require("./index.js");
 
 class Message {
-  async addMessage(data) {
+  async addMessage(changeTxt, verify) {
     await connection.query(
       "INSERT INTO message (exp,dest,message,addition,new) VALUES (?,?,?,?,?)",
       [
-        parseInt(data.exp, 10),
-        parseInt(data.dest, 10),
-        data.message,
-        data.addition,
-        data.new,
+        parseInt(changeTxt.exp, 10),
+        parseInt(changeTxt.dest, 10),
+        changeTxt.message,
+        changeTxt.addition,
+        verify ? 0 : 1,
       ]
     );
     // return userId;

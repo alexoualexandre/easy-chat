@@ -9,11 +9,6 @@ import { Link } from "react-router-dom";
 import NewMessage from "./NewMessage.jsx";
 
 function Home() {
-  // const location = useLocation();
-  // const getSearchParams = () => {
-  //   return new URLSearchParams(location.search);
-  // };
-  // const params = getSearchParams();
   const env = import.meta.env;
   const Auth = Cookies.get("auth");
   const {
@@ -85,6 +80,12 @@ function Home() {
     }
   };
 
+  const updatePresent = (u) => {
+    fetch(
+      `http://${env.VITE_API_URL}:${env.VITE_API_SERVER_PORT}/update-present/${u}/${Auth}`
+    );
+  };
+
   if (Auth) {
     return (
       <>
@@ -134,6 +135,7 @@ function Home() {
                               setAnimationUserSelected(true);
                               setAnimationTxtUserSelected(true);
                               setBlockNewMessage(false);
+                              updatePresent(user.id);
                             } else {
                               setFilter(false);
                               setDivMessage(true);
@@ -141,6 +143,7 @@ function Home() {
                               setAnimationUserSelected(true);
                               setAnimationTxtUserSelected(true);
                               setBlockNewMessage(false);
+                              updatePresent(user.id);
                             }
                           }}
                         ></button>

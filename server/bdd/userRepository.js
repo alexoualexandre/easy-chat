@@ -48,7 +48,10 @@ class User {
 
   async modifyImgProfile(nv, id) {
     await connection.query("UPDATE user SET img = ? WHERE id = ?", [nv, id]);
-    await connection.query("INSERT INTO album (id_user,nom) VALUE (?,?)", [id, nv]);
+    await connection.query("INSERT INTO album (id_user,nom) VALUE (?,?)", [
+      id,
+      nv,
+    ]);
   }
 
   async selectUserId(id) {
@@ -207,6 +210,26 @@ class User {
       [id]
     );
     return userId;
+  }
+
+  async updatePresent(data) {
+    await connection.query("UPDATE user SET present = ? WHERE id = ?", [
+      parseInt(data.you, 10),
+      parseInt(data.me, 10),
+    ]);
+    // return userId;
+  }
+
+  async verifyPresent(dest) {
+    const [result] = await connection.query(
+      "SELECT present FROM user WHERE id = ?",
+      [dest]
+    );
+    return result;
+  }
+
+  async updatePresent0(me) {
+    await connection.query("UPDATE user SET present = 0 WHERE id = ?", [me]);
   }
 }
 
