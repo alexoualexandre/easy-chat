@@ -21,7 +21,7 @@ function Ajax() {
         .then((response) => {
           setData(response);
         });
-    }, 300);
+    }, 2000);
     return () => clearInterval(interval);
   }, []);
 

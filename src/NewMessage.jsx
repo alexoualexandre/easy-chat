@@ -36,17 +36,11 @@ function NewMessage() {
     return () => clearInterval(interval);
   }, [dataNewMessage, Auth, env.VITE_API_URL, env.VITE_API_SERVER_PORT]);
 
-  const request = (exp) => {
+  const update = (u) => {
     fetch(
-      `http://${env.VITE_API_URL}:${env.VITE_API_SERVER_PORT}/update-count-message/${exp}`
+      `http://${env.VITE_API_URL}:${env.VITE_API_SERVER_PORT}/update-count-message/${u}`
     );
   };
-
-  const update = (u)=>{
-    fetch(
-      `http://${env.VITE_API_URL}:${env.VITE_API_SERVER_PORT}/update-present/${u}/${Auth}`
-    );
-  }
 
   return (
     <section className="new-message">
@@ -77,7 +71,6 @@ function NewMessage() {
                         setAnimationUserSelected(true);
                         setAnimationTxtUserSelected(true);
                         setBlockNewMessage(false);
-                        request(elem.exp);
                         update(elem.exp);
                       } else {
                         setFilter(false);
@@ -86,7 +79,6 @@ function NewMessage() {
                         setAnimationUserSelected(true);
                         setAnimationTxtUserSelected(true);
                         setBlockNewMessage(false);
-                        request;
                         update(elem.exp);
                       }
                     }}

@@ -19,7 +19,7 @@ function HeaderMember() {
 
           setCount(countValue);
         });
-    }, 400);
+    }, 3000);
     return () => clearInterval(interval);
   }, [Auth, env.VITE_API_URL, env.VITE_API_SERVER_PORT]);
 

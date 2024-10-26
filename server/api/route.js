@@ -14,9 +14,6 @@ const {
   updateInline,
   recherche,
   userSelected,
-  updatePresent,
-  verifyPresent,
-  updatePresent0,
 } = require("../controler/userControler.js");
 
 const {
@@ -79,9 +76,3 @@ app.get("/count-message/:auth", countMessage);
 app.get("/get-new-message/:auth", getNewMessage);
 
 app.get("/update-count-message/:exp", updateCountMessage);
-
-app.get("/update-present/:you/:me", updatePresent);
-
-app.get("/verify-present/:dest", verifyPresent);
-
-app.get("/update-present-0/:me", updatePresent0);

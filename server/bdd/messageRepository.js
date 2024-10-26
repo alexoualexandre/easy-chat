@@ -2,18 +2,17 @@
 const { connection } = require("./index.js");
 
 class Message {
-  async addMessage(changeTxt, verify) {
+  async addMessage(data) {
     await connection.query(
       "INSERT INTO message (exp,dest,message,addition,new) VALUES (?,?,?,?,?)",
       [
-        parseInt(changeTxt.exp, 10),
-        parseInt(changeTxt.dest, 10),
-        changeTxt.message,
-        changeTxt.addition,
-        verify ? 0 : 1,
+        parseInt(data.exp, 10),
+        parseInt(data.dest, 10),
+        data.message,
+        data.addition,
+        1,
       ]
     );
-    // return userId;
   }
 
   async getMessage(data) {
@@ -44,7 +43,6 @@ class Message {
     await connection.query("UPDATE message SET new = 0 WHERE exp = ?", [
       parseInt(exp, 10),
     ]);
-    // return result;
   }
 }
 

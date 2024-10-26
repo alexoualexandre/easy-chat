@@ -23,20 +23,6 @@ function Message() {
   const Auth = Cookies.get("auth");
 
   const [responseServer, setResponseServer] = useState();
-  const [verifyPresent, setVerifyPresent] = useState();
-
-  useEffect(() => {
-    const interval = setInterval(() => {
-      fetch(
-        `http://${env.VITE_API_URL}:${env.VITE_API_SERVER_PORT}/verify-present/${params.get("dest")}}`
-      )
-        .then((response) => response.json())
-        .then((response) => {
-          setVerifyPresent(response[0].present);
-        });
-    }, 500);
-    return () => clearInterval(interval);
-  }, [env.VITE_API_URL, env.VITE_API_SERVER_PORT, params]);
 
   const [changeTxt, setChangeTxt] = useState({
     exp: Auth,
@@ -45,17 +31,14 @@ function Message() {
     addition: parseInt(Auth, 10) + parseInt(params.get("dest")),
   });
 
-  // if(verifyPresent && verifyPresent == Auth) alert()
-
-  // useEffect(() => {
-  //   setChangeTxt({
-  //     exp: Auth,
-  //     dest: params.get("dest"),
-  //     message: "",
-  //     addition: parseInt(Auth, 10) + parseInt(params.get("dest")),
-  //     new: verifyPresent && parseInt(verifyPresent,10) > 0 ? 0 : 1,
-  //   });
-  // }, [userMessage]);
+  useEffect(() => {
+    setChangeTxt({
+      exp: Auth,
+      dest: params.get("dest"),
+      message: "",
+      addition: parseInt(Auth, 10) + parseInt(params.get("dest")),
+    });
+  }, [userMessage]);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -66,9 +49,6 @@ function Message() {
   };
 
   const fctStyle = () => {
-    fetch(
-      `http://${env.VITE_API_URL}:${env.VITE_API_SERVER_PORT}/update-present-0/${Auth}`
-    );
     setDivMessage(!divMessage);
     setUl(true);
   };
@@ -87,9 +67,6 @@ function Message() {
     setAnimationTxtUserSelected(false);
   }, 1000);
 
-  const verify =
-    verifyPresent && parseInt(verifyPresent, 10) === parseInt(Auth, 10);
-
   const subMessage = (e) => {
     e.preventDefault();
     if (changeTxt.message.length > 0 && changeTxt.message !== " ") {
@@ -100,7 +77,7 @@ function Message() {
           headers: {
             "Content-Type": "application/json",
           },
-          body: JSON.stringify({ changeTxt, verify }),
+          body: JSON.stringify(changeTxt),
         }
       )
         .then((response) => response.json())
@@ -157,15 +134,17 @@ function Message() {
           </p>
 
           {window.innerWidth < 1024 && (
-            <Link to="/home">
-              <button
-                className="button-div-message"
-                type="button"
-                onClick={fctStyle}
-              >
-                ×
-              </button>
-            </Link>
+            <>
+              <Link to="/home">
+                <button
+                  className="button-div-message"
+                  type="button"
+                  onClick={fctStyle}
+                >
+                  ×
+                </button>
+              </Link>
+            </>
           )}
         </div>
         <section

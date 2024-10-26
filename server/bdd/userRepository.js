@@ -211,26 +211,6 @@ class User {
     );
     return userId;
   }
-
-  async updatePresent(data) {
-    await connection.query("UPDATE user SET present = ? WHERE id = ?", [
-      parseInt(data.you, 10),
-      parseInt(data.me, 10),
-    ]);
-    // return userId;
-  }
-
-  async verifyPresent(dest) {
-    const [result] = await connection.query(
-      "SELECT present FROM user WHERE id = ?",
-      [dest]
-    );
-    return result;
-  }
-
-  async updatePresent0(me) {
-    await connection.query("UPDATE user SET present = 0 WHERE id = ?", [me]);
-  }
 }
 
 // eslint-disable-next-line no-undef
