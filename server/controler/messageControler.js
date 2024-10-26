@@ -2,9 +2,9 @@
 const { Message } = require("../bdd/messageRepository.js");
 
 const addMessage = async (req, res, next) => {
-  const { changeTxt, verify } = req.body;
+  const data = req.body;
   try {
-    await new Message().addMessage(changeTxt, verify);
+    await new Message().addMessage(data);
     res.json({ add: "ok" });
   } catch (err) {
     next({ error: `erreur:${err}` });

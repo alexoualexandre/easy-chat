@@ -196,35 +196,6 @@ const userSelected = async (req, res, next) => {
   }
 };
 
-const updatePresent = async (req, res, next) => {
-  const { you, me } = req.params;
-  try {
-    await new User().updatePresent({ you: you, me: me });
-    // res.json(userId);
-  } catch (err) {
-    next({ error: `erreur:${err}` });
-  }
-};
-
-const verifyPresent = async (req, res, next) => {
-  const { dest } = req.params;
-  try {
-    const result = await new User().verifyPresent(dest);
-    res.json(result);
-  } catch (err) {
-    next({ error: `erreur:${err}` });
-  }
-};
-
-const updatePresent0 = async (req, res, next) => {
-  const { me } = req.params;
-  try {
-    await new User().updatePresent0(me);
-  } catch (err) {
-    next({ error: `erreur:${err}` });
-  }
-};
-
 module.exports = {
   getUser,
   insertUser,
@@ -237,7 +208,4 @@ module.exports = {
   updateInline,
   recherche,
   userSelected,
-  updatePresent,
-  verifyPresent,
-  updatePresent0,
 };
