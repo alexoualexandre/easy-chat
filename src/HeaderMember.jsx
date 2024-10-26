@@ -5,7 +5,13 @@ import Cookies from "js-cookie";
 function HeaderMember() {
   const Auth = Cookies.get("auth");
   const env = import.meta.env;
-  const { setBurgerMember, setBlockNewMessage, count, setCount } = MyContext();
+  const {
+    setBurgerMember,
+    setBlockNewMessage,
+    count,
+    setCount,
+    blockNewMessage,
+  } = MyContext();
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -20,7 +26,7 @@ function HeaderMember() {
         });
     }, 1000);
     return () => clearInterval(interval);
-  }, []);
+  }, [blockNewMessage]);
 
   const nvMessage = () => {
     setBlockNewMessage(true);
