@@ -20,7 +20,7 @@ function HeaderMember() {
         });
     }, 1000);
     return () => clearInterval(interval);
-  }, [Auth, env.VITE_API_URL, env.VITE_API_SERVER_PORT, setCount]);
+  }, []);
 
   const nvMessage = () => {
     setBlockNewMessage(true);
