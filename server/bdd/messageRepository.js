@@ -2,6 +2,12 @@
 const { connection } = require("./index.js");
 
 class Message {
+  async updateCountMessage(u) {
+    await connection.query("UPDATE message SET new = 0 WHERE exp = ?", [
+      parseInt(u.u, 10),
+    ]);
+  }
+
   async addMessage(data) {
     await connection.query(
       "INSERT INTO message (exp,dest,message,addition,new) VALUES (?,?,?,?,?)",
@@ -37,12 +43,6 @@ class Message {
       [auth]
     );
     return result;
-  }
-
-  async updateCountMessage(exp) {
-    await connection.query("UPDATE message SET new = 0 WHERE exp = ?", [
-      parseInt(exp, 10),
-    ]);
   }
 }
 

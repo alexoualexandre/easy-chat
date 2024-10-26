@@ -41,6 +41,8 @@ const storage = multer.diskStorage({
 
 const upload = multer({ storage: storage });
 
+app.put("/update-count-message", updateCountMessage);
+
 app.post("/upload-file", upload.single("file"), function (req, res) {
   res.json({ nvName: req.file.filename });
 });
@@ -74,5 +76,3 @@ app.get("/get-message/:id/:auth", getMessage);
 app.get("/count-message/:auth", countMessage);
 
 app.get("/get-new-message/:auth", getNewMessage);
-
-app.get("/update-count-message/:exp", updateCountMessage);

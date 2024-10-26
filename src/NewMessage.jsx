@@ -13,6 +13,7 @@ function NewMessage() {
     setAnimationUserSelected,
     setAnimationTxtUserSelected,
     setFilter,
+    count,
   } = MyContext();
   const env = import.meta.env;
   const [dataNewMessage, setDataNewMessage] = useState();
@@ -34,11 +35,18 @@ function NewMessage() {
         });
     }, 1000);
     return () => clearInterval(interval);
-  }, [dataNewMessage, Auth, env.VITE_API_URL, env.VITE_API_SERVER_PORT]);
+  }, [dataNewMessage, Auth, env.VITE_API_URL, env.VITE_API_SERVER_PORT, count]);
 
   const update = (u) => {
     fetch(
-      `http://${env.VITE_API_URL}:${env.VITE_API_SERVER_PORT}/update-count-message/${u}`
+      `http://${env.VITE_API_URL}:${env.VITE_API_SERVER_PORT}/update-count-message`,
+      {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ u: u }),
+      }
     );
   };
 
@@ -63,7 +71,9 @@ function NewMessage() {
                     type="button"
                     className="button-new-message-user-selected"
                     onClick={() => {
+                      update(elem.exp);
                       setBlockNewMessage(false);
+
                       if (window.innerWidth < 1024) {
                         setUl(false);
                         setDivMessage(true);
@@ -71,7 +81,6 @@ function NewMessage() {
                         setAnimationUserSelected(true);
                         setAnimationTxtUserSelected(true);
                         setBlockNewMessage(false);
-                        update(elem.exp);
                       } else {
                         setFilter(false);
                         setDivMessage(true);
@@ -79,10 +88,11 @@ function NewMessage() {
                         setAnimationUserSelected(true);
                         setAnimationTxtUserSelected(true);
                         setBlockNewMessage(false);
-                        update(elem.exp);
                       }
                     }}
-                  ></button>
+                  >
+                    .
+                  </button>
                 </Link>
                 <img
                   src={

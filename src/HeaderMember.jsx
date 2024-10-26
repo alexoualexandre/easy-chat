@@ -1,12 +1,11 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { MyContext } from "./Context.jsx";
 import Cookies from "js-cookie";
 
 function HeaderMember() {
   const Auth = Cookies.get("auth");
   const env = import.meta.env;
-  const { setBurgerMember, setBlockNewMessage } = MyContext();
-  const [count, setCount] = useState();
+  const { setBurgerMember, setBlockNewMessage, count, setCount } = MyContext();
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -19,9 +18,9 @@ function HeaderMember() {
 
           setCount(countValue);
         });
-    }, 3000);
+    }, 1000);
     return () => clearInterval(interval);
-  }, [Auth, env.VITE_API_URL, env.VITE_API_SERVER_PORT]);
+  }, [Auth, env.VITE_API_URL, env.VITE_API_SERVER_PORT, setCount]);
 
   const nvMessage = () => {
     setBlockNewMessage(true);

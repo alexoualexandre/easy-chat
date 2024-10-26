@@ -42,9 +42,9 @@ const getNewMessage = async (req, res, next) => {
 };
 
 const updateCountMessage = async (req, res, next) => {
-  const { exp } = req.params;
+  const u = req.body;
   try {
-    await new Message().updateCountMessage(exp);
+    await new Message().updateCountMessage(u);
   } catch (err) {
     next({ error: `erreur:${err}` });
   }
