@@ -2,7 +2,7 @@
 
 const express = require("express");
 
-const path = require('path');
+const path = require("path");
 
 const cors = require("cors");
 
@@ -10,11 +10,21 @@ const app = express();
 
 app.use(express.json());
 
-app.use(cors());
+const corsOptions = {
+  origin: function (origin, callback) {
+    const whitelist = ["http://localhost:5173", "http://77.37.51.45:3007"];
+    if (whitelist.indexOf(origin) !== -1 || !origin) {
+      callback(null, true);
+    } else {
+      callback(new Error("Not allowed by CORS"));
+    }
+  },
+};
 
-app.use('/upload',express.static(path.join(__dirname,'/upload')));
+app.use(cors(corsOptions));
 
-app.listen(3311);
+app.use("/upload", express.static(path.join(__dirname, "/upload")));
+
+app.listen("3311");
 
 module.exports = { app };
-

@@ -3,9 +3,11 @@ const { connection } = require("./index.js");
 
 class Message {
   async updateCountMessage(u) {
-    await connection.query("UPDATE message SET new = 0 WHERE exp = ?", [
-      parseInt(u.u, 10),
-    ]);
+    const resp = await connection.query(
+      "UPDATE message SET new = 0 WHERE exp = ?",
+      [parseInt(u.u, 10)]
+    );
+    return resp;
   }
 
   async addMessage(data) {
@@ -34,7 +36,7 @@ class Message {
       "SELECT COUNT(*) FROM message WHERE dest = ? AND new = 1",
       [Auth]
     );
-    return count;
+    return count[0];
   }
 
   async getNewMessage(auth) {

@@ -54,13 +54,14 @@ function Message() {
   };
   useEffect(() => {
     fetch(
-      `http://${env.VITE_API_URL}:${env.VITE_API_SERVER_PORT}/user-selected/${userMessage}`
+      `http://${env.VITE_API_URL}:${env.VITE_API_SERVER_PORT}/user-selected/${params.get("dest")}`
     )
       .then((response) => response.json())
       .then((response) => {
         setResponseServer(response);
+        console.log(response);
       });
-  }, [userMessage]);
+  }, []);
 
   setTimeout(() => {
     setAnimationUserSelected(false);

@@ -44,7 +44,8 @@ const getNewMessage = async (req, res, next) => {
 const updateCountMessage = async (req, res, next) => {
   const u = req.body;
   try {
-    await new Message().updateCountMessage(u);
+    const resp = await new Message().updateCountMessage(u);
+    res.json(resp);
   } catch (err) {
     next({ error: `erreur:${err}` });
   }

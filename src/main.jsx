@@ -11,6 +11,7 @@ import Connexion from "./Connexion.jsx";
 import MyProfil from "./MyProfil.jsx";
 import NotFound from "./NotFound.jsx";
 import Ajax from "./Ajax.jsx";
+import Message from "./Message.jsx";
 
 const router = createBrowserRouter([
   {
@@ -44,6 +45,10 @@ const router = createBrowserRouter([
   {
     path: "/ajax",
     element: <Ajax />,
+  },
+  {
+    path: "/message",
+    element: <Message />,
   },
 ]);
 

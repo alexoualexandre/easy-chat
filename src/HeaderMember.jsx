@@ -1,32 +1,8 @@
-import { useEffect } from "react";
 import { MyContext } from "./Context.jsx";
-import Cookies from "js-cookie";
+import CountInterval from "./CountInterval.jsx";
 
 function HeaderMember() {
-  const Auth = Cookies.get("auth");
-  const env = import.meta.env;
-  const {
-    setBurgerMember,
-    setBlockNewMessage,
-    count,
-    setCount,
-    blockNewMessage,
-  } = MyContext();
-
-  useEffect(() => {
-    const interval = setInterval(() => {
-      fetch(
-        `http://${env.VITE_API_URL}:${env.VITE_API_SERVER_PORT}/count-message/${Auth}`
-      )
-        .then((response) => response.json())
-        .then((response) => {
-          const countValue = response[0]["COUNT(*)"];
-
-          setCount(countValue);
-        });
-    }, 1000);
-    return () => clearInterval(interval);
-  }, [blockNewMessage]);
+  const { setBurgerMember, setBlockNewMessage, count } = MyContext();
 
   const nvMessage = () => {
     setBlockNewMessage(true);
@@ -34,6 +10,7 @@ function HeaderMember() {
 
   return (
     <div className="header-member">
+      <CountInterval />
       <h1 className="easy-chat">Easy-chat</h1>
       {count ? (
         <span className="alert-number-message">

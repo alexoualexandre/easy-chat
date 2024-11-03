@@ -1,11 +1,12 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef } from "react";
 import Cookies from "js-cookie";
 import { useLocation } from "react-router-dom";
+import { MyContext } from "./Context";
 
 function Ajax() {
   if (!Cookies.get("auth")) window.location.href = "/";
   const env = import.meta.env;
-  const [data, setData] = useState(false);
+  const { data, setData, count } = MyContext();
   const location = useLocation();
   const getSearchParams = () => {
     return new URLSearchParams(location.search);
@@ -23,8 +24,7 @@ function Ajax() {
         });
     }, 2000);
     return () => clearInterval(interval);
-  }, []);
-
+  }, [count]);
   const bottomRef = useRef(null);
   const block = useRef();
   useEffect(() => {

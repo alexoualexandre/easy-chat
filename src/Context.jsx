@@ -30,7 +30,10 @@ export function Provider({ children }) {
     dep: { local: "01" },
   });
   const [blockNewMessage, setBlockNewMessage] = useState(false);
+  const [data, setData] = useState(false);
   const [count, setCount] = useState();
+
+  const [dataNewMessage, setDataNewMessage] = useState();
 
   return (
     <Context.Provider
@@ -63,6 +66,10 @@ export function Provider({ children }) {
         setBlockNewMessage,
         count,
         setCount,
+        data,
+        setData,
+        dataNewMessage,
+        setDataNewMessage,
       }}
     >
       {children}
