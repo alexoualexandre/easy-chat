@@ -1578,6 +1578,14 @@ button {
     width: 15em;
     height: 15em;
   }
+
+  .the-users {
+    position: relative;
+    top: 2em;
+    width: 99%;
+    height: 40em;
+    left: 0%;
+  }
 }
 
 @media screen and (min-width: 768px) {
