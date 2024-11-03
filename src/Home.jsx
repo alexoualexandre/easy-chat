@@ -124,19 +124,13 @@ function Home() {
                           onClick={() => {
                             if (window.innerWidth < 1024) {
                               setUl(false);
-                              setDivMessage(true);
-                              setUserMessage(user.id);
-                              setAnimationUserSelected(true);
-                              setAnimationTxtUserSelected(true);
-                              setBlockNewMessage(false);
-                            } else {
-                              setFilter(false);
-                              setDivMessage(true);
-                              setUserMessage(user.id);
-                              setAnimationUserSelected(true);
-                              setAnimationTxtUserSelected(true);
-                              setBlockNewMessage(false);
                             }
+                            setFilter(false);
+                            setDivMessage(true);
+                            setUserMessage(user.id);
+                            setAnimationUserSelected(true);
+                            setAnimationTxtUserSelected(true);
+                            setBlockNewMessage(false);
                           }}
                         ></button>
                         <article className="article-user">

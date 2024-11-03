@@ -7,7 +7,7 @@ function MyProfil() {
   if (!Cookies.get("auth")) {
     window.location.href = "/";
   }
-  const { setBurgerMember } = MyContext();
+  const { setBurgerMember,userMessage } = MyContext();
   const [f, setFile] = useState(null);
   const [newName, setNewName] = useState(null);
   const [resultName, setResultName] = useState("");
@@ -111,7 +111,7 @@ function MyProfil() {
   const date = resultName && resultName.created_at.split("T")[0].split("-");
   return (
     <div className="profil-member">
-      <Link to={`/home`}>
+      <Link to={`/home?dest=${userMessage}`}>
         <button
           type="button"
           className="x"

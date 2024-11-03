@@ -14,6 +14,12 @@ function Message() {
     animationTxtUserSelected,
     setAnimationTxtUserSelected,
   } = MyContext();
+
+  setTimeout(() => {
+    setAnimationUserSelected(false);
+    setAnimationTxtUserSelected(false);
+  }, 1000);
+
   const location = useLocation();
   const getSearchParams = () => {
     return new URLSearchParams(location.search);
@@ -61,12 +67,7 @@ function Message() {
         setResponseServer(response);
         console.log(response);
       });
-  }, []);
-
-  setTimeout(() => {
-    setAnimationUserSelected(false);
-    setAnimationTxtUserSelected(false);
-  }, 1000);
+  }, [params]);
 
   const subMessage = (e) => {
     e.preventDefault();
