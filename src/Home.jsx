@@ -21,12 +21,15 @@ function Home() {
     setUl,
     setDivMessage,
     divMessage,
+    userMessage,
     setUserMessage,
     setAnimationUserSelected,
     setAnimationTxtUserSelected,
     memorySearch,
     blockNewMessage,
     setBlockNewMessage,
+    voirFiltre,
+    setVoirFiltre,
   } = MyContext();
 
   useEffect(() => {
@@ -89,14 +92,25 @@ function Home() {
           <>
             <button
               type="button"
-              className="voir-filtres"
+              className={voirFiltre}
               onClick={() => {
-                setFilter(!filter);
-                setBlockNewMessage(false);
+                if (window.innerWidth >= 1024) {
+                  if (userMessage) {
+                    setFilter(!filter);
+                    setBlockNewMessage(false);
+                  }
+                } else {
+                  setFilter(!filter);
+                  setBlockNewMessage(false);
+                }
               }}
             >
               voir filtres <span className="chevron"> &#x27A7; </span>
+              <span className="number-result-search">
+                {responseUser && responseUser.length} résultats
+              </span>
             </button>
+            <div className="your-album"></div>
             <div className="refresh">
               <button
                 type="button"
@@ -124,6 +138,7 @@ function Home() {
                           onClick={() => {
                             if (window.innerWidth < 1024) {
                               setUl(false);
+                              setVoirFiltre("voir-filtres-none");
                             }
                             setFilter(false);
                             setDivMessage(true);

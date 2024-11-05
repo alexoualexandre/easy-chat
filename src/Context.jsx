@@ -6,7 +6,9 @@ const Context = createContext();
 export function Provider({ children }) {
   const [burgerHome, setBurgerHome] = useState(false);
   const [burgerMember, setBurgerMember] = useState(false);
-  const [filter, setFilter] = useState(false);
+  const [filter, setFilter] = useState(
+    window.innerWidth >= 1024 ? true : false
+  );
   const [responseUser, setResponseUser] = useState();
   const [classFilterSearch, setClassFilterSearch] = useState("filter-search");
   const [ul, setUl] = useState(true);
@@ -34,6 +36,8 @@ export function Provider({ children }) {
   const [count, setCount] = useState();
 
   const [dataNewMessage, setDataNewMessage] = useState();
+  const [responseServer, setResponseServer] = useState();
+  const [voirFiltre, setVoirFiltre] = useState("voir-filtres");
 
   return (
     <Context.Provider
@@ -70,6 +74,10 @@ export function Provider({ children }) {
         setData,
         dataNewMessage,
         setDataNewMessage,
+        responseServer,
+        setResponseServer,
+        voirFiltre,
+        setVoirFiltre,
       }}
     >
       {children}

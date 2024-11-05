@@ -15,6 +15,7 @@ function FilterSearch() {
     form,
     setForm,
     setMemorySearch,
+    userMessage,
   } = MyContext();
 
   const Auth = Cookies.get("auth");
@@ -33,8 +34,10 @@ function FilterSearch() {
       .then((response) => response.json())
       .then((data) => {
         setNumber(data.filter((elem) => elem.id != Auth).length);
+
         if (data.filter((elem) => elem.id != Auth).length > 0) {
           setResponseUser(data.filter((elem) => elem.id != Auth));
+
           setMemorySearch(form);
           setForm({
             search: { homme: "homme", femme: "femme" },
@@ -43,9 +46,14 @@ function FilterSearch() {
             inline: { on: "0", off: "1" },
             dep: { local: "01" },
           });
-          setTimeout(() => {
-            setFilter(!filter);
-          }, 1200);
+          if (
+            window.innerWidth < 1024 ||
+            (window.innerWidth >= 1024 && userMessage)
+          ) {
+            setTimeout(() => {
+              setFilter(!filter);
+            }, 1200);
+          }
         }
       });
   };

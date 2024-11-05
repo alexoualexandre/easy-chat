@@ -581,7 +581,7 @@ button {
 
   .chevron {
     position: absolute;
-    right: 0em;
+    right: 0.1em;
     transform: rotate(90deg);
     font-size: 1.5em;
     top: -0.2em;
@@ -1558,6 +1558,31 @@ button {
     background-color: transparent;
     border: none;
   }
+
+  .number-result-search {
+    position: relative;
+    left: 0.2em;
+    font-size: 0.8em;
+    font-weight: bold;
+    color: pink;
+    text-shadow:
+      -1px -1px 0 black,
+      1px -1px 0 black,
+      -1px 1px 0 black,
+      1px 1px 0 black;
+  }
+
+  .voir-filtres-none {
+    display: none;
+  }
+
+  .option-user-selected {
+    width: 85%;
+    height: 2em;
+    position: relative;
+    top: -1em;
+    background-color: red;
+  }
 }
 
 @media screen and (min-width: 375px) {
@@ -2178,6 +2203,15 @@ button {
       serif;
   }
 
+  @keyframes slide-search-off {
+    from {
+      opacity: 1;
+    }
+    to {
+      opacity: 0%;
+    }
+  }
+
   .voir-filtres {
     width: 20%;
     left: 2%;
@@ -2419,5 +2453,17 @@ button {
     width: 20%;
     height: 100%;
     border-radius: 0.5em;
+  }
+
+  .number-result-search {
+    position: relative;
+    left: 0em;
+    font-weight: bold;
+    color: pink;
+    text-shadow:
+      -1px -1px 0 black,
+      1px -1px 0 black,
+      -1px 1px 0 black,
+      1px 1px 0 black;
   }
 }

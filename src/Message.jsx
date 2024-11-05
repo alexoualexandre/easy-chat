@@ -13,6 +13,9 @@ function Message() {
     setAnimationUserSelected,
     animationTxtUserSelected,
     setAnimationTxtUserSelected,
+    responseServer,
+    setResponseServer,
+    setVoirFiltre,
   } = MyContext();
 
   setTimeout(() => {
@@ -27,8 +30,6 @@ function Message() {
   const params = getSearchParams();
   const env = import.meta.env;
   const Auth = Cookies.get("auth");
-
-  const [responseServer, setResponseServer] = useState();
 
   const [changeTxt, setChangeTxt] = useState({
     exp: Auth,
@@ -57,6 +58,7 @@ function Message() {
   const fctStyle = () => {
     setDivMessage(!divMessage);
     setUl(true);
+    setVoirFiltre("voir-filtres");
   };
   useEffect(() => {
     fetch(
@@ -65,9 +67,8 @@ function Message() {
       .then((response) => response.json())
       .then((response) => {
         setResponseServer(response);
-        console.log(response);
       });
-  }, [params]);
+  }, [userMessage]);
 
   const subMessage = (e) => {
     e.preventDefault();
@@ -98,6 +99,9 @@ function Message() {
   return (
     <>
       <div className={divMessage ? "div-message" : "div-message-none"}>
+        {window.innerWidth < 1024 && (
+          <div className="option-user-selected"></div>
+        )}
         <div className="resum-user">
           <img
             src={`${responseServer && responseServer[0].img === "logo.png" ? responseServer && responseServer[0].img : `http://${env.VITE_API_URL}:${env.VITE_API_SERVER_PORT}/upload/${responseServer && responseServer[0].img}`}`}
