@@ -7,6 +7,7 @@ import FilterSearch from "./FilterSearch.jsx";
 import Message from "./Message.jsx";
 import { Link } from "react-router-dom";
 import NewMessage from "./NewMessage.jsx";
+import MyAlbum from "./MyAlbum.jsx";
 
 function Home() {
   const env = import.meta.env;
@@ -30,6 +31,8 @@ function Home() {
     setBlockNewMessage,
     voirFiltre,
     setVoirFiltre,
+    myAlbum,
+    setMyAlbum,
   } = MyContext();
 
   useEffect(() => {
@@ -146,6 +149,7 @@ function Home() {
                             setAnimationUserSelected(true);
                             setAnimationTxtUserSelected(true);
                             setBlockNewMessage(false);
+                            setMyAlbum(false);
                           }}
                         ></button>
                         <article className="article-user">
@@ -185,6 +189,7 @@ function Home() {
               ) : (
                 divMessage && <Message />
               )}
+              {myAlbum ? <MyAlbum /> : ""}
             </div>
           </>
         )}

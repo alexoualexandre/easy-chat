@@ -38,6 +38,7 @@ export function Provider({ children }) {
   const [dataNewMessage, setDataNewMessage] = useState();
   const [responseServer, setResponseServer] = useState();
   const [voirFiltre, setVoirFiltre] = useState("voir-filtres");
+  const [myAlbum, setMyAlbum] = useState(false);
 
   return (
     <Context.Provider
@@ -78,6 +79,8 @@ export function Provider({ children }) {
         setResponseServer,
         voirFiltre,
         setVoirFiltre,
+        myAlbum,
+        setMyAlbum,
       }}
     >
       {children}

@@ -15,6 +15,7 @@ function NewMessage() {
     setFilter,
     dataNewMessage,
     setDataNewMessage,
+    setVoirFiltre,
   } = MyContext();
   const env = import.meta.env;
 
@@ -88,6 +89,7 @@ function NewMessage() {
                         setAnimationUserSelected(true);
                         setAnimationTxtUserSelected(true);
                         setBlockNewMessage(false);
+                        setVoirFiltre("voir-filtres-none");
                       } else {
                         setFilter(false);
                         setDivMessage(true);

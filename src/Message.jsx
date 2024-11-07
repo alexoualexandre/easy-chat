@@ -99,9 +99,15 @@ function Message() {
   return (
     <>
       <div className={divMessage ? "div-message" : "div-message-none"}>
-        {window.innerWidth < 1024 && (
-          <div className="option-user-selected"></div>
-        )}
+        <div className="option-user-selected">
+          <button type="button" className="button-option-user-selected">
+            album
+          </button>
+          <button type="button" className="button-option-user-selected">
+            fréquence
+          </button>
+        </div>
+
         <div className="resum-user">
           <img
             src={`${responseServer && responseServer[0].img === "logo.png" ? responseServer && responseServer[0].img : `http://${env.VITE_API_URL}:${env.VITE_API_SERVER_PORT}/upload/${responseServer && responseServer[0].img}`}`}
