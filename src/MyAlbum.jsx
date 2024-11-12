@@ -1,7 +1,43 @@
+import { useEffect, useState } from "react";
 import { MyContext } from "./Context";
+import Cookies from "js-cookie";
 
 function MyAlbum() {
   const { setMyAlbum, divMessage, setFilter } = MyContext();
+  const [nvName, setNvName] = useState(false);
+
+  const Auth = Cookies.get("auth");
+
+  const handleSubmit = (e) => {
+    const formData = new FormData();
+    formData.append("add_img", e.target.files[0]);
+    const env = import.meta.env;
+    fetch(
+      `http://${env.VITE_API_URL}:${env.VITE_API_SERVER_PORT}/add-upload-file`,
+      { method: "POST", body: formData }
+    )
+      .then((resp) => resp.json())
+      .then((r) => {
+        setNvName(r.nvName);
+      });
+  };
+  useEffect(() => {
+    if (nvName) {
+      const env = import.meta.env;
+
+      fetch(
+        `http://${env.VITE_API_URL}:${env.VITE_API_SERVER_PORT}/add-img-album`,
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ nvName: nvName, user: Auth }),
+        }
+      ).then((response) => response.json());
+    }
+  }, [nvName]);
+
   return (
     <div className="div-my-album">
       <button
@@ -18,6 +54,66 @@ function MyAlbum() {
       >
         ×
       </button>
+      <div className="div-album-photo">
+        <form method="post" encType="multipart/form-data">
+          <button className="input_add">
+            <img src="addimg.png" className="add_img_png" />
+            <input
+              type="file"
+              name="add_img"
+              className="input_add_img"
+              onChange={handleSubmit}
+            />
+          </button>
+        </form>
+        <ul className="div-my-photo">
+          <li className="li-my-photo">
+            <button type="button" className="button-li-my-photo">
+              ×
+            </button>
+          </li>
+          <li className="li-my-photo">
+            <button type="button" className="button-li-my-photo">
+              ×
+            </button>
+          </li>
+          <li className="li-my-photo">
+            <button type="button" className="button-li-my-photo">
+              ×
+            </button>
+          </li>
+          <li className="li-my-photo">
+            <button type="button" className="button-li-my-photo">
+              ×
+            </button>
+          </li>
+          <li className="li-my-photo">
+            <button type="button" className="button-li-my-photo">
+              ×
+            </button>
+          </li>
+          <li className="li-my-photo">
+            <button type="button" className="button-li-my-photo">
+              ×
+            </button>
+          </li>
+          <li className="li-my-photo">
+            <button type="button" className="button-li-my-photo">
+              ×
+            </button>
+          </li>
+          <li className="li-my-photo">
+            <button type="button" className="button-li-my-photo">
+              ×
+            </button>
+          </li>
+          <li className="li-my-photo">
+            <button type="button" className="button-li-my-photo">
+              ×
+            </button>
+          </li>
+        </ul>
+      </div>
     </div>
   );
 }

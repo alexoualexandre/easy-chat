@@ -1606,13 +1606,13 @@ button {
   }
 
   .div-my-album {
-    position: absolute;
-    left: 0%;
-    top: -1em;
+    position: fixed;
+    left: 0;
+    top: 0;
     width: 100%;
-    height: 110%;
+    height: 100%;
     z-index: 9;
-    background-color: blue;
+    background-color: white;
   }
 
   .button-div-my-album {
@@ -1625,6 +1625,73 @@ button {
     border: none;
     z-index: 8;
     cursor: pointer;
+  }
+
+  .div-album-photo {
+    width: 100%;
+    height: 85%;
+    position: absolute;
+    top: 10%;
+  }
+
+  .input_add {
+    width: 20%;
+    height: 10%;
+    position: absolute;
+    border: none;
+  }
+
+  .add_img_png {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    left: 0;
+    top: 0;
+    cursor: pointer;
+  }
+
+  .input_add_img {
+    opacity: 0;
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    cursor: pointer;
+  }
+
+  .div-my-photo {
+    width: 100%;
+    height: 85%;
+    position: absolute;
+    top: 15%;
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+  }
+
+  .li-my-photo {
+    position: relative;
+    width: 5em;
+    height: 5em;
+    background-color: #4295cc;
+    position: relative;
+    margin-left: 1.2em;
+    margin-top: 3em;
+    float: left;
+  }
+
+  .button-li-my-photo {
+    position: absolute;
+    right: -0.5em;
+    top: -0.5em;
+    width: 1.2em;
+    height: 1.2em;
+    border-radius: 50%;
+    background-color: white;
+    border: 1px solid black;
+    font-size: 1.5em;
+    color: red;
   }
 }
 
@@ -1644,6 +1711,34 @@ button {
     height: 35em;
     left: 0%;
   }
+
+  #modify-password {
+    font-size: 1.5em;
+    cursor: pointer;
+    margin-left: -5em;
+    margin-bottom: 0;
+  }
+
+  .select-dep-modify {
+    width: 30%;
+    padding-top: 0.5em;
+    padding-bottom: 0.5em;
+    font-size: 1.2em;
+    cursor: pointer;
+    margin-left: -5em;
+    margin-bottom: 0;
+  }
+
+  .li-my-photo {
+    position: relative;
+    width: 6.5em;
+    height: 6.5em;
+    background-color: #4295cc;
+    position: relative;
+    margin-left: 1em;
+    margin-top: 3em;
+    float: left;
+  }
 }
 
 @media screen and (min-width: 425px) {
@@ -1661,6 +1756,17 @@ button {
     width: 99%;
     height: 35em;
     left: 0%;
+  }
+
+  .li-my-photo {
+    position: relative;
+    width: 7.5em;
+    height: 7.5em;
+    background-color: #4295cc;
+    position: relative;
+    margin-left: 1em;
+    margin-top: 3em;
+    float: left;
   }
 }
 
@@ -2550,5 +2656,21 @@ button {
     border: none;
     z-index: 8;
     cursor: pointer;
+  }
+
+  .input_add {
+    width: 10%;
+    height: 20%;
+    position: absolute;
+    border: none;
+    cursor: pointer;
+  }
+  .div-my-photo {
+    width: 100%;
+    height: 85%;
+    position: absolute;
+    top: 20%;
+    margin: 0;
+    padding: 0;
   }
 }

@@ -24,6 +24,8 @@ const {
   updateCountMessage,
 } = require("../controler/messageControler.js");
 
+const { AddImgAlbum } = require("../controler/AddImgAlbumController.js");
+
 const { argon } = require("../service/argon2.js");
 
 const path = require("path");
@@ -44,6 +46,10 @@ const upload = multer({ storage: storage });
 app.put("/update-count-message", updateCountMessage);
 
 app.post("/upload-file", upload.single("file"), function (req, res) {
+  res.json({ nvName: req.file.filename });
+});
+
+app.post("/add-upload-file", upload.single("add_img"), function (req, res) {
   res.json({ nvName: req.file.filename });
 });
 
@@ -76,3 +82,5 @@ app.get("/get-message/:id/:auth", getMessage);
 app.get("/count-message/:auth", countMessage);
 
 app.get("/get-new-message/:auth", getNewMessage);
+
+app.post("/add-img-album", AddImgAlbum);

@@ -98,6 +98,10 @@ function Home() {
               className={voirFiltre}
               onClick={() => {
                 if (window.innerWidth >= 1024) {
+                  if (myAlbum) {
+                    setFilter(true);
+                    setMyAlbum(false);
+                  }
                   if (userMessage) {
                     setFilter(!filter);
                     setBlockNewMessage(false);
