@@ -24,7 +24,10 @@ const {
   updateCountMessage,
 } = require("../controler/messageControler.js");
 
-const { AddImgAlbum } = require("../controler/AddImgAlbumController.js");
+const {
+  AddImgAlbum,
+  myPhotos,
+} = require("../controler/AddImgAlbumController.js");
 
 const { argon } = require("../service/argon2.js");
 
@@ -84,3 +87,5 @@ app.get("/count-message/:auth", countMessage);
 app.get("/get-new-message/:auth", getNewMessage);
 
 app.post("/add-img-album", AddImgAlbum);
+
+app.get("/my-photos/:id", myPhotos);

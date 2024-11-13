@@ -8,6 +8,14 @@ class AddImgAlbumRepository {
       [parseInt(data.user, 10), data.nvName]
     );
   }
+
+  async myPhotos(id) {
+    const [photo] = await connection.query(
+      "SELECT * FROM users_photos WHERE user_id = ?",
+      [id]
+    );
+    return photo;
+  }
 }
 
 // eslint-disable-next-line no-undef

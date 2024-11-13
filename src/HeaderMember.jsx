@@ -2,10 +2,12 @@ import { MyContext } from "./Context.jsx";
 import CountInterval from "./CountInterval.jsx";
 
 function HeaderMember() {
-  const { setBurgerMember, setBlockNewMessage, count } = MyContext();
+  const { setBurgerMember, setBlockNewMessage, count, setMyAlbum } =
+    MyContext();
 
   const nvMessage = () => {
     setBlockNewMessage(true);
+    setMyAlbum(false);
   };
 
   return (

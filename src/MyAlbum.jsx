@@ -5,8 +5,23 @@ import Cookies from "js-cookie";
 function MyAlbum() {
   const { setMyAlbum, divMessage, setFilter } = MyContext();
   const [nvName, setNvName] = useState(false);
+  const [dataUserPhoto, setDataUserPhoto] = useState(false);
 
   const Auth = Cookies.get("auth");
+  const env = import.meta.env;
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      fetch(
+        `http://${env.VITE_API_URL}:${env.VITE_API_SERVER_PORT}/my-photos/${Cookies.get("auth")}`
+      )
+        .then((response) => response.json())
+        .then((response) => {
+          setDataUserPhoto(response);
+        });
+    }, 1000);
+    return () => clearInterval(interval);
+  }, []);
 
   const handleSubmit = (e) => {
     const formData = new FormData();
@@ -45,7 +60,7 @@ function MyAlbum() {
         className="button-div-my-album"
         onClick={() => {
           setMyAlbum(false);
-          if (window.innerWidth > 1024) {
+          if (window.innerWidth >= 1024) {
             if (!divMessage) {
               setFilter(true);
             }
@@ -62,56 +77,25 @@ function MyAlbum() {
               type="file"
               name="add_img"
               className="input_add_img"
+              accept="image/*"
               onChange={handleSubmit}
             />
           </button>
         </form>
         <ul className="div-my-photo">
-          <li className="li-my-photo">
-            <button type="button" className="button-li-my-photo">
-              ×
-            </button>
-          </li>
-          <li className="li-my-photo">
-            <button type="button" className="button-li-my-photo">
-              ×
-            </button>
-          </li>
-          <li className="li-my-photo">
-            <button type="button" className="button-li-my-photo">
-              ×
-            </button>
-          </li>
-          <li className="li-my-photo">
-            <button type="button" className="button-li-my-photo">
-              ×
-            </button>
-          </li>
-          <li className="li-my-photo">
-            <button type="button" className="button-li-my-photo">
-              ×
-            </button>
-          </li>
-          <li className="li-my-photo">
-            <button type="button" className="button-li-my-photo">
-              ×
-            </button>
-          </li>
-          <li className="li-my-photo">
-            <button type="button" className="button-li-my-photo">
-              ×
-            </button>
-          </li>
-          <li className="li-my-photo">
-            <button type="button" className="button-li-my-photo">
-              ×
-            </button>
-          </li>
-          <li className="li-my-photo">
-            <button type="button" className="button-li-my-photo">
-              ×
-            </button>
-          </li>
+          {dataUserPhoto &&
+            dataUserPhoto.map((elem) => (
+              <li className="li-my-photo" key={elem.id}>
+                <button type="button" className="button-li-my-photo">
+                  ×
+                </button>
+                <img
+                  src={`http://${env.VITE_API_URL}:${env.VITE_API_SERVER_PORT}/upload/${elem.photo}`}
+                  alt="no-picture"
+                  className="bcl-my-photo"
+                />
+              </li>
+            ))}
         </ul>
       </div>
     </div>

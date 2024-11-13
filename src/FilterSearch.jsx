@@ -55,6 +55,15 @@ function FilterSearch() {
             }, 1200);
           }
         }
+
+        if (window.innerWidth >= 1024 && !userMessage) {
+          setTimeout(() => {
+            setFilter(false);
+            setTimeout(() => {
+              setFilter(true);
+            }, 100);
+          }, 1000);
+        }
       });
   };
 
