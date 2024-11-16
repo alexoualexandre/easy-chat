@@ -1,6 +1,7 @@
 /* eslint-disable no-undef */
 // pm2 start 6(vps) , pm2 start 0(local)
 const { app } = require("../index.js");
+const fs = require("fs");
 
 const {
   getUser,
@@ -27,6 +28,7 @@ const {
 const {
   AddImgAlbum,
   myPhotos,
+  deleteImgAlbum,
 } = require("../controler/AddImgAlbumController.js");
 
 const { argon } = require("../service/argon2.js");
@@ -55,6 +57,26 @@ app.post("/upload-file", upload.single("file"), function (req, res) {
 app.post("/add-upload-file", upload.single("add_img"), function (req, res) {
   res.json({ nvName: req.file.filename });
 });
+
+app.delete(
+  "/remove-img-album",
+  (req, res, next) => {
+    const { img } = req.body;
+    const currentPath = path.join(__dirname, `${img}`);
+    const newPath = currentPath.replace(
+      path.join("api", `${img}`),
+      path.join("upload", `${img}`)
+    );
+    fs.unlink(newPath, (err) => {
+      if (err) {
+        console.error("Erreur lors de la suppression du fichier :", err);
+        return;
+      }
+    });
+    next();
+  },
+  deleteImgAlbum
+);
 
 app.get("/update-inline/:id", updateInline);
 

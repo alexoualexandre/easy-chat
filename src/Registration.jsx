@@ -35,11 +35,9 @@ function Registration() {
         .then((response) => response)
         .then((resp) => resp.json())
         .then((r) => {
-          console.info(r);
           setPseudoExist(r);
         });
     }
-    console.info(form);
   };
   const [selected, setSelected] = useState("");
   const [selectedSearch, setSelectedSearch] = useState("");

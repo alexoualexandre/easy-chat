@@ -716,10 +716,10 @@ button {
   }
 
   .img-profil-mini {
-    width: 40%;
+    width: 60%;
     height: 80%;
     position: absolute;
-    left: 30%;
+    left: 20%;
   }
 
   #file {
@@ -737,7 +737,7 @@ button {
 
   #label-file {
     position: absolute;
-    right: 2em;
+    right: 1em;
     width: 3em;
     height: 3em;
   }
@@ -1695,6 +1695,7 @@ button {
     font-size: 1.5em;
     color: red;
     z-index: 1;
+    cursor: pointer;
   }
 
   .bcl-my-photo {
@@ -1776,6 +1777,13 @@ button {
     margin-left: 0.6em;
     margin-top: 3em;
     float: left;
+  }
+
+  .img-profil-mini {
+    width: 50%;
+    height: 90%;
+    position: absolute;
+    left: 25%;
   }
 }
 

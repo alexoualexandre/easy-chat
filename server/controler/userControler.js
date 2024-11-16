@@ -126,6 +126,7 @@ const modifyImgProfile = async (req, res, next) => {
   const { nv, id } = req.params;
   try {
     await new User().modifyImgProfile(nv, id);
+    res.json({ add: "ok" });
   } catch (err) {
     next({ error: `erreur:${err}` });
   }

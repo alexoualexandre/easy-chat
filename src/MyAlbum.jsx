@@ -24,20 +24,27 @@ function MyAlbum() {
   }, []);
 
   const handleSubmit = (e) => {
-    const formData = new FormData();
-    formData.append("add_img", e.target.files[0]);
-    const env = import.meta.env;
-    fetch(
-      `http://${env.VITE_API_URL}:${env.VITE_API_SERVER_PORT}/add-upload-file`,
-      { method: "POST", body: formData }
-    )
-      .then((resp) => resp.json())
-      .then((r) => {
-        setNvName(r.nvName);
-      });
+    if (dataUserPhoto && dataUserPhoto.length < 9) {
+      const formData = new FormData();
+      formData.append("add_img", e.target.files[0]);
+      const env = import.meta.env;
+      fetch(
+        `http://${env.VITE_API_URL}:${env.VITE_API_SERVER_PORT}/add-upload-file`,
+        { method: "POST", body: formData }
+      )
+        .then((resp) => resp.json())
+        .then((r) => {
+          setNvName(r.nvName);
+        });
+    } else {
+      alert(
+        "Vous avez atteint la limite de 9 photos , veuillez en supprimer pour pouvoir en ajouter"
+      );
+    }
   };
+
   useEffect(() => {
-    if (nvName) {
+    if (nvName && dataUserPhoto && dataUserPhoto.length < 9) {
       const env = import.meta.env;
 
       fetch(
@@ -52,6 +59,19 @@ function MyAlbum() {
       ).then((response) => response.json());
     }
   }, [nvName]);
+
+  const del = (p) => {
+    fetch(
+      `http://${env.VITE_API_URL}:${env.VITE_API_SERVER_PORT}/remove-img-album`,
+      {
+        method: "DELETE",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ img: p }),
+      }
+    );
+  };
 
   return (
     <div className="div-my-album">
@@ -86,7 +106,13 @@ function MyAlbum() {
           {dataUserPhoto &&
             dataUserPhoto.map((elem) => (
               <li className="li-my-photo" key={elem.id}>
-                <button type="button" className="button-li-my-photo">
+                <button
+                  type="button"
+                  className="button-li-my-photo"
+                  onClick={() => {
+                    del(elem.photo);
+                  }}
+                >
                   ×
                 </button>
                 <img

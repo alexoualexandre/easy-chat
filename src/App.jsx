@@ -25,24 +25,6 @@ function App() {
     return () => clearInterval(interval);
   }, [number]);
 
-  //  useEffect(() => {
-
-  // const interval=setInterval(
-
-  // function(){
-  //    fetch("http://77.37.51.45:3311/user")
-  //      .then((response) => response)
-  //      .then((resp) => resp.json())
-  //      .then((rep) => {
-  //	console.log(rep);
-  //        setData(rep[0]);
-  //      }
-  //  )
-  // },
-  // 10000);
-  // return ()=>clearInterval(interval)
-  // }, []);
-
   return (
     <body className="body-home-page">
       <Header />

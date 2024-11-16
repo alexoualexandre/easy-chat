@@ -7,7 +7,7 @@ function MyProfil() {
   if (!Cookies.get("auth")) {
     window.location.href = "/";
   }
-  const { setBurgerMember,userMessage } = MyContext();
+  const { setBurgerMember, userMessage } = MyContext();
   const [f, setFile] = useState(null);
   const [newName, setNewName] = useState(null);
   const [resultName, setResultName] = useState("");
@@ -27,19 +27,44 @@ function MyProfil() {
   formData.append("file", f);
   const handleSubmit = (e) => {
     e.preventDefault();
-    const env = import.meta.env;
     fetch(
-      `http://${env.VITE_API_URL}:${env.VITE_API_SERVER_PORT}/upload-file`,
-      { method: "POST", body: formData }
+      `http://${environment.VITE_API_URL}:${environment.VITE_API_SERVER_PORT}/my-photos/${Cookies.get("auth")}`
     )
-      .then((response) => response)
-      .then((resp) => resp.json())
-      .then((r) => {
-        setNewName(r);
-        setTimeout(() => {
-          setNewName(null);
-          setFile(null);
-        }, 100);
+      .then((response) => response.json())
+      .then((response) => {
+        if (response.length < 8) {
+          const env = import.meta.env;
+          fetch(
+            `http://${env.VITE_API_URL}:${env.VITE_API_SERVER_PORT}/upload-file`,
+            { method: "POST", body: formData }
+          )
+            .then((response) => response)
+            .then((resp) => resp.json())
+            .then((r) => {
+              setNewName(r);
+              fetch(
+                `http://${env.VITE_API_URL}:${env.VITE_API_SERVER_PORT}/add-img-album`,
+                {
+                  method: "POST",
+                  headers: {
+                    "Content-Type": "application/json",
+                  },
+                  body: JSON.stringify({
+                    nvName: r.nvName,
+                    user: Cookies.get("auth"),
+                  }),
+                }
+              ).then((response) => response.json());
+              setTimeout(() => {
+                setNewName(null);
+                setFile(null);
+              }, 100);
+            });
+        } else {
+          alert(
+            "Vous avez atteint 8 photos , veuillez vous rendre dans votre album si vous souhaitez en ajouter une toute dernière"
+          );
+        }
       });
   };
 
@@ -76,12 +101,21 @@ function MyProfil() {
   };
 
   useEffect(() => {
-    if (newName) {
-      const env = import.meta.env;
-      fetch(
-        `http://${env.VITE_API_URL}:${env.VITE_API_SERVER_PORT}/change-img-profil/${newName.nvName}/${Cookies.get("auth")}`
-      );
-    }
+    const env = import.meta.env;
+    fetch(
+      `http://${env.VITE_API_URL}:${env.VITE_API_SERVER_PORT}/my-photos/${Cookies.get("auth")}`
+    )
+      .then((response) => response.json())
+      .then((response) => {
+        if (response.length < 9) {
+          if (newName) {
+            const env = import.meta.env;
+            fetch(
+              `http://${env.VITE_API_URL}:${env.VITE_API_SERVER_PORT}/change-img-profil/${newName.nvName}/${Cookies.get("auth")}`
+            );
+          }
+        }
+      });
   }, [newName]);
 
   const handleSubmitForm = (e) => {

@@ -22,7 +22,6 @@ function CountInterval() {
         .then((response) => response.json())
         .then((response) => {
           setCount(response["COUNT(*)"]);
-          console.log(response["COUNT(*)"]);
         });
     }, 1000);
     return () => clearInterval(interval);

@@ -16,6 +16,10 @@ class AddImgAlbumRepository {
     );
     return photo;
   }
+
+  async deleteImgAlbum(p) {
+    await connection.query("DELETE FROM users_photos WHERE photo = ?", [p]);
+  }
 }
 
 // eslint-disable-next-line no-undef
