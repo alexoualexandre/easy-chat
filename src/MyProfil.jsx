@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import { MyContext } from "./Context";
 import { useEffect, useState } from "react";
 import Cookies from "js-cookie";
+import heic2any from "heic2any";
 
 function MyProfil() {
   if (!Cookies.get("auth")) {
@@ -22,6 +23,36 @@ function MyProfil() {
   const [colorSubmit, setColorSubmit] = useState("sub-modification");
   const [valider, setValider] = useState("");
   const environment = import.meta.env;
+
+  const handleFileChange = async (event) => {
+    const file = event.target.files[0];
+
+    if (
+      (file && file.name.split(".")[1] === "heic") ||
+      (file && file.name.split(".")[1] === "heif")
+    ) {
+      try {
+        const convertedBlob = await heic2any({
+          blob: file,
+          toType: "image/jpeg",
+        });
+        const convertedFile = new File(
+          [convertedBlob],
+          file.name.replace(".heic", ".jpeg"),
+          {
+            type: "image/jpeg",
+          }
+        );
+        console.log("Fichier converti :", convertedFile);
+        setFile(convertedFile);
+      } catch (error) {
+        console.error("Erreur lors de la conversion HEIC :", error);
+      }
+    } else {
+      console.log("Fichier pris en charge :", file);
+      setFile(file);
+    }
+  };
 
   const formData = new FormData();
   formData.append("file", f);
@@ -178,11 +209,9 @@ function MyProfil() {
             <input
               type="file"
               name="file"
-              accept="image/*"
+              accept="image/*,.heic,.heif"
               id="file"
-              onChange={(e) => {
-                setFile(e.target.files[0]);
-              }}
+              onChange={handleFileChange}
             />
             <label htmlFor="file" id="label-file">
               <img

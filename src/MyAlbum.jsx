@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { MyContext } from "./Context";
 import Cookies from "js-cookie";
+import heic2any from "heic2any";
 
 function MyAlbum() {
   const { setMyAlbum, divMessage, setFilter } = MyContext();
@@ -23,10 +24,38 @@ function MyAlbum() {
     return () => clearInterval(interval);
   }, []);
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
+    const formData = new FormData();
+
+    const file = e.target.files[0];
+
+    if (
+      (file && file.name.split(".")[1] === "heic") ||
+      (file && file.name.split(".")[1] === "heif")
+    ) {
+      try {
+        const convertedBlob = await heic2any({
+          blob: file,
+          toType: "image/jpeg",
+        });
+        const convertedFile = new File(
+          [convertedBlob],
+          file.name.replace(".heic", ".jpeg"),
+          {
+            type: "image/jpeg",
+          }
+        );
+        console.log("Fichier converti :", convertedFile);
+        formData.append("add_img", convertedFile);
+      } catch (error) {
+        console.error("Erreur lors de la conversion HEIC :", error);
+      }
+    } else {
+      console.log("Fichier pris en charge :", file);
+      formData.append("add_img", file);
+    }
+
     if (dataUserPhoto && dataUserPhoto.length < 9) {
-      const formData = new FormData();
-      formData.append("add_img", e.target.files[0]);
       const env = import.meta.env;
       fetch(
         `http://${env.VITE_API_URL}:${env.VITE_API_SERVER_PORT}/add-upload-file`,
@@ -97,7 +126,7 @@ function MyAlbum() {
               type="file"
               name="add_img"
               className="input_add_img"
-              accept="image/*"
+              accept="image/*,.heic,.heif"
               onChange={handleSubmit}
             />
           </button>
