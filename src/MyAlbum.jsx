@@ -98,6 +98,7 @@ function MyAlbum() {
               name="add_img"
               className="input_add_img"
               accept="image/*"
+              capture="environment"
               onChange={handleSubmit}
             />
           </button>

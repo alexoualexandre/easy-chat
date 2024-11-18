@@ -179,6 +179,7 @@ function MyProfil() {
               type="file"
               name="file"
               accept="image/*"
+              capture="environment"
               id="file"
               onChange={(e) => {
                 setFile(e.target.files[0]);

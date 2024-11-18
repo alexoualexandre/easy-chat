@@ -16,6 +16,8 @@ function Message() {
     responseServer,
     setResponseServer,
     setVoirFiltre,
+    myAlbum,
+    filter,
   } = MyContext();
 
   setTimeout(() => {
@@ -99,14 +101,16 @@ function Message() {
   return (
     <>
       <div className={divMessage ? "div-message" : "div-message-none"}>
-        <div className="option-user-selected">
-          <button type="button" className="button-option-user-selected">
-            album
-          </button>
-          <button type="button" className="button-option-user-selected">
-            fréquence
-          </button>
-        </div>
+        {!myAlbum && !filter && (
+          <div className="option-user-selected">
+            <button type="button" className="button-option-user-selected">
+              album
+            </button>
+            <button type="button" className="button-option-user-selected">
+              fréquence
+            </button>
+          </div>
+        )}
 
         <div className="resum-user">
           <img
