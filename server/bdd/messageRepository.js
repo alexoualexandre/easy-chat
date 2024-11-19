@@ -14,11 +14,12 @@ class Message {
     await connection.query(
       "INSERT INTO message (exp,dest,message,addition,new) VALUES (?,?,?,?,?)",
       [
-        parseInt(data.exp, 10),
-        parseInt(data.dest, 10),
-        data.message,
-        data.addition,
-        1,
+        parseInt(data.changeTxt.exp, 10),
+        parseInt(data.changeTxt.dest, 10),
+        data.changeTxt.message,
+        data.changeTxt.addition,
+
+        parseInt(data.connect, 10) !== parseInt(data.m, 10) ? 1 : 0,
       ]
     );
   }

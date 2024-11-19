@@ -18,6 +18,7 @@ function Message() {
     setVoirFiltre,
     myAlbum,
     filter,
+    blockNewMessage,
   } = MyContext();
 
   setTimeout(() => {
@@ -61,6 +62,18 @@ function Message() {
     setDivMessage(!divMessage);
     setUl(true);
     setVoirFiltre("voir-filtres");
+
+    fetch(
+      `http://${env.VITE_API_URL}:${env.VITE_API_SERVER_PORT}/update-present`,
+
+      {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ user: 0, m: Cookies.get("auth") }),
+      }
+    ).then((response) => response.json());
   };
   useEffect(() => {
     fetch(
@@ -74,34 +87,46 @@ function Message() {
 
   const subMessage = (e) => {
     e.preventDefault();
-    if (changeTxt.message.length > 0 && changeTxt.message !== " ") {
-      fetch(
-        `http://${env.VITE_API_URL}:${env.VITE_API_SERVER_PORT}/add-message`,
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify(changeTxt),
+
+    fetch(
+      `http://${env.VITE_API_URL}:${env.VITE_API_SERVER_PORT}/user-selected/${params.get("dest")}`
+    )
+      .then((response) => response.json())
+      .then((response) => {
+        console.log(response[0].present);
+        if (changeTxt.message.length > 0 && changeTxt.message !== " ") {
+          fetch(
+            `http://${env.VITE_API_URL}:${env.VITE_API_SERVER_PORT}/add-message`,
+            {
+              method: "POST",
+              headers: {
+                "Content-Type": "application/json",
+              },
+              body: JSON.stringify({
+                changeTxt: changeTxt,
+                connect: response[0].present,
+                m: Cookies.get("auth"),
+              }),
+            }
+          )
+            .then((response) => response.json())
+            .then((data) => {
+              console.log(data);
+            });
+          setChangeTxt({
+            exp: Auth,
+            dest: params.get("dest"),
+            message: "",
+            addition: parseInt(Auth, 10) + parseInt(params.get("dest")),
+          });
         }
-      )
-        .then((response) => response.json())
-        .then((data) => {
-          console.log(data);
-        });
-      setChangeTxt({
-        exp: Auth,
-        dest: params.get("dest"),
-        message: "",
-        addition: parseInt(Auth, 10) + parseInt(params.get("dest")),
       });
-    }
   };
 
   return (
     <>
       <div className={divMessage ? "div-message" : "div-message-none"}>
-        {!myAlbum && !filter && (
+        {!myAlbum && !filter && !blockNewMessage && (
           <div className="option-user-selected">
             <button type="button" className="button-option-user-selected">
               album

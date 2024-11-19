@@ -13,6 +13,7 @@ function HeaderMember() {
   return (
     <div className="header-member">
       <CountInterval />
+
       <h1 className="easy-chat">Easy-chat</h1>
       {count ? (
         <span className="alert-number-message">

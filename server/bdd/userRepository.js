@@ -206,10 +206,17 @@ class User {
 
   async userSelected(id) {
     const [userId] = await connection.query(
-      "SELECT id,sex,search,age,pseudo,created_at,dep,img,description,inline FROM user WHERE id = ?",
+      "SELECT id,sex,search,age,pseudo,created_at,dep,img,description,inline,present FROM user WHERE id = ?",
       [id]
     );
     return userId;
+  }
+
+  async updatePresent(data) {
+    await connection.query("UPDATE user SET present = ? WHERE id = ?", [
+      parseInt(data.user, 10),
+      parseInt(data.m, 10),
+    ]);
   }
 }
 

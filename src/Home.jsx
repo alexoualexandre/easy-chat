@@ -86,6 +86,24 @@ function Home() {
     }
   };
 
+  const updatePresent = (u) => {
+    fetch(
+      `http://${env.VITE_API_URL}:${env.VITE_API_SERVER_PORT}/update-present`,
+
+      {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ user: u, m: Cookies.get("auth") }),
+      }
+    )
+      .then((response) => response.json())
+      .then((response) => {
+        console.log(response);
+      });
+  };
+
   if (Auth) {
     return (
       <>
@@ -118,16 +136,19 @@ function Home() {
               </span>
             </button>
             <div className="your-album"></div>
-            <div className="refresh">
-              <button
-                type="button"
-                className="button-refresh"
-                onClick={refresh}
-              >
-                {""}
-              </button>
-              <img src="icons8-rafraîchir-32.png" alt="button refresh" />
-            </div>
+            {!blockNewMessage && (
+              <div className="refresh">
+                <button
+                  type="button"
+                  className="button-refresh"
+                  onClick={refresh}
+                >
+                  {""}
+                </button>
+                <img src="icons8-rafraîchir-32.png" alt="button refresh" />
+              </div>
+            )}
+
             <div className="the-users">
               {filter && <FilterSearch />}
               {blockNewMessage && <NewMessage />}
@@ -147,6 +168,7 @@ function Home() {
                               setUl(false);
                               setVoirFiltre("voir-filtres-none");
                             }
+                            updatePresent(user.id);
                             setFilter(false);
                             setDivMessage(true);
                             setUserMessage(user.id);

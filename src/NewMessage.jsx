@@ -58,6 +58,24 @@ function NewMessage() {
       });
   }, [params.get("dest")]);
 
+  const updatePresent = (u) => {
+    fetch(
+      `http://${env.VITE_API_URL}:${env.VITE_API_SERVER_PORT}/update-present`,
+
+      {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ user: u, m: Cookies.get("auth") }),
+      }
+    )
+      .then((response) => response.json())
+      .then((response) => {
+        console.log(response);
+      });
+  };
+
   return (
     <section className="new-message">
       <button
@@ -90,6 +108,7 @@ function NewMessage() {
                         setAnimationTxtUserSelected(true);
                         setBlockNewMessage(false);
                         setVoirFiltre("voir-filtres-none");
+                        updatePresent(elem.exp);
                       } else {
                         setFilter(false);
                         setDivMessage(true);
@@ -97,6 +116,7 @@ function NewMessage() {
                         setAnimationUserSelected(true);
                         setAnimationTxtUserSelected(true);
                         setBlockNewMessage(false);
+                        updatePresent(elem.exp);
                       }
                     }}
                   >

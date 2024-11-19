@@ -15,6 +15,7 @@ const {
   updateInline,
   recherche,
   userSelected,
+  updatePresent,
 } = require("../controler/userControler.js");
 
 const {
@@ -111,3 +112,5 @@ app.get("/get-new-message/:auth", getNewMessage);
 app.post("/add-img-album", AddImgAlbum);
 
 app.get("/my-photos/:id", myPhotos);
+
+app.put("/update-present", updatePresent);

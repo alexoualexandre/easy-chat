@@ -197,6 +197,16 @@ const userSelected = async (req, res, next) => {
   }
 };
 
+const updatePresent = async (req, res, next) => {
+  const data = req.body;
+  try {
+    await new User().updatePresent(data);
+    res.json({ maj: "ok" });
+  } catch (err) {
+    next({ error: `erreur:${err}` });
+  }
+};
+
 module.exports = {
   getUser,
   insertUser,
@@ -209,4 +219,5 @@ module.exports = {
   updateInline,
   recherche,
   userSelected,
+  updatePresent,
 };

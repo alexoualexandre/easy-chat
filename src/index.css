@@ -1749,6 +1749,10 @@ button {
     margin-top: 3em;
     float: left;
   }
+
+  .img-article-new-message {
+    width: 35%;
+  }
 }
 
 @media screen and (min-width: 425px) {
@@ -1784,6 +1788,10 @@ button {
     height: 90%;
     position: absolute;
     left: 25%;
+  }
+
+  .img-article-new-message {
+    width: 33%;
   }
 }
 
@@ -2612,10 +2620,12 @@ button {
     border-radius: 0.5em;
     animation-name: opacity-article-new-message;
     animation-duration: 2s;
+    background: linear-gradient(to right, var(--body-home-page), white, white);
   }
 
   .img-article-new-message {
     position: absolute;
+    left: 10%;
     width: 20%;
     height: 100%;
     border-radius: 0.5em;
