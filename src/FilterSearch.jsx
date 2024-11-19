@@ -54,6 +54,10 @@ function FilterSearch() {
               setFilter(!filter);
             }, 1200);
           }
+        } else {
+          setTimeout(() => {
+            window.location.href = "/home";
+          }, 1000);
         }
 
         if (window.innerWidth >= 1024 && !userMessage) {

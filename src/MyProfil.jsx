@@ -449,17 +449,16 @@ function MyProfil() {
                 <h2 className="modification-enregistrer">
                   modification enregistré !
                 </h2>
-                <Link to="/home">
-                  <button
-                    type="button"
-                    className="return-home"
-                    onClick={() => {
-                      setBurgerMember(false);
-                    }}
-                  >
-                    ok
-                  </button>
-                </Link>
+                <button
+                  type="button"
+                  className="return-home"
+                  onClick={() => {
+                    setBurgerMember(false);
+                    window.location.href = "/home";
+                  }}
+                >
+                  ok
+                </button>
               </div>
             )}
         </section>
