@@ -8,6 +8,7 @@ function MyProfil() {
   if (!Cookies.get("auth")) {
     window.location.href = "/";
   }
+  const env = import.meta.env;
   const { setBurgerMember, userMessage } = MyContext();
   const [f, setFile] = useState(null);
   const [newName, setNewName] = useState(null);
@@ -454,6 +455,20 @@ function MyProfil() {
                   className="return-home"
                   onClick={() => {
                     setBurgerMember(false);
+                    fetch(
+                      `http://${env.VITE_API_URL}:${env.VITE_API_SERVER_PORT}/update-present`,
+
+                      {
+                        method: "PUT",
+                        headers: {
+                          "Content-Type": "application/json",
+                        },
+                        body: JSON.stringify({
+                          user: 0,
+                          m: Cookies.get("auth"),
+                        }),
+                      }
+                    ).then((response) => response.json());
                     window.location.href = "/home";
                   }}
                 >
