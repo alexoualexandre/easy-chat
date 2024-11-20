@@ -53,21 +53,29 @@ function Ajax() {
                 elem.sex === "homme"
                   ? {
                       width: "80%",
-                      border: "2px solid #4295cc",
+                      maxHeight: "8em",
+                      border: "4px solid #4295cc",
                       padding: "0.5em",
                       position: "relative",
                       left: "13%",
                       marginTop: "0.5em",
                       borderRadius: "0.5em",
+                      textOverflow: "hidden",
+                      wordWrap: "break-word",
+                      overflowY: "scroll",
                     }
                   : {
                       width: "80%",
-                      border: "2px solid #ff114f",
+                      maxHeight: "8em",
+                      overflowY: "scroll",
+                      border: "4px solid #ff114f",
                       padding: "0.5em",
                       position: "relative",
                       left: "0%",
                       marginTop: "0.5em",
                       borderRadius: "0.5em",
+                      textOverflow: "hidden",
+                      wordWrap: "break-word",
                     }
               }
             >
