@@ -1,7 +1,9 @@
 import { Link } from "react-router-dom";
 import { MyContext } from "./Context";
+import Cookies from "js-cookie";
 
 function MenuMember() {
+  const env = import.meta.env;
   const { setBurgerMember, setMyAlbum, setFilter, setDivMessage, divMessage } =
     MyContext();
 
@@ -25,6 +27,23 @@ function MenuMember() {
             type="button"
             className="button-li-menu-member"
             onClick={() => {
+              if (window.innerWidth >= 1024) {
+                fetch(
+                  `http://${env.VITE_API_URL}:${env.VITE_API_SERVER_PORT}/update-present`,
+
+                  {
+                    method: "PUT",
+                    headers: {
+                      "Content-Type": "application/json",
+                    },
+                    body: JSON.stringify({
+                      user: 0,
+                      m: Cookies.get("auth"),
+                    }),
+                  }
+                ).then((response) => response.json());
+              }
+
               if (window.innerWidth < 1024) {
                 setDivMessage(false);
               }

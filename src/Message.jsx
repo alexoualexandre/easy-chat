@@ -93,7 +93,7 @@ function Message() {
     )
       .then((response) => response.json())
       .then((response) => {
-        console.log(response[0].present);
+        console.log(response[0]);
         if (changeTxt.message.length > 0 && changeTxt.message !== " ") {
           fetch(
             `http://${env.VITE_API_URL}:${env.VITE_API_SERVER_PORT}/add-message`,

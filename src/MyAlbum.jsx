@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { MyContext } from "./Context";
 import Cookies from "js-cookie";
 import heic2any from "heic2any";
+import { useLocation } from "react-router-dom";
 
 function MyAlbum() {
   const { setMyAlbum, divMessage, setFilter } = MyContext();
@@ -10,6 +11,12 @@ function MyAlbum() {
 
   const Auth = Cookies.get("auth");
   const env = import.meta.env;
+
+  const location = useLocation();
+  const getSearchParams = () => {
+    return new URLSearchParams(location.search);
+  };
+  const params = getSearchParams();
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -109,7 +116,22 @@ function MyAlbum() {
         className="button-div-my-album"
         onClick={() => {
           setMyAlbum(false);
+
           if (window.innerWidth >= 1024) {
+            fetch(
+              `http://${env.VITE_API_URL}:${env.VITE_API_SERVER_PORT}/update-present`,
+
+              {
+                method: "PUT",
+                headers: {
+                  "Content-Type": "application/json",
+                },
+                body: JSON.stringify({
+                  user: params.get("dest"),
+                  m: Cookies.get("auth"),
+                }),
+              }
+            ).then((response) => response.json());
             if (!divMessage) {
               setFilter(true);
             }

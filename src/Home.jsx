@@ -5,7 +5,7 @@ import MenuMember from "./MenuMember.jsx";
 import { MyContext } from "./Context.jsx";
 import FilterSearch from "./FilterSearch.jsx";
 import Message from "./Message.jsx";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import NewMessage from "./NewMessage.jsx";
 import MyAlbum from "./MyAlbum.jsx";
 
@@ -34,6 +34,12 @@ function Home() {
     myAlbum,
     setMyAlbum,
   } = MyContext();
+
+  const location = useLocation();
+  const getSearchParams = () => {
+    return new URLSearchParams(location.search);
+  };
+  const params = getSearchParams();
 
   useEffect(() => {
     fetch(
@@ -116,6 +122,23 @@ function Home() {
               className={voirFiltre}
               onClick={() => {
                 if (window.innerWidth >= 1024) {
+                  fetch(
+                    `http://${env.VITE_API_URL}:${env.VITE_API_SERVER_PORT}/update-present`,
+
+                    {
+                      method: "PUT",
+                      headers: {
+                        "Content-Type": "application/json",
+                      },
+                      body: JSON.stringify({
+                        user: !filter ? 0 : params.get("dest"),
+                        m: Cookies.get("auth"),
+                      }),
+                    }
+                  ).then((response) => response.json());
+                }
+
+                if (window.innerWidth >= 1024) {
                   if (myAlbum) {
                     setFilter(true);
                     setMyAlbum(false);
@@ -168,6 +191,7 @@ function Home() {
                               setUl(false);
                               setVoirFiltre("voir-filtres-none");
                             }
+
                             updatePresent(user.id);
                             setFilter(false);
                             setDivMessage(true);

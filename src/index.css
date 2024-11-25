@@ -1589,9 +1589,10 @@ button {
 
   .button-option-user-selected {
     border-radius: 5px;
-    border: 2px solid pink;
+    border: 3px solid pink;
     background-color: white;
     margin-left: 1em;
+    font-weight: bold;
   }
 
   .button-li-menu-member {
@@ -2656,7 +2657,7 @@ button {
 
   .button-option-user-selected {
     border-radius: 5px;
-    border: 2px solid pink;
+    border: 4px solid pink;
     background-color: white;
     width: 10em;
     margin-left: 1em;
