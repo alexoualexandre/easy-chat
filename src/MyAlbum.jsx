@@ -8,6 +8,7 @@ function MyAlbum() {
   const { setMyAlbum, divMessage, setFilter } = MyContext();
   const [nvName, setNvName] = useState(false);
   const [dataUserPhoto, setDataUserPhoto] = useState(false);
+  const [chargement, setChargement] = useState(false);
 
   const Auth = Cookies.get("auth");
   const env = import.meta.env;
@@ -32,6 +33,7 @@ function MyAlbum() {
   }, []);
 
   const handleSubmit = async (e) => {
+    setChargement(true);
     const formData = new FormData();
 
     const file = e.target.files[0];
@@ -70,6 +72,7 @@ function MyAlbum() {
       )
         .then((resp) => resp.json())
         .then((r) => {
+          setChargement(false);
           setNvName(r.nvName);
         });
     } else {
@@ -111,6 +114,17 @@ function MyAlbum() {
 
   return (
     <div className="div-my-album">
+      {!dataUserPhoto && (
+        <div className="chargement">
+          <div className="cercle"></div>
+        </div>
+      )}
+      {chargement && (
+        <div className="chargement">
+          <div className="cercle"></div>
+        </div>
+      )}
+
       <button
         type="button"
         className="button-div-my-album"
@@ -153,7 +167,10 @@ function MyAlbum() {
             />
           </button>
         </form>
-        <ul className="div-my-photo">
+        <ul
+          className="div-my-photo"
+          style={chargement ? { opacity: 0.2 } : { opacity: 1 }}
+        >
           {dataUserPhoto &&
             dataUserPhoto.map((elem) => (
               <li className="li-my-photo" key={elem.id}>
