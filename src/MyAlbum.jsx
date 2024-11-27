@@ -79,6 +79,7 @@ function MyAlbum() {
       alert(
         "Vous avez atteint la limite de 9 photos , veuillez en supprimer pour pouvoir en ajouter"
       );
+      setChargement(false);
     }
   };
 
