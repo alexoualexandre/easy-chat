@@ -191,7 +191,7 @@ function MyAlbum() {
             <br />
             <input
               type="file"
-              name="add_img"
+              name="add_capt"
               className="capt_input_add_img"
               capture="environment"
               onChange={handleSubmit}
