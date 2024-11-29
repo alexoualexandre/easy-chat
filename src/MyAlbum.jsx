@@ -166,7 +166,29 @@ function MyAlbum() {
               accept="image/*,.heic,.heif"
               onChange={handleSubmit}
             />
-
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
             <input
               type="file"
               name="add_img"
