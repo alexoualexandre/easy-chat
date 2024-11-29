@@ -30,6 +30,7 @@ const {
   AddImgAlbum,
   myPhotos,
   deleteImgAlbum,
+  sonAlbum
 } = require("../controler/AddImgAlbumController.js");
 
 const { argon } = require("../service/argon2.js");
@@ -114,3 +115,6 @@ app.post("/add-img-album", AddImgAlbum);
 app.get("/my-photos/:id", myPhotos);
 
 app.put("/update-present", updatePresent);
+
+app.get("/son-album/:id", sonAlbum);
+

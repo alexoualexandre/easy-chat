@@ -31,9 +31,20 @@ const deleteImgAlbum = async (req, res, next) => {
   }
 };
 
+const sonAlbum = async (req, res, next) => {
+  const { id } = req.params;
+  try {
+    const album = await new AddImgAlbumRepository().sonAlbum(id);
+    res.json(album);
+  } catch (err) {
+    next({ error: `erreur:${err}` });
+  }
+};
+
 // eslint-disable-next-line no-undef
 module.exports = {
   AddImgAlbum,
   myPhotos,
   deleteImgAlbum,
+  sonAlbum,
 };

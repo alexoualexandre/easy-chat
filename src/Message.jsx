@@ -21,6 +21,8 @@ function Message() {
     blockNewMessage,
     closeAlbum,
     setCloseAlbum,
+    sonAlbum,
+    setSonAlbum,
   } = MyContext();
 
   setTimeout(() => {
@@ -87,6 +89,15 @@ function Message() {
       });
   }, [userMessage]);
 
+  useEffect(() => {
+    fetch(
+      `http://${env.VITE_API_URL}:${env.VITE_API_SERVER_PORT}/son-album/${params.get("dest")}`
+    )
+      .then((response) => response.json())
+      .then((response) => {
+        setSonAlbum(response);
+      });
+  }, []);
   const subMessage = (e) => {
     e.preventDefault();
 
@@ -95,7 +106,6 @@ function Message() {
     )
       .then((response) => response.json())
       .then((response) => {
-        console.log(response[0]);
         if (changeTxt.message.length > 0 && changeTxt.message !== " ") {
           fetch(
             `http://${env.VITE_API_URL}:${env.VITE_API_SERVER_PORT}/add-message`,
@@ -138,6 +148,18 @@ function Message() {
           >
             ×
           </button>
+
+          <p className="nombre-de-photo">
+            {sonAlbum && `1 / ${sonAlbum.length}`}
+          </p>
+          <article className="article-son-album"></article>
+
+          {/* {sonAlbum &&
+            sonAlbum.map((elem) => (
+              <p style={{ color: "white" }} key={elem.id}>
+                {elem.photo}{" "}
+              </p>
+            ))} */}
         </div>
       )}
       <div className={divMessage ? "div-message" : "div-message-none"}>

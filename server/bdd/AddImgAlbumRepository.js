@@ -20,6 +20,14 @@ class AddImgAlbumRepository {
   async deleteImgAlbum(p) {
     await connection.query("DELETE FROM users_photos WHERE photo = ?", [p]);
   }
+
+  async sonAlbum(id) {
+    const [photo] = await connection.query(
+      "SELECT photo FROM users_photos WHERE user_id = ?",
+      [id]
+    );
+    return photo;
+  }
 }
 
 // eslint-disable-next-line no-undef
