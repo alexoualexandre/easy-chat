@@ -193,7 +193,6 @@ function MyAlbum() {
               type="file"
               name="add_img"
               className="capt_input_add_img"
-              accept="image/*,.heic,.heif"
               capture="environment"
               onChange={handleSubmit}
             />
