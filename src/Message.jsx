@@ -19,6 +19,8 @@ function Message() {
     myAlbum,
     filter,
     blockNewMessage,
+    closeAlbum,
+    setCloseAlbum,
   } = MyContext();
 
   setTimeout(() => {
@@ -125,10 +127,29 @@ function Message() {
 
   return (
     <>
+      {closeAlbum && (
+        <div className="son-album">
+          <button
+            className="close-album"
+            type="button"
+            onClick={() => {
+              setCloseAlbum(false);
+            }}
+          >
+            ×
+          </button>
+        </div>
+      )}
       <div className={divMessage ? "div-message" : "div-message-none"}>
         {!myAlbum && !filter && !blockNewMessage && (
           <div className="option-user-selected">
-            <button type="button" className="button-option-user-selected">
+            <button
+              type="button"
+              className="button-option-user-selected"
+              onClick={() => {
+                setCloseAlbum(true);
+              }}
+            >
               album
             </button>
             <button type="button" className="button-option-user-selected">
