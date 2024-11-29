@@ -166,15 +166,6 @@ function MyAlbum() {
               accept="image/*,.heic,.heif"
               onChange={handleSubmit}
             />
-            
-            <input
-              type="file"
-              name="add_img"
-              className="capt_input_add_img"
-              capture="environment"
-              onChange={handleSubmit}
-              style={{zIndex: 10,position: "absolute", left: "50%", top: "150%"}}
-            />
           </button>
         </form>
         <ul
