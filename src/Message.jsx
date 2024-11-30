@@ -148,6 +148,8 @@ function Message() {
             type="button"
             onClick={() => {
               setCloseAlbum(false);
+              setNext(0);
+              setPosition(1);
             }}
           >
             ×
@@ -210,7 +212,6 @@ function Message() {
               className="button-option-user-selected"
               onClick={() => {
                 setCloseAlbum(true);
-                setNext(0);
               }}
             >
               photos / {sonAlbum && sonAlbum.length}
