@@ -45,6 +45,9 @@ function Message() {
     addition: parseInt(Auth, 10) + parseInt(params.get("dest")),
   });
 
+  const [position, setPosition] = useState(1);
+  const [next, setNext] = useState(0);
+
   useEffect(() => {
     setChangeTxt({
       exp: Auth,
@@ -151,16 +154,52 @@ function Message() {
           </button>
 
           <p className="nombre-de-photo">
-            {sonAlbum && `1 / ${sonAlbum.length}`}
+            {sonAlbum && `${position} / ${sonAlbum.length}`}
           </p>
-          <article className="article-son-album"></article>
-
-          {/* {sonAlbum &&
-            sonAlbum.map((elem) => (
-              <p style={{ color: "white" }} key={elem.id}>
-                {elem.photo}{" "}
-              </p>
-            ))} */}
+          <article className="article-son-album">
+            <button
+              className="prev-article-son-album"
+              type="button"
+              onClick={() => {
+                if (next > 1) {
+                  setNext(next - 100 / sonAlbum.length);
+                  setPosition(position - 1);
+                }
+              }}
+            >
+              &#x3008;
+            </button>
+            <button
+              className="next-article-son-album"
+              type="button"
+              onClick={() => {
+                if (parseInt(next.toString()[0], 10) <= `${sonAlbum.length}`) {
+                  setNext(next + 100 / sonAlbum.length);
+                  setPosition(position + 1);
+                }
+              }}
+            >
+              &#x27E9;
+            </button>
+            <ul
+              className="ul-article-son-album"
+              style={{
+                width: `${sonAlbum.length}00%`,
+                transform: `translate(-${next}%)`,
+                transition: "transform 0.5s",
+              }}
+            >
+              {sonAlbum.map((elem, index) => (
+                <li key={index} className="li-article-son-album">
+                  <img
+                    src={`${env.VITE_API_HTTP}://${env.VITE_API_URL}:${env.VITE_API_SERVER_PORT}/upload/${elem.photo}`}
+                    alt="no-picture"
+                    className="img-li-article-son-album"
+                  />
+                </li>
+              ))}
+            </ul>
+          </article>
         </div>
       )}
       <div className={divMessage ? "div-message" : "div-message-none"}>

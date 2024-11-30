@@ -101,6 +101,7 @@ function NewMessage() {
                       setBlockNewMessage(false);
 
                       if (window.innerWidth < 1024) {
+                        setFilter(false);
                         setUl(false);
                         setDivMessage(true);
                         setUserMessage(elem.exp);

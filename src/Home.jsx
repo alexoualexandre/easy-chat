@@ -121,7 +121,7 @@ function Home() {
               type="button"
               className={voirFiltre}
               onClick={() => {
-                if (window.innerWidth >= 1024) {
+                // if (window.innerWidth >= 1024) {
                   fetch(
                     `http://${env.VITE_API_URL}:${env.VITE_API_SERVER_PORT}/update-present`,
 
@@ -136,7 +136,7 @@ function Home() {
                       }),
                     }
                   ).then((response) => response.json());
-                }
+                // }
 
                 if (window.innerWidth >= 1024) {
                   if (myAlbum) {
@@ -147,7 +147,8 @@ function Home() {
                     setFilter(!filter);
                     setBlockNewMessage(false);
                   }
-                } else {
+                } 
+                else {
                   setFilter(!filter);
                   setBlockNewMessage(false);
                 }
