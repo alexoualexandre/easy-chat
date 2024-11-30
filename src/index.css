@@ -1768,6 +1768,7 @@ button {
     top: 0;
     background-color: transparent;
     border: none;
+    cursor: pointer;
   }
 
   .article-son-album {

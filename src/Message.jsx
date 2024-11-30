@@ -97,7 +97,8 @@ function Message() {
       .then((response) => {
         setSonAlbum(response);
       });
-  }, []);
+  }, [params.get("dest")]);
+
   const subMessage = (e) => {
     e.preventDefault();
 
@@ -172,10 +173,10 @@ function Message() {
                 setCloseAlbum(true);
               }}
             >
-              album
+              photos / {sonAlbum && sonAlbum.length}
             </button>
             <button type="button" className="button-option-user-selected">
-              fréquence
+              fréquences
             </button>
           </div>
         )}
