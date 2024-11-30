@@ -178,7 +178,7 @@ function Message() {
               onClick={() => {
                 if (
                   parseInt(next.toString()[0], 10) <= `${sonAlbum.length}` &&
-                  sonAlbum.length > 0
+                  sonAlbum.length > 1
                 ) {
                   setNext(next + 100 / sonAlbum.length);
                   setPosition(position + 1);
