@@ -156,7 +156,8 @@ function Message() {
           </button>
 
           <p className="nombre-de-photo">
-            {sonAlbum && `${position} / ${sonAlbum.length}`}
+            {sonAlbum &&
+              `${sonAlbum.length > 0 ? position : 0} / ${sonAlbum.length}`}
           </p>
           <article className="article-son-album">
             <button
@@ -175,7 +176,10 @@ function Message() {
               className="next-article-son-album"
               type="button"
               onClick={() => {
-                if (parseInt(next.toString()[0], 10) <= `${sonAlbum.length}`) {
+                if (
+                  parseInt(next.toString()[0], 10) <= `${sonAlbum.length}` &&
+                  sonAlbum.length > 0
+                ) {
                   setNext(next + 100 / sonAlbum.length);
                   setPosition(position + 1);
                 }
