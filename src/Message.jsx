@@ -165,7 +165,7 @@ function Message() {
               type="button"
               onClick={() => {
                 if (next > 1) {
-                  setNext(next - 100 / sonAlbum.length);
+                  setNext(next - 99.99 / sonAlbum.length);
                   setPosition(position - 1);
                 }
               }}
@@ -177,7 +177,7 @@ function Message() {
               type="button"
               onClick={() => {
                 if (
-                  parseInt(next.toString()[0], 10) <= `${sonAlbum.length}` &&
+                  Math.ceil(next + 100 / sonAlbum.length) < 99.99 &&
                   sonAlbum.length > 1
                 ) {
                   setNext(next + 100 / sonAlbum.length);
