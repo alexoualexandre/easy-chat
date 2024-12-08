@@ -12,6 +12,27 @@ import MyProfil from "./MyProfil.jsx";
 import NotFound from "./NotFound.jsx";
 import Ajax from "./Ajax.jsx";
 import Message from "./Message.jsx";
+import Cookies from "js-cookie";
+
+function maj() {
+  const interval = setInterval(() => {
+    const Auth = Cookies.get("auth");
+    if (Auth)
+      fetch(`http://localhost:3311/select-user-id/${Auth}`)
+        .then((response) => response.json())
+        .then((response) => {
+          if (response[0].inline === 0) {
+            alert(
+              "Vous avez été déconnecté pour inactivité de plus de 1 minute."
+            );
+
+            window.location.href = "/deconnexion";
+          }
+        });
+  }, 1000);
+  return () => clearInterval(interval);
+}
+maj();
 
 const router = createBrowserRouter([
   {

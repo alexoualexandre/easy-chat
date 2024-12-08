@@ -122,20 +122,20 @@ function Home() {
               className={voirFiltre}
               onClick={() => {
                 // if (window.innerWidth >= 1024) {
-                  fetch(
-                    `http://${env.VITE_API_URL}:${env.VITE_API_SERVER_PORT}/update-present`,
+                fetch(
+                  `http://${env.VITE_API_URL}:${env.VITE_API_SERVER_PORT}/update-present`,
 
-                    {
-                      method: "PUT",
-                      headers: {
-                        "Content-Type": "application/json",
-                      },
-                      body: JSON.stringify({
-                        user: !filter ? 0 : params.get("dest"),
-                        m: Cookies.get("auth"),
-                      }),
-                    }
-                  ).then((response) => response.json());
+                  {
+                    method: "PUT",
+                    headers: {
+                      "Content-Type": "application/json",
+                    },
+                    body: JSON.stringify({
+                      user: !filter ? 0 : params.get("dest"),
+                      m: Cookies.get("auth"),
+                    }),
+                  }
+                ).then((response) => response.json());
                 // }
 
                 if (window.innerWidth >= 1024) {
@@ -147,8 +147,7 @@ function Home() {
                     setFilter(!filter);
                     setBlockNewMessage(false);
                   }
-                } 
-                else {
+                } else {
                   setFilter(!filter);
                   setBlockNewMessage(false);
                 }

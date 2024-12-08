@@ -1,12 +1,9 @@
-// import { useEffect, useState } from "react";
 import Header from "./Header.jsx";
 import BurgerHome from "./BurgerHome.jsx";
 import { MyContext } from "./Context.jsx";
 import { useEffect, useState } from "react";
 
 function App() {
-  //	fonction de MAJ auto bdd
-  //  const [data, setData] = useState();
   const { burgerHome } = MyContext();
   const [number, setNumber] = useState(0);
   const table = [

@@ -16,6 +16,7 @@ const {
   recherche,
   userSelected,
   updatePresent,
+  autoDeco,
 } = require("../controler/userControler.js");
 
 const {
@@ -30,7 +31,7 @@ const {
   AddImgAlbum,
   myPhotos,
   deleteImgAlbum,
-  sonAlbum
+  sonAlbum,
 } = require("../controler/AddImgAlbumController.js");
 
 const { argon } = require("../service/argon2.js");
@@ -118,3 +119,4 @@ app.put("/update-present", updatePresent);
 
 app.get("/son-album/:id", sonAlbum);
 
+app.put("/auto-deco", autoDeco);

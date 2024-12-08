@@ -5,6 +5,7 @@ import { MyContext } from "./Context";
 
 function Ajax() {
   if (!Cookies.get("auth")) window.location.href = "/";
+
   const env = import.meta.env;
   const { data, setData, count } = MyContext();
   const location = useLocation();

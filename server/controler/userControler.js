@@ -207,6 +207,16 @@ const updatePresent = async (req, res, next) => {
   }
 };
 
+const autoDeco = async (req, res, next) => {
+  const data = req.body;
+  try {
+    await new User().autoDeco(data);
+    res.json({ maj: "ok" });
+  } catch (err) {
+    next({ error: `erreur:${err}` });
+  }
+};
+
 module.exports = {
   getUser,
   insertUser,
@@ -220,4 +230,5 @@ module.exports = {
   recherche,
   userSelected,
   updatePresent,
+  autoDeco,
 };

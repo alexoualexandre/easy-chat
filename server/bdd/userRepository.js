@@ -41,7 +41,7 @@ class User {
 
   async selectAllUser() {
     const [r] = await connection.query(
-      "SELECT id,sex,search,age,pseudo,created_at,dep,img,description,inline FROM user ORDER BY id DESC"
+      "SELECT id,sex,search,age,pseudo,created_at,dep,img,description,inline,last_modified FROM user ORDER BY id DESC"
     );
     return r;
   }
@@ -216,6 +216,12 @@ class User {
     await connection.query("UPDATE user SET present = ? WHERE id = ?", [
       parseInt(data.user, 10),
       parseInt(data.m, 10),
+    ]);
+  }
+
+  async autoDeco(data) {
+    await connection.query("UPDATE user SET inline = 0 WHERE id = ?", [
+      parseInt(data.id, 10),
     ]);
   }
 }
