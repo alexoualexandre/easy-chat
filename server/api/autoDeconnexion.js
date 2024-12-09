@@ -5,7 +5,7 @@ function cal() {
   const interval = setInterval(() => {
     const now = DateTime.now();
 
-    fetch(`http://localhost:3311/select-all-user`)
+    fetch(`http://77.37.51.45:3311/select-all-user`)
       .then((response) => response.json())
       .then((response) => {
         for (let i = 0; i < response.length; i++) {
@@ -20,7 +20,7 @@ function cal() {
 
           if (now.minute === min + 1 && now.second === sec) {
             fetch(
-              `http://localhost:3311/auto-deco`,
+              `http://77.37.51.45:3311/auto-deco`,
 
               {
                 method: "PUT",
@@ -33,7 +33,7 @@ function cal() {
               }
             );
             fetch(
-              `http://localhost:3311/update-present`,
+              `http://77.37.51.45:3311/update-present`,
 
               {
                 method: "PUT",
