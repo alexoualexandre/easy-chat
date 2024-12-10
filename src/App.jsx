@@ -2,8 +2,13 @@ import Header from "./Header.jsx";
 import BurgerHome from "./BurgerHome.jsx";
 import { MyContext } from "./Context.jsx";
 import { useEffect, useState } from "react";
+import Cookies from "js-cookie";
 
 function App() {
+  if (Cookies.get("auth")) {
+    window.location.href = "/home";
+  }
+
   const { burgerHome } = MyContext();
   const [number, setNumber] = useState(0);
   const table = [

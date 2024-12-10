@@ -16,7 +16,7 @@ function cal() {
             10
           );
 
-          let heure = splitH > 21 ? 0 : splitH;
+          let heure = splitH === 23 ? 0 : splitH;
 
           let splitM = parseInt(
             response[i].last_modified.split("T")[1].split(".")[0].split(":")[1],
