@@ -24,7 +24,7 @@ function cal() {
           );
           let min = splitM;
 
-          if (nowH === heure + 2 && nowM === min) {
+          if (nowH === heure + 1 && nowM === min) {
             fetch(
               `http://77.37.51.45:3311/auto-deco`,
 
