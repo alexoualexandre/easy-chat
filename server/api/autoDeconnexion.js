@@ -7,7 +7,7 @@ function cal() {
     let nowH = now.hour;
     let nowM = now.minute;
 
-    fetch(`http://localhost:3311/select-all-user`)
+    fetch(`http://77.37.51.45:3311/select-all-user`)
       .then((response) => response.json())
       .then((response) => {
         for (let i = 0; i < response.length; i++) {
@@ -26,7 +26,7 @@ function cal() {
 
           if (nowH === heure + 2 && nowM === min) {
             fetch(
-              `http://localhost:3311/auto-deco`,
+              `http://77.37.51.45:3311/auto-deco`,
 
               {
                 method: "PUT",
@@ -39,7 +39,7 @@ function cal() {
               }
             );
             fetch(
-              `http://localhost:3311/update-present`,
+              `http://77.37.51.45:3311/update-present`,
 
               {
                 method: "PUT",
