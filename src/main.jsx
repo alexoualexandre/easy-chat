@@ -18,12 +18,12 @@ function maj() {
   const interval = setInterval(() => {
     const Auth = Cookies.get("auth");
     if (Auth)
-      fetch(`http://77.37.51.45:3311/select-user-id/${Auth}`)
+      fetch(`http://localhost:3311/select-user-id/${Auth}`)
         .then((response) => response.json())
         .then((response) => {
           if (response[0].inline === 0) {
             alert(
-              "Vous avez été déconnecté pour inactivité de plus de 1 minute."
+              "Vous avez été déconnecté pour inactivité de plus d'une heure , veuillez vous reconnecter."
             );
 
             window.location.href = "/deconnexion";

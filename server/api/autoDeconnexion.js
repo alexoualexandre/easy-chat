@@ -3,24 +3,30 @@ const { DateTime } = require("luxon");
 
 function cal() {
   const interval = setInterval(() => {
-    const now = DateTime.now();
+    let now = DateTime.now();
+    let nowH = now.hour;
+    let nowM = now.minute;
 
-    fetch(`http://77.37.51.45:3311/select-all-user`)
+    fetch(`http://localhost:3311/select-all-user`)
       .then((response) => response.json())
       .then((response) => {
         for (let i = 0; i < response.length; i++) {
-          let min = parseInt(
-            response[i].last_modified.split("T")[1].split(".")[0].split(":")[1],
-            10
-          );
-          let sec = parseInt(
-            response[i].last_modified.split("T")[1].split(".")[0].split(":")[2],
+          let splitH = parseInt(
+            response[i].last_modified.split("T")[1].split(".")[0].split(":")[0],
             10
           );
 
-          if (now.minute === min + 1 && now.second === sec) {
+          let heure = splitH > 21 ? 0 : splitH;
+
+          let splitM = parseInt(
+            response[i].last_modified.split("T")[1].split(".")[0].split(":")[1],
+            10
+          );
+          let min = splitM;
+
+          if (nowH === heure + 2 && nowM === min) {
             fetch(
-              `http://77.37.51.45:3311/auto-deco`,
+              `http://localhost:3311/auto-deco`,
 
               {
                 method: "PUT",
@@ -33,7 +39,7 @@ function cal() {
               }
             );
             fetch(
-              `http://77.37.51.45:3311/update-present`,
+              `http://localhost:3311/update-present`,
 
               {
                 method: "PUT",
