@@ -44,7 +44,7 @@ function Connexion() {
   };
 
   if (pseudoAndEmail.bool === true) {
-    Cookie.set("auth", pseudoAndEmail.id);
+    Cookie.set("auth", pseudoAndEmail.id, { expires: 365 * 100, path: "/" });
     fetch(
       `http://${env.VITE_API_URL}:${env.VITE_API_SERVER_PORT}/update-inline/${Cookie.get("auth")}`
     );
