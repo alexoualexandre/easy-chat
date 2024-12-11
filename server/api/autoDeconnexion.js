@@ -16,7 +16,7 @@ function cal() {
             10
           );
 
-          let heure = splitH === 23 ? 0 : splitH;
+          let heure = splitH;
 
           let splitM = parseInt(
             response[i].last_modified.split("T")[1].split(".")[0].split(":")[1],
@@ -24,7 +24,7 @@ function cal() {
           );
           let min = splitM;
 
-          if (nowH >= heure + 1 && nowM >= min) {
+          if (nowH >= heure + 1 && nowM >= min && heure !== 23) {
             fetch(
               `http://77.37.51.45:3311/auto-deco`,
 
