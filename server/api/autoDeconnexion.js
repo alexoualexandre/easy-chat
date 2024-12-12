@@ -4,8 +4,6 @@ let now = DateTime.now();
 
 function cal() {
   const interval = setInterval(() => {
-    let nowH = now.hour;
-    let nowM = now.minute;
     fetch(`http://77.37.51.45:3311/select-all-user`)
       .then((response) => response.json())
       .then((response) => {
@@ -22,6 +20,9 @@ function cal() {
             10
           );
           let min = splitM;
+
+          let nowH = now.hour;
+          let nowM = now.minute;
 
           if (nowH >= heure + 1 && nowM >= min) {
             fetch(
