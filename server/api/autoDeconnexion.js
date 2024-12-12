@@ -7,24 +7,24 @@ function cal() {
       .then((response) => response.json())
       .then((response) => {
         for (let i = 0; i < response.length; i++) {
-          let splitH = parseInt(
-            response[i].last_modified.split("T")[1].split(".")[0].split(":")[0],
-            10
-          );
-
-          let heure = splitH;
-
           let splitM = parseInt(
             response[i].last_modified.split("T")[1].split(".")[0].split(":")[1],
             10
           );
-          let min = splitM;
+
+          let minute = splitM;
+
+          let splitS = parseInt(
+            response[i].last_modified.split("T")[1].split(".")[0].split(":")[2],
+            10
+          );
+          let second = splitS;
 
           let now = DateTime.now();
-          let nowH = parseInt(now.hour, 10) < 1 ? 24 : parseInt(now.hour, 10);
           let nowM = parseInt(now.minute, 10);
+          let nowS = parseInt(now.second, 10);
 
-          if (nowH >= heure + 2 && nowM >= min) {
+          if (nowM >= minute && nowS >= second) {
             fetch(
               `http://77.37.51.45:3311/auto-deco`,
 
