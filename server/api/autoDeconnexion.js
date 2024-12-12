@@ -4,8 +4,6 @@ const { DateTime } = require("luxon");
 function cal() {
   const interval = setInterval(() => {
     let now = DateTime.now();
-    let nowH = now.hour;
-    let nowM = now.minute;
 
     fetch(`http://77.37.51.45:3311/select-all-user`)
       .then((response) => response.json())
@@ -24,7 +22,10 @@ function cal() {
           );
           let min = splitM;
 
-          if (nowH >= heure + 1 && nowM >= min && heure !== 23 && heure !== 0) {
+          let nowH = heure === 23 ? 24 : now.hour;
+          let nowM = now.minute;
+
+          if (nowH >= heure + 1 && nowM >= min) {
             fetch(
               `http://77.37.51.45:3311/auto-deco`,
 
