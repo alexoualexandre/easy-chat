@@ -24,7 +24,7 @@ function cal() {
           let nowH = parseInt(now.hour, 10) < 1 ? 24 : parseInt(now.hour, 10);
           let nowM = parseInt(now.minute, 10);
 
-          if (nowH >= heure + 1 && nowM >= min) {
+          if (nowH >= heure + 2 && nowM >= min) {
             fetch(
               `http://77.37.51.45:3311/auto-deco`,
 
