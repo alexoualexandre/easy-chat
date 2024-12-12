@@ -1,6 +1,5 @@
 /* eslint-disable no-undef */
 const { DateTime } = require("luxon");
-let now = DateTime.now();
 
 function cal() {
   const interval = setInterval(() => {
@@ -20,8 +19,9 @@ function cal() {
             10
           );
           let min = splitM;
-
-          let nowH = now.hour;
+          
+          let now = DateTime.now();
+          let nowH = now.hour < 1 ? 24 : now.hour;
           let nowM = now.minute;
 
           if (nowH >= heure + 1 && nowM >= min) {
