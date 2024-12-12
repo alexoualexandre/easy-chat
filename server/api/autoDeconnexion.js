@@ -1,15 +1,15 @@
 /* eslint-disable no-undef */
 const { DateTime } = require("luxon");
+let now = DateTime.now();
 
 function cal() {
   const interval = setInterval(() => {
+    let nowH = now.hour;
+    let nowM = now.minute;
     fetch(`http://77.37.51.45:3311/select-all-user`)
       .then((response) => response.json())
       .then((response) => {
         for (let i = 0; i < response.length; i++) {
-          let now = DateTime.now();
-          let nowH = now.hour;
-          let nowM = now.minute;
           let splitH = parseInt(
             response[i].last_modified.split("T")[1].split(".")[0].split(":")[0],
             10
