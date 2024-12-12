@@ -19,10 +19,10 @@ function cal() {
             10
           );
           let min = splitM;
-          
+
           let now = DateTime.now();
-          let nowH = now.hour < 1 ? 24 : now.hour;
-          let nowM = now.minute;
+          let nowH = parseInt(now.hour, 10) < 1 ? 24 : parseInt(now.hour, 10);
+          let nowM = parseInt(now.minute, 10);
 
           if (nowH >= heure + 1 && nowM >= min) {
             fetch(
