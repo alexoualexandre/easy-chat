@@ -4,8 +4,6 @@
 const { DateTime } = require("luxon");
 
 // Obtenir l'heure actuelle
-const now = DateTime.now();
-
 // Soustraire une heure
 
 // console.log(`Heure actuelle: ${now.toFormat('HH:mm:ss')}`);
@@ -17,33 +15,22 @@ function cal() {
       .then((response) => response.json())
       .then((response) => {
         for (let i = 0; i < response.length; i++) {
-          let splitM = parseInt(
+          const now = DateTime.now();
+
+          const minute = parseInt(
             response[i].last_modified.split("T")[1].split(".")[0].split(":")[1],
             10
           );
-          let minute = splitM;
-          let splitS = parseInt(
+          const second = parseInt(
             response[i].last_modified.split("T")[1].split(".")[0].split(":")[2],
             10
           );
-          let second = splitS;
 
           const oneMinuteAgo = now.minus({ minutes: 1 });
-          // const split = response[i].last_modified.split("T")[1].split(".")[0];
-
-          // console.log(oneMinuteAgo.toFormat("HH:mm:ss"))
-          // console.log(response[0].last_modified.split("T")[1].split(".")[0] === "15:57:57");
-
-          // .split(".")[0].split(":")[1],
-
-          // let heure = splitH;
-          // let minute = splitM;
-          // let now = DateTime.now();
-          // let nowM = parseInt(now.minute, 10);
 
           if (
-            parseInt(oneMinuteAgo.minute, 10) === minute &&
-            parseInt(oneMinuteAgo.second, 10) === second
+            parseInt(oneMinuteAgo.minute, 10) == minute &&
+            parseInt(oneMinuteAgo.second, 10) == second
           ) {
             fetch(
               `http://77.37.51.45:3311/auto-deco`,
@@ -76,7 +63,7 @@ function cal() {
         }
       })
       .then((response) => response.json());
-  }, 330);
+  }, 500);
   return () => clearInterval(interval);
 }
 
