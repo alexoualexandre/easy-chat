@@ -27,8 +27,8 @@ function cal() {
           //   10
           // );
 
-          let oneMinuteAgo = now.minus({ minutes: 1 });
-          let split = response[i].last_modified.split("T")[1].split(".")[0];
+          const oneMinuteAgo = now.minus({ minutes: 1 });
+          const split = response[i].last_modified.split("T")[1].split(".")[0];
 
           // console.log(oneMinuteAgo.toFormat("HH:mm:ss"))
           // console.log(response[0].last_modified.split("T")[1].split(".")[0] === "15:57:57");
