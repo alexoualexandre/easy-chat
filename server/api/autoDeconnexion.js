@@ -26,7 +26,7 @@ function cal() {
             10
           );
 
-          const oneMinuteAgo = now.minus({ minutes: 1 });
+          const oneMinuteAgo = now.minus({ minutes: 59 });
 
           if (
             parseInt(oneMinuteAgo.minute, 10) == minute &&
