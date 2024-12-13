@@ -7,21 +7,26 @@ function cal() {
       .then((response) => response.json())
       .then((response) => {
         for (let i = 0; i < response.length; i++) {
-          let splitH = parseInt(
-            response[i].last_modified.split("T")[1].split(".")[0].split(":")[0],
-            10
-          );
-          let heure = splitH;
+          // let splitH = parseInt(
+          //   response[i].last_modified.split("T")[1].split(".")[0].split(":")[0],
+          //   10
+          // );
+          // let heure = splitH;
           let splitM = parseInt(
             response[i].last_modified.split("T")[1].split(".")[0].split(":")[1],
             10
           );
+          let splitS = parseInt(
+            response[i].last_modified.split("T")[1].split(".")[0].split(":")[2],
+            10
+          );
           let minute = splitM;
+          let second = splitS;
           let now = DateTime.now();
-          let nowM = parseInt(now.minute, 10);
+          let nowS = parseInt(now.second, 10);
           if (
-            heure === parseInt(now.minus({ hours: 1 }).hour) &&
-            nowM > minute
+            minute === parseInt(now.minus({ minutes: 1 }).minute) &&
+            nowS > second
           ) {
             fetch(
               `http://77.37.51.45:3311/auto-deco`,
@@ -54,7 +59,7 @@ function cal() {
         }
       })
       .then((response) => response.json());
-  }, 1000);
+  }, 330);
   return () => clearInterval(interval);
 }
 

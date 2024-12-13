@@ -29,7 +29,7 @@ function maj() {
             window.location.href = "/deconnexion";
           }
         });
-  }, 1000);
+  }, 5000);
   return () => clearInterval(interval);
 }
 maj();
