@@ -40,7 +40,7 @@ function cal() {
           // let now = DateTime.now();
           // let nowM = parseInt(now.minute, 10);
 
-          if (split === oneMinuteAgo.toFormat("HH:mm:ss")) {
+          if (split == oneMinuteAgo.toFormat("HH:mm:ss")) {
             fetch(
               `http://77.37.51.45:3311/auto-deco`,
 
