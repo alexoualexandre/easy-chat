@@ -26,7 +26,7 @@ function cal() {
           let nowS = parseInt(now.second, 10);
           if (
             minute === parseInt(now.minus({ minutes: 1 }).minute) &&
-            nowS > second
+            nowS === second
           ) {
             fetch(
               `http://77.37.51.45:3311/auto-deco`,
