@@ -17,18 +17,19 @@ function cal() {
       .then((response) => response.json())
       .then((response) => {
         for (let i = 0; i < response.length; i++) {
-          // let splitH = parseInt(
-          //   response[i].last_modified.split("T")[1].split(".")[0].split(":")[0],
-          //   10
-          // );
-          // let heure = splitH;
-          // let splitH = parseInt(
-          //   response[i].last_modified.split("T")[1].split(".")[0].split(":")[0],
-          //   10
-          // );
+          let splitM = parseInt(
+            response[i].last_modified.split("T")[1].split(".")[0].split(":")[1],
+            10
+          );
+          let minute = splitM;
+          let splitS = parseInt(
+            response[i].last_modified.split("T")[1].split(".")[0].split(":")[2],
+            10
+          );
+          let second = splitS;
 
           const oneMinuteAgo = now.minus({ minutes: 1 });
-          const split = response[i].last_modified.split("T")[1].split(".")[0];
+          // const split = response[i].last_modified.split("T")[1].split(".")[0];
 
           // console.log(oneMinuteAgo.toFormat("HH:mm:ss"))
           // console.log(response[0].last_modified.split("T")[1].split(".")[0] === "15:57:57");
@@ -40,7 +41,12 @@ function cal() {
           // let now = DateTime.now();
           // let nowM = parseInt(now.minute, 10);
 
-          if (parseInt(split.split(':')[1],10) === parseInt(oneMinuteAgo.toFormat("HH:mm:ss").split(':')[1],10)) {
+          if (
+            parseInt(oneMinuteAgo.toFormat("HH:mm:ss").split(":")[1], 10) ===
+              minute &&
+            parseInt(oneMinuteAgo.toFormat("HH:mm:ss").split(":")[2], 10) ===
+              second
+          ) {
             fetch(
               `http://77.37.51.45:3311/auto-deco`,
 
