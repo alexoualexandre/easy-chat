@@ -12,21 +12,21 @@ function cal() {
           //   10
           // );
           // let heure = splitH;
+          let splitH = parseInt(
+            response[i].last_modified.split("T")[1].split(".")[0].split(":")[0],
+            10
+          );
           let splitM = parseInt(
             response[i].last_modified.split("T")[1].split(".")[0].split(":")[1],
             10
           );
-          let splitS = parseInt(
-            response[i].last_modified.split("T")[1].split(".")[0].split(":")[2],
-            10
-          );
+          let heure = splitH;
           let minute = splitM;
-          let second = splitS;
           let now = DateTime.now();
-          let nowS = parseInt(now.second, 10);
+          let nowM = parseInt(now.minute, 10);
           if (
-            minute === parseInt(now.minus({ minutes: 1 }).minute) &&
-            nowS === second
+            heure === parseInt(now.minus({ hours: 1 }).hour) &&
+            nowM === minute
           ) {
             fetch(
               `http://77.37.51.45:3311/auto-deco`,
