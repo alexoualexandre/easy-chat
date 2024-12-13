@@ -20,7 +20,7 @@ function cal() {
           let now = DateTime.now();
           let nowM = parseInt(now.minute, 10);
           if (
-            heure === parseInt(now.minus({ hours: 2 }).hour) &&
+            heure === parseInt(now.minus({ hours: 1 }).hour) &&
             nowM > minute
           ) {
             fetch(
