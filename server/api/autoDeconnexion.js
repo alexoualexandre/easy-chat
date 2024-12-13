@@ -42,10 +42,8 @@ function cal() {
           // let nowM = parseInt(now.minute, 10);
 
           if (
-            parseInt(oneMinuteAgo.toFormat("HH:mm:ss").split(":")[1], 10) ===
-              minute &&
-            parseInt(oneMinuteAgo.toFormat("HH:mm:ss").split(":")[2], 10) ===
-              second
+            parseInt(oneMinuteAgo.minute, 10) === minute &&
+            parseInt(oneMinuteAgo.second, 10) === second
           ) {
             fetch(
               `http://77.37.51.45:3311/auto-deco`,
