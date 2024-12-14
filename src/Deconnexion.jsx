@@ -12,14 +12,16 @@ function Deconnexion() {
       },
       body: JSON.stringify({ user: 0, m: Cookies.get("auth") }),
     }
-  ).then((response) => response.json());
-  fetch(
-    `http://${env.VITE_API_URL}:${env.VITE_API_SERVER_PORT}/deconnexion/${Cookies.get("auth")}`
   )
     .then((response) => response.json())
     .then(() => {
-      Cookies.remove("auth");
-      window.location.href = "/";
+      fetch(
+        `http://${env.VITE_API_URL}:${env.VITE_API_SERVER_PORT}/deconnexion/${Cookies.get("auth")}`
+      ).then((response) => {
+        response.json();
+        Cookies.remove("auth");
+        window.location.href = "/";
+      });
     });
 }
 
