@@ -15,10 +15,12 @@ function Deconnexion() {
   ).then((response) => response.json());
   fetch(
     `http://${env.VITE_API_URL}:${env.VITE_API_SERVER_PORT}/deconnexion/${Cookies.get("auth")}`
-  );
-
-  Cookies.remove("auth");
-  window.location.href = "/";
+  )
+    .then((response) => response.json())
+    .then(() => {
+      Cookies.remove("auth");
+      window.location.href = "/";
+    });
 }
 
 export default Deconnexion;

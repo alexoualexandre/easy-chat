@@ -163,6 +163,7 @@ const disconnect = async (req, res, next) => {
   const { id } = req.params;
   try {
     await new User().disconnect(id);
+    res.json({ disconnect: "ok" });
   } catch (err) {
     next({ error: `erreur:${err}` });
   }
