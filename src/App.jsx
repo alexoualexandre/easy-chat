@@ -12,10 +12,10 @@ function App() {
   const { burgerHome } = MyContext();
   const [number, setNumber] = useState(0);
   const table = [
-    "_e33c4ccd-453f-44c9-8b41-c27d0eeb24c8.jfif",
-    "img-homme-chelou.png",
-    "img-femme-chelou.png",
-    "dalle.webp",
+    "femme-black.jpg",
+    "pierre-26-35-ans.png",
+    "sophie-26-35-ans.jpg",
+    "homme-blanc.jpg",
   ];
 
   useEffect(() => {
