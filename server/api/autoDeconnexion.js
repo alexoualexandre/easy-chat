@@ -1,13 +1,6 @@
 /* eslint-disable no-undef */
-// const { DateTime } = require("luxon");
 
 const { DateTime } = require("luxon");
-
-// Obtenir l'heure actuelle
-// Soustraire une heure
-
-// console.log(`Heure actuelle: ${now.toFormat('HH:mm:ss')}`);
-// console.log(`Heure actuelle moins une heure: ${oneHourAgo.toFormat('HH:mm:ss')}`);
 
 function cal() {
   const interval = setInterval(() => {

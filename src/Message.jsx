@@ -129,6 +129,27 @@ function Message() {
             .then((data) => {
               console.log(data);
             });
+
+          fetch(
+            `http://${env.VITE_API_URL}:${env.VITE_API_SERVER_PORT}/select-total-message/${Auth}`
+          )
+            .then((response) => response.json())
+            .then((response) => {
+              fetch(
+                `http://${env.VITE_API_URL}:${env.VITE_API_SERVER_PORT}/update-total-message`,
+                {
+                  method: "PUT",
+                  headers: {
+                    "Content-Type": "application/json",
+                  },
+                  body: JSON.stringify({
+                    user: Auth,
+                    maj: parseInt(response[0].total_message, 10),
+                  }),
+                }
+              ).then((response) => response.json());
+            });
+
           setChangeTxt({
             exp: Auth,
             dest: params.get("dest"),
@@ -222,6 +243,9 @@ function Message() {
             </button>
             <button type="button" className="button-option-user-selected">
               fréquences
+            </button>
+            <button type="button" className="button-option-user-selected">
+              options
             </button>
           </div>
         )}

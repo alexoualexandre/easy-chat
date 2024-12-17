@@ -224,6 +224,21 @@ class User {
       parseInt(data.id, 10),
     ]);
   }
+
+  async selectTotalMessage(user) {
+    const [st] = await connection.query(
+      "SELECT total_message FROM user WHERE id = ?",
+      [parseInt(user, 10)]
+    );
+    return st;
+  }
+
+  async updateTotalMessage(data) {
+    await connection.query("UPDATE user SET total_message = ? WHERE id = ?", [
+      parseInt(data.maj, 10) + 1,
+      parseInt(data.user, 10),
+    ]);
+  }
 }
 
 // eslint-disable-next-line no-undef

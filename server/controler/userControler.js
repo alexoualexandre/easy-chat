@@ -218,6 +218,26 @@ const autoDeco = async (req, res, next) => {
   }
 };
 
+const selectTotalMessage = async (req, res, next) => {
+  const { user } = req.params;
+  try {
+    const stm = await new User().selectTotalMessage(user);
+    res.json(stm);
+  } catch (err) {
+    next({ error: `erreur:${err}` });
+  }
+};
+
+const updateTotalMessage = async (req, res, next) => {
+  const data = req.body;
+  try {
+    await new User().updateTotalMessage(data);
+    res.json({ maj: "ok" });
+  } catch (err) {
+    next({ error: `erreur:${err}` });
+  }
+};
+
 module.exports = {
   getUser,
   insertUser,
@@ -232,4 +252,6 @@ module.exports = {
   userSelected,
   updatePresent,
   autoDeco,
+  selectTotalMessage,
+  updateTotalMessage,
 };

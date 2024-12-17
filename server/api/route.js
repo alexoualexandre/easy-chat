@@ -17,6 +17,8 @@ const {
   userSelected,
   updatePresent,
   autoDeco,
+  selectTotalMessage,
+  updateTotalMessage,
 } = require("../controler/userControler.js");
 
 const {
@@ -120,3 +122,7 @@ app.put("/update-present", updatePresent);
 app.get("/son-album/:id", sonAlbum);
 
 app.put("/auto-deco", autoDeco);
+
+app.get("/select-total-message/:user", selectTotalMessage);
+
+app.put("/update-total-message", updateTotalMessage);
