@@ -204,12 +204,22 @@ function Frequence() {
           <td className="td"></td>
           <td className="td"></td>
           <td className="td">
-            {/* {mercredi &&
-              dateFrequence[dateFrequence.length - 1].event_time
-                .split("T")[1]
-                .split(".")[0]
-                .split(":")[0] >= 20 && 
-             <p>ok</p>} */}
+            {mercredi &&
+              mercredi.length !== 0 &&
+              parseInt(
+                mercredi[mercredi.length - 1].event_time
+                  .split("T")[1]
+                  .split(".")[0]
+                  .split(":")[0],
+                10
+              ) >= 22 &&
+              parseInt(
+                mercredi[mercredi.length - 1].event_time
+                  .split("T")[1]
+                  .split(".")[0]
+                  .split(":")[0],
+                10
+              ) !== 0 && <p>ok</p>}
           </td>
           <td className="td"></td>
           <td className="td"></td>
