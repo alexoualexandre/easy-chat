@@ -242,7 +242,7 @@ function Frequence() {
                   .split(".")[0]
                   .split(":")[0],
                 10
-              ) !== 0 && <p>ok</p>}
+              ) !== 0 && <p className="present-frequence">&#10003;</p>}
           </td>
           <td className="td"></td>
           <td className="td"></td>
