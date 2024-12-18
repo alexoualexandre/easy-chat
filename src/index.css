@@ -1895,10 +1895,9 @@ button {
   }
 
   .present-frequence {
-    color: white;
-    background-color: green;
+    color: green;
     font-size: 1em;
-    font-weight: bold;
+    font-weight: bolder;
   }
 }
 
