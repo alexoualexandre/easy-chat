@@ -83,7 +83,9 @@ function Frequence() {
               dateFrequence[dateFrequence.length - 1].event_time
                 .split("T")[1]
                 .split(".")[0]
-                .split(":")[0] < 2 && <p>ok</p>}
+                .split(":")[0] < 2 && (
+                <p className="present-frequence">&#10003;</p>
+              )}
           </td>
           <td className="td">
             {jeudi &&
@@ -95,7 +97,9 @@ function Frequence() {
               dateFrequence[dateFrequence.length - 1].event_time
                 .split("T")[1]
                 .split(".")[0]
-                .split(":")[0] < 2 && <p>ok</p>}
+                .split(":")[0] < 2 && (
+                <p className="present-frequence">&#10003;</p>
+              )}
           </td>
           <td className="td"></td>
           <td className="td"></td>
@@ -211,7 +215,7 @@ function Frequence() {
                   .split(".")[0]
                   .split(":")[0],
                 10
-              ) < 22 && <p>ok</p>}
+              ) < 22 && <p className="present-frequence">&#10003;</p>}
           </td>
           <td className="td"></td>
           <td className="td"></td>
