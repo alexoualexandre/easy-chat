@@ -1896,6 +1896,8 @@ button {
 
   .present-frequence {
     color: green;
+    font-size: 2em;
+    font-weight: bold;
   }
 }
 
