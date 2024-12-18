@@ -38,6 +38,14 @@ function Frequence() {
         DateTime.fromISO(elem.event_time.split("T")[0]).setLocale("fr")
           .weekdayLong === "mercredi"
     );
+
+  const jeudi =
+    dateFrequence &&
+    dateFrequence.filter(
+      (elem) =>
+        DateTime.fromISO(elem.event_time.split("T")[0]).setLocale("fr")
+          .weekdayLong === "jeudi"
+    );
   return (
     <div className="div-frequence">
       <button
@@ -77,7 +85,18 @@ function Frequence() {
                 .split(".")[0]
                 .split(":")[0] < 2 && <p>ok</p>}
           </td>
-          <td className="td"></td>
+          <td className="td">
+            {jeudi &&
+              jeudi.length !== 0 &&
+              dateFrequence[dateFrequence.length - 1].event_time
+                .split("T")[1]
+                .split(".")[0]
+                .split(":")[0] >= 0 &&
+              dateFrequence[dateFrequence.length - 1].event_time
+                .split("T")[1]
+                .split(".")[0]
+                .split(":")[0] < 2 && <p>ok</p>}
+          </td>
           <td className="td"></td>
           <td className="td"></td>
           <td className="td"></td>
