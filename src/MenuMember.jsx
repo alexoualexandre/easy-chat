@@ -4,8 +4,14 @@ import Cookies from "js-cookie";
 
 function MenuMember() {
   const env = import.meta.env;
-  const { setBurgerMember, setMyAlbum, setFilter, setDivMessage, divMessage } =
-    MyContext();
+  const {
+    setBurgerMember,
+    setMyAlbum,
+    setFilter,
+    setDivMessage,
+    divMessage,
+    setFrequence,
+  } = MyContext();
 
   return (
     <div className="menu-member">
@@ -51,6 +57,7 @@ function MenuMember() {
               setBurgerMember(false);
               setFilter(false);
               setMyAlbum(true);
+              setFrequence(false);
               setDivMessage(divMessage ? true : false);
             }}
           >

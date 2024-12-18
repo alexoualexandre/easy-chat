@@ -8,10 +8,12 @@ import Message from "./Message.jsx";
 import { Link, useLocation } from "react-router-dom";
 import NewMessage from "./NewMessage.jsx";
 import MyAlbum from "./MyAlbum.jsx";
+import Frequence from "./Frequence.jsx";
 
 function Home() {
   const env = import.meta.env;
   const Auth = Cookies.get("auth");
+
   const {
     burgerMember,
     filter,
@@ -33,6 +35,8 @@ function Home() {
     setVoirFiltre,
     myAlbum,
     setMyAlbum,
+    frequence,
+    setFrequence,
   } = MyContext();
 
   const location = useLocation();
@@ -137,7 +141,7 @@ function Home() {
                   }
                 ).then((response) => response.json());
                 // }
-
+                setFrequence(false);
                 if (window.innerWidth >= 1024) {
                   if (myAlbum) {
                     setFilter(true);
@@ -174,6 +178,7 @@ function Home() {
 
             <div className="the-users">
               {filter && <FilterSearch />}
+              {frequence && <Frequence />}
               {blockNewMessage && <NewMessage />}
               <ul className={ul ? "ul-article" : "ul-article-none"}>
                 {responseUser &&
@@ -200,6 +205,7 @@ function Home() {
                             setAnimationTxtUserSelected(true);
                             setBlockNewMessage(false);
                             setMyAlbum(false);
+                            setFrequence(false);
                           }}
                         ></button>
                         <article className="article-user">
