@@ -1893,6 +1893,10 @@ button {
     text-align: center;
     border: 1px solid var(--body-home-page);
   }
+
+  .present-frequence {
+    color: green;
+  }
 }
 
 @media screen and (min-width: 375px) {
