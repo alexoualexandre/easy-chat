@@ -63,6 +63,19 @@ function Registration() {
           .then((resp) => resp.json())
           .then((r) => {
             Cookie.set("auth", r.nb_user);
+            fetch(
+              `http://${env.VITE_API_URL}:${env.VITE_API_SERVER_PORT}/add-calendar`,
+
+              {
+                method: "POST",
+                headers: {
+                  "Content-Type": "application/json",
+                },
+                body: JSON.stringify({
+                  user: Cookie.get("auth"),
+                }),
+              }
+            ).then((response) => response.json());
             window.location.href = "/home";
           });
       }

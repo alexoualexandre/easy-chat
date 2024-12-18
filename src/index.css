@@ -634,6 +634,7 @@ button {
     background-color: transparent;
     border: none;
     z-index: 5;
+    font-weight: bold;
   }
 
   .li-article {
@@ -1590,7 +1591,7 @@ button {
 
   .button-option-user-selected {
     border-radius: 5px;
-    border: 3px solid pink;
+    border: 2px solid pink;
     background-color: white;
     margin-left: 1em;
     font-weight: bold;
@@ -1621,12 +1622,13 @@ button {
     position: absolute;
     right: 0;
     top: 0;
-    font-size: 2em;
+    font-size: 2.5em;
     color: red;
     background-color: transparent;
     border: none;
     z-index: 8;
     cursor: pointer;
+    font-weight: bold;
   }
 
   .div-album-photo {
@@ -1844,6 +1846,52 @@ button {
     color: white;
     font-weight: bold;
     opacity: 0.5;
+  }
+
+  .div-frequence {
+    width: 101%;
+    height: 110%;
+    position: absolute;
+    top: -5%;
+    left: 0;
+    z-index: 14;
+    background-color: white;
+    animation-name: frequence;
+    animation-duration: 0.5s;
+  }
+
+  @keyframes frequence {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+
+  .x-frequence {
+    color: red;
+    background-color: white;
+    border: none;
+    position: absolute;
+    right: 0;
+    font-size: 2.5em;
+    cursor: pointer;
+    font-weight: bold;
+  }
+
+  .table {
+    position: absolute;
+    top: 10%;
+    left: 2%;
+    width: 96%;
+    height: 85%;
+    border: 3px solid var(--body-home-page);
+  }
+
+  .td {
+    text-align: center;
+    border: 1px solid var(--body-home-page);
   }
 }
 
@@ -2824,7 +2872,7 @@ button {
     position: absolute;
     right: 0;
     top: 0;
-    font-size: 2em;
+    font-size: 3em;
     color: red;
     background-color: transparent;
     border: none;
@@ -2868,5 +2916,25 @@ button {
     left: 25%;
     cursor: pointer;
     border-left: 3px solid white;
+  }
+
+  .div-frequence {
+    width: 72%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 28%;
+    z-index: 14;
+    animation-name: frequence;
+    animation-duration: 0.5s;
+  }
+
+  @keyframes frequence {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
   }
 }

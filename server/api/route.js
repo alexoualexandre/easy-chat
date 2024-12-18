@@ -36,6 +36,11 @@ const {
   sonAlbum,
 } = require("../controler/AddImgAlbumController.js");
 
+const {
+  addCalendar,
+  selectDate,
+} = require("../controler/CalendarController.js");
+
 const { argon } = require("../service/argon2.js");
 
 const path = require("path");
@@ -126,3 +131,7 @@ app.put("/auto-deco", autoDeco);
 app.get("/select-total-message/:user", selectTotalMessage);
 
 app.put("/update-total-message", updateTotalMessage);
+
+app.get("/select-date/:dest", selectDate);
+
+app.post("/add-calendar", addCalendar);

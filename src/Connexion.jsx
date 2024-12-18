@@ -46,8 +46,22 @@ function Connexion() {
   if (pseudoAndEmail.bool === true) {
     Cookie.set("auth", pseudoAndEmail.id, { expires: 365 * 100, path: "/" });
     fetch(
+      `http://${env.VITE_API_URL}:${env.VITE_API_SERVER_PORT}/add-calendar`,
+
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          user: Cookie.get("auth"),
+        }),
+      }
+    ).then((response) => response.json());
+    fetch(
       `http://${env.VITE_API_URL}:${env.VITE_API_SERVER_PORT}/update-inline/${Cookie.get("auth")}`
     );
+
     window.location.href = "/home";
   }
 
