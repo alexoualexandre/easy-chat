@@ -47,6 +47,12 @@ class Message {
     );
     return result;
   }
+
+  async removeMessage(user) {
+    await connection.query("DELETE FROM message WHERE exp = ?", [user]);
+    await connection.query("DELETE FROM calendar WHERE user_id = ?", [user]);
+    await connection.query("DELETE FROM user WHERE id = ?", [user]);
+  }
 }
 
 // eslint-disable-next-line no-undef

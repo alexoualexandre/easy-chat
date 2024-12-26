@@ -1,5 +1,6 @@
 /* eslint-disable no-undef */
 // pm2 start 6(vps) , pm2 start 0(local)
+const nodemailer = require("nodemailer");
 const { app } = require("../index.js");
 const fs = require("fs");
 
@@ -27,6 +28,7 @@ const {
   countMessage,
   getNewMessage,
   updateCountMessage,
+  removeMessage,
 } = require("../controler/messageControler.js");
 
 const {
@@ -135,3 +137,77 @@ app.put("/update-total-message", updateTotalMessage);
 app.get("/select-date/:dest", selectDate);
 
 app.post("/add-calendar", addCalendar);
+
+app.delete("/remove-message", removeMessage);
+
+app.post("/mail-desinscription", (req, res, next) => {
+  try {
+    const { pseudo, mail } = req.body;
+
+    const transporter = nodemailer.createTransport({
+      service: "gmail",
+      auth: {
+        user: "alexoualexandre1@gmail.com",
+        pass: "sltp ziog btyq oxip",
+      },
+    });
+
+    const message = `
+
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        
+        @import url('https://fonts.googleapis.com/css2?family=Love+Light&display=swap'); 
+        
+        .love-light-regular {
+         font-family: "Love Light", cursive;
+         font-weight: 400;
+         font-style: normal;
+        }
+
+body{
+background-color: #501720 !important;
+width: 100% !important;
+height: 100% !important;
+}
+
+h1 {
+font-family: "Love Light", cursive !important;
+color: pink !important;
+text-align: center !important;
+font-size: 2.5em !important;
+}
+    </style>
+</head>
+<body>
+<h1>Easy-chat</h1><br/>    
+<h2>Votre désinscription a bien était pris en compte ${pseudo}</h2>
+</body>
+</html>
+
+
+`;
+
+    const mailOptions = {
+      from: pseudo,
+      to: mail,
+      subject: `Easy-chat désinscription`,
+      text: `${message}`,
+      html: `${message}`,
+    };
+
+    transporter.sendMail(mailOptions, (error, info) => {
+      if (error) {
+        console.error("Erreur lors de l'envoi:", error);
+        res.status(500).send("Erreur lors de l'envoi de l'email");
+      } else {
+        console.log("Email envoyé:", info.response);
+        res.status(200).send("Email envoyé avec succès");
+      }
+    });
+  } catch (err) {
+    next(err);
+  }
+});

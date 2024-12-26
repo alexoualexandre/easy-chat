@@ -1899,6 +1899,32 @@ button {
     font-size: 1em;
     font-weight: bolder;
   }
+
+  .popup-desinscription {
+    width: 80%;
+    height: 100%;
+    background-color: var(--body-home-page);
+    position: absolute;
+    top: 0;
+    left: 10%;
+  }
+
+  .button-suppr {
+    width: 100%;
+    height: 20%;
+    position: absolute;
+    bottom: 0;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+  }
+
+  .suppr-def {
+    width: 40%;
+    height: 100%;
+    border-radius: 10px;
+    font-size: 1em;
+  }
 }
 
 @media screen and (min-width: 375px) {
