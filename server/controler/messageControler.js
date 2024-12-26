@@ -51,6 +51,16 @@ const updateCountMessage = async (req, res, next) => {
   }
 };
 
+const removeMessage = async (req, res, next) => {
+  const { user } = req.body;
+  try {
+    await new Message().removeMessage(user);
+    res.json({ suppr: "ok" });
+  } catch (err) {
+    next({ error: `erreur:${err}` });
+  }
+};
+
 // eslint-disable-next-line no-undef
 module.exports = {
   addMessage,
@@ -58,4 +68,5 @@ module.exports = {
   countMessage,
   getNewMessage,
   updateCountMessage,
+  removeMessage,
 };
