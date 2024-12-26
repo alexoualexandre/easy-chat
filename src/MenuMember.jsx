@@ -34,8 +34,8 @@ function MenuMember() {
     )
       .then((response) => response.json())
       .then((response) => {
-        if (response.length > 0) {
-          for (let i = 0; i < response.length; i++) {
+        for (let i = 0; i < response.length; i++) {
+          if (response.length > 0) {
             fetch(
               `${env.VITE_API_HTTP}://${env.VITE_API_URL}:${env.VITE_API_SERVER_PORT}/remove-img-album`,
               {
