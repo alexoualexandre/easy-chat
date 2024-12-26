@@ -34,18 +34,21 @@ function MenuMember() {
     )
       .then((response) => response.json())
       .then((response) => {
-        for (let i = 0; i < response.length; i++) {
-          fetch(
-            `${env.VITE_API_HTTP}://${env.VITE_API_URL}:${env.VITE_API_SERVER_PORT}/remove-img-album`,
-            {
-              method: "DELETE",
-              headers: {
-                "Content-Type": "application/json",
-              },
-              body: JSON.stringify({ img: response[i].photo }),
-            }
-          ).then((response) => response.json());
+        if (response.length > 0) {
+          for (let i = 0; i < response.length; i++) {
+            fetch(
+              `${env.VITE_API_HTTP}://${env.VITE_API_URL}:${env.VITE_API_SERVER_PORT}/remove-img-album`,
+              {
+                method: "DELETE",
+                headers: {
+                  "Content-Type": "application/json",
+                },
+                body: JSON.stringify({ img: response[i].photo }),
+              }
+            ).then((response) => response.json());
+          }
         }
+
         if (respUser) {
           fetch(
             `${env.VITE_API_HTTP}://${env.VITE_API_URL}:${env.VITE_API_SERVER_PORT}/mail-desinscription`,
