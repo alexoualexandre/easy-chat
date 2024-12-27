@@ -26,13 +26,8 @@ class Message {
 
   async getMessage(data) {
     const [result] = await connection.query(
-      "SELECT dest,exp,message,sex,new FROM message JOIN user ON message.exp = user.id WHERE dest = ? AND exp = ?",
-      [
-        // parseInt(data.id, 10) + parseInt(data.auth, 10),
-        
-        parseInt(data.id, 10),
-        parseInt(data.auth, 10),
-      ]
+      "SELECT dest,exp,message,sex,new FROM message JOIN user ON message.exp = user.id WHERE addition = ? AND dest = ? OR exp = ?",
+      [parseInt(data.id, 10) + parseInt(data.auth, 10),parseInt(data.id, 10)]
     );
     return result;
   }
