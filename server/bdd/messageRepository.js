@@ -29,8 +29,8 @@ class Message {
       "SELECT dest,exp,message,sex,new FROM message JOIN user ON message.exp = user.id WHERE addition = ? AND dest = ? AND exp = ?",
       [
         parseInt(data.id, 10) + parseInt(data.auth, 10),
-        parseInt(data.id, 10),
         parseInt(data.auth, 10),
+        parseInt(data.id, 10),
       ]
     );
     return result;
