@@ -24,7 +24,6 @@ function MenuMember() {
       .then((response) => response.json())
       .then((response) => {
         setRespUser(response[0]);
-        console.log(response[0]);
       });
   }, []);
 
