@@ -30,6 +30,19 @@ function MenuMember() {
 
   const suppAccount = () => {
     fetch(
+      `${env.VITE_API_HTTP}://${env.VITE_API_URL}:${env.VITE_API_SERVER_PORT}/mail-desinscription`,
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          pseudo: respUser && respUser.pseudo,
+          mail: respUser && respUser.mail,
+        }),
+      }
+    );
+    fetch(
       `${env.VITE_API_HTTP}://${env.VITE_API_URL}:${env.VITE_API_SERVER_PORT}/my-photos/${Cookies.get("auth")}`
     )
       .then((response) => response.json())
@@ -47,22 +60,6 @@ function MenuMember() {
               }
             ).then((response) => response.json());
           }
-        }
-
-        if (respUser) {
-          fetch(
-            `${env.VITE_API_HTTP}://${env.VITE_API_URL}:${env.VITE_API_SERVER_PORT}/mail-desinscription`,
-            {
-              method: "POST",
-              headers: {
-                "Content-Type": "application/json",
-              },
-              body: JSON.stringify({
-                pseudo: respUser.pseudo,
-                mail: respUser.mail,
-              }),
-            }
-          ).then((response) => response.status);
         }
 
         fetch(
