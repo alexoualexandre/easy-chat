@@ -27,4 +27,5 @@ dist-ssr
 server/bdd/index.js
 server/package-lock.json
 backup.sql
+package-lock.json
 

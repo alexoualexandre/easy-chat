@@ -62,8 +62,9 @@ function Connexion() {
       `http://${env.VITE_API_URL}:${env.VITE_API_SERVER_PORT}/update-inline/${Cookie.get("auth")}`
     ).then((response) => response.json());
 
-setTimeout(()=>{window.location.href = "/home"},200)
-    
+    setTimeout(() => {
+      window.location.href = "/home";
+    }, 200);
   }
 
   return (

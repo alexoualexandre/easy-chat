@@ -12,27 +12,27 @@ import MyProfil from "./MyProfil.jsx";
 import NotFound from "./NotFound.jsx";
 import Ajax from "./Ajax.jsx";
 import Message from "./Message.jsx";
-import Cookies from "js-cookie";
+// import Cookies from "js-cookie";
 
-function maj() {
-  const interval = setInterval(() => {
-    const Auth = Cookies.get("auth");
-    if (Auth)
-      fetch(`http://77.37.51.45:3311/select-user-id/${Auth}`)
-        .then((response) => response.json())
-        .then((response) => {
-          if (response[0].inline === 0) {
-            alert(
-              "Vous avez été déconnecté pour inactivité de plus d'une heure , veuillez vous reconnecter."
-            );
+// function maj() {
+//   const interval = setInterval(() => {
+//     const Auth = Cookies.get("auth");
+//     if (Auth)
+//       fetch(`http://77.37.51.45:3311/select-user-id/${Auth}`)
+//         .then((response) => response.json())
+//         .then((response) => {
+//           if (response[0].inline === 0) {
+//             alert(
+//               "Vous avez été déconnecté pour inactivité de plus d'une heure , veuillez vous reconnecter."
+//             );
 
-            window.location.href = "/deconnexion";
-          }
-        });
-  }, 1500);
-  return () => clearInterval(interval);
-}
-maj();
+//             window.location.href = "/deconnexion";
+//           }
+//         });
+//   }, 1500);
+//   return () => clearInterval(interval);
+// }
+// maj();
 
 const router = createBrowserRouter([
   {
