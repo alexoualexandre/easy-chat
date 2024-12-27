@@ -61,17 +61,20 @@ function MenuMember() {
             ).then((response) => response.json());
           }
         }
+      });
 
-        fetch(
-          `${env.VITE_API_HTTP}://${env.VITE_API_URL}:${env.VITE_API_SERVER_PORT}/remove-message`,
-          {
-            method: "DELETE",
-            headers: {
-              "Content-Type": "application/json",
-            },
-            body: JSON.stringify({ user: Cookies.get("auth") }),
-          }
-        ).then((response) => response.json());
+    fetch(
+      `${env.VITE_API_HTTP}://${env.VITE_API_URL}:${env.VITE_API_SERVER_PORT}/remove-message`,
+      {
+        method: "DELETE",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ user: Cookies.get("auth") }),
+      }
+    )
+      .then((response) => response.json())
+      .then(() => {
         Cookies.remove("auth");
         window.location.href = "/";
       });
