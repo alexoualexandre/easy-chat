@@ -63,7 +63,7 @@ function Connexion() {
     ).then((response) => response.json());
 
     setTimeout(() => {
-      window.location.href = "/home" ;
+      window.location.href = "/home";
     }, 200);
   }
 
