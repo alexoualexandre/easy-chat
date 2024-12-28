@@ -2969,4 +2969,22 @@ button {
       opacity: 1;
     }
   }
+
+  .button-suppr {
+    width: 100%;
+    height: 20%;
+    position: absolute;
+    bottom: 0;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+  }
+
+  .suppr-def {
+    width: 15%;
+    height: 100%;
+    border-radius: 10px;
+    font-size: 1em;
+    cursor: pointer;
+  }
 }
