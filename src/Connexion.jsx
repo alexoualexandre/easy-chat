@@ -64,7 +64,7 @@ function Connexion() {
 
     setTimeout(() => {
       window.location.href = "/home";
-    }, 200);
+    }, 500);
   }
 
   return (
