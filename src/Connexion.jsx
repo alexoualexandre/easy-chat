@@ -60,11 +60,10 @@ function Connexion() {
     ).then((response) => response.json());
     fetch(
       `http://${env.VITE_API_URL}:${env.VITE_API_SERVER_PORT}/update-inline/${Cookie.get("auth")}`
-    ).then((response) => response.json());
-
-    setTimeout(() => {
+    ).then((response) => {
+      response.json();
       window.location.href = "/home";
-    }, 500);
+    });
   }
 
   return (
