@@ -22,11 +22,19 @@ const insertUser = async (req, res, next) => {
 
     const { pseudo, mail } = req.body;
 
+    // const transporter = nodemailer.createTransport({
+    //   service: "gmail",
+    //   auth: {
+    //     user: "alexoualexandre1@gmail.com",
+    //     pass: "sltp ziog btyq oxip",
+    //   },
+    // });
+
     const transporter = nodemailer.createTransport({
       service: "gmail",
       auth: {
-        user: "alexoualexandre1@gmail.com",
-        pass: "sltp ziog btyq oxip",
+        user: "contact.easy.chat@gmail.com",
+        pass: "gjyv sfqw jbsq baed",
       },
     });
 
