@@ -5,7 +5,7 @@ import { MyContext } from "./Context";
 
 function Ajax() {
   if (!Cookies.get("auth")) window.location.href = "/";
-
+  const { data, setData, count } = MyContext();
   // Ajouter un état initial pour éviter le premier `popstate`
   history.pushState(null, null, window.location.pathname);
 
@@ -13,13 +13,10 @@ function Ajax() {
     event.preventDefault();
     // Remettre un nouvel état pour rester sur la même URL
     history.pushState(null, null, window.location.pathname);
-    alert(
-      "La flèche de retour de votre navigateur n’a aucun effet sur ce site."
-    );
   });
 
   const env = import.meta.env;
-  const { data, setData, count } = MyContext();
+
   const location = useLocation();
   const getSearchParams = () => {
     return new URLSearchParams(location.search);
