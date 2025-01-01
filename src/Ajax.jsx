@@ -7,28 +7,13 @@ function Ajax() {
   if (!Cookies.get("auth")) window.location.href = "/";
   const { data, setData, count } = MyContext();
 
-  if (window.innerWidth >= 1024) {
-    // Ajouter un état initial pour éviter le premier `popstate`
+  history.pushState(null, null, window.location.pathname);
+
+  window.addEventListener("popstate", function (event) {
+    event.preventDefault();
+
     history.pushState(null, null, window.location.pathname);
-
-    window.addEventListener("popstate", function (event) {
-      event.preventDefault();
-
-      // Remettre un nouvel état pour rester sur la même URL
-      history.pushState(null, null, window.location.pathname);
-    });
-  } else {
-    // Ajouter un état initial pour éviter le premier `popstate`
-    history.pushState(null, null, window.location.pathname);
-
-    window.addEventListener("popstate", function (event) {
-      event.preventDefault();
-
-      // Remettre un nouvel état pour rester sur la même URL
-      history.pushState(null, null, window.location.pathname);
-      alert("nine");
-    });
-  }
+  });
 
   const env = import.meta.env;
 
