@@ -11,6 +11,7 @@ function Ajax() {
 
   window.addEventListener("popstate", function (event) {
     event.preventDefault();
+    alert("interdit")
     // Remettre un nouvel état pour rester sur la même URL
     history.pushState(null, null, window.location.pathname);
   });
