@@ -11,10 +11,9 @@ function Ajax() {
 
   window.addEventListener("popstate", function (event) {
     event.preventDefault();
-    
+
     // Remettre un nouvel état pour rester sur la même URL
     history.pushState(null, null, window.location.pathname);
-    alert("interdit")
   });
 
   const env = import.meta.env;
