@@ -13,7 +13,9 @@ function Ajax() {
     event.preventDefault();
     // Remettre un nouvel état pour rester sur la même URL
     history.pushState(null, null, window.location.pathname);
-    console.log("Tentative de retour bloquée");
+    alert(
+      "La flèche de retour de votre navigateur n’a aucun effet sur ce site."
+    );
   });
 
   const env = import.meta.env;
