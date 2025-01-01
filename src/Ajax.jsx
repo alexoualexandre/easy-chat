@@ -6,6 +6,16 @@ import { MyContext } from "./Context";
 function Ajax() {
   if (!Cookies.get("auth")) window.location.href = "/";
 
+  // Ajouter un état initial pour éviter le premier `popstate`
+  history.pushState(null, null, window.location.pathname);
+
+  window.addEventListener("popstate", function (event) {
+    event.preventDefault();
+    // Remettre un nouvel état pour rester sur la même URL
+    history.pushState(null, null, window.location.pathname);
+    console.log("Tentative de retour bloquée");
+  });
+
   const env = import.meta.env;
   const { data, setData, count } = MyContext();
   const location = useLocation();
