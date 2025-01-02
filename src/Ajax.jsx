@@ -5,14 +5,14 @@ import { MyContext } from "./Context";
 
 function Ajax() {
   if (!Cookies.get("auth")) window.location.href = "/";
+
   const { data, setData, count } = MyContext();
 
-  history.pushState(null, null, window.location.pathname);
-
-  window.addEventListener("popstate", function (event) {
-    event.preventDefault();
-
-    history.pushState(null, null, window.location.pathname);
+  window.addEventListener("load", function () {
+    history.pushState(null, null, location.href);
+    window.onpopstate = function () {
+      history.go(1);
+    };
   });
 
   const env = import.meta.env;
@@ -54,6 +54,7 @@ function Ajax() {
   }, [data]);
   return (
     <>
+      {/* {popup && <div style={{width: "60%",height: "60%",position: "absolute",left: "20%",top: "0",backgroundColor: "grey"}}></div>} */}
       <div className="block-ajax" ref={block}>
         {data &&
           data.map((elem) => (

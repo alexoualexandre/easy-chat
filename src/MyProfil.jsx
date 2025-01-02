@@ -8,6 +8,14 @@ function MyProfil() {
   if (!Cookies.get("auth")) {
     window.location.href = "/";
   }
+
+  window.addEventListener("load", function () {
+    history.pushState(null, null, location.href);
+    window.onpopstate = function () {
+      history.go(1);
+    };
+  });
+
   const env = import.meta.env;
   const { setBurgerMember, userMessage } = MyContext();
   const [f, setFile] = useState(null);
