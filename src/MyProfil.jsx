@@ -11,7 +11,8 @@ function MyProfil() {
 
   window.addEventListener("load", function () {
     history.pushState(null, null, location.href);
-    window.onpopstate = function () {
+    window.onpopstate = function (e) {
+      e.preventDefault();
       history.go(1);
     };
   });
