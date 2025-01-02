@@ -39,6 +39,13 @@ function Home() {
     setFrequence,
   } = MyContext();
 
+  window.addEventListener("load", function () {
+    history.pushState(null, null, location.href);
+    window.onpopstate = function () {
+      history.go(1);
+    };
+  });
+
   const location = useLocation();
   const getSearchParams = () => {
     return new URLSearchParams(location.search);

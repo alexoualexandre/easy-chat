@@ -4,6 +4,13 @@ import Cookies from "js-cookie";
 import { useEffect, useState } from "react";
 
 function MenuMember() {
+  window.addEventListener("load", function () {
+    history.pushState(null, null, location.href);
+    window.onpopstate = function () {
+      history.go(1);
+    };
+  });
+
   const env = import.meta.env;
   const {
     setBurgerMember,
