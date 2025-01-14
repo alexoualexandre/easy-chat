@@ -3062,7 +3062,13 @@ button {
   }
 
   #prevConnection {
-    margin-left: 8em;
+    margin-left: 15em;
     margin-top: -1em;
+    cursor: pointer;
+  }
+
+  .label-alert-connection {
+    font-size: 1em;
+    cursor: pointer;
   }
 }
