@@ -23,8 +23,8 @@ function Message() {
     setCloseAlbum,
     sonAlbum,
     setSonAlbum,
-    frequence,
     setFrequence,
+    setOption,
   } = MyContext();
 
   setTimeout(() => {
@@ -240,6 +240,7 @@ function Message() {
               onClick={() => {
                 setCloseAlbum(true);
                 setFrequence(false);
+                setOption(false);
               }}
             >
               photos / {sonAlbum && sonAlbum.length}
@@ -248,12 +249,19 @@ function Message() {
               type="button"
               className="button-option-user-selected"
               onClick={() => {
-                setFrequence(!frequence);
+                setFrequence(true);
+                setOption(false);
               }}
             >
               fréquences
             </button>
-            <button type="button" className="button-option-user-selected">
+            <button
+              type="button"
+              className="button-option-user-selected"
+              onClick={() => {
+                setOption(true);
+              }}
+            >
               options
             </button>
           </div>

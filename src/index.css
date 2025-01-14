@@ -1479,12 +1479,13 @@ button {
     position: absolute;
     right: 0%;
     top: 0;
-    font-size: 2em;
+    font-size: 3em;
     color: red;
     background-color: transparent;
     border: none;
     z-index: 5;
     cursor: pointer;
+    font-weight: bold;
   }
 
   .ul-new-message {
@@ -1924,6 +1925,53 @@ button {
     height: 100%;
     border-radius: 10px;
     font-size: 1em;
+  }
+
+  .div-block-option {
+    position: absolute;
+    left: 0;
+    top: -1.5em;
+    width: 101%;
+    height: 115%;
+    background-color: white;
+    z-index: 15;
+    animation-name: slide-option;
+    animation-duration: 0.5s;
+  }
+
+  @keyframes slide-option {
+    from {
+      height: 0;
+    }
+    to {
+      height: 115%;
+    }
+  }
+
+  .x-option {
+    background-color: white;
+    border: none;
+    position: absolute;
+    right: 0;
+    font-size: 3.5em;
+    color: red;
+    cursor: pointer;
+  }
+
+  .ul-option {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    position: absolute;
+    top: 15%;
+    width: 100%;
+    font-size: 1.3em;
+    text-align: center;
+  }
+
+  .li-option {
+    padding-bottom: 2em;
+    border-bottom: 1px solid black;
   }
 }
 
@@ -2986,5 +3034,31 @@ button {
     border-radius: 10px;
     font-size: 1em;
     cursor: pointer;
+  }
+
+  .div-block-option {
+    position: absolute;
+    left: 28%;
+    top: 0;
+    width: 72%;
+    height: 100%;
+    background-color: white;
+    z-index: 15;
+    animation-name: slide-option;
+    animation-duration: 0.5s;
+  }
+
+  @keyframes slide-option {
+    from {
+      height: 0;
+    }
+    to {
+      height: 100%;
+    }
+  }
+
+  #prevConnection {
+    margin-left: 8em;
+    margin-top: -1em;
   }
 }

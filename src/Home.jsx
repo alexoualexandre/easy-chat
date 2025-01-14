@@ -9,6 +9,7 @@ import { Link, useLocation } from "react-router-dom";
 import NewMessage from "./NewMessage.jsx";
 import MyAlbum from "./MyAlbum.jsx";
 import Frequence from "./Frequence.jsx";
+import Option from "./Option.jsx";
 
 function Home() {
   const env = import.meta.env;
@@ -37,6 +38,8 @@ function Home() {
     setMyAlbum,
     frequence,
     setFrequence,
+    option,
+    setOption,
   } = MyContext();
 
   window.addEventListener("load", function () {
@@ -163,6 +166,7 @@ function Home() {
                   setFilter(!filter);
                   setBlockNewMessage(false);
                 }
+                setOption(false);
               }}
             >
               voir filtres <span className="chevron"> &#x27A7; </span>
@@ -185,6 +189,8 @@ function Home() {
             )}
 
             <div className="the-users">
+              {option && <Option />}
+
               {filter && <FilterSearch />}
               {frequence && <Frequence />}
               {blockNewMessage && <NewMessage />}
@@ -214,6 +220,7 @@ function Home() {
                             setBlockNewMessage(false);
                             setMyAlbum(false);
                             setFrequence(false);
+                            setOption(false);
                           }}
                         ></button>
                         <article className="article-user">

@@ -20,6 +20,7 @@ function MenuMember() {
     setDivMessage,
     divMessage,
     setFrequence,
+    setOption,
   } = MyContext();
 
   const [desinscription, setDesinscription] = useState(false);
@@ -133,6 +134,7 @@ function MenuMember() {
               setMyAlbum(true);
               setFrequence(false);
               setDivMessage(divMessage ? true : false);
+              setOption(false);
             }}
           >
             Mon album
