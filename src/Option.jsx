@@ -86,7 +86,7 @@ function Option() {
                 height: "2em",
                 position: "absolute",
                 top: "1em",
-                left: "1em",
+                left: "0.3em",
               }}
               onChange={() => {
                 setcheck(!check);
