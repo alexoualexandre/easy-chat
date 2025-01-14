@@ -43,6 +43,7 @@ export function Provider({ children }) {
   const [sonAlbum, setSonAlbum] = useState();
   const [frequence, setFrequence] = useState(false);
   const [dateFrequence, setDateFrequence] = useState();
+  const [option, setOption] = useState(false);
 
   return (
     <Context.Provider
@@ -93,6 +94,8 @@ export function Provider({ children }) {
         setFrequence,
         dateFrequence,
         setDateFrequence,
+        option,
+        setOption,
       }}
     >
       {children}

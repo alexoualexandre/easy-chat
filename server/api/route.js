@@ -43,6 +43,12 @@ const {
   selectDate,
 } = require("../controler/CalendarController.js");
 
+const {
+  alertMail,
+  addAlert,
+  dropAlert,
+} = require("../controler/AlertMailController.js");
+
 const { argon } = require("../service/argon2.js");
 
 const path = require("path");
@@ -211,3 +217,9 @@ font-size: 2.5em !important;
     next(err);
   }
 });
+
+app.post("/add-alert", addAlert);
+
+app.get("/get-alert/:id/:dest", alertMail);
+
+app.delete("/drop-alert", dropAlert);
