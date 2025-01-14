@@ -1973,6 +1973,10 @@ button {
     padding-bottom: 2em;
     border-bottom: 1px solid black;
   }
+
+  .label-alert-connection {
+    font-size: 0.8em;
+  }
 }
 
 @media screen and (min-width: 375px) {

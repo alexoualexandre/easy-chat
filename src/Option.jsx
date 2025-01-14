@@ -97,7 +97,11 @@ function Option() {
                 setClick(!click);
               }}
             />
-            <label htmlFor="prevConnection" style={{ marginLeft: "2em" }}>
+            <label
+              htmlFor="prevConnection"
+              style={{ marginLeft: "2em" }}
+              className="label-alert-connection"
+            >
               Me tenir informée lorsque cet utilisateur se connecte.
             </label>
           </li>
