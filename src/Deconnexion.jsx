@@ -2,6 +2,20 @@ import Cookies from "js-cookie";
 
 function Deconnexion() {
   const env = import.meta.env;
+
+  fetch(
+    `${env.VITE_API_HTTP}://${env.VITE_API_URL}:${env.VITE_API_SERVER_PORT}/modify-process-alert-mail-prevent`,
+    {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        to: Cookies.get("auth"),
+      }),
+    }
+  ).then((rep) => rep.json());
+
   fetch(
     `http://${env.VITE_API_URL}:${env.VITE_API_SERVER_PORT}/update-present`,
 

@@ -47,6 +47,9 @@ const {
   alertMail,
   addAlert,
   dropAlert,
+  ProcessAlertMailConnection,
+  ProcessAlertMailTo,
+  ModifyProcessAlertMailPrevent,
 } = require("../controler/AlertMailController.js");
 
 const { argon } = require("../service/argon2.js");
@@ -185,11 +188,20 @@ color: pink !important;
 text-align: center !important;
 font-size: 2.5em !important;
 }
+h3 {
+text-align: center !important;
+}
     </style>
 </head>
 <body>
 <h1>Easy-chat</h1><br/>    
-<h2>Votre désinscription a bien était pris en compte ${pseudo}</h2>
+<h3>Votre désinscription a bien était pris en compte ${pseudo} !</h3><br />
+<p>
+Nous regrettons de vous voir partir ${pseudo}.<br />
+Toutes vos informations ont été supprimées. Sachez que vous pouvez à tout moment vous réinscrire gratuitement.<br /><br />
+Easy Chat espère de tout coeur vous revoir bientôt.
+</p>
+
 </body>
 </html>
 
@@ -223,3 +235,9 @@ app.post("/add-alert", addAlert);
 app.get("/get-alert/:id/:dest", alertMail);
 
 app.delete("/drop-alert", dropAlert);
+
+app.get("/process-alert-mail-prevent", ProcessAlertMailConnection);
+
+app.get("/process-alert-mail-to", ProcessAlertMailTo);
+
+app.put("/modify-process-alert-mail-prevent", ModifyProcessAlertMailPrevent);

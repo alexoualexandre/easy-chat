@@ -32,4 +32,39 @@ const dropAlert = async (req, res, next) => {
   }
 };
 
-module.exports = { alertMail, addAlert, dropAlert };
+const ProcessAlertMailConnection = async (req, res, next) => {
+  try {
+    const data = await new AlertMailRepository().ProcessAlertMailConnection();
+    res.json(data);
+  } catch (err) {
+    next({ error: `erreur:${err}` });
+  }
+};
+
+const ProcessAlertMailTo = async (req, res, next) => {
+  try {
+    const data = await new AlertMailRepository().ProcessAlertMailTo();
+    res.json(data);
+  } catch (err) {
+    next({ error: `erreur:${err}` });
+  }
+};
+
+const ModifyProcessAlertMailPrevent = async (req, res, next) => {
+  const data = req.body;
+  try {
+    await new AlertMailRepository().ModifyProcessAlertMailPrevent(data);
+    res.json({ modify: "ok" });
+  } catch (err) {
+    next({ error: `erreur:${err}` });
+  }
+};
+
+module.exports = {
+  alertMail,
+  addAlert,
+  dropAlert,
+  ProcessAlertMailConnection,
+  ProcessAlertMailTo,
+  ModifyProcessAlertMailPrevent,
+};
