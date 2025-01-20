@@ -46,7 +46,6 @@ const insertUser = async (req, res, next) => {
         }
 
 body{
-background-color: #501720 !important;
 width: 100% !important;
 height: 100% !important;
 }
@@ -57,11 +56,26 @@ color: pink !important;
 text-align: center !important;
 font-size: 2.5em !important;
 }
+h3 {
+text-align: center !important;
+}
     </style>
 </head>
 <body>
 <h1>Easy-chat</h1><br/>    
-<h2>Bienvenue ${pseudo}</h2>
+<h3>Bienvenue ${pseudo} !</h3><br />
+
+<p>
+Bonjour ${pseudo} et bienvenue sur Easy Chat.<br />
+Le site est gratuit et ne contient pas de publicité.<br />
+Les informations que vous nous avez communiquées restent strictement confidentielles et ne sont divulguées à aucun tiers.<br />
+Vous pouvez à tout moment vous désinscrire en cliquant sur "désinscription" dans le menu en haut à droite du site,<br />
+cela supprimera l'intégralité des informations (adresse mail, pseudo, image téléchargée, etc...).<br />
+<br />
+Easy Chat vous remercie et vous souhaite de belles rencontres.
+</p>
+
+
 </body>
 </html>
 
