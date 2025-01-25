@@ -110,7 +110,7 @@ function MenuMember() {
             onClick={() => {
               if (window.innerWidth >= 1024) {
                 fetch(
-                  `http://${env.VITE_API_URL}:${env.VITE_API_SERVER_PORT}/update-present`,
+                  `${env.VITE_API_HTTP}://${env.VITE_API_URL}:${env.VITE_API_SERVER_PORT}/update-present`,
 
                   {
                     method: "PUT",

@@ -27,7 +27,7 @@ function NewMessage() {
 
   const up = (u) => {
     fetch(
-      `http://${env.VITE_API_URL}:${env.VITE_API_SERVER_PORT}/update-count-message`,
+      `${env.VITE_API_HTTP}://${env.VITE_API_URL}:${env.VITE_API_SERVER_PORT}/update-count-message`,
       {
         method: "PUT",
         headers: {
@@ -44,7 +44,7 @@ function NewMessage() {
 
   useEffect(() => {
     fetch(
-      `http://${env.VITE_API_URL}:${env.VITE_API_SERVER_PORT}/get-new-message/${Auth}`
+      `${env.VITE_API_HTTP}://${env.VITE_API_URL}:${env.VITE_API_SERVER_PORT}/get-new-message/${Auth}`
     )
       .then((response) => response.json())
       .then((response) => {
@@ -60,7 +60,7 @@ function NewMessage() {
 
   const updatePresent = (u) => {
     fetch(
-      `http://${env.VITE_API_URL}:${env.VITE_API_SERVER_PORT}/update-present`,
+      `${env.VITE_API_HTTP}://${env.VITE_API_URL}:${env.VITE_API_SERVER_PORT}/update-present`,
 
       {
         method: "PUT",
@@ -128,7 +128,7 @@ function NewMessage() {
                   src={
                     elem.img === "logo.png"
                       ? "logo.png"
-                      : `http://${env.VITE_API_URL}:${env.VITE_API_SERVER_PORT}/upload/${elem.img}`
+                      : `${env.VITE_API_HTTP}://${env.VITE_API_URL}:${env.VITE_API_SERVER_PORT}/upload/${elem.img}`
                   }
                   alt="img user"
                   className="img-article-new-message"

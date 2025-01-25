@@ -15,7 +15,7 @@ function Frequence() {
 
   useEffect(() => {
     fetch(
-      `http://${env.VITE_API_URL}:${env.VITE_API_SERVER_PORT}/select-date/${params.get("dest")}`
+      `${env.VITE_API_HTTP}://${env.VITE_API_URL}:${env.VITE_API_SERVER_PORT}/select-date/${params.get("dest")}`
     )
       .then((response) => response.json())
       .then((response) => {

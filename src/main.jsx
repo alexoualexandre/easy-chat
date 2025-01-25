@@ -17,8 +17,9 @@ import Cookies from "js-cookie";
 function maj() {
   const interval = setInterval(() => {
     const Auth = Cookies.get("auth");
+    const env = import.meta.env;
     if (Auth)
-      fetch(`http://77.37.51.45:3311/select-user-id/${Auth}`)
+      fetch(`${env.VITE_API_HTTP}://${env.VITE_API_URL}:${env.VITE_API_SERVER_PORT}/select-user-id/${Auth}`)
         .then((response) => response.json())
         .then((response) => {
           if (response[0].inline === 0) {

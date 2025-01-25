@@ -17,7 +17,7 @@ function CountInterval() {
     const env = import.meta.env;
     const interval = setInterval(() => {
       fetch(
-        `http://${env.VITE_API_URL}:${env.VITE_API_SERVER_PORT}/count-message/${Auth}`
+        `${env.VITE_API_HTTP}://${env.VITE_API_URL}:${env.VITE_API_SERVER_PORT}/count-message/${Auth}`
       )
         .then((response) => response.json())
         .then((response) => {

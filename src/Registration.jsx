@@ -30,7 +30,7 @@ function Registration() {
     }));
     if (name === "pseudo") {
       fetch(
-        `http://${env.VITE_API_URL}:${env.VITE_API_SERVER_PORT}/get-user/${value}`
+        `${env.VITE_API_HTTP}://${env.VITE_API_URL}:${env.VITE_API_SERVER_PORT}/get-user/${value}`
       )
         .then((response) => response)
         .then((resp) => resp.json())
@@ -50,7 +50,7 @@ function Registration() {
     if (form.mail.length > 0 && form.password.length > 0) {
       if (regexMail.test(form.mail) && regexPass.test(form.password)) {
         fetch(
-          `http://${env.VITE_API_URL}:${env.VITE_API_SERVER_PORT}/insert-user`,
+          `${env.VITE_API_HTTP}://${env.VITE_API_URL}:${env.VITE_API_SERVER_PORT}/insert-user`,
           {
             method: "POST",
             headers: {
@@ -64,7 +64,7 @@ function Registration() {
           .then((r) => {
             Cookie.set("auth", r.nb_user);
             fetch(
-              `http://${env.VITE_API_URL}:${env.VITE_API_SERVER_PORT}/add-calendar`,
+              `${env.VITE_API_HTTP}://${env.VITE_API_URL}:${env.VITE_API_SERVER_PORT}/add-calendar`,
 
               {
                 method: "POST",

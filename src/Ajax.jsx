@@ -27,7 +27,7 @@ function Ajax() {
   useEffect(() => {
     const interval = setInterval(() => {
       fetch(
-        `http://${env.VITE_API_URL}:${env.VITE_API_SERVER_PORT}/get-message/${params.get("id")}/${Cookies.get("auth")}`
+        `${env.VITE_API_HTTP}://${env.VITE_API_URL}:${env.VITE_API_SERVER_PORT}/get-message/${params.get("id")}/${Cookies.get("auth")}`
       )
         .then((response) => response.json())
         .then((response) => {

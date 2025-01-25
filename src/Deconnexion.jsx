@@ -17,7 +17,7 @@ function Deconnexion() {
   ).then((rep) => rep.json());
 
   fetch(
-    `http://${env.VITE_API_URL}:${env.VITE_API_SERVER_PORT}/update-present`,
+    `${env.VITE_API_HTTP}://${env.VITE_API_URL}:${env.VITE_API_SERVER_PORT}/update-present`,
 
     {
       method: "PUT",
@@ -30,7 +30,7 @@ function Deconnexion() {
     .then((response) => response.json())
     .then(() => {
       fetch(
-        `http://${env.VITE_API_URL}:${env.VITE_API_SERVER_PORT}/deconnexion/${Cookies.get("auth")}`
+        `${env.VITE_API_HTTP}://${env.VITE_API_URL}:${env.VITE_API_SERVER_PORT}/deconnexion/${Cookies.get("auth")}`
       ).then((response) => {
         response.json();
         Cookies.remove("auth");
