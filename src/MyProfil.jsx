@@ -69,14 +69,14 @@ function MyProfil() {
   const handleSubmit = (e) => {
     e.preventDefault();
     fetch(
-      `http://${environment.VITE_API_URL}:${environment.VITE_API_SERVER_PORT}/my-photos/${Cookies.get("auth")}`
+      `${env.VITE_API_HTTP}://${environment.VITE_API_URL}:${environment.VITE_API_SERVER_PORT}/my-photos/${Cookies.get("auth")}`
     )
       .then((response) => response.json())
       .then((response) => {
         if (response.length < 8) {
           const env = import.meta.env;
           fetch(
-            `http://${env.VITE_API_URL}:${env.VITE_API_SERVER_PORT}/upload-file`,
+            `${env.VITE_API_HTTP}://${env.VITE_API_URL}:${env.VITE_API_SERVER_PORT}/upload-file`,
             { method: "POST", body: formData }
           )
             .then((response) => response)
@@ -84,7 +84,7 @@ function MyProfil() {
             .then((r) => {
               setNewName(r);
               fetch(
-                `http://${env.VITE_API_URL}:${env.VITE_API_SERVER_PORT}/add-img-album`,
+                `${env.VITE_API_HTTP}://${env.VITE_API_URL}:${env.VITE_API_SERVER_PORT}/add-img-album`,
                 {
                   method: "POST",
                   headers: {
@@ -112,7 +112,7 @@ function MyProfil() {
   useEffect(() => {
     const env = import.meta.env;
     fetch(
-      `http://${env.VITE_API_URL}:${env.VITE_API_SERVER_PORT}/select-user-id/${Cookies.get("auth")}`
+      `${env.VITE_API_HTTP}://${env.VITE_API_URL}:${env.VITE_API_SERVER_PORT}/select-user-id/${Cookies.get("auth")}`
     )
       .then((response) => response)
       .then((resp) => resp.json())
@@ -144,7 +144,7 @@ function MyProfil() {
   useEffect(() => {
     const env = import.meta.env;
     fetch(
-      `http://${env.VITE_API_URL}:${env.VITE_API_SERVER_PORT}/my-photos/${Cookies.get("auth")}`
+      `${env.VITE_API_HTTP}://${env.VITE_API_URL}:${env.VITE_API_SERVER_PORT}/my-photos/${Cookies.get("auth")}`
     )
       .then((response) => response.json())
       .then((response) => {
@@ -152,7 +152,7 @@ function MyProfil() {
           if (newName) {
             const env = import.meta.env;
             fetch(
-              `http://${env.VITE_API_URL}:${env.VITE_API_SERVER_PORT}/change-img-profil/${newName.nvName}/${Cookies.get("auth")}`
+              `${env.VITE_API_HTTP}://${env.VITE_API_URL}:${env.VITE_API_SERVER_PORT}/change-img-profil/${newName.nvName}/${Cookies.get("auth")}`
             );
           }
         }
@@ -168,7 +168,7 @@ function MyProfil() {
         (regexPass.test(updateData.password) ||
           updateData.password.charAt(0) === "$")
       ) {
-        fetch(`http://${env.VITE_API_URL}:${env.VITE_API_SERVER_PORT}/update`, {
+        fetch(`${env.VITE_API_HTTP}://${env.VITE_API_URL}:${env.VITE_API_SERVER_PORT}/update`, {
           method: "PUT",
           headers: {
             "Content-Type": "application/json",
@@ -203,7 +203,7 @@ function MyProfil() {
           <img
             src={
               resultName !== "" &&
-              `http://${environment.VITE_API_URL}:${environment.VITE_API_SERVER_PORT}/upload/${resultName.img}`
+              `${env.VITE_API_HTTP}://${environment.VITE_API_URL}:${environment.VITE_API_SERVER_PORT}/upload/${resultName.img}`
             }
             className="img-profil-mini"
             alt="no-picture"
@@ -465,7 +465,7 @@ function MyProfil() {
                   onClick={() => {
                     setBurgerMember(false);
                     fetch(
-                      `http://${env.VITE_API_URL}:${env.VITE_API_SERVER_PORT}/update-present`,
+                      `${env.VITE_API_HTTP}://${env.VITE_API_URL}:${env.VITE_API_SERVER_PORT}/update-present`,
 
                       {
                         method: "PUT",

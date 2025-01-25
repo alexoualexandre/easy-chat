@@ -73,7 +73,7 @@ function Message() {
     setVoirFiltre("voir-filtres");
 
     fetch(
-      `http://${env.VITE_API_URL}:${env.VITE_API_SERVER_PORT}/update-present`,
+      `${env.VITE_API_HTTP}://${env.VITE_API_URL}:${env.VITE_API_SERVER_PORT}/update-present`,
 
       {
         method: "PUT",
@@ -86,7 +86,7 @@ function Message() {
   };
   useEffect(() => {
     fetch(
-      `http://${env.VITE_API_URL}:${env.VITE_API_SERVER_PORT}/user-selected/${params.get("dest")}`
+      `${env.VITE_API_HTTP}://${env.VITE_API_URL}:${env.VITE_API_SERVER_PORT}/user-selected/${params.get("dest")}`
     )
       .then((response) => response.json())
       .then((response) => {
@@ -96,7 +96,7 @@ function Message() {
 
   useEffect(() => {
     fetch(
-      `http://${env.VITE_API_URL}:${env.VITE_API_SERVER_PORT}/son-album/${params.get("dest")}`
+      `${env.VITE_API_HTTP}://${env.VITE_API_URL}:${env.VITE_API_SERVER_PORT}/son-album/${params.get("dest")}`
     )
       .then((response) => response.json())
       .then((response) => {
@@ -108,13 +108,13 @@ function Message() {
     e.preventDefault();
 
     fetch(
-      `http://${env.VITE_API_URL}:${env.VITE_API_SERVER_PORT}/user-selected/${params.get("dest")}`
+      `${env.VITE_API_HTTP}://${env.VITE_API_URL}:${env.VITE_API_SERVER_PORT}/user-selected/${params.get("dest")}`
     )
       .then((response) => response.json())
       .then((response) => {
         if (changeTxt.message.length > 0 && changeTxt.message !== " ") {
           fetch(
-            `http://${env.VITE_API_URL}:${env.VITE_API_SERVER_PORT}/add-message`,
+            `${env.VITE_API_HTTP}://${env.VITE_API_URL}:${env.VITE_API_SERVER_PORT}/add-message`,
             {
               method: "POST",
               headers: {
@@ -133,12 +133,12 @@ function Message() {
             });
 
           fetch(
-            `http://${env.VITE_API_URL}:${env.VITE_API_SERVER_PORT}/select-total-message/${Auth}`
+            `${env.VITE_API_HTTP}://${env.VITE_API_URL}:${env.VITE_API_SERVER_PORT}/select-total-message/${Auth}`
           )
             .then((response) => response.json())
             .then((response) => {
               fetch(
-                `http://${env.VITE_API_URL}:${env.VITE_API_SERVER_PORT}/update-total-message`,
+                `${env.VITE_API_HTTP}://${env.VITE_API_URL}:${env.VITE_API_SERVER_PORT}/update-total-message`,
                 {
                   method: "PUT",
                   headers: {
@@ -269,7 +269,7 @@ function Message() {
 
         <div className="resum-user">
           <img
-            src={`${responseServer && responseServer[0].img === "logo.png" ? responseServer && responseServer[0].img : `http://${env.VITE_API_URL}:${env.VITE_API_SERVER_PORT}/upload/${responseServer && responseServer[0].img}`}`}
+            src={`${responseServer && responseServer[0].img === "logo.png" ? responseServer && responseServer[0].img : `${env.VITE_API_HTTP}://${env.VITE_API_URL}:${env.VITE_API_SERVER_PORT}/upload/${responseServer && responseServer[0].img}`}`}
             alt="no-picture"
             className={
               animationUserSelected

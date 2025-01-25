@@ -58,7 +58,7 @@ function Home() {
 
   useEffect(() => {
     fetch(
-      `http://${env.VITE_API_URL}:${env.VITE_API_SERVER_PORT}/select-all-user`
+      `${env.VITE_API_HTTP}://${env.VITE_API_URL}:${env.VITE_API_SERVER_PORT}/select-all-user`
     )
       .then((response) => response)
       .then((resp) => resp.json())
@@ -80,7 +80,7 @@ function Home() {
       max !== "100"
     ) {
       fetch(
-        `http://${env.VITE_API_URL}:${env.VITE_API_SERVER_PORT}/recherche`,
+        `${env.VITE_API_HTTP}://${env.VITE_API_URL}:${env.VITE_API_SERVER_PORT}/recherche`,
         {
           method: "POST",
           headers: {
@@ -97,7 +97,7 @@ function Home() {
         });
     } else {
       fetch(
-        `http://${env.VITE_API_URL}:${env.VITE_API_SERVER_PORT}/select-all-user`
+        `${env.VITE_API_HTTP}://${env.VITE_API_URL}:${env.VITE_API_SERVER_PORT}/select-all-user`
       )
         .then((response) => response)
         .then((resp) => resp.json())
@@ -109,7 +109,7 @@ function Home() {
 
   const updatePresent = (u) => {
     fetch(
-      `http://${env.VITE_API_URL}:${env.VITE_API_SERVER_PORT}/update-present`,
+      `${env.VITE_API_HTTP}://${env.VITE_API_URL}:${env.VITE_API_SERVER_PORT}/update-present`,
 
       {
         method: "PUT",
@@ -138,7 +138,7 @@ function Home() {
               onClick={() => {
                 // if (window.innerWidth >= 1024) {
                 fetch(
-                  `http://${env.VITE_API_URL}:${env.VITE_API_SERVER_PORT}/update-present`,
+                  `${env.VITE_API_HTTP}://${env.VITE_API_URL}:${env.VITE_API_SERVER_PORT}/update-present`,
 
                   {
                     method: "PUT",
@@ -225,7 +225,7 @@ function Home() {
                         ></button>
                         <article className="article-user">
                           <img
-                            src={`http://${env.VITE_API_URL}:${env.VITE_API_SERVER_PORT}/upload/${user.img}`}
+                            src={`${env.VITE_API_HTTP}://${env.VITE_API_URL}:${env.VITE_API_SERVER_PORT}/upload/${user.img}`}
                             className="img-article-user"
                             alt="no-picture"
                           />

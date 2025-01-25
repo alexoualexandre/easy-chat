@@ -26,7 +26,7 @@ function Connexion() {
     event.preventDefault();
     if (change.pseudo !== "" && change.password !== "") {
       fetch(
-        `http://${env.VITE_API_URL}:${env.VITE_API_SERVER_PORT}/connexion`,
+        `${env.VITE_API_HTTP}://${env.VITE_API_URL}:${env.VITE_API_SERVER_PORT}/connexion`,
         {
           method: "POST",
           headers: {
@@ -46,7 +46,7 @@ function Connexion() {
   if (pseudoAndEmail.bool === true) {
     Cookie.set("auth", pseudoAndEmail.id, { expires: 365 * 100, path: "/" });
     fetch(
-      `http://${env.VITE_API_URL}:${env.VITE_API_SERVER_PORT}/add-calendar`,
+      `${env.VITE_API_HTTP}://${env.VITE_API_URL}:${env.VITE_API_SERVER_PORT}/add-calendar`,
 
       {
         method: "POST",
@@ -59,7 +59,7 @@ function Connexion() {
       }
     ).then((response) => response.json());
     fetch(
-      `http://${env.VITE_API_URL}:${env.VITE_API_SERVER_PORT}/update-inline/${Cookie.get("auth")}`
+      `${env.VITE_API_HTTP}://${env.VITE_API_URL}:${env.VITE_API_SERVER_PORT}/update-inline/${Cookie.get("auth")}`
     ).then((response) => response.json());
 
     setTimeout(() => {

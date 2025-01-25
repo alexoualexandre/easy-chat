@@ -12,7 +12,7 @@ app.use(express.json());
 
 const corsOptions = {
   origin: function (origin, callback) {
-    const whitelist = ["http://localhost:5173", "http://77.37.51.45:3007"];
+    const whitelist = ["http://localhost:5173", "https://easy-chat.org"];
     if (whitelist.indexOf(origin) !== -1 || !origin) {
       callback(null, true);
     } else {

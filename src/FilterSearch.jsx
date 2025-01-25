@@ -24,7 +24,7 @@ function FilterSearch() {
     const env = import.meta.env;
     e.preventDefault();
 
-    fetch(`http://${env.VITE_API_URL}:${env.VITE_API_SERVER_PORT}/recherche`, {
+    fetch(`${env.VITE_API_HTTP}://${env.VITE_API_URL}:${env.VITE_API_SERVER_PORT}/recherche`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -56,7 +56,7 @@ function FilterSearch() {
           }
         } else {
           fetch(
-            `http://${env.VITE_API_URL}:${env.VITE_API_SERVER_PORT}/update-present`,
+            `${env.VITE_API_HTTP}://${env.VITE_API_URL}:${env.VITE_API_SERVER_PORT}/update-present`,
 
             {
               method: "PUT",

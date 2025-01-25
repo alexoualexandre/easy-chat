@@ -22,7 +22,7 @@ function MyAlbum() {
   useEffect(() => {
     const interval = setInterval(() => {
       fetch(
-        `http://${env.VITE_API_URL}:${env.VITE_API_SERVER_PORT}/my-photos/${Cookies.get("auth")}`
+        `${env.VITE_API_HTTP}://${env.VITE_API_URL}:${env.VITE_API_SERVER_PORT}/my-photos/${Cookies.get("auth")}`
       )
         .then((response) => response.json())
         .then((response) => {
@@ -67,7 +67,7 @@ function MyAlbum() {
     if (dataUserPhoto && dataUserPhoto.length < 9) {
       const env = import.meta.env;
       fetch(
-        `http://${env.VITE_API_URL}:${env.VITE_API_SERVER_PORT}/add-upload-file`,
+        `${env.VITE_API_HTTP}://${env.VITE_API_URL}:${env.VITE_API_SERVER_PORT}/add-upload-file`,
         { method: "POST", body: formData }
       )
         .then((resp) => resp.json())
@@ -88,7 +88,7 @@ function MyAlbum() {
       const env = import.meta.env;
 
       fetch(
-        `http://${env.VITE_API_URL}:${env.VITE_API_SERVER_PORT}/add-img-album`,
+        `${env.VITE_API_HTTP}://${env.VITE_API_URL}:${env.VITE_API_SERVER_PORT}/add-img-album`,
         {
           method: "POST",
           headers: {
@@ -102,7 +102,7 @@ function MyAlbum() {
 
   const del = (p) => {
     fetch(
-      `http://${env.VITE_API_URL}:${env.VITE_API_SERVER_PORT}/remove-img-album`,
+      `${env.VITE_API_HTTP}://${env.VITE_API_URL}:${env.VITE_API_SERVER_PORT}/remove-img-album`,
       {
         method: "DELETE",
         headers: {
@@ -134,7 +134,7 @@ function MyAlbum() {
 
           if (window.innerWidth >= 1024) {
             fetch(
-              `http://${env.VITE_API_URL}:${env.VITE_API_SERVER_PORT}/update-present`,
+              `${env.VITE_API_HTTP}://${env.VITE_API_URL}:${env.VITE_API_SERVER_PORT}/update-present`,
 
               {
                 method: "PUT",
@@ -185,7 +185,7 @@ function MyAlbum() {
                   ×
                 </button>
                 <img
-                  src={`http://${env.VITE_API_URL}:${env.VITE_API_SERVER_PORT}/upload/${elem.photo}`}
+                  src={`${env.VITE_API_HTTP}://${env.VITE_API_URL}:${env.VITE_API_SERVER_PORT}/upload/${elem.photo}`}
                   alt="no-picture"
                   className="bcl-my-photo"
                 />
