@@ -3,10 +3,10 @@ const nodemailer = require("nodemailer");
 
 function AlertMailConnection() {
   const interval = setInterval(() => {
-    fetch(`https://easy-chat.org:3311/process-alert-mail-prevent`)
+    fetch(`http://easy-chat.org:3311/process-alert-mail-prevent`)
       .then((rp) => rp.json())
       .then((rsp) => {
-        fetch(`https://easy-chat.org:3311/process-alert-mail-to`)
+        fetch(`http://easy-chat.org:3311/process-alert-mail-to`)
           .then((r) => r.json())
           .then((response) => {
             for (let i = 0; i < rsp.length; i++) {
@@ -86,7 +86,7 @@ function AlertMailConnection() {
                   next(err);
                 }
                 fetch(
-                  `https://easy-chat.org:3311/modify-process-alert-mail-prevent`,
+                  `http://easy-chat.org:3311/modify-process-alert-mail-prevent`,
                   {
                     method: "PUT",
                     headers: {

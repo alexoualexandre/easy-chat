@@ -4,7 +4,7 @@ const { DateTime } = require("luxon");
 
 function cal() {
   const interval = setInterval(() => {
-    fetch(`https://easy-chat.org:3311/select-all-user`)
+    fetch(`http://easy-chat.org:3311/select-all-user`)
       .then((response) => response.json())
       .then((response) => {
         for (let i = 0; i < response.length; i++) {
@@ -26,7 +26,7 @@ function cal() {
             parseInt(oneMinuteAgo.second, 10) == second
           ) {
             fetch(
-              `https://easy-chat.org:3311/auto-deco`,
+              `http://easy-chat.org:3311/auto-deco`,
 
               {
                 method: "PUT",
@@ -39,7 +39,7 @@ function cal() {
               }
             );
             fetch(
-              `https://easy-chat.org:3311/update-present`,
+              `http://easy-chat.org:3311/update-present`,
 
               {
                 method: "PUT",
