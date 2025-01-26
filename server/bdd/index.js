@@ -1,17 +1,11 @@
 /* eslint-disable no-undef */
 const mysql = require("mysql2/promise");
-const fs = require('fs')
 
 const connection = mysql.createPool({
   host: "localhost",
   user: "alexandre",
   password: "Rkyl32623!",
   database: "easy",
-  ssl: {
-    ca: fs.readFileSync('../var/lib/mysql/ca.pem'),
-    key: fs.readFileSync('../etc/letsencrypt/live/easy-chat.org-0001/privkey.pem'),
-    cert: fs.readFileSync('../etc/letsencrypt/live/easy-chat.org-0001/cert.pem '),
-}
 });
 
 // eslint-disable-next-line no-undef
