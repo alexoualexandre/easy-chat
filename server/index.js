@@ -28,9 +28,9 @@ app.use("/upload", express.static(path.join(__dirname, "/upload")));
 
 // Charger les certificats SSL
 const sslOptions = {
-  key: fs.readFileSync("/etc/letsencrypt/live/privkey.pem"),
-  cert: fs.readFileSync("/etc/letsencrypt/live/fullchain.pem"),
-  ca: fs.readFileSync("/etc/letsencrypt/live/chain.pem"), // Optionnel, si vous avez un fichier de chaîne de certificats séparé
+  key: fs.readFileSync("/etc/letsencrypt/live/easy-chat.org/privkey.pem"),
+  cert: fs.readFileSync("/etc/letsencrypt/live/easy-chat.org/fullchain.pem"),
+  ca: fs.readFileSync("/etc/letsencrypt/live/easy-chat.org/chain.pem"), // Optionnel, si vous avez un fichier de chaîne de certificats séparé
 };
 
 // Créer un serveur HTTPS et l'écouter sur le port 3311
