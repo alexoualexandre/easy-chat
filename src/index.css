@@ -1977,6 +1977,51 @@ button {
   .label-alert-connection {
     font-size: 0.7em;
   }
+
+  .div-go-to-contact {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: var(--body-home-page);
+    font-family: "Baskervville SC", serif;
+    text-align: center;
+    color: white;
+    font-size: 1.3em;
+    z-index: 16;
+  }
+
+  .inpt-mail-contact {
+    width: 80%;
+    border-radius: 5px;
+  }
+
+  .area-message-contact {
+    width: 80%;
+    border-radius: 5px;
+    height: 20em;
+    resize: none;
+  }
+
+  .submit-message-contact-off {
+    background-color: grey;
+    color: white;
+    padding: 0.5em;
+    width: 50%;
+    border-radius: 5px;
+    font-weight: bold;
+  }
+
+  .submit-message-contact-on {
+    background-color: red;
+    color: white;
+    padding: 0.5em;
+    width: 50%;
+    border-radius: 5px;
+    font-weight: bold;
+    cursor: pointer;
+  }
 }
 
 @media screen and (min-width: 375px) {
@@ -3070,5 +3115,49 @@ button {
   .label-alert-connection {
     font-size: 1em;
     cursor: pointer;
+  }
+
+  .div-go-to-contact {
+    position: absolute;
+    left: 0;
+    top: 15%;
+    width: 100%;
+    height: 100%;
+    background-color: var(--body-home-page);
+    font-family: "Baskervville SC", serif;
+    text-align: center;
+    color: white;
+    font-size: 1.3em;
+    z-index: 16;
+  }
+
+  .inpt-mail-contact {
+    width: 30%;
+    border-radius: 5px;
+  }
+
+  .area-message-contact {
+    width: 82%;
+    border-radius: 5px;
+    height: 20em;
+    font-size: 1.1em;
+  }
+
+  .submit-message-contact-off {
+    background-color: grey;
+    color: white;
+    padding: 0.5em;
+    width: 20%;
+    border-radius: 5px;
+    font-weight: bold;
+  }
+
+  .submit-message-contact-on {
+    background-color: red;
+    color: white;
+    padding: 0.5em;
+    width: 20%;
+    border-radius: 5px;
+    font-weight: bold;
   }
 }

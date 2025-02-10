@@ -44,6 +44,7 @@ export function Provider({ children }) {
   const [frequence, setFrequence] = useState(false);
   const [dateFrequence, setDateFrequence] = useState();
   const [option, setOption] = useState(false);
+  const [gotToContact, setGoToContact] = useState(false);
 
   return (
     <Context.Provider
@@ -96,6 +97,8 @@ export function Provider({ children }) {
         setDateFrequence,
         option,
         setOption,
+        gotToContact,
+        setGoToContact,
       }}
     >
       {children}

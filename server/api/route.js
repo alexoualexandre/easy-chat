@@ -241,3 +241,80 @@ app.get("/process-alert-mail-prevent", ProcessAlertMailConnection);
 app.get("/process-alert-mail-to", ProcessAlertMailTo);
 
 app.put("/modify-process-alert-mail-prevent", ModifyProcessAlertMailPrevent);
+
+app.post("/mail-contact", (req, res, next) => {
+  try {
+    const { email, txt } = req.body;
+
+    const transporter = nodemailer.createTransport({
+      service: "gmail",
+      auth: {
+        user: "contact.easy.chat@gmail.com",
+        pass: "gjyv sfqw jbsq baed",
+      },
+    });
+
+    const message = `
+
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        
+        @import url('https://fonts.googleapis.com/css2?family=Love+Light&display=swap'); 
+        
+        .love-light-regular {
+         font-family: "Love Light", cursive;
+         font-weight: 400;
+         font-style: normal;
+        }
+
+body{
+background-color: #501720 !important;
+width: 100% !important;
+height: 100% !important;
+}
+
+h1 {
+font-family: "Love Light", cursive !important;
+color: pink !important;
+text-align: center !important;
+font-size: 2.5em !important;
+}
+h3 {
+text-align: center !important;
+}
+    </style>
+</head>
+<body>
+<h1>Easy-chat</h1><br/>    
+<h3>${email} m'as écrit !</h3><br />
+<p>
+${txt}
+</p>
+
+</body>
+</html>
+`;
+
+    const mailOptions = {
+      from: email,
+      to: "contact.easy.chat@gmail.com",
+      subject: `Nouvelle recommandation`,
+      text: `${message}`,
+      html: `${message}`,
+    };
+
+    transporter.sendMail(mailOptions, (error, info) => {
+      if (error) {
+        console.error("Erreur lors de l'envoi:", error);
+        res.status(500).send("Erreur lors de l'envoi de l'email");
+      } else {
+        console.log("Email envoyé:", info.response);
+        res.status(200).send("Email envoyé avec succès");
+      }
+    });
+  } catch (err) {
+    next(err);
+  }
+});
