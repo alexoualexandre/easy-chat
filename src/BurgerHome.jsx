@@ -1,8 +1,9 @@
 import { MyContext } from "./Context.jsx";
 import { Link } from "react-router-dom";
+import Contact from "./Contact.jsx";
 
 function BurgerHome() {
-  const { setBurgerHome } = MyContext();
+  const { setBurgerHome, gotToContact, setGoToContact } = MyContext();
   return (
     <>
       <section className="burger-home">
@@ -10,6 +11,7 @@ function BurgerHome() {
           className="x"
           onClick={() => {
             setBurgerHome(false);
+            setGoToContact(false);
           }}
         >
           ×
@@ -44,8 +46,19 @@ function BurgerHome() {
               Accueil
             </button>
           </li>
-          <li className="li-burger-home">Contact</li>
+          <li className="li-burger-home">
+            <button
+              type="button"
+              className="return-accueil"
+              onClick={() => {
+                setGoToContact(true);
+              }}
+            >
+              Contact
+            </button>
+          </li>
         </ul>
+        {gotToContact && <Contact />}
       </section>
     </>
   );

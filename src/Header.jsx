@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import { MyContext } from "./Context.jsx";
 
 function Header() {
-  const { setBurgerHome } = MyContext();
+  const { setBurgerHome, setGoToContact } = MyContext();
   const sizeScreen = window.innerWidth;
   return (
     <header className="header">
@@ -42,8 +42,22 @@ function Header() {
           <Link to="/connexion">
             <button className="button-connexion">Se connecter</button>
           </Link>
-          <button className="button-contact">Contact</button>
-          <button className="button-accueil">Accueil</button>
+          <button
+            className="button-contact"
+            onClick={() => {
+              setGoToContact(true);
+            }}
+          >
+            Contact
+          </button>
+          <button
+            className="button-accueil"
+            onClick={() => {
+              setGoToContact(false);
+            }}
+          >
+            Accueil
+          </button>
         </>
       )}
     </header>

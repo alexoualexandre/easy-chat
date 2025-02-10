@@ -3,13 +3,14 @@ import BurgerHome from "./BurgerHome.jsx";
 import { MyContext } from "./Context.jsx";
 import { useEffect, useState } from "react";
 import Cookies from "js-cookie";
+import Contact from "./Contact.jsx";
 
 function App() {
   if (Cookies.get("auth")) {
     window.location.href = "/home";
   }
 
-  const { burgerHome } = MyContext();
+  const { burgerHome, gotToContact } = MyContext();
   const [number, setNumber] = useState(0);
   const table = [
     "femme-black.jpg",
@@ -50,6 +51,7 @@ function App() {
               <img src={table[number]} alt="Image avec dégradé" />
             </div>
           )}
+          {gotToContact && <Contact />}
         </>
       )}
     </body>
