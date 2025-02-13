@@ -44,11 +44,19 @@ function Registration() {
   const [next, setNext] = useState(true);
 
   const regexMail = /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/;
-  const regexPass = /[!@#$%^&*(),.?:{}|<>]/;
+  // const regexPass = /[!@#$%^&*(),.?:{}|<>]/;
+  // const regexPass = /^(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/
+
   const handleSubmit = (e) => {
     e.preventDefault();
     if (form.mail.length > 0 && form.password.length > 0) {
-      if (regexMail.test(form.mail) && regexPass.test(form.password)) {
+      if (
+        regexMail.test(form.mail) &&
+        /[A-Z]/.test(form.password) &&
+        /\d/.test(form.password) &&
+        /[!@#$%^&*(),.?:{}|<>]/.test(form.password) &&
+        form.password.length >= 8
+      ) {
         fetch(
           `${env.VITE_API_HTTP}://${env.VITE_API_URL}:${env.VITE_API_SERVER_PORT}/insert-user`,
           {
@@ -468,7 +476,10 @@ function Registration() {
                     form.mail.length > 0 &&
                     regexMail.test(form.mail) &&
                     form.password.length > 0 &&
-                    regexPass.test(form.password)
+                    /[A-Z]/.test(form.password) &&
+                    /\d/.test(form.password) &&
+                    /[!@#$%^&*(),.?:{}|<>]/.test(form.password) &&
+                    form.password.length >= 8
                       ? "submit-inscription-on"
                       : "submit-inscription-off"
                   }
