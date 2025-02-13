@@ -130,7 +130,7 @@ function MyProfil() {
   }, [newName]);
 
   const regexMail = /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/;
-  const regexPass = /[!@#$%^&*(),.?:{}|<>]/;
+  const regexPass = /^(?=.*[A-Z])(?=.*\d)(?=.*[\W_]).{8,}$/;
 
   const changeInfo = (e) => {
     const { name, value } = e.target;
@@ -168,13 +168,16 @@ function MyProfil() {
         (regexPass.test(updateData.password) ||
           updateData.password.charAt(0) === "$")
       ) {
-        fetch(`${env.VITE_API_HTTP}://${env.VITE_API_URL}:${env.VITE_API_SERVER_PORT}/update`, {
-          method: "PUT",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify(updateData),
-        });
+        fetch(
+          `${env.VITE_API_HTTP}://${env.VITE_API_URL}:${env.VITE_API_SERVER_PORT}/update`,
+          {
+            method: "PUT",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify(updateData),
+          }
+        );
       } else {
         setValider("");
       }
