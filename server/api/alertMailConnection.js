@@ -85,20 +85,20 @@ function AlertMailConnection() {
                 } catch (err) {
                   next(err);
                 }
+                fetch(
+                  `https://easy-chat.org:3311/modify-process-alert-mail-prevent`,
+                  {
+                    method: "PUT",
+                    headers: {
+                      "Content-Type": "application/json",
+                    },
+                    body: JSON.stringify({
+                      prevent: rsp[i].from_id,
+                      to: response[i].to_id,
+                    }),
+                  }
+                ).then((rep) => rep.json());
               }
-              fetch(
-                `https://easy-chat.org:3311/modify-process-alert-mail-prevent`,
-                {
-                  method: "PUT",
-                  headers: {
-                    "Content-Type": "application/json",
-                  },
-                  body: JSON.stringify({
-                    prevent: rsp[i].from_id,
-                    to: response[i].to_id,
-                  }),
-                }
-              ).then((rep) => rep.json());
             }
           });
       });
