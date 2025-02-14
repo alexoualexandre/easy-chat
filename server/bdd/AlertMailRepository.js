@@ -50,8 +50,8 @@ class AlertMailRepository {
       );
     } 
     else {
-      await connection.query("UPDATE mail_alert SET open = 1 WHERE to_id = ? AND from_id = ?", [
-        parseInt(data.to, 10),parseInt(data.prevent, 10)
+      await connection.query("UPDATE mail_alert SET open = 1 WHERE to_id = ?", [
+        parseInt(data.to, 10)
       ]);
     }
   }
