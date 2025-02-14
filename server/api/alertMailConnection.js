@@ -11,19 +11,6 @@ function AlertMailConnection() {
           .then((response) => {
             for (let i = 0; i < rsp.length; i++) {
               if (response[i].inline === 1 && rsp[i].open === 1) {
-                fetch(
-                  `https://easy-chat.org:3311/modify-process-alert-mail-prevent`,
-                  {
-                    method: "PUT",
-                    headers: {
-                      "Content-Type": "application/json",
-                    },
-                    body: JSON.stringify({
-                      prevent: rsp[i].from_id,
-                      to: response[i].to_id,
-                    }),
-                  }
-                ).then((rep) => rep.json());
                 try {
                   const transporter = nodemailer.createTransport({
                     service: "gmail",
@@ -98,6 +85,19 @@ function AlertMailConnection() {
                 } catch (err) {
                   next(err);
                 }
+                fetch(
+                  `https://easy-chat.org:3311/modify-process-alert-mail-prevent`,
+                  {
+                    method: "PUT",
+                    headers: {
+                      "Content-Type": "application/json",
+                    },
+                    body: JSON.stringify({
+                      prevent: rsp[i].from_id,
+                      to: response[i].to_id,
+                    }),
+                  }
+                ).then((rep) => rep.json());
               }
             }
           });
