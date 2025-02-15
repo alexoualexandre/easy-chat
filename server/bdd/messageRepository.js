@@ -56,7 +56,7 @@ class Message {
     await connection.query("DELETE FROM message WHERE exp = ?", [user]);
     await connection.query("DELETE FROM calendar WHERE user_id = ?", [user]);
     await connection.query("DELETE FROM user WHERE id = ?", [user]);
-    await connection.query("DELETE FROM mail_alert WHERE to_id = ?", [user]);
+    await connection.query("DELETE FROM mail_alert WHERE from_id = ?", [user]);
   }
 }
 
