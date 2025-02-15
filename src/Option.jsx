@@ -42,7 +42,7 @@ function Option() {
           body: JSON.stringify({
             user_alerted: Cookies.get("auth"),
             user_selected: params.get("dest"),
-            open: 1,
+            open: 0,
           }),
         }
       ).then((response) => response.json());
