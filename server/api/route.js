@@ -318,3 +318,10 @@ ${txt}
     next(err);
   }
 });
+
+app.post("/location", (req, res) => {
+  const { latitude, longitude } = req.body;
+  console.log("Position reçue :", latitude, longitude);
+
+  res.json({ message: `latitude: ${latitude} , longitude: ${longitude}` });
+});
