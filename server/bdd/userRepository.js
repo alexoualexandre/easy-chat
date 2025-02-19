@@ -233,10 +233,14 @@ class User {
     return st;
   }
 
-  async updateTotalMessage(data) {
-    await connection.query("UPDATE user SET total_message = ? WHERE id = ?", [
-      parseInt(data.maj, 10) + 1,
-      parseInt(data.user, 10),
+  async location(data) {
+    await connection.query("UPDATE user SET latitude = ? WHERE id = ?", [
+      data.lat,
+      data.auth,
+    ]);
+    await connection.query("UPDATE user SET longitude = ? WHERE id = ?", [
+      data.long,
+      data.auth,
     ]);
   }
 }

@@ -252,6 +252,16 @@ const updateTotalMessage = async (req, res, next) => {
   }
 };
 
+const location = async (req, res, next) => {
+  const { latitude, longitude, Auth } = req.body;
+  try {
+    await new User().location({ lat: latitude, long: longitude, auth: Auth });
+    res.json({ maj: "ok" });
+  } catch (err) {
+    next({ error: `erreur:${err}` });
+  }
+};
+
 module.exports = {
   getUser,
   insertUser,
@@ -268,4 +278,5 @@ module.exports = {
   autoDeco,
   selectTotalMessage,
   updateTotalMessage,
+  location,
 };

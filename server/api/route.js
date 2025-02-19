@@ -20,6 +20,7 @@ const {
   autoDeco,
   selectTotalMessage,
   updateTotalMessage,
+  location,
 } = require("../controler/userControler.js");
 
 const {
@@ -319,9 +320,13 @@ ${txt}
   }
 });
 
-app.post("/location", (req, res) => {
-  const { latitude, longitude } = req.body;
-  console.log("Position reçue :", latitude, longitude);
+app.put(
+  "/location",
+  location
+  //    (req, res) => {
+  //   const { latitude, longitude } = req.body;
+  //   console.log("Position reçue :", latitude, longitude);
 
-  res.json({ message: `latitude: ${latitude} , longitude: ${longitude}` });
-});
+  //   res.json({ message: `latitude: ${latitude} , longitude: ${longitude}` });
+  // }
+);

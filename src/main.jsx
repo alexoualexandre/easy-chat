@@ -37,24 +37,6 @@ function maj() {
 }
 maj();
 
-navigator.geolocation.getCurrentPosition(
-  (position) => {
-    const { latitude, longitude } = position.coords;
-
-    fetch("https://easy-chat.org:3311/location", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ latitude, longitude }),
-    })
-      .then((response) => response.json())
-      .then((data) => console.log("Réponse du serveur :", data))
-      .catch((error) => console.error("Erreur :", error));
-  },
-  (error) => {
-    console.error("Erreur de géolocalisation :", error);
-  }
-);
-
 const router = createBrowserRouter([
   {
     path: "/",

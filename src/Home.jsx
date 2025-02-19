@@ -15,6 +15,26 @@ function Home() {
   const env = import.meta.env;
   const Auth = Cookies.get("auth");
 
+  navigator.geolocation.getCurrentPosition(
+    (position) => {
+      const { latitude, longitude } = position.coords;
+      fetch(
+        `${env.VITE_API_HTTP}://${env.VITE_API_URL}:${env.VITE_API_SERVER_PORT}/location`,
+        {
+          method: "PUT",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ latitude, longitude, Auth }),
+        }
+      )
+        .then((response) => response.json())
+        .then((data) => console.log("Réponse du serveur :", data))
+        .catch((error) => console.error("Erreur :", error));
+    },
+    (error) => {
+      console.error("Erreur de géolocalisation :", error);
+    }
+  );
+
   const {
     burgerMember,
     filter,
