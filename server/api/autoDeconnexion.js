@@ -8,7 +8,7 @@ function cal() {
       .then((response) => response.json())
       .then((response) => {
         for (let i = 0; i < response.length; i++) {
-          if (response[i].id !== 13) {
+          if (response[i].id != parseInt("13", 10)) {
             const now = DateTime.now();
 
             const minute = parseInt(
