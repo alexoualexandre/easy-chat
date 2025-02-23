@@ -16,6 +16,7 @@ function Registration() {
     password: "",
   });
   const [pseudoExist, setPseudoExist] = useState();
+  const [openAndClose, setOPenAndClose] = useState(true);
   fetch("https://api.ipify.org?format=json")
     .then((response) => response.json())
     .then((data) => {
@@ -49,6 +50,7 @@ function Registration() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+
     if (form.mail.length > 0 && form.password.length > 0) {
       if (
         regexMail.test(form.mail) &&
@@ -108,10 +110,14 @@ function Registration() {
       form.pseudo.length <= 20 &&
       pseudoExist &&
       !pseudoExist[0] &&
-      form.dep !== "choisir"
+      form.dep !== "choisir" &&
+      form.pseudo.slice(-1) !== " "
     ) {
       ul.current.style.transform = `translateX(-${number}%)`;
       ul.current.style.transition = "transform 0.7s";
+    }
+    if (form.pseudo.slice(-1) === " ") {
+      alert("Veuillez ne pas mettre d'espace vide à la fin de votre pseudo.");
     }
   };
   useEffect(() => {
@@ -414,12 +420,14 @@ function Registration() {
                   onChange={formData}
                 />
                 <h3 className="h3-password">Mot de passe</h3>
+
                 <input
-                  type="password"
+                  type={openAndClose ? "password" : "text"}
                   name="password"
                   className="input-password"
                   onChange={formData}
                 />
+
                 <div className="validate-password">
                   <p>
                     8 caractères{" "}
@@ -432,6 +440,47 @@ function Registration() {
                         &#215;
                       </span>
                     )}
+                    <button
+                      type="button"
+                      style={
+                        window.innerWidth >= 1024
+                          ? {
+                              zIndex: 1,
+                              position: "absolute",
+                              right: "5.5em",
+                              width: "3em",
+                              height: "3em",
+                              borderRadius: "50%",
+                              border: "5px double black",
+                              cursor: "pointer",
+                            }
+                          : {
+                              zIndex: 1,
+                              position: "absolute",
+                              right: 0,
+                              width: "3em",
+                              height: "3em",
+                              borderRadius: "50%",
+                              border: "5px double black",
+                            }
+                      }
+                      onClick={() => {
+                        setOPenAndClose(!openAndClose);
+                      }}
+                    >
+                      <img
+                        src={openAndClose ? "/ouvert.png" : "/fermer.png"}
+                        alt="ouvert"
+                        style={{
+                          position: "absolute",
+                          left: 0,
+                          top: 0,
+                          width: "100%",
+                          height: "100%",
+                          borderRadius: "50%",
+                        }}
+                      />
+                    </button>
                   </p>
                   <p>
                     1 majuscule{" "}
