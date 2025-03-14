@@ -38,7 +38,7 @@ function Header() {
 
       {sizeScreen >= 1024 && (
         <>
-          <h1 className="easy-chat">Easy-chat</h1>
+          <h1 className="easy-chat">Easy-cha</h1>
           <Link to="/connexion">
             <button className="button-connexion">Se connecter</button>
           </Link>
