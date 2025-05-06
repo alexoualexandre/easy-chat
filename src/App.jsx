@@ -30,6 +30,7 @@ function App() {
 
   return (
     <body className="body-home-page">
+      <h1 style={{ opacity: 0 }}>site de rencontre pour tous 100% gratuit,site pour faire des rencontres de tout âges sans payer avec un profil utilisateur,envoyer des messages privés ,de partager des photos</h1>
       <Header />
 
       {burgerHome && <BurgerHome />}
