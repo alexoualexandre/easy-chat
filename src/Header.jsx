@@ -8,7 +8,13 @@ function Header() {
     <header className="header">
       {sizeScreen < 1024 && (
         <>
-          <h1 className="easy-chat">Easy-chat</h1>
+          <h1 style={{ opacity: 0, position: "absolute" }}>
+            site de rencontre pour tous 100% gratuit,site pour faire des
+            rencontres de tout âges sans payer avec un profil
+            utilisateur,envoyer des messages privés et partager des photos
+          </h1>
+
+          <h2 className="easy-chat">Easy-chat</h2>
 
           <div className="menu">
             <div className="burger"></div>
@@ -38,7 +44,13 @@ function Header() {
 
       {sizeScreen >= 1024 && (
         <>
-          <h1 className="easy-chat">Easy-chat</h1>
+          <h1 style={{ opacity: 0, position: "absolute" }}>
+            site de rencontre pour tous 100% gratuit,site pour faire des
+            rencontres de tout âges sans payer avec un profil
+            utilisateur,envoyer des messages privés et partager des photos
+          </h1>
+
+          <h2 className="easy-chat">Easy-chat</h2>
           <Link to="/connexion">
             <button className="button-connexion">Se connecter</button>
           </Link>
