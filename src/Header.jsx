@@ -8,7 +8,7 @@ function Header() {
     <header className="header">
       {sizeScreen < 1024 && (
         <>
-          <h1 style={{ opacity: 0, position: "absolute" }}>
+          <h1 style={{ opacity: 0, fontSize: "1px", position: "absolute" }}>
             site de rencontre pour tous 100% gratuit,site pour faire des
             rencontres de tout âges sans payer avec un profil
             utilisateur,envoyer des messages privés et partager des photos
@@ -44,7 +44,7 @@ function Header() {
 
       {sizeScreen >= 1024 && (
         <>
-          <h1 style={{ opacity: 0, position: "absolute" }}>
+          <h1 style={{ opacity: 0, fontSize: "1px", position: "absolute" }}>
             site de rencontre pour tous 100% gratuit,site pour faire des
             rencontres de tout âges sans payer avec un profil
             utilisateur,envoyer des messages privés et partager des photos
