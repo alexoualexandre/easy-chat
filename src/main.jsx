@@ -13,7 +13,6 @@ import NotFound from "./NotFound.jsx";
 import Ajax from "./Ajax.jsx";
 import Message from "./Message.jsx";
 import Cookies from "js-cookie";
-import Cam from "./Camera.jsx";
 
 function maj() {
   const interval = setInterval(() => {
@@ -74,10 +73,6 @@ const router = createBrowserRouter([
   {
     path: "/message",
     element: <Message />,
-  },
-  {
-    path: "/cam",
-    element: <Cam />,
   },
 ]);
 
