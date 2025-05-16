@@ -101,14 +101,14 @@ const Cam = () => {
       <button
         onClick={startRecording}
         disabled={isRecording}
-        style={{ position: "absolute", top: "50%", width: "50%" }}
+        style={{ position: "absolute", top: "80%", width: "50%" }}
       >
         {!display ? "Démarrer l'enregistrement" : "recommencer"}
       </button>
 
       {display ? (
         downloadUrl && (
-          <button style={{ position: "absolute", top: "50%", left: "70%" }}>
+          <button style={{ position: "absolute", top: "80%", left: "70%" }}>
             <a href={downloadUrl} download="video.webm">
               {display ? "enregistré" : ""}
             </a>
@@ -118,7 +118,7 @@ const Cam = () => {
         <button
           onClick={stopRecording}
           disabled={!isRecording}
-          style={{ position: "absolute", top: "50%", left: "52%" }}
+          style={{ position: "absolute", top: "80%", left: "52%" }}
         >
           Arrêter l&apos;enregistrement
         </button>
