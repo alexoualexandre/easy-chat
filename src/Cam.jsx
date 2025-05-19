@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 
-const Cam = () => {
+const App = () => {
   const videoRef = useRef(null);
   const recordedRef = useRef(null);
   const mediaRecorderRef = useRef(null);
@@ -10,25 +10,28 @@ const Cam = () => {
   const [display, setDisplay] = useState(false);
 
   useEffect(() => {
-    const startCamera = async () => {
-      try {
-        const stream = await navigator.mediaDevices.getUserMedia({
-          video: true,
-          audio: true,
-        });
-        streamRef.current = stream;
-        if (videoRef.current) {
-          videoRef.current.srcObject = stream;
+    if (!display) {
+      const startCamera = async () => {
+        try {
+          const stream = await navigator.mediaDevices.getUserMedia({
+            video: true,
+            audio: { echoCancellation: true },
+          });
+          streamRef.current = stream;
+          if (videoRef.current) {
+            videoRef.current.srcObject = stream;
+            videoRef.current.volume = 0;
+          }
+        } catch (err) {
+          console.error("Erreur d'accès à la caméra :", err);
         }
-      } catch (err) {
-        console.error("Erreur d'accès à la caméra :", err);
-      }
-    };
+      };
 
-    startCamera();
-    return () => {
-      streamRef.current?.getTracks().forEach((track) => track.stop());
-    };
+      startCamera();
+      return () => {
+        streamRef.current?.getTracks().forEach((track) => track.stop());
+      };
+    }
   }, []);
 
   const startRecording = () => {
@@ -71,19 +74,18 @@ const Cam = () => {
   };
 
   return (
-    <div className="block">
+    <div className="block-cam">
       <div className="superpose">
         <video
           ref={videoRef}
           autoPlay
           playsInline
-          width="400"
-          style={{ position: "absolute", left: 0, top: 0 }}
+          style={{ position: "absolute", left: 0, top: 0, width: "100%" }}
         />
         <video
           ref={recordedRef}
           controls
-          width="400"
+          width="100%"
           style={
             !display
               ? { display: "none" }
@@ -97,18 +99,17 @@ const Cam = () => {
           }
         />
       </div>
-
       <button
         onClick={startRecording}
         disabled={isRecording}
-        style={{ position: "absolute", top: "80%", width: "50%" }}
+        style={{ position: "absolute", bottom: "0%" }}
       >
         {!display ? "Démarrer l'enregistrement" : "recommencer"}
       </button>
 
       {display ? (
         downloadUrl && (
-          <button style={{ position: "absolute", top: "80%", left: "70%" }}>
+          <button style={{ position: "absolute", bottom: "0%", right: 0 }}>
             <a href={downloadUrl} download="video.webm">
               {display ? "enregistré" : ""}
             </a>
@@ -118,13 +119,13 @@ const Cam = () => {
         <button
           onClick={stopRecording}
           disabled={!isRecording}
-          style={{ position: "absolute", top: "80%", left: "52%" }}
+          style={{ position: "absolute", right: 0, bottom: "0%" }}
         >
-          Arrêter l&apos;enregistrement
+          Arrêter l&paos;enregistrement
         </button>
       )}
     </div>
   );
 };
 
-export default Cam;
+export default App;
