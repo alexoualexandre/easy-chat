@@ -2025,10 +2025,10 @@ button {
 
   .block-cam {
     width: 90%;
-    height: 70%;
+    height: 75%;
     position: absolute;
     left: 5%;
-    top: 20%;
+    top: 12%;
     border: 1px solid red;
   }
   .supperpose {
