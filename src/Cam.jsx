@@ -121,7 +121,7 @@ const App = () => {
           disabled={!isRecording}
           style={{ position: "absolute", right: 0, bottom: "0%" }}
         >
-          Arrêter l&paos;enregistrement
+          Arrêter l&apos;enregistrement
         </button>
       )}
     </div>
