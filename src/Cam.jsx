@@ -8,6 +8,9 @@ const App = () => {
   const [isRecording, setIsRecording] = useState(false);
   const [downloadUrl, setDownloadUrl] = useState("");
   const [display, setDisplay] = useState(false);
+  const [data, setData] = useState("");
+
+  const { VITE_API_HTTP, VITE_API_URL } = import.meta.env;
 
   useEffect(() => {
     if (!display) {
@@ -52,6 +55,10 @@ const App = () => {
     mediaRecorder.onstop = () => {
       setTimeout(() => {
         const blob = new Blob(tempRecordedChunks, { type: "video/webm" });
+        const formData = new FormData();
+        formData.append("video", blob, "video.webm");
+        setData(formData);
+
         const url = URL.createObjectURL(blob);
 
         if (recordedRef.current) {
@@ -72,7 +79,19 @@ const App = () => {
     setIsRecording(false);
     setDisplay(true);
   };
-
+  const rec = () => {
+    fetch(`${VITE_API_HTTP}://${VITE_API_URL}:3311/videocam`, {
+      method: "POST",
+      body: data,
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        console.log(data);
+      })
+      .catch((error) => {
+        console.error("Erreur lors de l'envoi de la vidéo:", error);
+      });
+  };
   return (
     <div className="block-cam">
       <div className="superpose">
@@ -99,6 +118,7 @@ const App = () => {
           }
         />
       </div>
+
       <button
         onClick={startRecording}
         disabled={isRecording}
@@ -109,10 +129,11 @@ const App = () => {
 
       {display ? (
         downloadUrl && (
-          <button style={{ position: "absolute", bottom: "0%", right: 0 }}>
-            <a href={downloadUrl} download="video.webm">
-              {display ? "enregistré" : ""}
-            </a>
+          <button
+            onClick={rec}
+            style={{ position: "absolute", bottom: "0%", right: 0 }}
+          >
+            <p>{display ? "enregistré" : ""}</p>
           </button>
         )
       ) : (
