@@ -3,6 +3,7 @@
 const nodemailer = require("nodemailer");
 const { app } = require("../index.js");
 const fs = require("fs");
+// const ffmpeg = require("fluent-ffmpeg");
 
 const {
   getUser,
@@ -330,3 +331,18 @@ app.put(
   //   res.json({ message: `latitude: ${latitude} , longitude: ${longitude}` });
   // }
 );
+
+const storage2 = multer.diskStorage({
+  destination: (req, file, cb) => {
+    cb(null, "../upload");
+  },
+  filename: (req, file, cb) => {
+    cb(null, Date.now() + path.extname(file.originalname));
+  },
+});
+
+const uploaded = multer({ storage: storage2 });
+
+app.post("/videocam", uploaded.single("video"), function (req, res) {
+  res.json({ nvName: req.file.filename });
+});
