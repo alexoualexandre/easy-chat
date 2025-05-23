@@ -92,10 +92,10 @@ const App = () => {
         console.error("Erreur lors de l'envoi de la vidéo:", error);
       });
   };
-  const H = window.innerHeight;
+
   return (
-    <div className="block-cam" style={{ height: H }}>
-      <div className="superpose" style={{ height: H }}>
+    <div className="block-cam">
+      <div className="superpose">
         <video
           ref={videoRef}
           autoPlay
@@ -105,7 +105,6 @@ const App = () => {
             left: 0,
             top: 0,
             width: "100%",
-            height: H,
           }}
         />
         <video
@@ -121,7 +120,6 @@ const App = () => {
                   position: "absolute",
                   left: 0,
                   top: 0,
-                  height: H,
                 }
           }
         />

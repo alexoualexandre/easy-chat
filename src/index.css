@@ -2025,16 +2025,17 @@ button {
 
   .block-cam {
     width: 100%;
+    height: 100%;
     position: absolute;
     left: 0%;
     top: 0%;
     background-color: var(--body-home-page);
   }
-  .supperpose {
+  .superpose {
     width: 100%;
     position: absolute;
     left: 0;
-    top: 0;
+    top: 15%;
   }
 }
 
