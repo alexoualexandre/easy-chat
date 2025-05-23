@@ -92,14 +92,21 @@ const App = () => {
         console.error("Erreur lors de l'envoi de la vidéo:", error);
       });
   };
+  const H = window.innerHeight;
   return (
-    <div className="block-cam">
-      <div className="superpose">
+    <div className="block-cam" style={{ height: H }}>
+      <div className="superpose" style={{ height: H }}>
         <video
           ref={videoRef}
           autoPlay
           playsInline
-          style={{ position: "absolute", left: 0, top: 0, width: "100%" }}
+          style={{
+            position: "absolute",
+            left: 0,
+            top: 0,
+            width: "100%",
+            height: H,
+          }}
         />
         <video
           ref={recordedRef}
@@ -114,6 +121,7 @@ const App = () => {
                   position: "absolute",
                   left: 0,
                   top: 0,
+                  height: H,
                 }
           }
         />
@@ -122,7 +130,7 @@ const App = () => {
       <button
         onClick={startRecording}
         disabled={isRecording}
-        style={{ position: "absolute", bottom: "0%" }}
+        style={{ position: "absolute", bottom: "15%", zIndex: 1 }}
       >
         {!display ? "Démarrer l'enregistrement" : "recommencer"}
       </button>
@@ -131,7 +139,7 @@ const App = () => {
         downloadUrl && (
           <button
             onClick={rec}
-            style={{ position: "absolute", bottom: "0%", right: 0 }}
+            style={{ position: "absolute", bottom: "15%", right: 0, zIndex: 1 }}
           >
             <p>{display ? "enregistré" : ""}</p>
           </button>
@@ -140,7 +148,7 @@ const App = () => {
         <button
           onClick={stopRecording}
           disabled={!isRecording}
-          style={{ position: "absolute", right: 0, bottom: "0%" }}
+          style={{ position: "absolute", right: 0, bottom: "15%", zIndex: 1 }}
         >
           Arrêter l&apos;enregistrement
         </button>
