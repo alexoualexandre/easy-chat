@@ -128,9 +128,16 @@ const App = () => {
       <button
         onClick={startRecording}
         disabled={isRecording}
-        style={{ position: "absolute", bottom: "15%", zIndex: 1 }}
+        style={{
+          position: "absolute",
+          bottom: "15%",
+          zIndex: 1,
+          backgroundColor: "transparent",
+          border: "none",
+          left: "20%",
+        }}
       >
-        {!display ? "Démarrer l'enregistrement" : "recommencer"}
+        {!display ? <div className="enregistrement"></div> : "recommencer"}
       </button>
 
       {display ? (
@@ -146,9 +153,16 @@ const App = () => {
         <button
           onClick={stopRecording}
           disabled={!isRecording}
-          style={{ position: "absolute", right: 0, bottom: "15%", zIndex: 1 }}
+          style={{
+            position: "absolute",
+            right: "20%",
+            bottom: "15%",
+            zIndex: 1,
+            backgroundColor: "transparent",
+            border: "none",
+          }}
         >
-          Arrêter l&apos;enregistrement
+          <div className="arret-enregistrement"></div>
         </button>
       )}
     </div>

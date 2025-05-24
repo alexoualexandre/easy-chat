@@ -2037,6 +2037,21 @@ button {
     left: 0;
     top: 8%;
   }
+
+  .enregistrement {
+    width: 2.5em;
+    height: 2.5em;
+    background-color: red;
+    border: 10px double white;
+    border-radius: 50%;
+  }
+
+  .arret-enregistrement {
+    width: 2.5em;
+    height: 2.5em;
+    background-color: white;
+    border: 10px double black;
+  }
 }
 
 @media screen and (min-width: 375px) {
@@ -2158,7 +2173,6 @@ button {
   .supperpose {
     width: 100%;
     height: 100%;
-    border: 2px solid green;
     position: absolute;
     left: 0;
     top: 0;
