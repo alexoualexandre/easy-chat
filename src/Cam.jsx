@@ -9,6 +9,7 @@ const App = () => {
   const [downloadUrl, setDownloadUrl] = useState("");
   const [display, setDisplay] = useState(false);
   const [data, setData] = useState("");
+  const [point, setPoint] = useState(false);
 
   const { VITE_API_HTTP, VITE_API_URL } = import.meta.env;
 
@@ -39,6 +40,7 @@ const App = () => {
 
   const startRecording = () => {
     setDisplay(false);
+    setPoint(true);
     const options = { mimeType: "video/webm" };
     const mediaRecorder = new MediaRecorder(streamRef.current, options);
     mediaRecorderRef.current = mediaRecorder;
@@ -128,16 +130,20 @@ const App = () => {
       <button
         onClick={startRecording}
         disabled={isRecording}
-        style={{
-          position: "absolute",
-          bottom: "5%",
-          zIndex: 1,
-          backgroundColor: "transparent",
-          border: "none",
-          left: "20%",
-        }}
+        className="recording"
       >
-        {!display ? <div className="enregistrement"></div> : "recommencer"}
+        {!display ? (
+          <div className="enregistrement">
+            <img src="Frame1.png" style={{ width: "100%", height: "100%" }} />
+
+            <img
+              src="point.png"
+              className={!point ? "point-fixe" : "point-move"}
+            />
+          </div>
+        ) : (
+          "recommencer"
+        )}
       </button>
 
       {display ? (
@@ -153,16 +159,9 @@ const App = () => {
         <button
           onClick={stopRecording}
           disabled={!isRecording}
-          style={{
-            position: "absolute",
-            right: "20%",
-            bottom: "5%",
-            zIndex: 1,
-            backgroundColor: "transparent",
-            border: "none",
-          }}
+          className="stop-rec"
         >
-          <div className="arret-enregistrement"></div>
+          <img src="stop.png" style={{ width: "100%", height: "100%" }} />
         </button>
       )}
     </div>

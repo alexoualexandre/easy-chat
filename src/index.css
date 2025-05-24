@@ -2039,18 +2039,66 @@ button {
   }
 
   .enregistrement {
-    width: 2.5em;
-    height: 2.5em;
-    background-color: red;
-    border: 10px double white;
-    border-radius: 50%;
+    width: 100%;
+    height: 2em;
+    background-color: white;
+    padding: 0.5em;
+    border: 7px double black;
+    border-radius: 1em;
   }
 
-  .arret-enregistrement {
-    width: 2.5em;
-    height: 2.5em;
-    background-color: white;
-    border: 10px double black;
+  .point-fixe {
+    width: 20%;
+    height: "50%";
+    position: absolute;
+    left: 0;
+    top: 0;
+    left: 30%;
+    top: 36%;
+  }
+
+  .point-move {
+    width: 20%;
+    height: "50%";
+    position: absolute;
+    left: 0;
+    top: 0;
+    left: 30%;
+    top: 36%;
+    animation-name: point-move;
+    animation-duration: 1s;
+    animation-iteration-count: infinite;
+  }
+
+  .recording {
+    position: absolute;
+    bottom: 5%;
+    z-index: 1;
+    background-color: transparent;
+    border: none;
+    left: 10%;
+    width: 40%;
+    cursor: pointer;
+  }
+
+  .stop-rec {
+    position: absolute;
+    right: 10%;
+    bottom: 3%;
+    z-index: 1;
+    background-color: transparent;
+    border: none;
+    width: 25%;
+    cursor: pointer;
+  }
+
+  @keyframes point-move {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
   }
 }
 
@@ -2102,6 +2150,69 @@ button {
   .img-article-new-message {
     width: 35%;
   }
+
+  .enregistrement {
+    width: 100%;
+    height: 2em;
+    background-color: white;
+    padding: 0.5em;
+    border: 7px double black;
+    border-radius: 1em;
+  }
+
+  .point-fixe {
+    width: 20%;
+    height: "50%";
+    position: absolute;
+    left: 0;
+    top: 0;
+    left: 30%;
+    top: 37%;
+  }
+
+  .point-move {
+    width: 20%;
+    height: "50%";
+    position: absolute;
+    left: 0;
+    top: 0;
+    left: 30%;
+    top: 37%;
+    animation-name: point-move;
+    animation-duration: 1s;
+    animation-iteration-count: infinite;
+  }
+
+  .recording {
+    position: absolute;
+    bottom: 5%;
+    z-index: 1;
+    background-color: transparent;
+    border: none;
+    left: 15%;
+    width: 30%;
+    cursor: pointer;
+  }
+
+  .stop-rec {
+    position: absolute;
+    right: 15%;
+    bottom: 3%;
+    z-index: 1;
+    background-color: transparent;
+    border: none;
+    width: 20%;
+    cursor: pointer;
+  }
+
+  @keyframes point-move {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
 }
 
 @media screen and (min-width: 425px) {
@@ -2141,6 +2252,69 @@ button {
 
   .img-article-new-message {
     width: 33%;
+  }
+
+  .enregistrement {
+    width: 100%;
+    height: 2em;
+    background-color: white;
+    padding: 0.5em;
+    border: 7px double black;
+    border-radius: 1em;
+  }
+
+  .point-fixe {
+    width: 20%;
+    height: "50%";
+    position: absolute;
+    left: 0;
+    top: 0;
+    left: 30%;
+    top: 36%;
+  }
+
+  .point-move {
+    width: 20%;
+    height: "50%";
+    position: absolute;
+    left: 0;
+    top: 0;
+    left: 30%;
+    top: 36%;
+    animation-name: point-move;
+    animation-duration: 1s;
+    animation-iteration-count: infinite;
+  }
+
+  .recording {
+    position: absolute;
+    bottom: 5%;
+    z-index: 1;
+    background-color: transparent;
+    border: none;
+    left: 20%;
+    width: 25%;
+    cursor: pointer;
+  }
+
+  .stop-rec {
+    position: absolute;
+    right: 20%;
+    bottom: 3%;
+    z-index: 1;
+    background-color: transparent;
+    border: none;
+    width: 18%;
+    cursor: pointer;
+  }
+
+  @keyframes point-move {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
   }
 }
 
