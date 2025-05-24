@@ -130,7 +130,7 @@ const App = () => {
         disabled={isRecording}
         style={{
           position: "absolute",
-          bottom: "15%",
+          bottom: "5%",
           zIndex: 1,
           backgroundColor: "transparent",
           border: "none",
@@ -156,7 +156,7 @@ const App = () => {
           style={{
             position: "absolute",
             right: "20%",
-            bottom: "15%",
+            bottom: "5%",
             zIndex: 1,
             backgroundColor: "transparent",
             border: "none",
