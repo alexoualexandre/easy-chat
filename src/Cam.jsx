@@ -177,17 +177,25 @@ const App = () => {
             />
           </div>
         ) : (
-          "recommencer"
+          <div className="recommencer">
+            <img src="poucebas.png" style={{ width: "100%", height: "100%" }} />
+          </div>
         )}
       </button>
 
       {display ? (
         downloadUrl && (
-          <button
-            onClick={rec}
-            style={{ position: "absolute", bottom: "15%", right: 0, zIndex: 1 }}
-          >
-            <p>{display ? "enregistré" : ""}</p>
+          <button onClick={rec} className="valide-video">
+            {display ? (
+              <div className="enregistrer-video">
+                <img
+                  src="poucehaut.png"
+                  style={{ width: "100%", height: "100%" }}
+                />
+              </div>
+            ) : (
+              ""
+            )}
           </button>
         )
       ) : (
