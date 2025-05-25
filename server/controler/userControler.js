@@ -262,6 +262,16 @@ const location = async (req, res, next) => {
   }
 };
 
+const updateVideo = async (req, res, next) => {
+  const { D, C } = req.body;
+  try {
+    await new User().updateVideo(D, C);
+    res.json({ add: "add video ok" });
+  } catch (err) {
+    next({ error: `erreur:${err}` });
+  }
+};
+
 module.exports = {
   getUser,
   insertUser,
@@ -279,4 +289,5 @@ module.exports = {
   selectTotalMessage,
   updateTotalMessage,
   location,
+  updateVideo,
 };

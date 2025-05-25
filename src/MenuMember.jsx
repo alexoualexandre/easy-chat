@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { MyContext } from "./Context";
 import Cookies from "js-cookie";
 import { useEffect, useState } from "react";
@@ -11,6 +11,12 @@ function MenuMember() {
       history.go(1);
     };
   });
+
+  const location = useLocation();
+  const getSearchParams = () => {
+    return new URLSearchParams(location.search);
+  };
+  const params = getSearchParams();
 
   const env = import.meta.env;
   const {
@@ -142,6 +148,15 @@ function MenuMember() {
         </li>
 
         <li className="li-menu-member">
+          <Link
+            to={`/cam?user=${Cookies.get("auth")}&&dest=${params.get("dest")}`}
+            style={{ textDecoration: "none", color: "white" }}
+          >
+            Ma vidéo
+          </Link>
+        </li>
+
+        <li className="li-menu-member">
           <button
             type="button"
             className="button-li-menu-member"
@@ -177,7 +192,7 @@ function MenuMember() {
             to="/deconnexion"
             style={{ textDecoration: "none", color: "white" }}
           >
-            Deconnexion
+            Déconnexion
           </Link>
         </li>
       </ul>

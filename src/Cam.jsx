@@ -1,4 +1,7 @@
 import { useEffect, useRef, useState } from "react";
+import { Link, useLocation } from "react-router-dom";
+import { MyContext } from "./Context";
+import Cookies from "js-cookie";
 
 const App = () => {
   const videoRef = useRef(null);
@@ -11,7 +14,15 @@ const App = () => {
   const [data, setData] = useState("");
   const [point, setPoint] = useState(false);
 
-  const { VITE_API_HTTP, VITE_API_URL } = import.meta.env;
+  const { VITE_API_HTTP, VITE_API_URL, VITE_API_SERVER_PORT } = import.meta.env;
+
+  const { setBurgerMember } = MyContext();
+
+  const location = useLocation();
+  const getSearchParams = () => {
+    return new URLSearchParams(location.search);
+  };
+  const params = getSearchParams();
 
   useEffect(() => {
     if (!display) {
@@ -87,8 +98,18 @@ const App = () => {
       body: data,
     })
       .then((response) => response.json())
-      .then((data) => {
-        console.log(data);
+      .then((elem) => {
+        console.log(elem);
+        fetch(
+          `${VITE_API_HTTP}://${VITE_API_URL}:${VITE_API_SERVER_PORT}/update-video`,
+          {
+            method: "PUT",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({ D: elem.nvName, C: Cookies.get("auth") }),
+          }
+        );
       })
       .catch((error) => {
         console.error("Erreur lors de l'envoi de la vidéo:", error);
@@ -97,6 +118,17 @@ const App = () => {
 
   return (
     <div className="block-cam">
+      <Link to={`/home?dest=${params.get("dest")}`}>
+        <button
+          type="button"
+          className="x"
+          onClick={() => {
+            setBurgerMember(false);
+          }}
+        >
+          ×
+        </button>
+      </Link>
       <div className="superpose">
         <video
           ref={videoRef}

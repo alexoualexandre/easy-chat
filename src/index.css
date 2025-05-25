@@ -2036,6 +2036,7 @@ button {
     position: absolute;
     left: 0;
     top: 8%;
+    background-color: black;
   }
 
   .enregistrement {

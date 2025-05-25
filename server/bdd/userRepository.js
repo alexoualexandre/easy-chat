@@ -243,6 +243,10 @@ class User {
       data.auth,
     ]);
   }
+
+  async updateVideo(D, C) {
+    await connection.query("UPDATE user SET vid = ? WHERE id = ?", [D, C]);
+  }
 }
 
 // eslint-disable-next-line no-undef
