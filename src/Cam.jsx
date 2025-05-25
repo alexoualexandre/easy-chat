@@ -4,6 +4,9 @@ import { MyContext } from "./Context";
 import Cookies from "js-cookie";
 
 const App = () => {
+  if (!Cookies.get("auth")) {
+    window.location.href = "/home";
+  }
   const videoRef = useRef(null);
   const recordedRef = useRef(null);
   const mediaRecorderRef = useRef(null);
