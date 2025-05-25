@@ -2101,6 +2101,31 @@ button {
       opacity: 1;
     }
   }
+
+  .recommencer {
+    width: 70%;
+    height: 70%;
+  }
+
+  .enregister-video {
+    width: 100%;
+    height: 2em;
+    background-color: white;
+    padding: 0.5em;
+    border: 7px double black;
+    border-radius: 1em;
+  }
+
+  .valide-video {
+    position: absolute;
+    right: 10%;
+    bottom: 5%;
+    z-index: 1;
+    background-color: transparent;
+    border: none;
+    width: 30%;
+    cursor: pointer;
+  }
 }
 
 @media screen and (min-width: 375px) {
@@ -2214,6 +2239,17 @@ button {
       opacity: 1;
     }
   }
+
+  .valide-video {
+    position: absolute;
+    right: 15%;
+    bottom: 5%;
+    z-index: 1;
+    background-color: transparent;
+    border: none;
+    width: 22%;
+    cursor: pointer;
+  }
 }
 
 @media screen and (min-width: 425px) {
@@ -2316,6 +2352,17 @@ button {
     to {
       opacity: 1;
     }
+  }
+
+  .valide-video {
+    position: absolute;
+    right: 20%;
+    bottom: 5%;
+    z-index: 1;
+    background-color: transparent;
+    border: none;
+    width: 19%;
+    cursor: pointer;
   }
 }
 
