@@ -22,6 +22,7 @@ const {
   selectTotalMessage,
   updateTotalMessage,
   location,
+  updateVideo,
 } = require("../controler/userControler.js");
 
 const {
@@ -346,3 +347,5 @@ const uploaded = multer({ storage: storage2 });
 app.post("/videocam", uploaded.single("video"), function (req, res) {
   res.json({ nvName: req.file.filename });
 });
+
+app.put("/update-video", updateVideo);
