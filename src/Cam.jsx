@@ -20,6 +20,7 @@ const App = () => {
   const [data, setData] = useState("");
   const [point, setPoint] = useState(false);
   const [vid, setVid] = useState(" ");
+  const [gif, setGif] = useState(false);
 
   const { VITE_API_HTTP, VITE_API_URL, VITE_API_SERVER_PORT } = import.meta.env;
 
@@ -130,6 +131,8 @@ const App = () => {
     buttonLeft.current.style.display = "none";
     buttonRight.current.style.display = "none";
 
+    setGif(true);
+
     fetch(`${VITE_API_HTTP}://${VITE_API_URL}:3311/videocam`, {
       method: "POST",
       body: data,
@@ -154,6 +157,7 @@ const App = () => {
 
   return (
     <div className="block-cam">
+      {gif && <img src="tick.gif" alt="validé" className="tick" />}
       <Link to={`/home?dest=${params.get("dest")}`}>
         <button
           type="button"
