@@ -23,6 +23,7 @@ const {
   updateTotalMessage,
   location,
   updateVideo,
+  getDataVideo,
 } = require("../controler/userControler.js");
 
 const {
@@ -349,3 +350,22 @@ app.post("/videocam", uploaded.single("video"), function (req, res) {
 });
 
 app.put("/update-video", updateVideo);
+
+app.get("/get-data-video/:id", getDataVideo);
+
+app.delete("/unlink-video", (req, res) => {
+  const { name } = req.body;
+
+  const currentPath = path.join(__dirname, `${name}`);
+  const newPath = currentPath.replace(
+    path.join("api", `${name}`),
+    path.join("upload", `${name}`)
+  );
+  fs.unlink(newPath, (err) => {
+    if (err) {
+      console.error("Erreur lors de la suppression du fichier :", err);
+      return;
+    }
+  });
+  res.json({ message: "video supprimé" });
+});

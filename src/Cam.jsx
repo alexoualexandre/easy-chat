@@ -7,7 +7,10 @@ const App = () => {
   if (!Cookies.get("auth")) {
     window.location.href = "/home";
   }
+
   const videoRef = useRef(null);
+  const buttonLeft = useRef(null);
+  const buttonRight = useRef(null);
   const recordedRef = useRef(null);
   const mediaRecorderRef = useRef(null);
   const streamRef = useRef(null);
@@ -16,6 +19,7 @@ const App = () => {
   const [display, setDisplay] = useState(false);
   const [data, setData] = useState("");
   const [point, setPoint] = useState(false);
+  const [vid, setVid] = useState(" ");
 
   const { VITE_API_HTTP, VITE_API_URL, VITE_API_SERVER_PORT } = import.meta.env;
 
@@ -26,6 +30,16 @@ const App = () => {
     return new URLSearchParams(location.search);
   };
   const params = getSearchParams();
+
+  useEffect(() => {
+    fetch(
+      `${VITE_API_HTTP}://${VITE_API_URL}:${VITE_API_SERVER_PORT}/get-data-video/${Cookies.get("auth")}`
+    )
+      .then((response) => response.json())
+      .then((resp) => {
+        setVid(resp.user[0].vid);
+      });
+  }, []);
 
   useEffect(() => {
     if (!display) {
@@ -96,13 +110,32 @@ const App = () => {
     setDisplay(true);
   };
   const rec = () => {
+    if (vid !== " ") {
+      fetch(
+        `${VITE_API_HTTP}://${VITE_API_URL}:${VITE_API_SERVER_PORT}/unlink-video`,
+        {
+          method: "DELETE",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ name: vid }),
+        }
+      )
+        .then((response) => response.json())
+        .then((resp) => {
+          console.log(resp.message);
+        });
+    }
+
+    buttonLeft.current.style.display = "none";
+    buttonRight.current.style.display = "none";
+
     fetch(`${VITE_API_HTTP}://${VITE_API_URL}:3311/videocam`, {
       method: "POST",
       body: data,
     })
       .then((response) => response.json())
       .then((elem) => {
-        console.log(elem);
         fetch(
           `${VITE_API_HTTP}://${VITE_API_URL}:${VITE_API_SERVER_PORT}/update-video`,
           {
@@ -166,6 +199,7 @@ const App = () => {
         onClick={startRecording}
         disabled={isRecording}
         className="recording"
+        ref={buttonLeft}
       >
         {!display ? (
           <div className="enregistrement">
@@ -185,7 +219,7 @@ const App = () => {
 
       {display ? (
         downloadUrl && (
-          <button onClick={rec} className="valide-video">
+          <button onClick={rec} className="valide-video" ref={buttonRight}>
             {display ? (
               <div className="enregistrer-video">
                 <img

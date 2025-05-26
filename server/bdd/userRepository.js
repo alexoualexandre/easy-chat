@@ -247,6 +247,14 @@ class User {
   async updateVideo(D, C) {
     await connection.query("UPDATE user SET vid = ? WHERE id = ?", [D, C]);
   }
+
+  async getDataVideo(id) {
+    const [data] = await connection.query(
+      "SELECT id,vid FROM user WHERE id = ?",
+      [id]
+    );
+    return data;
+  }
 }
 
 // eslint-disable-next-line no-undef
