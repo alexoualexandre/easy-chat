@@ -2126,6 +2126,14 @@ button {
     width: 30%;
     cursor: pointer;
   }
+
+  .tick {
+    width: 25%;
+    position: absolute;
+    left: 37.5%;
+    bottom: 7%;
+    border-radius: 50%;
+  }
 }
 
 @media screen and (min-width: 375px) {
