@@ -206,9 +206,10 @@ const App = () => {
                   position: "absolute",
                   left: window.innerWidth >= 1024 ? "10%" : 0,
                   top: 0,
-                  borderRadius: "5%",
-                  border: "3px solid black",
-                  boxShadow: "10px 10px 10px black",
+                  borderRadius: window.innerWidth >= 1024 && "5%",
+                  border: window.innerWidth >= 1024 && "3px solid black",
+                  boxShadow:
+                    window.innerWidth >= 1024 && "10px 10px 10px black",
                 }
           }
         />
