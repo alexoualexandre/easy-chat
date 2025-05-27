@@ -105,6 +105,16 @@ function Option() {
               Me tenir informée lorsque cet utilisateur se connecte.
             </label>
           </li>
+
+          <li className="li-option">
+            <button
+              type="button"
+              className="voirsavideo"
+              onClick={() => {
+                setClick(!click);
+              }}
+            ></button>
+          </li>
         </ul>
       </div>
     </>

@@ -174,17 +174,29 @@ const App = () => {
           ref={videoRef}
           autoPlay
           playsInline
-          style={{
-            position: "absolute",
-            left: 0,
-            top: 0,
-            width: "100%",
-          }}
+          style={
+            window.innerWidth >= 1024
+              ? {
+                  position: "absolute",
+                  left: "10%",
+                  top: 0,
+                  width: "50%",
+                  borderRadius: "5%",
+                  border: "3px solid black",
+                  boxShadow: "10px 10px 10px black",
+                }
+              : {
+                  position: "absolute",
+                  left: 0,
+                  top: 0,
+                  width: "100%",
+                }
+          }
         />
         <video
           ref={recordedRef}
           controls
-          width="100%"
+          width={window.innerWidth >= 1024 ? "50%" : "100%"}
           style={
             !display
               ? { display: "none" }
@@ -192,8 +204,11 @@ const App = () => {
                   display: "block",
                   zIndex: 1,
                   position: "absolute",
-                  left: 0,
+                  left: window.innerWidth >= 1024 ? "10%" : 0,
                   top: 0,
+                  borderRadius: "5%",
+                  border: "3px solid black",
+                  boxShadow: "10px 10px 10px black",
                 }
           }
         />

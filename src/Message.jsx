@@ -262,7 +262,7 @@ function Message() {
                 setOption(true);
               }}
             >
-              options
+              plus
             </button>
           </div>
         )}
