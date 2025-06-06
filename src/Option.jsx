@@ -113,7 +113,9 @@ function Option() {
               onClick={() => {
                 setClick(!click);
               }}
-            ></button>
+            >
+              voir sa vidéo
+            </button>
           </li>
         </ul>
       </div>
