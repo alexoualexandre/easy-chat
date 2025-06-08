@@ -24,6 +24,7 @@ const {
   location,
   updateVideo,
   getDataVideo,
+  getVideo,
 } = require("../controler/userControler.js");
 
 const {
@@ -369,3 +370,5 @@ app.delete("/unlink-video", (req, res) => {
   });
   res.json({ message: "video supprimé" });
 });
+
+app.get("/get-video/:id", getVideo);

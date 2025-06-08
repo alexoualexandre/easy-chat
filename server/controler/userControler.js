@@ -282,6 +282,16 @@ const getDataVideo = async (req, res, next) => {
   }
 };
 
+const getVideo = async (req, res, next) => {
+  const { id } = req.params;
+  try {
+    const user = await new User().getVideo(id);
+    res.json({ user: user });
+  } catch (err) {
+    next({ error: `erreur:${err}` });
+  }
+};
+
 module.exports = {
   getUser,
   insertUser,
@@ -301,4 +311,5 @@ module.exports = {
   location,
   updateVideo,
   getDataVideo,
+  getVideo,
 };

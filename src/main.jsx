@@ -14,6 +14,7 @@ import Ajax from "./Ajax.jsx";
 import Message from "./Message.jsx";
 import Cookies from "js-cookie";
 import Cam from "./Cam.jsx";
+import Video from "./Video.jsx";
 
 function maj() {
   const interval = setInterval(() => {
@@ -78,6 +79,10 @@ const router = createBrowserRouter([
   {
     path: "/cam",
     element: <Cam />,
+  },
+  {
+    path: "/video",
+    element: <Video />,
   },
 ]);
 
