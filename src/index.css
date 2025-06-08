@@ -2162,6 +2162,10 @@ button {
     height: 100%;
     position: absolute;
   }
+
+  .oups {
+    width: 100%;
+  }
 }
 
 @media screen and (min-width: 375px) {
@@ -2400,6 +2404,11 @@ button {
     width: 19%;
     cursor: pointer;
   }
+
+  .oups {
+    width: 70%;
+    margin-left: 15%;
+  }
 }
 
 @media screen and (min-width: 768px) {
@@ -2434,6 +2443,11 @@ button {
     position: absolute;
     left: 0;
     top: 0;
+  }
+
+  .oups {
+    width: 50%;
+    margin-left: 25%;
   }
 }
 
@@ -3558,6 +3572,11 @@ button {
     background-color: white;
     color: var(--body-home-page);
     border: 5px double var(--body-home-page);
+  }
+
+  .oups {
+    width: 25%;
+    margin-left: 37.5%;
   }
 }
 @media screen and (min-width: 1440px) {
