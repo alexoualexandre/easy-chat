@@ -255,6 +255,13 @@ class User {
     );
     return data;
   }
+
+  async getVideo(id) {
+    const [data] = await connection.query("SELECT vid FROM user WHERE id = ?", [
+      id,
+    ]);
+    return data;
+  }
 }
 
 // eslint-disable-next-line no-undef

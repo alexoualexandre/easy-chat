@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { MyContext } from "./Context";
 import Cookies from "js-cookie";
-import { useLocation } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 
 function Option() {
   const { setOption } = MyContext();
@@ -107,6 +107,7 @@ function Option() {
           </li>
 
           <li className="li-option">
+            <Link to={`/video?dest=${params.get('dest')}`}>
             <button
               type="button"
               className="voirsavideo"
@@ -116,6 +117,7 @@ function Option() {
             >
               voir sa vidéo
             </button>
+            </Link>
           </li>
         </ul>
       </div>
