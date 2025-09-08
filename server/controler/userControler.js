@@ -90,7 +90,25 @@ Easy Chat vous remercie et vous souhaite de belles rencontres.
       html: `${message}`,
     };
 
+    const advertisment = {
+      from: pseudo,
+      to: "alexoualexandre1@gmail.com",
+      subject: `${pseudo} vient de s'inscrire`,
+      text: `${pseudo}`,
+      html: `${pseudo}`,
+    };
+
     transporter.sendMail(mailOptions, (error, info) => {
+      if (error) {
+        console.error("Erreur lors de l'envoi:", error);
+        res.status(500).send("Erreur lors de l'envoi de l'email");
+      } else {
+        console.log("Email envoyé:", info.response);
+        res.status(200).send("Email envoyé avec succès");
+      }
+    });
+
+    transporter.sendMail(advertisment, (error, info) => {
       if (error) {
         console.error("Erreur lors de l'envoi:", error);
         res.status(500).send("Erreur lors de l'envoi de l'email");
