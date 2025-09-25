@@ -18,7 +18,9 @@
 }
 
 :root {
-  --body-home-page: #501720;
+  --body-home-page: green;
+
+  /* --body-home-page: #501720; */
   --background-button-inscription: red;
   --background-burger: white;
   --int-easy-chat: pink;
