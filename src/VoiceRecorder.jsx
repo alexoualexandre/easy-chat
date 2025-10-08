@@ -42,11 +42,11 @@ export default function VoiceRecorder() {
   };
 
   const rec = () => {
-    const { VITE_API_HTTP, VITE_API_URL, VITE_API_SERVER_PORT } = import.meta
+    const { VITE_API_HTTP, VITE_API_URL } = import.meta
       .env;
 
     fetch(
-      `${VITE_API_HTTP}://${VITE_API_URL}:${VITE_API_SERVER_PORT}/audio-record`,
+      `${VITE_API_HTTP}://${VITE_API_URL}:3311/audio-record`,
       {
         method: "POST",
         body: data,
