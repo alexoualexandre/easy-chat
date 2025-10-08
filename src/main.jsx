@@ -15,6 +15,7 @@ import Message from "./Message.jsx";
 import Cookies from "js-cookie";
 import Cam from "./Cam.jsx";
 import Video from "./Video.jsx";
+import VoiceRecorder from "./VoiceRecorder.jsx";
 
 function maj() {
   const interval = setInterval(() => {
@@ -83,6 +84,10 @@ const router = createBrowserRouter([
   {
     path: "/video",
     element: <Video />,
+  },
+  {
+    path: "/recorder",
+    element: <VoiceRecorder />,
   },
 ]);
 

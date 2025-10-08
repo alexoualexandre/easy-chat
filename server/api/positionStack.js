@@ -1,6 +1,6 @@
 const apiKey = "57924f44f788a7abfd8b2f5561cd8e7a";
-const latitude = 50.6295038;
-const longitude = 3.0021026;
+const latitude = 50.6335437;
+const longitude = 3.018755;
 
 const url = `http://api.positionstack.com/v1/reverse?access_key=${apiKey}&query=${latitude},${longitude}`;
 
