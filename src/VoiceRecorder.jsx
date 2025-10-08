@@ -61,7 +61,7 @@ export default function VoiceRecorder() {
 
   return (
     <div style={{ textAlign: "center", marginTop: "40px" }}>
-      <h2>🎤 Enregistreur vocal</h2>
+      <h2>🎤 Enregistrement vocal</h2>
       {!recording ? (
         <button onClick={startRecording}>Démarrer l&apos;enregistrement</button>
       ) : (
