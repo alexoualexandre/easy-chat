@@ -1,11 +1,11 @@
-import React, { useState, useRef } from "react";
+import { useState, useRef } from "react";
 
 export default function VoiceRecorder() {
   const [recording, setRecording] = useState(false);
   const [audioURL, setAudioURL] = useState("");
   const mediaRecorderRef = useRef(null);
   const audioChunks = useRef([]);
-  const [data,setData] = useState(false);
+  const [data, setData] = useState("");
 
   const startRecording = async () => {
     try {
@@ -17,23 +17,13 @@ export default function VoiceRecorder() {
       };
 
       mediaRecorderRef.current.onstop = () => {
-        const audioBlob = new Blob(audioChunks.current, { type: "audio/webm" });
-        const url = URL.createObjectURL(audioBlob);
-        setAudioURL(url);
-	
-
-
-
-      const formData = new FormData();
+        const audioBlob = new Blob(audioChunks.current, { type: "audio/mp3" });
+        const formData = new FormData();
         formData.append("audio", audioBlob, "audio.mp3");
         setData(formData);
 
-
-
-
-
-
-
+        const url = URL.createObjectURL(audioBlob);
+        setAudioURL(url);
 
         audioChunks.current = [];
       };
@@ -51,11 +41,29 @@ export default function VoiceRecorder() {
     setRecording(false);
   };
 
+  const rec = () => {
+    const { VITE_API_HTTP, VITE_API_URL, VITE_API_SERVER_PORT } = import.meta
+      .env;
+
+    fetch(
+      `${VITE_API_HTTP}://${VITE_API_URL}:${VITE_API_SERVER_PORT}/audio-record`,
+      {
+        method: "POST",
+        body: data,
+      }
+    )
+      .then((response) => response.json())
+      .then((response) => {
+        console.log(response.nvName);
+      });
+    setAudioURL("");
+  };
+
   return (
     <div style={{ textAlign: "center", marginTop: "40px" }}>
       <h2>🎤 Enregistreur vocal</h2>
       {!recording ? (
-        <button onClick={startRecording}>Démarrer l'enregistrement</button>
+        <button onClick={startRecording}>Démarrer l&apos;enregistrement</button>
       ) : (
         <button onClick={stopRecording}>Arrêter</button>
       )}
@@ -63,6 +71,7 @@ export default function VoiceRecorder() {
         <div style={{ marginTop: "20px" }}>
           <h4>🔊 Lecture du message :</h4>
           <audio controls src={audioURL}></audio>
+          <button onClick={rec}>ok</button>
         </div>
       )}
     </div>

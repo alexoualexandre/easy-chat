@@ -372,3 +372,18 @@ app.delete("/unlink-video", (req, res) => {
 });
 
 app.get("/get-video/:id", getVideo);
+
+const storage3 = multer.diskStorage({
+  destination: (req, file, cb) => {
+    cb(null, "../upload");
+  },
+  filename: (req, file, cb) => {
+    cb(null, Date.now() + path.extname(file.originalname));
+  },
+});
+
+const uploaded2 = multer({ storage: storage3 });
+
+app.post("/audio-record", uploaded2.single("audio"), function (req, res) {
+  res.json({ nvName: req.file.filename });
+});
