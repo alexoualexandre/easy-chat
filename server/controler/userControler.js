@@ -1,0 +1,333 @@
+/* eslint-disable no-undef */
+
+const nodemailer = require("nodemailer");
+const argon2 = require("argon2");
+
+const { User } = require("../bdd/userRepository.js");
+
+const getUser = async (req, res, next) => {
+  const { pseudo } = req.params;
+  try {
+    const user = await new User().selectUser(pseudo);
+    res.json(user);
+  } catch (err) {
+    next({ error: `erreur:${err}` });
+  }
+};
+
+const insertUser = async (req, res, next) => {
+  try {
+    const insert = await new User().addUser(req.body);
+    res.json({ nb_user: insert });
+
+    const { pseudo, mail } = req.body;
+
+    const transporter = nodemailer.createTransport({
+      service: "gmail",
+      auth: {
+        user: "contact.easy.chat@gmail.com",
+        pass: "gjyv sfqw jbsq baed",
+      },
+    });
+
+    const message = `
+
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        
+        @import url('https://fonts.googleapis.com/css2?family=Love+Light&display=swap'); 
+        
+        .love-light-regular {
+         font-family: "Love Light", cursive;
+         font-weight: 400;
+         font-style: normal;
+        }
+
+body{
+width: 100% !important;
+height: 100% !important;
+}
+
+h1 {
+font-family: "Love Light", cursive !important;
+color: pink !important;
+text-align: center !important;
+font-size: 2.5em !important;
+}
+h3 {
+text-align: center !important;
+}
+    </style>
+</head>
+<body>
+<h1>Easy-chat</h1><br/>    
+<h3>Bienvenue ${pseudo} !</h3><br />
+
+<p>
+Bonjour ${pseudo} et bienvenue sur Easy Chat.<br />
+Le site est gratuit et ne contient pas de publicité.<br />
+Les informations que vous nous avez communiquées restent strictement confidentielles et ne sont divulguées à aucun tiers.<br />
+Vous pouvez à tout moment vous désinscrire en cliquant sur "désinscription" dans le menu en haut à droite du site,<br />
+cela supprimera l'intégralité des informations (adresse mail, pseudo, image téléchargée, etc...).<br />
+<br />
+Easy Chat vous remercie et vous souhaite de belles rencontres.
+</p>
+
+
+</body>
+</html>
+
+
+`;
+
+    const mailOptions = {
+      from: pseudo,
+      to: mail,
+      subject: `Easy-chat inscription validé`,
+      text: `${message}`,
+      html: `${message}`,
+    };
+
+    const advertisment = {
+      from: pseudo,
+      to: "alexoualexandre1@gmail.com",
+      subject: `${pseudo} vient de s'inscrire`,
+      text: `${pseudo}`,
+      html: `${pseudo}`,
+    };
+
+    transporter.sendMail(mailOptions, (error, info) => {
+      if (error) {
+        console.error("Erreur lors de l'envoi:", error);
+        res.status(500).send("Erreur lors de l'envoi de l'email");
+      } else {
+        console.log("Email envoyé:", info.response);
+        res.status(200).send("Email envoyé avec succès");
+      }
+    });
+
+    transporter.sendMail(advertisment, (error, info) => {
+      if (error) {
+        console.error("Erreur lors de l'envoi:", error);
+        res.status(500).send("Erreur lors de l'envoi de l'email");
+      } else {
+        console.log("Email envoyé:", info.response);
+        res.status(200).send("Email envoyé avec succès");
+      }
+    });
+  } catch (err) {
+    next(err);
+  }
+};
+
+const getUserConnexion = async (req, res, next) => {
+  try {
+    let result = false;
+    const [userConnexion] = await new User().selectUserConnexion(req.body);
+    if (userConnexion) {
+      argon2
+        .verify(userConnexion.password, req.body.password)
+        .then((validate) => {
+          result = validate;
+          res.json({
+            pseudo: userConnexion.pseudo,
+            bool: result,
+            id: userConnexion.id,
+          });
+        });
+    } else {
+      res.json({ pseudo: "introuvable", bool: result, id: "" });
+    }
+  } catch (err) {
+    next({ error: `erreur:${err}` });
+  }
+};
+
+const selectAllUser = async (req, res, next) => {
+  try {
+    const users = await new User().selectAllUser();
+    res.json(users);
+  } catch (err) {
+    next({ error: `erreur:${err}` });
+  }
+};
+
+const modifyImgProfile = async (req, res, next) => {
+  const { nv, id } = req.params;
+  try {
+    await new User().modifyImgProfile(nv, id);
+    res.json({ add: "ok" });
+  } catch (err) {
+    next({ error: `erreur:${err}` });
+  }
+};
+
+const selectUserId = async (req, res, next) => {
+  const { id } = req.params;
+  try {
+    const userId = await new User().selectUserId(id);
+    res.json(userId);
+  } catch (err) {
+    next({ error: `erreur:${err}` });
+  }
+};
+
+const modifyProfil = async (req, res, next) => {
+  const data = req.body;
+  const result = {
+    password: data.password,
+    dep: parseInt(data.dep, 10) ? data.dep : data.dep.split("-")[0],
+    mail: data.mail,
+    search: data.search,
+    description: data.description,
+    user: data.user,
+  };
+  try {
+    await new User().modifyProfil(result);
+  } catch (err) {
+    next({ error: `erreur:${err}` });
+  }
+};
+
+const disconnect = async (req, res, next) => {
+  const { id } = req.params;
+  try {
+    await new User().disconnect(id);
+    res.json({ disconnect: "ok" });
+  } catch (err) {
+    next({ error: `erreur:${err}` });
+  }
+};
+
+const updateInline = async (req, res, next) => {
+  const { id } = req.params;
+  try {
+    await new User().updateInline(id);
+  } catch (err) {
+    next({ error: `erreur:${err}` });
+  }
+};
+
+const recherche = async (req, res, next) => {
+  const data = req.body;
+  try {
+    const user = await new User().recherche(data);
+    res.json(user);
+  } catch (err) {
+    next({ error: `erreur:${err}` });
+  }
+};
+
+const userSelected = async (req, res, next) => {
+  const { id } = req.params;
+  try {
+    const userId = await new User().userSelected(id);
+    res.json(userId);
+  } catch (err) {
+    next({ error: `erreur:${err}` });
+  }
+};
+
+const updatePresent = async (req, res, next) => {
+  const data = req.body;
+  try {
+    await new User().updatePresent(data);
+    res.json({ maj: "ok" });
+  } catch (err) {
+    next({ error: `erreur:${err}` });
+  }
+};
+
+const autoDeco = async (req, res, next) => {
+  const data = req.body;
+  try {
+    await new User().autoDeco(data);
+    res.json({ maj: "ok" });
+  } catch (err) {
+    next({ error: `erreur:${err}` });
+  }
+};
+
+const selectTotalMessage = async (req, res, next) => {
+  const { user } = req.params;
+  try {
+    const stm = await new User().selectTotalMessage(user);
+    res.json(stm);
+  } catch (err) {
+    next({ error: `erreur:${err}` });
+  }
+};
+
+const updateTotalMessage = async (req, res, next) => {
+  const data = req.body;
+  try {
+    await new User().updateTotalMessage(data);
+    res.json({ maj: "ok" });
+  } catch (err) {
+    next({ error: `erreur:${err}` });
+  }
+};
+
+const location = async (req, res, next) => {
+  const { latitude, longitude, Auth } = req.body;
+  try {
+    await new User().location({ lat: latitude, long: longitude, auth: Auth });
+    res.json({ maj: "ok" });
+  } catch (err) {
+    next({ error: `erreur:${err}` });
+  }
+};
+
+const updateVideo = async (req, res, next) => {
+  const { D, C } = req.body;
+  try {
+    await new User().updateVideo(D, C);
+    res.json({ add: "add video ok" });
+  } catch (err) {
+    next({ error: `erreur:${err}` });
+  }
+};
+
+const getDataVideo = async (req, res, next) => {
+  const { id } = req.params;
+  try {
+    const user = await new User().getDataVideo(id);
+    res.json({ user: user });
+  } catch (err) {
+    next({ error: `erreur:${err}` });
+  }
+};
+
+const getVideo = async (req, res, next) => {
+  const { id } = req.params;
+  try {
+    const user = await new User().getVideo(id);
+    res.json({ user: user });
+  } catch (err) {
+    next({ error: `erreur:${err}` });
+  }
+};
+
+module.exports = {
+  getUser,
+  insertUser,
+  getUserConnexion,
+  selectAllUser,
+  modifyImgProfile,
+  selectUserId,
+  modifyProfil,
+  disconnect,
+  updateInline,
+  recherche,
+  userSelected,
+  updatePresent,
+  autoDeco,
+  selectTotalMessage,
+  updateTotalMessage,
+  location,
+  updateVideo,
+  getDataVideo,
+  getVideo,
+};

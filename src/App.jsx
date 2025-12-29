@@ -1,35 +1,66 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import Header from "./Header.jsx";
+import BurgerHome from "./BurgerHome.jsx";
+import { MyContext } from "./Context.jsx";
+import { useEffect, useState } from "react";
+import Cookies from "js-cookie";
+import Contact from "./Contact.jsx";
 
 function App() {
-  const [count, setCount] = useState(0)
+  if (Cookies.get("auth")) {
+    window.location.href = "/home";
+  }
+
+  const { burgerHome, gotToContact } = MyContext();
+  const [number, setNumber] = useState(0);
+  const table = [
+    "femme-black.jpg",
+    "pierre-26-35-ans.png",
+    "sophie-26-35-ans.jpg",
+    "homme-blanc.jpg",
+  ];
+
+  useEffect(() => {
+    const interval = setInterval(function () {
+      if (number < 3) {
+        setNumber(number + 1);
+      } else setNumber(0);
+    }, 5000);
+    return () => clearInterval(interval);
+  }, [number]);
 
   return (
-    <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          salut
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+    <body className="body-home-page">
+      <h1 style={{ opacity: 0, position: "absolute" }}>
+        site de rencontre pour tous 100% gratuit,site pour faire des rencontres
+        de tout âges sans payer avec un profil utilisateur,envoyer des messages
+        privés et partager des photos
+      </h1>
+      <Header />
+
+      {burgerHome && <BurgerHome />}
+      {!burgerHome && (
+        <>
+          <ul className="animate-logo">
+            <li className="li-animate-logo1">
+              <img src="pied.png" alt="no-picture" className="img-pied" />
+            </li>
+            <li className="li-animate-logo2">
+              <img src="homme.png" alt="no-picture" className="img-pied" />
+            </li>
+            <li className="li-animate-logo3">
+              <img src="femme.png" alt="no-picture" className="img-pied" />
+            </li>
+          </ul>
+          {window.innerWidth >= 1024 && (
+            <div className="image-container">
+              <img src={table[number]} alt="Image avec dégradé" />
+            </div>
+          )}
+          {gotToContact && <Contact />}
+        </>
+      )}
+    </body>
+  );
 }
 
-export default App
+export default App;

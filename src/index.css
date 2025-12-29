@@ -1,68 +1,3587 @@
-:root {
-  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
-  line-height: 1.5;
-  font-weight: 400;
+@import url("https://fonts.googleapis.com/css2?family=Baskervville+SC&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Love+Light&display=swap");
 
-  color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
-
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
-a {
-  font-weight: 500;
-  color: #646cff;
-  text-decoration: inherit;
-}
-a:hover {
-  color: #535bf2;
-}
-
-body {
+* {
   margin: 0;
-  display: flex;
-  place-items: center;
-  min-width: 320px;
-  min-height: 100vh;
 }
 
-h1 {
-  font-size: 3.2em;
-  line-height: 1.1;
+.baskervville-sc-regular {
+  font-family: "Baskervville SC", serif;
+  font-weight: 400;
+  font-style: normal;
 }
 
+.love-light-regular {
+  font-family: "Love Light", cursive;
+  font-weight: 400;
+  font-style: normal;
+}
+
+:root {
+  --body-home-page: #501720;
+  --background-button-inscription: red;
+  --background-burger: white;
+  --int-easy-chat: pink;
+}
+
+.logo-mail {
+  font-family: "Love Light", cursive;
+}
 button {
-  border-radius: 8px;
-  border: 1px solid transparent;
-  padding: 0.6em 1.2em;
-  font-size: 1em;
-  font-weight: 500;
-  font-family: inherit;
-  background-color: #1a1a1a;
-  cursor: pointer;
-  transition: border-color 0.25s;
-}
-button:hover {
-  border-color: #646cff;
-}
-button:focus,
-button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
+  outline: none;
+  box-shadow: none;
+  -webkit-tap-highlight-color: transparent;
 }
 
-@media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #ffffff;
+@media screen and (min-width: 320px) {
+  .body-home-page {
+    background-color: var(--body-home-page);
+    width: 100%;
+    height: 100%;
+    position: absolute;
   }
-  a:hover {
-    color: #747bff;
+
+  .header {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 3em;
   }
-  button {
-    background-color: #f9f9f9;
+
+  .header-member {
+    width: 100%;
+    height: 3em;
+    background-color: var(--body-home-page);
+  }
+  .menu {
+    position: absolute;
+    right: 0;
+    width: 3em;
+    height: 3em;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .button-inscription {
+    position: absolute;
+    right: 4em;
+    top: 0.5em;
+    background-color: var(--background-button-inscription);
+    font-size: 1em;
+    color: white;
+    border: none;
+    padding: 0.5em;
+    border-radius: 1.5em;
+    font-family: arial;
+    padding-left: 1em;
+    padding-right: 1em;
+    font-weight: bold;
+    cursor: pointer;
+  }
+
+  .burger {
+    width: 80%;
+    height: 0.3em;
+    margin-top: 0.3em;
+    position: relative;
+    background-color: var(--background-burger);
+    border-radius: 1em;
+  }
+
+  .click-burger {
+    width: 100%;
+    height: 100%;
+    border: none;
+    position: absolute;
+    color: transparent;
+    background-color: transparent;
+    cursor: pointer;
+  }
+
+  .burger-home {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    background-color: var(--body-home-page);
+  }
+
+  .x {
+    background-color: var(--body-home-page);
+    border: none;
+    position: absolute;
+    right: 0;
+    font-size: 3.5em;
+    color: white;
+    cursor: pointer;
+  }
+
+  .ins-co {
+    width: 80%;
+    height: 30em;
+    position: absolute;
+    left: 10%;
+    top: 5em;
+  }
+
+  .ins {
+    position: relative;
+    width: 80%;
+    height: 2em;
+    left: 10%;
+    background-color: var(--background-button-inscription);
+    border-radius: 2em;
+    border: none;
+    padding: 0.5em;
+    border-radius: 1.5em;
+    font-family: Georgia, serif;
+    font-size: 1em;
+    font-weight: bold;
+    color: white;
+    margin-top: 1em;
+  }
+
+  #se-connecter {
+    background-color: var(--body-home-page);
+    color: white;
+    border: 1px solid white;
+  }
+
+  .liste-burger-home {
+    position: relative;
+    top: 1em;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    font-family: "Baskervville SC", serif;
+    color: white;
+    text-align: center;
+    font-size: 1.5em;
+    width: 100%;
+  }
+
+  .li-burger-home {
+    margin-top: 1em;
+  }
+
+  .return-accueil {
+    width: 100%;
+    height: 100%;
+    background-color: var(--background-home-page);
+    border: none;
+    font-size: 1em;
+    color: white;
+    font-family: "Baskervville SC", serif;
+  }
+
+  .easy-chat {
+    font-family: "Love Light", cursive;
+    font-size: 2em;
+    margin-left: 0.5em;
+    color: var(--int-easy-chat);
+    position: absolute;
+  }
+
+  .carrousel-registration {
+    position: absolute;
+    top: 5em;
+    width: 90%;
+    left: 5%;
+    height: 30em;
+    /* border: 1px solid white; */
+    overflow: hidden;
+  }
+
+  .ul-carrousel-registration {
+    position: absolute;
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+    width: 300%;
+    /* border: 1px solid green; */
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+  }
+
+  .li-carrousel-registration {
+    width: 100%;
+    height: 100%;
+    /* border: 1px solid yellow;*/
+    position: relative;
+  }
+
+  .i-am {
+    position: relative;
+    top: 5em;
+    font-family: Georgia, "Times New Roman", Times, serif;
+    color: white;
+    margin-left: 1em;
+  }
+
+  .li-sex {
+    position: absolute;
+    top: 8em;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    width: 100%;
+  }
+
+  .button-sex {
+    width: 40%;
+    height: 3em;
+    border: 1px solid blue;
+    color: white;
+    text-align: center;
+    font-weight: bold;
+    background-color: var(--body-home-page);
+    border: 2px solid white;
+    border-radius: 20px;
+    padding: 0.8em;
+  }
+
+  .radio-sex {
+    position: relative;
+    top: -5em;
+    left: -1em;
+    width: 13em;
+    height: 13em;
+    opacity: 0;
+  }
+
+  #selectedHomme {
+    background-color: red;
+  }
+
+  #selectedFemme {
+    background-color: red;
+  }
+
+  #selectedSearchHomme {
+    background-color: red;
+  }
+
+  #selectedSearchFemme {
+    background-color: red;
+  }
+
+  .next-inscription-off {
+    position: absolute;
+    bottom: 5em;
+    width: 80%;
+    left: 10%;
+    padding: 1em;
+    border-radius: 20px;
+    background-color: grey;
+    color: white;
+    border: none;
+    font-weight: bold;
+  }
+
+  .next-inscription-on {
+    position: absolute;
+    bottom: 5em;
+    width: 80%;
+    left: 10%;
+    padding: 1em;
+    border-radius: 20px;
+    background-color: red;
+    color: white;
+    border: none;
+    font-weight: bold;
+  }
+
+  .i-search {
+    position: absolute;
+    top: 10em;
+    font-family: Georgia, "Times New Roman", Times, serif;
+    color: white;
+    margin-left: 1em;
+  }
+
+  .li-search {
+    position: absolute;
+    top: 14em;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    width: 100%;
+  }
+
+  .age {
+    position: relative;
+    top: 5em;
+    font-family: Georgia, "Times New Roman", Times, serif;
+    color: white;
+    margin-left: 1em;
+  }
+
+  .mail {
+    position: relative;
+    top: 5em;
+    font-family: Georgia, "Times New Roman", Times, serif;
+    color: white;
+    margin-left: 1em;
+  }
+  .select-option {
+    position: relative;
+    top: 5.5em;
+    width: 100%;
+    border-radius: 20px;
+    padding-top: 0.5em;
+    padding-bottom: 0.5em;
+    font-size: 1.2em;
+  }
+
+  .input-mail {
+    position: relative;
+    top: 5.5em;
+    width: 97%;
+    border-radius: 20px;
+    padding-top: 0.5em;
+    padding-bottom: 0.5em;
+    font-size: 1.2em;
+  }
+
+  .h3-password {
+    position: relative;
+    top: 7em;
+    font-family: Georgia, "Times New Roman", imes, serif;
+    color: white;
+    margin-left: 1em;
+  }
+
+  .input-password {
+    position: relative;
+    top: 8em;
+    width: 97%;
+    border-radius: 20px;
+    padding-top: 0.5em;
+    padding-bottom: 0.5em;
+    font-size: 1.2em;
+  }
+
+  .submit-inscription-off {
+    position: relative;
+    top: 10em;
+    background-color: grey;
+    color: white;
+    width: 70%;
+    left: 15%;
+    border-radius: 20px;
+    padding-top: 0.5em;
+    padding-bottom: 0.5em;
+    font-size: 1.2em;
+    border: none;
+  }
+
+  .submit-inscription-on {
+    position: relative;
+    top: 10em;
+    background-color: red;
+    color: white;
+    width: 70%;
+    left: 15%;
+    border-radius: 20px;
+    padding-top: 0.5em;
+    padding-bottom: 0.5em;
+    font-size: 1.2em;
+    border: none;
+  }
+  .pseudo {
+    position: relative;
+    top: 7em;
+    font-family: Georgia, "Times New Roman", Times, serif;
+    color: white;
+    left: 1em;
+  }
+
+  .input-pseudo {
+    position: relative;
+    width: 96%;
+    font-size: 1.2em;
+    border-radius: 20px;
+    padding-top: 0.5em;
+    padding-bottom: 0.5em;
+    top: 7.5em;
+  }
+
+  .validate-password {
+    position: relative;
+    top: 10em;
+    width: 97%;
+    height: 5em;
+    font-size: 1em;
+    color: white;
+  }
+
+  .menu-member {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    left: 0;
+    top: 0;
+    background-color: #501720;
+    animation-name: slide-menu-member;
+    animation-duration: 0.5s;
+  }
+
+  @keyframes slide-menu-member {
+    from {
+      height: 0;
+      opacity: 0;
+    }
+    to {
+      height: 100%;
+      opacity: 1;
+    }
+  }
+
+  .ul-menu-member {
+    position: relative;
+    top: 5em;
+    width: 100%;
+    text-align: center;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    color: white;
+    font-size: 1.5em;
+    font-family:
+      Baskervville SC,
+      serif;
+  }
+
+  .li-menu-member {
+    margin-top: 1em;
+  }
+
+  .select-dep {
+    position: relative;
+    top: 3em;
+    left: 0%;
+    width: 100%;
+    border-radius: 20px;
+    padding-top: 0.5em;
+    padding-bottom: 0.5em;
+    font-size: 1.2em;
+    cursor: pointer;
+  }
+
+  .dep {
+    position: relative;
+    top: 2em;
+    font-family: Georgia, "Times New Roman", Times, serif;
+    color: white;
+    margin-left: 1em;
+  }
+
+  .div-connexion {
+    width: 100%;
+    height: 100%;
+    background-color: var(--body-home-page);
+    position: absolute;
+  }
+
+  .block-connexion {
+    position: relative;
+    top: 5em;
+    left: 5%;
+    width: 90%;
+    height: 25em;
+  }
+
+  .input-pseudo-connexion {
+    position: relative;
+    width: 97%;
+    font-size: 1.2em;
+    border-radius: 20px;
+    padding-top: 0.5em;
+    padding-bottom: 0.5em;
+    top: 2.5em;
+  }
+
+  .pseudo-connexion {
+    position: relative;
+    top: 1.5em;
+    font-family: Georgia, "Times New Roman", Times, serif;
+    color: white;
+    margin-left: 1em;
+  }
+
+  .mdp-connexion {
+    position: relative;
+    top: 4.5em;
+    font-family: Georgia, "Times New Roman", Times, serif;
+    color: white;
+    margin-left: 1em;
+  }
+
+  .input-password-connexion {
+    position: relative;
+    width: 97%;
+    font-size: 1.2em;
+    border-radius: 20px;
+    padding-top: 0.5em;
+    padding-bottom: 0.5em;
+    top: 5.5em;
+  }
+
+  .me-connecter-off {
+    position: relative;
+    top: 8em;
+    width: 50%;
+    font-size: 1.2em;
+    padding-top: 0.5em;
+    padding-bottom: 0.5em;
+    left: 25%;
+    border-radius: 20px;
+    border: none;
+    background-color: grey;
+    color: white;
+  }
+
+  .me-connecter-on {
+    position: relative;
+    top: 8em;
+    width: 50%;
+    font-size: 1.2em;
+    padding-top: 0.5em;
+    padding-bottom: 0.5em;
+    left: 25%;
+    border-radius: 20px;
+    border: none;
+    background-color: red;
+    color: white;
+    cursor: pointer;
+  }
+
+  .voir-filtres {
+    background-color: white;
+    position: relative;
+    width: 70%;
+    left: 5%;
+    font-size: 1.2em;
+    text-align: left;
+    color: var(--body-home-page);
+    border: 2px solid var(--body-home-page);
+    border-radius: 5px;
+    top: 1em;
+    cursor: pointer;
+  }
+
+  .refresh {
+    position: absolute;
+    right: 0.5em;
+    top: 4em;
+    cursor: pointer;
+  }
+
+  .chevron {
+    position: absolute;
+    right: 0.1em;
+    transform: rotate(90deg);
+    font-size: 1.5em;
+    top: -0.2em;
+  }
+
+  .the-users {
+    position: relative;
+    top: 2em;
+    width: 99%;
+    height: 31em;
+    left: 0%;
+  }
+
+  .ul-article {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: scroll;
+    border: 2px solid var(--body-home-page);
+    background-color: var(--body-home-page);
+  }
+
+  .ul-article-none {
+    display: none;
+  }
+
+  .div-message {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 4;
+  }
+
+  .div-message-none {
+    display: none;
+  }
+
+  .button-div-message {
+    position: absolute;
+    right: 0%;
+    top: 0;
+    font-size: 2.5em;
+    color: red;
+    background-color: transparent;
+    border: none;
+    z-index: 5;
+    font-weight: bold;
+  }
+
+  .li-article {
+    position: relative;
+    width: 48.5%;
+    height: 15em;
+    border: 1px solid black;
+    margin-left: 0.5%;
+    margin-top: 0.1em;
+    float: left;
+  }
+
+  .img-article-user {
+    width: 100%;
+    height: 85%;
+    position: absolute;
+  }
+
+  .article-pseudo-men {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 15%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(to left, black, #4295cc);
+    color: white;
+    text-align: center;
+  }
+
+  .article-pseudo-woman {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 15%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(to left, black, #ff114f);
+    color: white;
+    text-align: center;
+  }
+
+  .profil-member {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    left: 0;
+    top: 0;
+    background-color: #501720;
+  }
+
+  .my-profil {
+    width: 100%;
+    height: 31em;
+    position: relative;
+    top: 5em;
+    left: 0%;
+    overflow: scroll;
+  }
+
+  .section-my-profil-picture {
+    position: relative;
+    width: 100%;
+    height: 16em;
+    margin-top: 1em;
+  }
+
+  .h3-photo-profil {
+    font-family:
+      Baskervville SC,
+      serif;
+    color: white;
+    font-size: 2em;
+    text-align: center;
+  }
+
+  .img-profil-mini {
+    width: 60%;
+    height: 80%;
+    position: absolute;
+    left: 20%;
+  }
+
+  #file {
+    display: none;
+  }
+
+  #submit {
+    position: absolute;
+    right: 0.5em;
+    width: 4em;
+    height: 4em;
+    background-color: var(--body-home-page);
+    border: none;
+  }
+
+  #label-file {
+    position: absolute;
+    right: 0.5em;
+    width: 3em;
+    height: 3em;
+  }
+
+  .app-photo {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    cursor: pointer;
+  }
+
+  .sub-file-none {
+    display: none;
+  }
+
+  .submit-change {
+    position: absolute;
+    width: 100%;
+    right: 0em;
+    top: 0;
+    height: 100%;
+    cursor: pointer;
+  }
+
+  .animate-logo {
+    position: absolute;
+    top: 5em;
+    left: 5%;
+    width: 90%;
+    height: 30em;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    animation-name: app;
+    animation-duration: 2s;
+  }
+
+  @keyframes app {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+
+  .li-animate-logo1 {
+    width: 33%;
+    position: absolute;
+    left: 33.33333333%;
+    top: 15%;
+    height: 60%;
+  }
+
+  .li-animate-logo2 {
+    width: 33%;
+    position: absolute;
+    left: 10%;
+    top: 20%;
+    height: 50%;
+    animation-name: men;
+    animation-duration: 2s;
+  }
+
+  .li-animate-logo3 {
+    width: 33%;
+    position: absolute;
+    right: 10%;
+    top: 19%;
+    height: 50%;
+    animation-name: woman;
+    animation-duration: 2s;
+  }
+
+  @keyframes woman {
+    from {
+      top: 25%;
+    }
+    to {
+      top: 19%;
+    }
+  }
+
+  @keyframes men {
+    from {
+      top: 14%;
+    }
+    to {
+      top: 20%;
+    }
+  }
+
+  .img-pied {
+    width: 100%;
+    height: 100%;
+  }
+
+  .date-inscrition {
+    font-size: 1.5em;
+    font-family:
+      Baskervville SC,
+      serif;
+    padding: 1em;
+    font-weight: bold;
+    text-align: center;
+    color: white;
+  }
+
+  #modify-password {
+    width: 50%;
+    position: relative;
+    left: 25%;
+    cursor: pointer;
+    margin-bottom: 2em;
+  }
+
+  #modify-password-txt {
+    text-align: center;
+    cursor: pointer;
+    color: white;
+    width: 100%;
+  }
+
+  .select-dep-modify {
+    width: 50%;
+    padding-top: 0.5em;
+    padding-bottom: 0.5em;
+    cursor: pointer;
+    position: relative;
+    left: 25%;
+    margin-bottom: 2em;
+  }
+
+  #modify-mail {
+    cursor: pointer;
+    width: 50%;
+    position: relative;
+    margin-bottom: 2em;
+  }
+
+  .select-search-modify {
+    width: 30%;
+    padding-top: 0.5em;
+    padding-bottom: 0.5em;
+    cursor: pointer;
+    margin-bottom: 2em;
+  }
+
+  .area-description {
+    width: 70%;
+    height: 7em;
+    position: relative;
+    left: 15%;
+    border: 1px solid black;
+    cursor: pointer;
+    margin-bottom: 2em;
+  }
+
+  .sub-modification {
+    position: relative;
+    width: 30%;
+    top: 1em;
+    left: 35%;
+    background-color: grey;
+    color: white;
+    padding-top: 0.5em;
+    padding-bottom: 0.5em;
+    padding-left: 1em;
+    padding-right: 1em;
+    cursor: pointer;
+    border-radius: 10px;
+    opacity: 0.5;
+  }
+
+  .sub-modification-on {
+    position: relative;
+    width: 30%;
+    top: 1em;
+    left: 35%;
+    background-color: red;
+    color: white;
+    padding-top: 0.5em;
+    padding-bottom: 0.5em;
+    padding-left: 1em;
+    padding-right: 1em;
+    cursor: pointer;
+    border-radius: 10px;
+  }
+
+  .modify-ok {
+    position: fixed;
+    left: 0%;
+    top: 4em;
+    width: 100%;
+    height: 100%;
+    background-color: var(--body-home-page);
+  }
+
+  .modification-enregistrer {
+    font-family:
+      Baskervville SC,
+      serif;
+    color: white;
+    text-align: center;
+    margin-top: 3em;
+  }
+
+  .return-home {
+    margin-top: 1em;
+    width: 30%;
+    margin-left: 35%;
+    background-color: red;
+    border-radius: 20px;
+    font-size: 1.5em;
+    color: white;
+    cursor: pointer;
+  }
+
+  .filter-search {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border: 2px solid white;
+    background-color: white;
+    z-index: 1;
+    /* border: 2px solid var(--body-home-page); */
+    animation-name: slide-search;
+    animation-duration: 0.5s;
+    font-family:
+      Baskervville SC,
+      serif;
+    z-index: 6;
+  }
+
+  @keyframes slide-search {
+    from {
+      height: 0;
+    }
+    to {
+      height: 100%;
+    }
+  }
+
+  .filter-search-off {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: white;
+    z-index: 1;
+    border: 2px solid var(--body-home-page);
+    animation-name: slide-search-off;
+    animation-duration: 0.5s;
+    font-family:
+      Baskervville SC,
+      serif;
+  }
+
+  @keyframes slide-search-off {
+    from {
+      opacity: 1;
+    }
+    to {
+      opacity: 0%;
+    }
+  }
+
+  .div-input-checkbox {
+    width: 100%;
+    height: 4em;
+    position: relative;
+    top: 2em;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    animation-name: div-input;
+    animation-duration: 1s;
+  }
+
+  @keyframes div-input {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+
+  .result-age {
+    width: 100%;
+    height: 1em;
+    position: absolute;
+    left: 0;
+    top: 0;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+  }
+
+  input[type="range"] {
+    -webkit-appearance: none; /* Removes default styling */
+    width: 40%;
+    height: 10px;
+    background: var(--body-home-page);
+    border-radius: 5px;
+    outline: none;
+    opacity: 0.7;
+    transition: opacity 0.2s;
+  }
+
+  input[type="range"]:hover {
+    opacity: 1;
+  }
+
+  input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 25px;
+    height: 25px;
+    background: pink;
+    cursor: pointer;
+    border-radius: 50%;
+  }
+
+  input[type="range"]::-moz-range-thumb {
+    width: 25px;
+    height: 25px;
+    background: pink;
+    cursor: pointer;
+    border-radius: 50%;
+  }
+
+  input[type="radio"] {
+    -webkit-appearance: none;
+    appearance: none;
+    /* width: 20px;
+    height: 20px; */
+    border: 2px solid pink;
+    border-radius: 50%;
+    outline: none;
+    cursor: pointer;
+    position: relative;
+  }
+
+  input[type="radio"]:checked::before {
+    content: "";
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: pink;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+  .h4-search {
+    font-family:
+      Baskervville SC,
+      serif;
+    font-size: 1.2em;
+  }
+
+  .inline-on {
+    width: 1em;
+    height: 1em;
+    background-color: green;
+    border-radius: 50%;
+    position: absolute;
+    border: 2px dashed white;
+    right: 0.2em;
+    bottom: 0.2em;
+  }
+
+  .inline-off {
+    width: 1em;
+    height: 1em;
+    background-color: red;
+    border-radius: 50%;
+    position: absolute;
+    border: 2px dashed white;
+    right: 0.2em;
+    bottom: 0.2em;
+  }
+
+  #inpt-checkbox-search-men {
+    width: 1.5em;
+    height: 1.5em;
+  }
+
+  #inpt-checkbox-search-woman {
+    width: 1.5em;
+    height: 1.5em;
+  }
+
+  #inpt-inline-yes {
+    width: 1.5em;
+    height: 1.5em;
+  }
+
+  #inpt-inline-no {
+    width: 1.5em;
+    height: 1.5em;
+  }
+
+  .label-search {
+    cursor: pointer;
+  }
+
+  .div-input-checkbox-dep {
+    width: 100%;
+    height: 4em;
+    position: relative;
+    top: 2em;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    animation-name: div-input;
+    animation-duration: 1s;
+  }
+
+  .select-dep-search {
+    width: 20%;
+    cursor: pointer;
+  }
+
+  .submit-search {
+    position: absolute;
+    width: 30%;
+    left: 35%;
+    bottom: 6em;
+    font-weight: bold;
+    padding: 0.5em;
+    border-radius: 10px;
+    background-color: pink;
+    color: var(--body-home-page);
+    border: 2px solid var(--body-home-page);
+    animation-name: correction;
+    animation-duration: 3s;
+    cursor: pointer;
+  }
+
+  @keyframes correction {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+
+  .number-result {
+    position: relative;
+    top: 1em;
+    text-align: center;
+    font-weight: bold;
+    color: var(--body-home-page);
+    font-size: 1.5em;
+    z-index: 1;
+  }
+
+  .button-li-user {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    left: 0;
+    top: 0;
+    z-index: 1;
+    opacity: 0;
+    cursor: pointer;
+  }
+
+  .div-message {
+    animation-name: divMessage;
+    animation-duration: 1s;
+  }
+
+  @keyframes divMessage {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+
+  .resum-user {
+    position: absolute;
+    width: 100%;
+    height: 3em;
+  }
+
+  .img-user-selected {
+    position: relative;
+    display: inline-block;
+    width: 5em;
+    height: 5em;
+    margin-top: 0.1em;
+    margin-left: 0.2em;
+  }
+
+  .img-user-selected-animation {
+    position: relative;
+    display: inline-block;
+    width: 5em;
+    height: 5em;
+    margin-top: 0.1em;
+    margin-left: 0.2em;
+    animation-name: slide-img-user-selected;
+    animation-duration: 0.5s;
+  }
+
+  @keyframes slide-img-user-selected {
+    from {
+      opacity: 0;
+      width: 0;
+    }
+    to {
+      opacity: 1;
+      width: 5em;
+    }
+  }
+
+  .info-user-selected {
+    display: inline;
+    position: absolute;
+    top: 0;
+    margin-left: 0.5em;
+    margin-top: 0.5em;
+    font-family:
+      Baskervville SC,
+      serif;
+    font-size: 0.9em;
+    font-weight: bold;
+  }
+
+  .info-user-selected-animation {
+    display: inline;
+    position: absolute;
+    top: 0;
+    margin-left: 0.5em;
+    margin-top: 0.5em;
+    font-family:
+      Baskervville SC,
+      serif;
+    font-size: 0.9em;
+    font-weight: bold;
+    animation-name: txt-info;
+    animation-duration: 1s;
+  }
+
+  @keyframes txt-info {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+
+  .h2-description {
+    font-family:
+      Baskervville SC,
+      serif;
+    margin-left: 0.1em;
+    font-size: 1em;
+  }
+
+  .lorem-description {
+    margin-left: 0.3em;
+    width: 95%;
+    height: 4.7em;
+    text-align: left;
+    overflow-y: scroll;
+    font-size: 0.9em;
+  }
+
+  .lorem-description::-webkit-scrollbar {
+    width: 0.3em;
+  }
+
+  .lorem-description::-webkit-scrollbar-thumb {
+    background: var(--body-home-page);
+    border-radius: 10px;
+  }
+
+  .container-message {
+    position: relative;
+    width: 100%;
+    top: 40%;
+    height: 30%;
+    left: 0;
+  }
+
+  .button-refresh {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+  }
+
+  .form-message {
+    width: 100%;
+    height: 9em;
+    position: absolute;
+    left: 0%;
+    top: 100%;
+  }
+
+  .area-message {
+    width: 90%;
+    height: 5em;
+    position: absolute;
+    left: 5%;
+    top: 20%;
+    border-radius: 0.5em;
+    resize: none;
+  }
+
+  .container-message-animation {
+    position: relative;
+    width: 100%;
+    top: 40%;
+    height: 30%;
+    left: 0;
+    animation-name: container-animate-message;
+    animation-duration: 1s;
+  }
+
+  @keyframes container-animate-message {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+
+  .img-send {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    left: 0;
+    top: 0;
+    cursor: pointer;
+  }
+
+  .submit-txt-message {
+    width: 3em;
+    height: 3em;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    background-color: transparent;
+    border: none;
+  }
+
+  .ajax {
+    width: 98%;
+    height: 10em;
+    margin-left: 1%;
+    margin-top: -1em;
+    border: none;
+  }
+
+  .block-ajax {
+    font-family: Arial, Helvetica, sans-serif;
+  }
+
+  .alert-number-message {
+    position: absolute;
+    width: 3em;
+    height: 3em;
+    right: 5em;
+    top: 0em;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1em;
+    font-weight: bold;
+    animation-name: new-message;
+    animation-duration: 2s;
+    animation-iteration-count: infinite;
+  }
+
+  @keyframes new-message {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+
+  .icon-new-message {
+    width: 100%;
+    height: 100%;
+  }
+
+  .button-new-message {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    cursor: pointer;
+    background-color: transparent;
+    border: none;
+  }
+
+  .new-message {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    background-color: white;
+    border: 2px solid white;
+    z-index: 7;
+    animation-name: slide-new-message;
+    animation-duration: 0.5s;
+  }
+
+  @keyframes slide-new-message {
+    from {
+      height: 0;
+    }
+    to {
+      height: 100%;
+    }
+  }
+
+  .button-x-new-message {
+    position: absolute;
+    right: 0%;
+    top: 0;
+    font-size: 3em;
+    color: red;
+    background-color: transparent;
+    border: none;
+    z-index: 5;
+    cursor: pointer;
+    font-weight: bold;
+  }
+
+  .ul-new-message {
+    position: relative;
+    width: 100%;
+    height: 90%;
+    top: 10%;
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+    background-color: white;
+    overflow-y: scroll;
+  }
+
+  .article-new-message {
+    position: relative;
+    left: 5%;
+    width: 90%;
+    height: 7em;
+    margin-top: 1em;
+    border: 1px solid black;
+    border-radius: 0.5em;
+    animation-name: opacity-article-new-message;
+    animation-duration: 2s;
+  }
+
+  @keyframes opacity-article-new-message {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+
+  .img-article-new-message {
+    position: absolute;
+    width: 40%;
+    height: 100%;
+    border-radius: 0.5em;
+  }
+
+  .info-user-new-message {
+    position: absolute;
+    left: 40%;
+    width: 60%;
+    height: 65%;
+  }
+
+  .p-user-new-message {
+    font-family:
+      Baskervville SC,
+      serif;
+    font-size: 0.9em;
+    font-weight: bold;
+  }
+
+  .text-overflow {
+    width: 100%;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+  }
+
+  .button-new-message-user-selected {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    cursor: pointer;
+    background-color: transparent;
+    border: none;
+  }
+
+  .number-result-search {
+    position: relative;
+    left: 0.2em;
+    font-size: 0.8em;
+    font-weight: bold;
+    color: pink;
+    text-shadow:
+      -1px -1px 0 black,
+      1px -1px 0 black,
+      -1px 1px 0 black,
+      1px 1px 0 black;
+  }
+
+  .voir-filtres-none {
+    display: none;
+  }
+
+  .option-user-selected {
+    width: 85%;
+    height: 2em;
+    position: relative;
+    top: -1em;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+  }
+
+  .button-option-user-selected {
+    border-radius: 5px;
+    border: 2px solid pink;
+    background-color: white;
+    margin-left: 1em;
+    font-weight: bold;
+  }
+
+  .button-li-menu-member {
+    color: white;
+    font-size: 1em;
+    font-family:
+      Baskervville SC,
+      serif;
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+  }
+
+  .div-my-album {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 9;
+    background-color: white;
+  }
+
+  .button-div-my-album {
+    position: absolute;
+    right: 0;
+    top: 0;
+    font-size: 2.5em;
+    color: red;
+    background-color: transparent;
+    border: none;
+    z-index: 8;
+    cursor: pointer;
+    font-weight: bold;
+  }
+
+  .div-album-photo {
+    width: 100%;
+    height: 85%;
+    position: absolute;
+    top: 10%;
+    overflow-y: scroll;
+  }
+
+  .input_add {
+    width: 20%;
+    height: 10%;
+    position: absolute;
+    border: none;
+  }
+
+  .add_img_png {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    left: 0;
+    top: 0;
+    cursor: pointer;
+  }
+
+  .input_add_img {
+    opacity: 0;
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    cursor: pointer;
+  }
+
+  .div-my-photo {
+    width: 100%;
+    height: 85%;
+    position: absolute;
+    top: 15%;
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+  }
+
+  .li-my-photo {
+    position: relative;
+    width: 5em;
+    height: 5em;
+    background-color: #4295cc;
+    position: relative;
+    margin-left: 0.8em;
+    margin-top: 3em;
+    float: left;
+    border: 4px double #094171;
+  }
+
+  .button-li-my-photo {
+    position: absolute;
+    right: -0.5em;
+    top: -0.5em;
+    width: 1.2em;
+    height: 1.2em;
+    border-radius: 50%;
+    background-color: white;
+    border: 1px solid black;
+    font-size: 1.5em;
+    color: red;
+    z-index: 1;
+    cursor: pointer;
+  }
+
+  .bcl-my-photo {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+  }
+
+  .chargement {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .cercle {
+    width: 7em;
+    height: 7em;
+    background-color: transparent;
+    border-left: 5px solid red;
+    border-radius: 50%;
+    border-right: none;
+    border-top: none;
+    animation-name: chargement;
+    animation-duration: 20000ms;
+    animation-iteration-count: infinite;
+    z-index: 2;
+  }
+
+  @keyframes chargement {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(3600deg);
+    }
+  }
+
+  .son-album {
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    left: 0;
+    top: 0;
+    background-color: black;
+    z-index: 11;
+    animation-name: open-album;
+    animation-duration: 0.6s;
+  }
+
+  @keyframes open-album {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+
+  .close-album {
+    color: white;
+    font-size: 2.5em;
+    position: fixed;
+    right: 0;
+    top: 0;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+  }
+
+  .article-son-album {
+    position: absolute;
+    top: 20%;
+    width: 100%;
+    height: 30em;
+    overflow: hidden;
+  }
+
+  .nombre-de-photo {
+    color: white;
+    position: relative;
+    top: 10%;
+    text-align: center;
+    font-size: 1.5em;
+    font-weight: bold;
+  }
+
+  .ul-article-son-album {
+    margin: 0;
+    padding: 0;
+    position: absolute;
+    list-style-type: none;
+    left: 0;
+    top: 0;
+    display: flex;
+    flex-direction: row;
+    height: 100%;
+  }
+
+  .li-article-son-album {
+    width: 100%;
+    height: 100%;
+    float: left;
+  }
+
+  .img-li-article-son-album {
+    width: 100%;
+    height: 100%;
+  }
+
+  .prev-article-son-album {
+    position: fixed;
+    width: 4em;
+    height: 2em;
+    left: 0;
+    top: 50%;
+    z-index: 13;
+    text-align: center;
+    border-top: 3px solid white;
+    border-right: 3px solid white;
+    border-bottom: 3px solid white;
+    background-color: black;
+    color: white;
+    font-weight: bold;
+    opacity: 0.5;
+  }
+
+  .next-article-son-album {
+    position: fixed;
+    width: 4em;
+    height: 2em;
+    right: 0;
+    top: 50%;
+    z-index: 13;
+    text-align: center;
+    border-top: 3px solid white;
+    border-left: 3px solid white;
+    border-bottom: 3px solid white;
+    background-color: black;
+    color: white;
+    font-weight: bold;
+    opacity: 0.5;
+  }
+
+  .div-frequence {
+    width: 101%;
+    height: 110%;
+    position: absolute;
+    top: -5%;
+    left: 0;
+    z-index: 14;
+    background-color: white;
+    animation-name: frequence;
+    animation-duration: 0.5s;
+  }
+
+  @keyframes frequence {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+
+  .x-frequence {
+    color: red;
+    background-color: white;
+    border: none;
+    position: absolute;
+    right: 0;
+    font-size: 2.5em;
+    cursor: pointer;
+    font-weight: bold;
+  }
+
+  .table {
+    position: absolute;
+    top: 10%;
+    left: 2%;
+    width: 96%;
+    height: 85%;
+    border: 3px solid var(--body-home-page);
+  }
+
+  .td {
+    text-align: center;
+    border: 1px solid var(--body-home-page);
+  }
+
+  .present-frequence {
+    color: green;
+    font-size: 1em;
+    font-weight: bolder;
+  }
+
+  .popup-desinscription {
+    width: 80%;
+    height: 100%;
+    background-color: var(--body-home-page);
+    position: absolute;
+    top: 0;
+    left: 10%;
+  }
+
+  .button-suppr {
+    width: 100%;
+    height: 20%;
+    position: absolute;
+    bottom: 0;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+  }
+
+  .suppr-def {
+    width: 40%;
+    height: 100%;
+    border-radius: 10px;
+    font-size: 1em;
+  }
+
+  .div-block-option {
+    position: absolute;
+    left: 0;
+    top: -1.5em;
+    width: 101%;
+    height: 115%;
+    background-color: white;
+    z-index: 15;
+    animation-name: slide-option;
+    animation-duration: 0.5s;
+  }
+
+  @keyframes slide-option {
+    from {
+      height: 0;
+    }
+    to {
+      height: 115%;
+    }
+  }
+
+  .x-option {
+    background-color: white;
+    border: none;
+    position: absolute;
+    right: 0;
+    font-size: 3.5em;
+    color: red;
+    cursor: pointer;
+  }
+
+  .ul-option {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    position: absolute;
+    top: 15%;
+    width: 100%;
+    font-size: 1.3em;
+    text-align: center;
+  }
+
+  .li-option {
+    padding-bottom: 2em;
+    border-bottom: 1px solid black;
+  }
+
+  .label-alert-connection {
+    font-size: 0.7em;
+  }
+
+  .div-go-to-contact {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: var(--body-home-page);
+    font-family: "Baskervville SC", serif;
+    text-align: center;
+    color: white;
+    font-size: 1.3em;
+    z-index: 16;
+  }
+
+  .inpt-mail-contact {
+    width: 80%;
+    border-radius: 5px;
+  }
+
+  .area-message-contact {
+    width: 80%;
+    border-radius: 5px;
+    height: 20em;
+    resize: none;
+  }
+
+  .submit-message-contact-off {
+    background-color: grey;
+    color: white;
+    padding: 0.5em;
+    width: 50%;
+    border-radius: 5px;
+    font-weight: bold;
+  }
+
+  .submit-message-contact-on {
+    background-color: red;
+    color: white;
+    padding: 0.5em;
+    width: 50%;
+    border-radius: 5px;
+    font-weight: bold;
+    cursor: pointer;
+  }
+
+  .block-cam {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    left: 0%;
+    top: 0%;
+    background-color: var(--body-home-page);
+  }
+  .superpose {
+    width: 100%;
+    position: absolute;
+    left: 0;
+    top: 8%;
+    background-color: black;
+  }
+
+  .enregistrement {
+    width: 100%;
+    height: 2em;
+    background-color: white;
+    padding: 0.5em;
+    border: 7px double black;
+    border-radius: 1em;
+  }
+
+  .point-fixe {
+    width: 20%;
+    position: absolute;
+    left: 30%;
+    top: 36%;
+  }
+
+  .point-move {
+    width: 20%;
+    position: absolute;
+    left: 30%;
+    top: 36%;
+    animation-name: point-move;
+    animation-duration: 1s;
+    animation-iteration-count: infinite;
+  }
+
+  .recording {
+    position: absolute;
+    bottom: 5%;
+    z-index: 1;
+    background-color: transparent;
+    border: none;
+    left: 10%;
+    width: 40%;
+    cursor: pointer;
+  }
+
+  .stop-rec {
+    position: absolute;
+    right: 10%;
+    bottom: 3%;
+    z-index: 1;
+    background-color: transparent;
+    border: none;
+    width: 25%;
+    cursor: pointer;
+  }
+
+  @keyframes point-move {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+
+  .recommencer {
+    width: 70%;
+    height: 70%;
+  }
+
+  .enregister-video {
+    width: 100%;
+    height: 2em;
+    background-color: white;
+    padding: 0.5em;
+    border: 7px double black;
+    border-radius: 1em;
+  }
+
+  .valide-video {
+    position: absolute;
+    right: 10%;
+    bottom: 5%;
+    z-index: 1;
+    background-color: transparent;
+    border: none;
+    width: 30%;
+    cursor: pointer;
+  }
+
+  .tick {
+    width: 25%;
+    position: absolute;
+    left: 37.5%;
+    bottom: 3%;
+    border-radius: 50%;
+  }
+
+  .voirsavideo {
+    width: 50%;
+    height: 2em;
+    background-color: var(--body-home-page);
+    position: relative;
+    left: 0;
+    top: 1em;
+    cursor: pointer;
+    font-size: 0.7em;
+    color: white;
+    border: 5px double white;
+    transition: background-color 1s;
+    border-radius: 2em;
+  }
+
+  .voirsavideo:hover {
+    background-color: white;
+    color: var(--body-home-page);
+    border: 5px double var(--body-home-page);
+  }
+
+  .block-this-video {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    background-color: black;
+  }
+
+  .video-user {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+  }
+
+  .oups {
+    width: 100%;
+  }
+}
+
+@media screen and (min-width: 375px) {
+  .radio-sex {
+    position: relative;
+    top: -5em;
+    left: -2em;
+    width: 15em;
+    height: 15em;
+  }
+
+  .the-users {
+    position: relative;
+    top: 2em;
+    width: 99%;
+    height: 35em;
+    left: 0%;
+  }
+
+  #modify-password {
+    font-size: 1.5em;
+    cursor: pointer;
+    margin-left: -5em;
+    margin-bottom: 0;
+  }
+
+  .select-dep-modify {
+    width: 30%;
+    padding-top: 0.5em;
+    padding-bottom: 0.5em;
+    font-size: 1.2em;
+    cursor: pointer;
+    margin-left: -5em;
+    margin-bottom: 0;
+  }
+
+  .li-my-photo {
+    position: relative;
+    width: 6.5em;
+    height: 6.5em;
+    background-color: #4295cc;
+    position: relative;
+    margin-left: 0.6em;
+    margin-top: 3em;
+    float: left;
+  }
+
+  .img-article-new-message {
+    width: 35%;
+  }
+
+  .enregistrement {
+    width: 100%;
+    height: 2em;
+    background-color: white;
+    padding: 0.5em;
+    border: 7px double black;
+    border-radius: 1em;
+  }
+
+  .point-fixe {
+    width: 20%;
+    height: "50%";
+    position: absolute;
+    left: 0;
+    top: 0;
+    left: 30%;
+    top: 37%;
+  }
+
+  .point-move {
+    width: 20%;
+    height: "50%";
+    position: absolute;
+    left: 0;
+    top: 0;
+    left: 30%;
+    top: 37%;
+    animation-name: point-move;
+    animation-duration: 1s;
+    animation-iteration-count: infinite;
+  }
+
+  .recording {
+    position: absolute;
+    bottom: 5%;
+    z-index: 1;
+    background-color: transparent;
+    border: none;
+    left: 15%;
+    width: 30%;
+    cursor: pointer;
+  }
+
+  .stop-rec {
+    position: absolute;
+    right: 15%;
+    bottom: 3%;
+    z-index: 1;
+    background-color: transparent;
+    border: none;
+    width: 20%;
+    cursor: pointer;
+  }
+
+  @keyframes point-move {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+
+  .valide-video {
+    position: absolute;
+    right: 15%;
+    bottom: 5%;
+    z-index: 1;
+    background-color: transparent;
+    border: none;
+    width: 22%;
+    cursor: pointer;
+  }
+}
+
+@media screen and (min-width: 425px) {
+  .radio-sex {
+    position: relative;
+    top: -5em;
+    left: -1.5em;
+    width: 15em;
+    height: 15em;
+  }
+
+  .the-users {
+    position: relative;
+    top: 2em;
+    width: 99%;
+    height: 35em;
+    left: 0%;
+  }
+
+  .li-my-photo {
+    position: relative;
+    width: 7.5em;
+    height: 7.5em;
+    background-color: #4295cc;
+    position: relative;
+    margin-left: 0.6em;
+    margin-top: 3em;
+    float: left;
+  }
+
+  .img-profil-mini {
+    width: 50%;
+    height: 90%;
+    position: absolute;
+    left: 25%;
+  }
+
+  .img-article-new-message {
+    width: 33%;
+  }
+
+  .enregistrement {
+    width: 100%;
+    height: 2em;
+    background-color: white;
+    padding: 0.5em;
+    border: 7px double black;
+    border-radius: 1em;
+  }
+
+  .point-fixe {
+    width: 20%;
+    height: "50%";
+    position: absolute;
+    left: 0;
+    top: 0;
+    left: 30%;
+    top: 36%;
+  }
+
+  .point-move {
+    width: 20%;
+    height: "50%";
+    position: absolute;
+    left: 0;
+    top: 0;
+    left: 30%;
+    top: 36%;
+    animation-name: point-move;
+    animation-duration: 1s;
+    animation-iteration-count: infinite;
+  }
+
+  .recording {
+    position: absolute;
+    bottom: 5%;
+    z-index: 1;
+    background-color: transparent;
+    border: none;
+    left: 20%;
+    width: 25%;
+    cursor: pointer;
+  }
+
+  .stop-rec {
+    position: absolute;
+    right: 20%;
+    bottom: 3%;
+    z-index: 1;
+    background-color: transparent;
+    border: none;
+    width: 18%;
+    cursor: pointer;
+  }
+
+  @keyframes point-move {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+
+  .valide-video {
+    position: absolute;
+    right: 20%;
+    bottom: 5%;
+    z-index: 1;
+    background-color: transparent;
+    border: none;
+    width: 19%;
+    cursor: pointer;
+  }
+
+  .oups {
+    width: 70%;
+    margin-left: 15%;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .logo {
+    width: 10%;
+  }
+
+  .animate-logo {
+    position: absolute;
+    top: 5em;
+    left: 20%;
+    width: 60%;
+    height: 30em;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    animation-name: app;
+    animation-duration: 2s;
+  }
+  .block-cam {
+    width: 35%;
+    height: 70%;
+    position: absolute;
+    border: 2px solid black;
+    left: 32.5%;
+    top: 15%;
+  }
+
+  .supperpose {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    left: 0;
+    top: 0;
+  }
+
+  .oups {
+    width: 50%;
+    margin-left: 25%;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .logo {
+    width: 5%;
+  }
+
+  .button-inscription {
+    padding-left: 3em;
+    padding-right: 3em;
+    right: 1em;
+  }
+
+  .button-connexion {
+    position: absolute;
+    right: 12em;
+    top: 0.5em;
+    background-color: white;
+    font-size: 1em;
+    color: red;
+    border: none;
+    padding: 0.5em;
+    border-radius: 1.5em;
+    font-family: arial;
+    padding-left: 3em;
+    padding-right: 3em;
+    font-weight: bold;
+    cursor: pointer;
+  }
+
+  .easy-chat {
+    font-family: "Love Light", cursive;
+    font-size: 3em;
+    margin-left: 0.5em;
+    color: var(--int-easy-chat);
+  }
+
+  .radio-sex {
+    position: relative;
+    top: -5em;
+    left: -0.5em;
+    width: 12em;
+    height: 12em;
+    opacity: 0;
+    cursor: pointer;
+  }
+
+  .button-sex {
+    width: 20%;
+    height: 3em;
+    color: white;
+    text-align: center;
+    font-weight: bold;
+    background-color: var(--body-home-page);
+    border: 2px solid white;
+    border-radius: 20px;
+    padding: 0.8em;
+    cursor: pointer;
+  }
+
+  .carrousel-registration {
+    position: absolute;
+    top: 5em;
+    width: 55%;
+    left: 45%;
+    height: 30em;
+    overflow: hidden;
+  }
+
+  .li-search {
+    position: absolute;
+    top: 14em;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    width: 100%;
+  }
+
+  .li-sex {
+    position: absolute;
+    top: 8em;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    width: 100%;
+  }
+
+  .next-inscription-off {
+    position: absolute;
+    bottom: 1em;
+    width: 40%;
+    left: 30%;
+    padding: 1em;
+    border-radius: 20px;
+    background-color: grey;
+    color: white;
+    border: none;
+    font-weight: bold;
+  }
+
+  .next-inscription-on {
+    position: absolute;
+    bottom: 1em;
+    width: 40%;
+    left: 30%;
+    padding: 1em;
+    border-radius: 20px;
+    background-color: red;
+    color: white;
+    border: none;
+    font-weight: bold;
+    cursor: pointer;
+  }
+
+  .select-option {
+    position: relative;
+    top: 5.5em;
+    left: 15%;
+    width: 70%;
+    border-radius: 20px;
+    padding-top: 0.5em;
+    padding-bottom: 0.5em;
+    font-size: 1.2em;
+    cursor: pointer;
+  }
+
+  .input-pseudo {
+    position: relative;
+    width: 70%;
+    font-size: 1.2em;
+    border-radius: 20px;
+    padding-top: 0.5em;
+    padding-bottom: 0.5em;
+    top: 7.5em;
+    left: 15%;
+  }
+
+  .input-mail {
+    position: relative;
+    top: 5.5em;
+    width: 70%;
+    border-radius: 20px;
+    padding-top: 0.5em;
+    padding-bottom: 0.5em;
+    font-size: 1.2em;
+    left: 15%;
+  }
+
+  .input-password {
+    position: relative;
+    top: 8em;
+    width: 70%;
+    border-radius: 20px;
+    padding-top: 0.5em;
+    padding-bottom: 0.5em;
+    font-size: 1.2em;
+    left: 15%;
+  }
+
+  .submit-inscription-off {
+    position: relative;
+    top: 10em;
+    background-color: grey;
+    color: white;
+    width: 40%;
+    left: 30%;
+    border-radius: 20px;
+    padding-top: 0.5em;
+    padding-bottom: 0.5em;
+    font-size: 1.2em;
+    border: none;
+  }
+
+  .submit-inscription-on {
+    position: relative;
+    top: 10em;
+    background-color: red;
+    color: white;
+    width: 40%;
+    left: 30%;
+    border-radius: 20px;
+    padding-top: 0.5em;
+    padding-bottom: 0.5em;
+    font-size: 1.2em;
+    border: none;
+    cursor: pointer;
+  }
+
+  .i-am {
+    position: relative;
+    top: 5em;
+    font-family: Georgia, "Times New Roman", Times, serif;
+    color: white;
+    margin-left: 7em;
+  }
+
+  .i-search {
+    position: absolute;
+    top: 10em;
+    font-family: Georgia, "Times New Roman", Times, serif;
+    color: white;
+    margin-left: 7em;
+  }
+
+  .age {
+    margin-left: 6em;
+  }
+
+  .pseudo {
+    margin-left: 5em;
+  }
+
+  .mail {
+    position: relative;
+    top: 5em;
+    font-family: Georgia, "Times New Roman", Times, serif;
+    color: white;
+    margin-left: 5em;
+  }
+
+  .h3-password {
+    margin-left: 5em;
+  }
+
+  .validate-password p {
+    margin-left: 6em;
+  }
+
+  .select-dep {
+    position: relative;
+    top: 3em;
+    left: 15%;
+    width: 70%;
+    border-radius: 20px;
+    padding-top: 0.5em;
+    padding-bottom: 0.5em;
+    font-size: 1.2em;
+    cursor: pointer;
+  }
+
+  .dep {
+    position: relative;
+    top: 2em;
+    font-family: Georgia, "Times New Roman", Times, serif;
+    color: white;
+    margin-left: 6em;
+  }
+
+  .block-connexion {
+    position: relative;
+    top: 8em;
+    left: 60%;
+    width: 30%;
+    height: 25em;
+  }
+
+  .header-member {
+    width: 100%;
+    height: 5em;
+    background-color: var(--body-home-page);
+  }
+
+  .ul-article {
+    position: absolute;
+    width: 28%;
+    height: 100%;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: scroll;
+    overflow-x: hidden;
+    border: 2px solid var(--body-home-page);
+  }
+
+  .the-users {
+    position: relative;
+    top: 2em;
+    width: 98%;
+    height: 31em;
+    left: 1%;
+    border: 4px solid var(--body-home-page);
+  }
+
+  .animate-logo {
+    position: absolute;
+    top: 5em;
+    left: 5%;
+    width: 30%;
+    height: 30em;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    animation-name: app;
+    animation-duration: 2s;
+  }
+
+  .button-contact {
+    position: absolute;
+    right: 29em;
+    top: 0.5em;
+    background-color: transparent;
+    font-size: 1em;
+    color: white;
+    border: none;
+    padding: 0.5em;
+    border-radius: 1.5em;
+    font-family:
+      Baskervville SC,
+      serif;
+    padding-left: 3em;
+    padding-right: 3em;
+    font-weight: bold;
+    cursor: pointer;
+    /* border: 1px solid white; */
+  }
+
+  .button-accueil {
+    position: absolute;
+    right: 40em;
+    top: 0.5em;
+    background-color: transparent;
+    font-size: 1em;
+    color: white;
+    border: none;
+    padding: 0.5em;
+    border-radius: 1.5em;
+    font-family:
+      Baskervville SC,
+      serif;
+    padding-left: 3em;
+    padding-right: 3em;
+    font-weight: bold;
+    cursor: pointer;
+  }
+
+  .section-my-profil-picture {
+    position: relative;
+    left: 0%;
+    width: 40%;
+    height: 100%;
+    top: 0em;
+    animation-name: myImg;
+    animation-duration: 0.5s;
+  }
+
+  @keyframes myImg {
+    from {
+      left: -20%;
+      opacity: 0;
+    }
+    to {
+      left: 0%;
+      opacity: 1;
+    }
+  }
+
+  .my-profil {
+    width: 100%;
+    height: 35em;
+    position: relative;
+    top: 5em;
+    left: 0%;
+    overflow: hidden;
+  }
+
+  .h3-photo-profil {
+    font-family:
+      Baskervville SC,
+      serif;
+    color: white;
+    font-size: 2em;
+    text-align: center;
+    margin-bottom: 1em;
+  }
+
+  .section-my-profil-info {
+    position: absolute;
+    left: 40%;
+    width: 58%;
+    height: 100%;
+    top: 1em;
+    overflow-y: scroll;
+    background-color: white;
+    animation-name: myProfil;
+    animation-duration: 0.5s;
+  }
+
+  @keyframes myProfil {
+    from {
+      left: 60%;
+      opacity: 0;
+    }
+    to {
+      left: 40%;
+      opacity: 1;
+    }
+  }
+
+  .img-profil-mini {
+    width: 60%;
+    height: 90%;
+    position: absolute;
+    left: 20%;
+  }
+
+  .date-inscrition {
+    font-size: 1.5em;
+    font-family:
+      Baskervville SC,
+      serif;
+    padding: 1em;
+    font-weight: bold;
+    color: black;
+  }
+
+  #modify-password {
+    font-size: 1.5em;
+    cursor: pointer;
+    margin-left: -7em;
+    margin-bottom: 0;
+  }
+
+  #modify-mail {
+    font-size: 1.5em;
+    cursor: pointer;
+    margin-bottom: 0;
+  }
+
+  .select-dep-modify {
+    width: 30%;
+    padding-top: 0.5em;
+    padding-bottom: 0.5em;
+    font-size: 1.2em;
+    cursor: pointer;
+    margin-left: -8em;
+    margin-bottom: 0;
+  }
+
+  .select-search-modify {
+    width: 30%;
+    padding-top: 0.5em;
+    padding-bottom: 0.5em;
+    font-size: 1.2em;
+    cursor: pointer;
+    margin-bottom: 0;
+  }
+
+  .select-option-dep {
+    position: relative;
+    top: 2em;
+  }
+
+  .area-description {
+    width: 70%;
+    height: 7em;
+    position: relative;
+    left: 25%;
+    border: 1px solid black;
+    cursor: pointer;
+  }
+
+  #description {
+    position: absolute;
+    top: 0;
+  }
+
+  .sub-modification {
+    position: relative;
+    width: 30%;
+    top: 1em;
+    left: 35%;
+    background-color: grey;
+    color: white;
+    padding-top: 0.5em;
+    padding-bottom: 0.5em;
+    padding-left: 1em;
+    padding-right: 1em;
+    border-radius: 10px;
+    opacity: 0.5;
+  }
+
+  .image-container {
+    position: relative;
+    display: inline-block;
+    width: 45em;
+    height: 35em;
+    left: 45%;
+    top: 8em;
+  }
+
+  .image-container::before {
+    content: "ils sont en ligne";
+    font-family:
+      Baskervville SC,
+      serif;
+    font-weight: bold;
+    color: pink;
+    font-size: 2em;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(
+        to top,
+        var(--body-home-page),
+        transparent,
+        transparent
+      ),
+      linear-gradient(
+        to bottom,
+        var(--body-home-page),
+        transparent,
+        transparent
+      ),
+      linear-gradient(to left, var(--body-home-page), transparent, transparent),
+      linear-gradient(to right, var(--body-home-page), transparent, transparent);
+    z-index: 1;
+  }
+
+  .image-container img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+    position: relative;
+    animation-name: flou;
+    animation-duration: 5s;
+    animation-iteration-count: infinite;
+  }
+
+  @keyframes flou {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+
+  #modify-password-txt {
+    text-align: center;
+    cursor: pointer;
+    color: black;
+    width: 100%;
+  }
+
+  .filter-search {
+    position: absolute;
+    left: 28%;
+    width: 72%;
+    height: 100%;
+    background-color: white;
+    z-index: 1;
+    border-top: 0;
+    border-right: 0;
+    border-bottom: 0;
+    border-left: 2px solid var(--body-home-page);
+    animation-name: slide-search;
+    animation-duration: 0.5s;
+    font-family:
+      Baskervville SC,
+      serif;
+  }
+
+  @keyframes slide-search-off {
+    from {
+      opacity: 1;
+    }
+    to {
+      opacity: 0%;
+    }
+  }
+
+  .voir-filtres {
+    width: 20%;
+    left: 2%;
+  }
+
+  .div-input-checkbox {
+    width: 50%;
+    height: 4em;
+    left: 25%;
+    position: relative;
+    top: 2em;
+  }
+
+  .div-input-checkbox-dep {
+    width: 45%;
+    left: 27.5%;
+    height: 4em;
+    position: relative;
+    top: 2em;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    animation-name: div-input;
+    animation-duration: 1s;
+  }
+
+  .select-dep-search {
+    width: 20%;
+  }
+
+  .div-message {
+    position: absolute;
+    left: 28%;
+    top: 0;
+    width: 72%;
+    height: 100%;
+    border: 2px solid var(--body-home-page);
+    z-index: 0;
+  }
+
+  .resum-user {
+    position: absolute;
+    width: 100%;
+    height: 3em;
+  }
+
+  .img-user-selected {
+    position: relative;
+    display: inline-block;
+    width: 13em;
+    height: 13em;
+    margin-top: 0.1em;
+    margin-left: 0.2em;
+  }
+
+  .img-user-selected-animation {
+    position: relative;
+    display: inline-block;
+    width: 13em;
+    height: 13em;
+    margin-top: 0.1em;
+    margin-left: 0.2em;
+    animation-name: slide-img-user-selected;
+    animation-duration: 0.5s;
+  }
+
+  @keyframes slide-img-user-selected {
+    from {
+      opacity: 0;
+      width: 0;
+    }
+    to {
+      opacity: 1;
+      width: 13em;
+    }
+  }
+
+  .info-user-selected {
+    display: inline;
+    position: absolute;
+    top: 0;
+    margin-left: 0.5em;
+    margin-top: 0.5em;
+    font-family:
+      Baskervville SC,
+      serif;
+    font-size: 1.2em;
+    font-weight: bold;
+  }
+
+  .info-user-selected-animation {
+    display: inline;
+    position: absolute;
+    top: 0;
+    margin-left: 0.5em;
+    margin-top: 0.5em;
+    font-family:
+      Baskervville SC,
+      serif;
+    font-size: 1.2em;
+    font-weight: bold;
+    animation-name: txt-info;
+    animation-duration: 1s;
+  }
+
+  @keyframes txt-info {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+
+  .h2-description {
+    font-family:
+      Baskervville SC,
+      serif;
+    margin-left: 0.1em;
+  }
+
+  .lorem-description {
+    margin-left: 0.3em;
+    width: 23em;
+    height: 12.7em;
+    text-align: left;
+    overflow-y: scroll;
+    font-size: 1em;
+  }
+
+  .lorem-description::-webkit-scrollbar {
+    width: 0.3em;
+  }
+
+  .lorem-description::-webkit-scrollbar-thumb {
+    background: var(--body-home-page);
+    border-radius: 10px;
+  }
+
+  .container-message {
+    position: absolute;
+    width: 48%;
+    height: 99%;
+    left: 52%;
+    top: 0;
+    background-color: white;
+  }
+
+  .refresh {
+    position: absolute;
+    left: 25%;
+    top: 6em;
+    cursor: pointer;
+    width: 3em;
+    height: 3em;
+  }
+
+  .button-refresh {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+  }
+
+  .form-message {
+    width: 100%;
+    height: 30%;
+    position: absolute;
+    right: 0%;
+    top: 70%;
+  }
+
+  .area-message {
+    width: 90%;
+    height: 5em;
+    position: absolute;
+    left: 5%;
+    top: 20%;
+    border-radius: 0.5em;
+    border: 2px solid black;
+  }
+
+  .container-message-animation {
+    position: absolute;
+    width: 48%;
+    height: 99%;
+    left: 52%;
+    top: 0;
+    animation-name: container-animate-message;
+    animation-duration: 1s;
+  }
+
+  .submit-txt-message {
+    width: 3em;
+    height: 3em;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+  }
+
+  .ajax {
+    position: absolute;
+    top: 5%;
+    width: 98%;
+    height: 18.5em;
+    margin-left: 1%;
+  }
+
+  .new-message {
+    width: 72%;
+    height: 100%;
+    position: absolute;
+    border: 2px solid white;
+    z-index: 7;
+    animation-name: slide-new-message;
+    animation-duration: 0.5s;
+    left: 28%;
+  }
+
+  .article-new-message {
+    position: relative;
+    left: 20%;
+    width: 60%;
+    height: 7em;
+    margin-top: 1em;
+    border: 1px solid black;
+    border-radius: 0.5em;
+    animation-name: opacity-article-new-message;
+    animation-duration: 2s;
+    background: linear-gradient(to right, var(--body-home-page), white, white);
+  }
+
+  .img-article-new-message {
+    position: absolute;
+    left: 10%;
+    width: 20%;
+    height: 100%;
+    border-radius: 0.5em;
+  }
+
+  .number-result-search {
+    position: relative;
+    left: 0em;
+    font-weight: bold;
+    color: pink;
+    text-shadow:
+      -1px -1px 0 black,
+      1px -1px 0 black,
+      -1px 1px 0 black,
+      1px 1px 0 black;
+  }
+
+  .option-user-selected {
+    width: 85%;
+    height: 2em;
+    position: relative;
+    top: -3em;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+  }
+
+  .button-option-user-selected {
+    border-radius: 5px;
+    border: 4px solid pink;
+    background-color: white;
+    width: 10em;
+    margin-left: 1em;
+    cursor: pointer;
+  }
+
+  .div-my-album {
+    position: absolute;
+    left: 28%;
+    top: 0;
+    width: 72%;
+    height: 100%;
+    z-index: 9;
+    background-color: white;
+  }
+
+  .div-album-photo {
+    overflow: hidden;
+    margin-top: -2em;
+  }
+
+  .button-div-my-album {
+    position: absolute;
+    right: 0;
+    top: 0;
+    font-size: 3em;
+    color: red;
+    background-color: transparent;
+    border: none;
+    z-index: 8;
+    cursor: pointer;
+  }
+
+  .input_add {
+    width: 10%;
+    height: 20%;
+    position: absolute;
+    border: none;
+    cursor: pointer;
+  }
+  .div-my-photo {
+    width: 100%;
+    height: 85%;
+    position: absolute;
+    top: 20%;
+    margin: 0;
+    padding: 0;
+  }
+
+  .li-my-photo {
+    margin-top: 1.5em;
+  }
+
+  .img-li-article-son-album {
+    width: 30%;
+    height: 100%;
+    margin-left: 35%;
+  }
+
+  .next-article-son-album {
+    right: 25%;
+    cursor: pointer;
+    border-right: 3px solid white;
+  }
+
+  .prev-article-son-album {
+    left: 25%;
+    cursor: pointer;
+    border-left: 3px solid white;
+  }
+
+  .div-frequence {
+    width: 72%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 28%;
+    z-index: 14;
+    animation-name: frequence;
+    animation-duration: 0.5s;
+  }
+
+  @keyframes frequence {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+
+  .button-suppr {
+    width: 100%;
+    height: 20%;
+    position: absolute;
+    bottom: 0;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+  }
+
+  .suppr-def {
+    width: 15%;
+    height: 100%;
+    border-radius: 10px;
+    font-size: 1em;
+    cursor: pointer;
+  }
+
+  .div-block-option {
+    position: absolute;
+    left: 28%;
+    top: 0;
+    width: 72%;
+    height: 100%;
+    background-color: white;
+    z-index: 15;
+    animation-name: slide-option;
+    animation-duration: 0.5s;
+  }
+
+  @keyframes slide-option {
+    from {
+      height: 0;
+    }
+    to {
+      height: 100%;
+    }
+  }
+
+  #prevConnection {
+    margin-left: 15em;
+    margin-top: -1em;
+    cursor: pointer;
+  }
+
+  .label-alert-connection {
+    font-size: 1em;
+    cursor: pointer;
+  }
+
+  .div-go-to-contact {
+    position: absolute;
+    left: 0;
+    top: 15%;
+    width: 100%;
+    height: 100%;
+    background-color: var(--body-home-page);
+    font-family: "Baskervville SC", serif;
+    text-align: center;
+    color: white;
+    font-size: 1.3em;
+    z-index: 16;
+  }
+
+  .inpt-mail-contact {
+    width: 30%;
+    border-radius: 5px;
+  }
+
+  .area-message-contact {
+    width: 82%;
+    border-radius: 5px;
+    height: 20em;
+    font-size: 1.1em;
+  }
+
+  .submit-message-contact-off {
+    background-color: grey;
+    color: white;
+    padding: 0.5em;
+    width: 20%;
+    border-radius: 5px;
+    font-weight: bold;
+  }
+
+  .submit-message-contact-on {
+    background-color: red;
+    color: white;
+    padding: 0.5em;
+    width: 20%;
+    border-radius: 5px;
+    font-weight: bold;
+  }
+
+  .block-cam {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    left: 0%;
+    top: 0%;
+    background-color: var(--body-home-page);
+  }
+
+  .recording {
+    position: absolute;
+    top: 20%;
+    z-index: 1;
+    background-color: transparent;
+    border: none;
+    left: 75%;
+    width: 10%;
+    height: 7em;
+    cursor: pointer;
+  }
+
+  .point-fixe {
+    width: 20%;
+    position: relative;
+    left: -25%;
+    top: -95%;
+  }
+
+  .stop-rec {
+    position: absolute;
+    right: 14%;
+    top: 40%;
+    z-index: 1;
+    background-color: transparent;
+    border: none;
+    width: 10%;
+    height: 7.5em;
+    cursor: pointer;
+  }
+
+  .point-move {
+    width: 20%;
+    position: relative;
+    left: -25%;
+    top: -95%;
+    animation-name: point-move;
+    animation-duration: 1s;
+    animation-iteration-count: infinite;
+  }
+
+  .recommencer {
+    width: 100%;
+    height: 100%;
+  }
+
+  .valide-video {
+    position: absolute;
+    right: 15%;
+    top: 45%;
+    z-index: 1;
+    background-color: transparent;
+    border: none;
+    width: 10%;
+    height: 7em;
+    cursor: pointer;
+  }
+  .tick {
+    width: 10%;
+    position: absolute;
+    left: 75%;
+    top: 25%;
+    border-radius: 50%;
+  }
+
+  .voirsavideo {
+    width: 20%;
+    height: 2em;
+    background-color: var(--body-home-page);
+    position: relative;
+    left: 0;
+    top: 1em;
+    cursor: pointer;
+    font-size: 0.9em;
+    color: white;
+    border: 5px double white;
+    transition: background-color 1s;
+    border-radius: 2em;
+  }
+
+  .voirsavideo:hover {
+    background-color: white;
+    color: var(--body-home-page);
+    border: 5px double var(--body-home-page);
+  }
+
+  .oups {
+    width: 25%;
+    margin-left: 37.5%;
+  }
+}
+@media screen and (min-width: 1440px) {
+  .recommencer {
+    width: 100%;
+    height: 150%;
   }
 }
