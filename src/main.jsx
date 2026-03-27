@@ -16,6 +16,7 @@ import Cookies from "js-cookie";
 import Cam from "./Cam.jsx";
 import Video from "./Video.jsx";
 import VoiceRecorder from "./VoiceRecorder.jsx";
+import Payment from "./Payment.jsx";
 
 function maj() {
   const interval = setInterval(() => {
@@ -23,13 +24,13 @@ function maj() {
     const env = import.meta.env;
     if (Auth)
       fetch(
-        `${env.VITE_API_HTTP}://${env.VITE_API_URL}:${env.VITE_API_SERVER_PORT}/select-user-id/${Auth}`
+        `${env.VITE_API_HTTP}://${env.VITE_API_URL}:${env.VITE_API_SERVER_PORT}/select-user-id/${Auth}`,
       )
         .then((response) => response.json())
         .then((response) => {
           if (response[0].inline === 0) {
             alert(
-              "Vous êtes déconnecté, veuillez patienter 60 secondes pour vous reconnecter."
+              "Vous êtes déconnecté, veuillez patienter 60 secondes pour vous reconnecter.",
             );
 
             window.location.href = "/deconnexion";
@@ -89,6 +90,10 @@ const router = createBrowserRouter([
     path: "/recorder",
     element: <VoiceRecorder />,
   },
+  {
+    path: "/payment",
+    element: <Payment />,
+  },
 ]);
 
 createRoot(document.getElementById("root")).render(
@@ -96,5 +101,5 @@ createRoot(document.getElementById("root")).render(
     <Provider>
       <RouterProvider router={router} />
     </Provider>
-  </StrictMode>
+  </StrictMode>,
 );
